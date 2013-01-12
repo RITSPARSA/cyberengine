@@ -1,5 +1,7 @@
 Cyberengine::Application.routes.draw do
   root to: 'teams#index'
+
+  resources :members
   resources :teams
 
 
