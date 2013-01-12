@@ -1,0 +1,24 @@
+<ul class="nav pull-right">
+  <% if 1==2 %>
+  <li><%= link_to 'Login', '#' %></li>
+  <li><%= link_to 'Logout', '#'' %></li>
+  <% else %>
+  <li><%= link_to 'Login', '#' %></li>
+  <li><%= link_to 'Register', '#' %></li>
+  <% end %>
+</ul>
+<%
+#              new_user_session GET    /auth/login(.:format)                                         devise/sessions#new
+#                  user_session POST   /auth/login(.:format)                                         devise/sessions#create
+#          destroy_user_session DELETE /auth/logout(.:format)                                        devise/sessions#destroy
+#                 user_password POST   /auth/password(.:format)                                      devise/passwords#create
+#             new_user_password GET    /auth/password/new(.:format)                                  devise/passwords#new
+#            edit_user_password GET    /auth/password/edit(.:format)                                 devise/passwords#edit
+#                               PUT    /auth/password(.:format)                                      devise/passwords#update
+#      cancel_user_registration GET    /auth/register/cancel(.:format)                               devise/registrations#cancel
+#             user_registration POST   /auth/register(.:format)                                      devise/registrations#create
+#         new_user_registration GET    /auth/register/new(.:format)                                  devise/registrations#new
+#        edit_user_registration GET    /auth/register/edit(.:format)                                 devise/registrations#edit
+#                               PUT    /auth/register(.:format)                                      devise/registrations#update
+#                               DELETE /auth/register(.:format)                                      devise/registrations#destroy
+%>
