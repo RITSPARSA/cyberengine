@@ -1,4 +1,8 @@
 Cyberengine::Application.routes.draw do
+  root to: 'teams#index'
+  resources :teams
+
+
   #root :to => 'blueteams#index'
   #devise_for :users
   #resources :users

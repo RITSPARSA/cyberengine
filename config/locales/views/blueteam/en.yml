@@ -1,0 +1,18 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en: 
+  helpers:
+    links:
+      edit: "Edit"
+      destroy: "Delete"
+  blueteams:
+    index:
+      title: "Blueteams"
+      table:
+        header:
+          id: "Team"
+          name: "Name"
+          servers: "Servers"
+          services: "Services"
+          actions: "Available Actions"

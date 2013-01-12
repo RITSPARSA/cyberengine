@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<%= t('defaults.cyberengine.url') %>"><%= t('defaults.cyberengine.name') %></a>
+          <%= link_to t('defaults.cyberengine.name'), t('defaults.cyberengine.url'), class: 'brand' %>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Servers", "#"  %></li>
