@@ -10,7 +10,13 @@ class Member < ActiveRecord::Base
   validates :password, presence: true
   validates :team, presence: { message: "must exist" }
 
-  #def team
-  #  Team.find_by_id(self.team_id) if self.team_id
-  #end
+  def whiteteam?
+    self if self.team && self.team.color == 'white'
+  end
+  def blueteam?
+    self if self.team && self.team.color == 'blue'
+  end
+  def redteam?
+    self if self.team && self.team.color == 'red'
+  end
 end

@@ -1,23 +1,20 @@
-<%- model_class = Team -%>
 <div class="page-header">
   <h1><%= @team.alias %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dt><strong>Name:</strong></dt>
   <dd><%= @team.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
+  <dt><strong>Alias:</strong></dt>
+  <dd><%= @team.alias %></dd>
+  <dt><strong>Color:</strong></dt>
   <dd><%= @team.color %></dd>
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              teams_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_team_path(@team), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              team_path(@team),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<% if whiteteam? %>
+  <div class="form-actions">
+    <%= link_to 'Back', teams_path, class: 'btn' %>
+    <%= link_to 'Edit', edit_team_path(@team), class: 'btn' %>
+    <%= link_to 'Delete', team_path(@team), :method => :delete, :data => { :confirm => 'Please Confirm! This will destroy all team data!' }, :class => 'btn btn-danger' %>
+  </div>
+<% end %>

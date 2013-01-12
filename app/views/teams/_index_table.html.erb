@@ -1,0 +1,35 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <% if whiteteam? %>
+        <th>Id</th>
+        <th>Alias</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Actions</th>
+      <% else %>
+        <th>Alias</th>
+        <th>Name</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <% if whiteteam? %>
+          <td><%= team.id %></td>
+          <td><%= link_to team.alias, team_path(team) %></td>
+          <td><%= team.name %></td>
+          <td><%= team.color %></td>
+          <td>
+          <%= link_to 'Edit', edit_team_path(team), :class => 'btn btn-mini' %>
+          <%= link_to 'Delete', team_path(team), :method => :delete, :data => { :confirm => 'Please Confirm! This will destroy all team data!' }, :class => 'btn btn-mini btn-danger' %>
+          </td>
+        <% else %>
+          <td><%= link_to team.alias, team_path(team) %></td>
+          <td><%= team.name %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
