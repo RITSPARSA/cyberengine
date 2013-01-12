@@ -10,4 +10,7 @@ class Member < ActiveRecord::Base
   validates :password, presence: true
   validates :team, presence: { message: "must exist" }
 
+  #def team
+  #  Team.find_by_id(self.team_id) if self.team_id
+  #end
 end

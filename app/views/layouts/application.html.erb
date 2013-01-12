@@ -44,13 +44,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= link_to t('defaults.cyberengine.name'), t('defaults.cyberengine.url'), class: 'brand' %>
+          <%= render 'layouts/brand_nav' %>
           <div class="container nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Servers", "#"  %></li>
-              <li><%= link_to "Services", "#"  %></li>
-              <li><%= link_to "Checks", "#"  %></li>
-            </ul>
+            <%= render 'layouts/team_nav' %>
             <%= render 'layouts/auth_nav' %>
           </div><!--/.nav-collapse -->
         </div>

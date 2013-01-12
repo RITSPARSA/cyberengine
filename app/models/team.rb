@@ -1,8 +1,9 @@
 class Team < ActiveRecord::Base
   before_validation :downcase_color
   before_validation :capitalize_name
-  attr_accessible :color, :name
+  attr_accessible :color, :name, :alias
   validates :name, presence: true
+  validates :alias, presence: true
   validates :color, presence: true
   validates :color, :inclusion => { :in => ['white','red','blue','black','gold'] }
 

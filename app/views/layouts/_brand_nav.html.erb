@@ -1,0 +1,5 @@
+<% if logged_in? %>
+  <%= link_to current_member.team.alias, team_path(current_member.team_id), class: 'brand' %>
+<% else %>
+  <%= link_to 'Teams', teams_path, class: 'brand' %>
+<% end %>

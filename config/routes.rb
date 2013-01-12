@@ -1,8 +1,21 @@
 Cyberengine::Application.routes.draw do
   root to: 'teams#index'
-
+  resources :sessions, only: [:new, :create]
+  match 'session' => "sessions#destroy", via: :delete, as: 'session'
   resources :members
   resources :teams
+
+  #scope '/auth', as: 'auth' do
+  #  get 'login', to: 'sessions#new', as: 'login'
+  #  post 'login', to: 'sessions#create'
+  #  get 'logout', to: 'sessions#destroy', as: 'logout'
+  #end
+
+  #match '/signin', :to => 'sessions#new'
+  #match '/signout', :to => 'sessions#destroy'
+  #get "logout" => "sessions#destroy", :as => "logout"
+  #get "login" => "sessions#new", :as => "login"
+  #get "register" => "users#new", :as => "register"
 
 
   #root :to => 'blueteams#index'
