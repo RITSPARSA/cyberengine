@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  server_id: 1
+  protocol: MyString
+  version: MyString
+  enabled: false
+
+two:
+  server_id: 1
+  protocol: MyString
+  version: MyString
+  enabled: false

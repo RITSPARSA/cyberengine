@@ -1,11 +1,12 @@
 <ul class="nav">
   <% if blueteam? %>
   <li><%= link_to 'Servers', servers_path %></li>
-  <li><%= link_to 'Services', '#' %></li>
+  <li><%= link_to 'Services', services_path %></li>
   <li><%= link_to 'Checks', '#' %></li>
   <% elsif whiteteam? %>
   <li><%= link_to 'Members', members_path %></li>
   <li><%= link_to 'Servers', servers_path %></li>
+  <li><%= link_to 'Services', services_path %></li>
   <% else %>
   <% end %>
   <li><%= link_to 'Scoreboard', '#' %></li>

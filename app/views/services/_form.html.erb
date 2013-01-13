@@ -1,0 +1,45 @@
+<%= form_for @service, html: { class: 'form-horizontal' } do |f| %>
+  <% if @service.errors.any? %>
+    <% flash[:error] = @service.errors.full_messages.to_s %>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, class: 'text_field', autofocus: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :protocol, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :protocol, class: 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :version, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :version, class: 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :enabled, class: 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :enabled, class: 'check_box', checked: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :server_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:service, :server_id, Server.all.collect { |s| ["#{s.team.alias}: #{s.name}", s.id] }, { prompt: 'Select Server' }) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', services_path, class: 'btn' %>
+  </div>
+<% end %>
