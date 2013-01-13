@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Show Server</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Name:</strong></dt>
+  <dd><%= @server.name %></dd>
+  <dt><strong>Team:</strong></dt>
+  <dd><%= @server.team_id %></dd>
+</dl>
+
+<% if whiteteam? %>
+  <div class="form-actions">
+    <%= link_to 'Back', servers_path, class: 'btn' %>
+    <%= link_to 'Edit', edit_server_path(@server), class: 'btn' %>
+    <%= link_to 'Delete', server_path(@server), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
+  </div>
+<% end %>

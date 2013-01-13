@@ -27,16 +27,19 @@ class Ability
   def blueteam
     can [:new, :create, :destroy], :session
     can [:index, :show], Team
+    can [:index, :show], Server
   end
 
   def redteam
     can [:new, :create, :destroy], :session
     can [:index, :show], Team
+    can [:index, :show], Server
   end
 
   def guest
     can [:new, :create, :destroy], :session
     can [:index, :show], Team
+    can [:index, :show], Server
   end
 
 end

@@ -1,4 +1,7 @@
 Cyberengine::Application.routes.draw do
+  resources :servers
+
+
   root to: 'teams#index'
   resources :sessions, only: [:new, :create]
   match 'session' => "sessions#destroy", via: :delete, as: 'session'

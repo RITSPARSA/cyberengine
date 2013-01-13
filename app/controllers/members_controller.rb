@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  load_and_authorize_resource
+
   # GET /members
   # GET /members.json
   def index

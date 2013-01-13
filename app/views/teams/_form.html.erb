@@ -1,32 +1,33 @@
-<%= form_for @team, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @team, html: { class: 'form-horizontal' } do |f| %>
+
   <% if @team.errors.any? %>
     <% flash[:error] = @team.errors.full_messages.to_s %>
   <% end %>
 
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label :name, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, class: 'text_field', autofocus: true %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :alias, :class => 'control-label' %>
+    <%= f.label :alias, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :alias, :class => 'text_field' %>
+      <%= f.text_field :alias, class: 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :color, :class => 'control-label' %>
+    <%= f.label :color, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :color, :class => 'text_field' %>
+      <%= f.text_field :color, class: 'text_field' %>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                teams_path, :class => 'btn' %>
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', team_path, class: 'btn' %>
   </div>
+
 <% end %>

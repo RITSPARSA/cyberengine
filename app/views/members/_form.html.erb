@@ -1,39 +1,38 @@
-<%= form_for @member, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @member, html: { class: 'form-horizontal' } do |f| %>
   <% if @member.errors.any? %>
     <% flash[:error] = @member.errors.full_messages.to_s %>
   <% end %>
 
   <div class="control-group">
-    <%= f.label :username, :class => 'control-label' %>
+    <%= f.label :username, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :username, :class => 'text_field' %>
+      <%= f.text_field :username, class: 'text_field', autofocus: true %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
+    <%= f.label :password, class: 'control-label' %>
     <div class="controls">
-      <%= f.password_field :password, :class => 'text_field' %>
+      <%= f.password_field :password, class: 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
+    <%= f.label :password_confirmation, class: 'control-label' %>
     <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'text_field' %>
+      <%= f.password_field :password_confirmation, class: 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :team_id, :class => 'control-label' %>
+    <%= f.label :team_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:member, :team_id, Team.all.collect {|t| [t.name, t.id]}, {prompt: 'Select Team'}) %>
+      <%= select(:member, :team_id, Team.all.collect { |t| [t.name, t.id] }, { prompt: 'Select Team' }) %>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                members_path, :class => 'btn' %>
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', members_path, class: 'btn' %>
   </div>
 <% end %>

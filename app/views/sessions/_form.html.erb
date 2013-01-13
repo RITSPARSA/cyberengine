@@ -1,26 +1,21 @@
-<% #form_tag sessions_path, {class: 'form-horizontal'} do |f| %>
-<%= form_for 'session', url: sessions_path, html: {class: 'form-horizontal'} do |f| %>
-<% #, url: session_path, :html => { :class => 'form-horizontal' } do |f| %>
-  <% #if @member.errors.any? %>
-    <% #flash[:error] = @member.errors.full_messages.to_s %>
-  <% #end %>
+<%= form_for 'session', url: sessions_path, html: { class: 'form-horizontal' } do |f| %>
 
   <div class="control-group">
-    <%= f.label 'username', 'Username', :class => 'control-label' %>
+    <%= f.label 'username', 'Username', class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field 'username', :class => 'text_field', autofocus:true %>
+      <%= f.text_field 'username', class: 'text_field', autofocus:true %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label 'password', 'Password', :class => 'control-label' %>
+    <%= f.label 'password', 'Password', class: 'control-label' %>
     <div class="controls">
-      <%= f.password_field 'password', :class => 'text_field' %>
+      <%= f.password_field 'password', class: 'text_field' %>
     </div>
   </div>
 
   <div class="form-actions">
     <%= f.submit 'Login', class: 'btn btn-primary' %>
-    <% #= link_to t('.cancel', :default => t("helpers.links.cancel")), members_path, :class => 'btn' %>
   </div>
+
 <% end %>

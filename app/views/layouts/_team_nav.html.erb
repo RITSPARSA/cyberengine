@@ -1,10 +1,12 @@
 <ul class="nav">
-  <% if logged_in? %>
-  <li><%= link_to 'Servers', '#' %></li>
+  <% if blueteam? %>
+  <li><%= link_to 'Servers', servers_path %></li>
   <li><%= link_to 'Services', '#' %></li>
   <li><%= link_to 'Checks', '#' %></li>
-  <li><%= link_to 'Scoreboard', '#' %></li>
+  <% elsif whiteteam? %>
+  <li><%= link_to 'Members', members_path %></li>
+  <li><%= link_to 'Servers', servers_path %></li>
   <% else %>
-  <li><%= link_to 'Scoreboard', '#' %></li>
   <% end %>
+  <li><%= link_to 'Scoreboard', '#' %></li>
 </ul>

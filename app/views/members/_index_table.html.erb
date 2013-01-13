@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Team</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.id, member_path(member) %></td>
+        <td><%= link_to member.team.alias, team_path(member.team) %></td>
+        <td><%= member.username %></td>
+        <td><%= member.password_digest %></td>
+        <td>
+          <%= link_to 'Edit', edit_member_path(member), class: 'btn btn-mini' %>
+          <%= link_to 'Delete', member_path(member), method: :delete, class: 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -15,6 +15,6 @@
   <div class="form-actions">
     <%= link_to 'Back', teams_path, class: 'btn' %>
     <%= link_to 'Edit', edit_team_path(@team), class: 'btn' %>
-    <%= link_to 'Delete', team_path(@team), :method => :delete, :data => { :confirm => 'Please Confirm! This will destroy all team data!' }, :class => 'btn btn-danger' %>
+    <%= link_to 'Delete', team_path(@team), method: :delete, data: { confirm: 'Please Confirm' }, class: 'btn btn-danger' %>
   </div>
 <% end %>
