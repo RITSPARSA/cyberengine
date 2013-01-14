@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
   private
 
   def current_member
-    @current_member ||= Member.find(session[:member_id]) if session[:member_id]
+    if session[:member_id]
+      @current_member = Member.find_by_id(session[:member_id]) || nil
+    else
+      @current_member = nil
+    end
+    @current_member
   end
 
   def logged_in?

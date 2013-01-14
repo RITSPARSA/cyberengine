@@ -32,8 +32,8 @@
           <td><%= service.version %></td>
           <td><%= service.enabled %></td>
           <td>
-          <%= link_to 'Edit', edit_service_path(service), class: 'btn' %>
-          <%= link_to 'Delete', service_path(service), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
+          <%= link_to 'Edit', edit_service_path(service), class: 'btn btn-mini' %>
+          <%= link_to 'Delete', service_path(service), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Please Confirm' } %>
           </td>
         <% else %>
           <td><%= link_to service.name, service_path(service) %></td>

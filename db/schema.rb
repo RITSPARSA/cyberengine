@@ -11,39 +11,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113194122) do
+ActiveRecord::Schema.define(:version => 20130113203426) do
 
   create_table "members", :force => true do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.integer  "team_id"
+    t.string   "username",        :null => false
+    t.string   "password_digest", :null => false
+    t.integer  "team_id",         :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "properties", :force => true do |t|
+    t.integer  "service_id", :null => false
+    t.string   "category",   :null => false
+    t.string   "property",   :null => false
+    t.text     "value",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "servers", :force => true do |t|
-    t.string   "name"
-    t.integer  "team_id"
+    t.string   "name",       :null => false
+    t.integer  "team_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "services", :force => true do |t|
-    t.integer  "server_id"
-    t.string   "protocol"
-    t.string   "version"
-    t.boolean  "enabled"
+    t.integer  "server_id",  :null => false
+    t.string   "name",       :null => false
+    t.string   "protocol",   :null => false
+    t.string   "version",    :null => false
+    t.boolean  "enabled",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "name"
   end
 
   create_table "teams", :force => true do |t|
-    t.string   "name"
-    t.string   "color"
+    t.string   "alias",      :null => false
+    t.string   "name",       :null => false
+    t.string   "color",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "alias"
   end
 
 end

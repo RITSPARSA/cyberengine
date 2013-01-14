@@ -1,0 +1,39 @@
+<%= form_for @property, html: { class: 'form-horizontal' } do |f| %>
+  <% if @property.errors.any? %>
+    <% flash[:error] = @property.errors.full_messages.to_s %>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :category, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :category, class: 'text_field', autofocus: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :property, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :property, class: 'text_field', autofocus: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :value, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :value, class: 'text_field', autofocus: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :service_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:property, :service_id, Service.all.collect { |s| ["#{s.server.team.alias}: #{s.server.name}: #{s.name}", s.id] }, { prompt: 'Select Service' }) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', properties_path, class: 'btn' %>
+  </div>
+<% end %>
+

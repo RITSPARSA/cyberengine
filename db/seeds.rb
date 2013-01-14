@@ -6,3 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Whiteteam
+whiteteam = Team.create(color: 'white', name: 'Whiteteam', alias: 'Whiteteam' )
+whiteteam_member = Member.create(username: 'whiteteam', team_id: whiteteam.id, password: 'whiteteam', password_confirmation: 'whiteteam')
+
+# Redteam
+redteam = Team.create(color: 'red', name: 'Redteam', alias: 'Redteam' )
+
+# Blueteam

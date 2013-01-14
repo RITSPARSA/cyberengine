@@ -6,9 +6,9 @@ class Service < ActiveRecord::Base
   attr_accessible :enabled, :protocol, :server_id, :version, :name
 
   belongs_to :server
+  has_many :properties
 
   validates :name, presence: true, uniqueness: { scope: :server_id, message: "already taken" }
-  validates :enabled, presence: true
   validates :version, presence: true, inclusion: { in: ['ipv4','ipv6'] }
   validates :protocol, presence: true
   validates :server, presence: { message: "must exist" }

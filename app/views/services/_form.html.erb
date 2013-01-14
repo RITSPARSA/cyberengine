@@ -27,7 +27,15 @@
   <div class="control-group">
     <%= f.label :enabled, class: 'control-label' %>
     <div class="controls">
-      <%= f.check_box :enabled, class: 'check_box', checked: true %>
+      <% if :new == params[:action] %>
+        <%= f.check_box :enabled, class: 'check_box' %>
+      <% else %>
+        <% if @service.enabled == true %>
+          <%= f.check_box :enabled, class: 'check_box', checked: true %>
+        <% else %>
+          <%= f.check_box :enabled, class: 'check_box' %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

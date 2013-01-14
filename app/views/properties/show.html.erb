@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Show Server</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Id:</strong></dt>
+  <dd><%= @property.id %></dd>
+  <dt><strong>Team:</strong></dt>
+  <dd><%= @property.service.server.team.alias %></dd>
+  <dt><strong>Server:</strong></dt>
+  <dd><%= @property.service.server.name %></dd>
+  <dt><strong>Service:</strong></dt>
+  <dd><%= @property.service.name %></dd>
+  <dt><strong>Category:</strong></dt>
+  <dd><%= @property.category %></dd>
+  <dt><strong>Property:</strong></dt>
+  <dd><%= @property.property %></dd>
+  <dt><strong>Value:</strong></dt>
+  <dd><%= @property.value %></dd>
+</dl>
+
+<% if whiteteam? %>
+  <div class="form-actions">
+    <%= link_to 'Back', properties_path, class: 'btn' %>
+    <%= link_to 'Edit', edit_property_path(@property), class: 'btn' %>
+    <%= link_to 'Delete', property_path(@property), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
+  </div>
+<% end %>
