@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115114132) do
+ActiveRecord::Schema.define(:version => 20130117152449) do
 
   create_table "checks", :force => true do |t|
     t.integer  "service_id", :null => false
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(:version => 20130115114132) do
     t.string   "alias",      :null => false
     t.string   "name",       :null => false
     t.string   "color",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.integer  "service_id", :null => false
+    t.string   "username",   :null => false
+    t.string   "password",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

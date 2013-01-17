@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1>Show User</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Id:</strong></dt>
+  <dd><%= @user.id %></dd>
+  <dt><strong>Team:</strong></dt>
+  <dd><%= @user.service.server.team.alias %></dd>
+  <dt><strong>Server:</strong></dt>
+  <dd><%= @user.service.server.name %></dd>
+  <dt><strong>Service:</strong></dt>
+  <dd><%= @user.service.name %></dd>
+  <dt><strong>Username:</strong></dt>
+  <dd><%= @user.username %></dd>
+  <dt><strong>Password:</strong></dt>
+  <dd><%= @user.password %></dd>
+</dl>
+
+<% if whiteteam? %>
+  <div class="form-actions">
+    <%= link_to 'Back', users_path, class: 'btn' %>
+    <%= link_to 'Edit', edit_user_path(@user), class: 'btn' %>
+    <%= link_to 'Delete', user_path(@user), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
+  </div>
+<% end %>

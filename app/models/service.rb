@@ -8,6 +8,7 @@ class Service < ActiveRecord::Base
   belongs_to :server
   has_many :properties
   has_many :checks
+  has_many :users
 
   validates :name, presence: true, uniqueness: { scope: :server_id, message: "already taken" }
   validates :version, presence: true, inclusion: { in: ['ipv4','ipv6'] }

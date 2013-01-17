@@ -31,6 +31,7 @@ class Ability
     can [:index, :show], Service
     can [:index, :show], Property
     can [:index, :show], Check
+    can [:index, :show], User
   end
 
   def redteam
@@ -40,6 +41,7 @@ class Ability
     can [:index, :show], Service
     can [:index, :show], Property
     can [:index, :show], Check
+    can [:index, :show], User
   end
 
   def guest
@@ -49,6 +51,7 @@ class Ability
     can [:index, :show], Service
     can [:index, :show], Property
     can [:index, :show], Check
+    can [:index, :show], User
   end
 
 end

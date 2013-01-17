@@ -1,0 +1,47 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <% if whiteteam? %>
+        <th>Id</th>
+        <th>Team</th>
+        <th>Server</th>
+        <th>Service</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+      <% else %>
+        <th>Id</th>
+        <th>Team</th>
+        <th>Server</th>
+        <th>Service</th>
+        <th>Username</th>
+        <th>Password</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <% if whiteteam? %>
+          <td><%= link_to "User", user_path(user) %></td>
+          <td><%= link_to user.service.server.team.alias, team_path(user.service.server.team) %></td>
+          <td><%= link_to user.service.server.name, server_path(user.service.server) %></td>
+          <td><%= link_to user.service.name, service_path(user.service) %></td>
+          <td><%= user.username %></td>
+          <td><%= user.password %></td>
+          <td>
+          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-mini' %>
+          <%= link_to 'Delete', user_path(user), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Please Confirm' } %>
+          </td>
+        <% else %>
+          <td><%= link_to "User", user_path(user) %></td>
+          <td><%= link_to user.service.server.team.alias, team_path(user.service.server.team) %></td>
+          <td><%= link_to user.service.server.name, server_path(user.service.server) %></td>
+          <td><%= link_to user.service.name, service_path(user.service) %></td>
+          <td><%= user.username %></td>
+          <td><%= user.password %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
