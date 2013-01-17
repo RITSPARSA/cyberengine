@@ -1,0 +1,47 @@
+<%= form_for @check, html: { class: 'form-horizontal' } do |f| %>
+  <% if @check.errors.any? %>
+    <% flash[:error] = @check.errors.full_messages.to_s %>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :passed, class: 'control-label' %>
+    <div class="controls">
+      <% if :new == params[:action] %>
+        <%= f.check_box :passed, class: 'check_box' %>
+      <% else %>
+        <% if @check.passed == true %>
+          <%= f.check_box :passed, class: 'check_box', checked: true %>
+        <% else %>
+          <%= f.check_box :passed, class: 'check_box' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :request, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :request, class: 'text_field', autofocus: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :response, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :response, class: 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :service_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:check, :service_id, Service.all.collect { |s| ["#{s.server.team.alias}: #{s.server.name}: #{s.name}", s.id] }, { prompt: 'Select Service' }) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', checks_path, class: 'btn' %>
+  </div>
+<% end %>
+

@@ -1,4 +1,7 @@
 Cyberengine::Application.routes.draw do
+  resources :checks
+
+
   resources :properties
 
 

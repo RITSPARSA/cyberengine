@@ -3,11 +3,12 @@
   <li><%= link_to 'Servers', servers_path %></li>
   <li><%= link_to 'Services', services_path %></li>
   <li><%= link_to 'Properties', properties_path %></li>
-  <li><%= link_to 'Checks', '#' %></li>
+  <li><%= link_to 'Checks', checks_path %></li>
   <% elsif whiteteam? %>
   <li><%= link_to 'Servers', servers_path %></li>
   <li><%= link_to 'Services', services_path %></li>
   <li><%= link_to 'Properties', properties_path %></li>
+  <li><%= link_to 'Checks', checks_path %></li>
   <li><%= link_to 'Members', members_path %></li>
   <% else %>
   <% end %>

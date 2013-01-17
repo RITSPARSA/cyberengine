@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Show Check</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Id:</strong></dt>
+  <dd><%= @check.id %></dd>
+  <dt><strong>Team:</strong></dt>
+  <dd><%= @check.service.server.team.alias %></dd>
+  <dt><strong>Server:</strong></dt>
+  <dd><%= @check.service.server.name %></dd>
+  <dt><strong>Service:</strong></dt>
+  <dd><%= @check.service.name %></dd>
+  <dt><strong>Passed:</strong></dt>
+  <dd><%= @check.passed %></dd>
+  <dt><strong>Request:</strong></dt>
+  <dd><%= @check.request %></dd>
+  <dt><strong>Response:</strong></dt>
+  <dd><%= @check.response %></dd>
+</dl>
+
+<% if whiteteam? %>
+  <div class="form-actions">
+    <%= link_to 'Back', checks_path, class: 'btn' %>
+    <%= link_to 'Edit', edit_check_path(@check), class: 'btn' %>
+    <%= link_to 'Delete', check_path(@check), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
+  </div>
+<% end %>

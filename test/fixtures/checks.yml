@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  service_id: 1
+  passed: false
+  request: MyText
+  response: MyText
+
+two:
+  service_id: 1
+  passed: false
+  request: MyText
+  response: MyText

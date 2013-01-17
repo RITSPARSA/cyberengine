@@ -1,0 +1,51 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <% if whiteteam? %>
+        <th>Id</th>
+        <th>Team</th>
+        <th>Server</th>
+        <th>Service</th>
+        <th>Passed</th>
+        <th>Request</th>
+        <th>Response</th>
+        <th>Actions</th>
+      <% else %>
+        <th>Id</th>
+        <th>Team</th>
+        <th>Server</th>
+        <th>Service</th>
+        <th>Passed</th>
+        <th>Request</th>
+        <th>Response</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @checks.each do |check| %>
+      <tr>
+        <% if whiteteam? %>
+          <td><%= link_to "Check", check_path(check) %></td>
+          <td><%= link_to check.service.server.team.alias, team_path(check.service.server.team) %></td>
+          <td><%= link_to check.service.server.name, server_path(check.service.server) %></td>
+          <td><%= link_to check.service.name, service_path(check.service) %></td>
+          <td><%= check.passed %></td>
+          <td><%= check.request %></td>
+          <td><%= check.response %></td>
+          <td>
+          <%= link_to 'Edit', edit_check_path(check), class: 'btn btn-mini' %>
+          <%= link_to 'Delete', check_path(check), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Please Confirm' } %>
+          </td>
+        <% else %>
+          <td><%= link_to "Check", check_path(check) %></td>
+          <td><%= link_to check.service.server.team.alias, team_path(check.service.server.team) %></td>
+          <td><%= link_to check.service.server.name, server_path(check.service.server) %></td>
+          <td><%= link_to check.service.name, service_path(check.service) %></td>
+          <td><%= check.passed %></td>
+          <td><%= check.request %></td>
+          <td><%= check.response %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
