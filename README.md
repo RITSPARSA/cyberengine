@@ -33,3 +33,23 @@ A simple script (written in any language) pulls all services and their propertie
 ## Rails Frontend
 
 The rails frontend is a fully functional application that can authenticate members and provides them access to their teams servers and services. This allows them to view their current status and position in the competition. Whiteteam members have full access to all parts of the application while blueteam members can only access their own information.
+
+## Setup
+
+Install ruby (version >= 1.9.3) - Ruby Version Manager [rvm](https://rvm.io/rvm/install/)
+
+    curl -L https://get.rvm.io | bash -s stable
+    source ~/.bash_profile
+    rvm requirements 
+    rvm install 1.9.3
+    rvm use 1.9.3 --default
+
+
+Download cyberengine 
+
+    git clone https://github.com/griffithchaffee/cyberengine.git
+    cd cyberengine
+    bundle install
+    gem install passenger
+    ./quickstart
+   
