@@ -1,5 +1,13 @@
 class TeamsController < ApplicationController
   load_and_authorize_resource 
+
+  def overview
+    @team = Team.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /teams
   # GET /teams.json
   def index

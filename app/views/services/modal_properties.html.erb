@@ -1,0 +1,24 @@
+<% unless @properties.count == 0 %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Type</th>
+        <th>Property</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= link_to "Property", property_path(property) %></td>
+          <td><%= property.category %></td>
+          <td><%= property.property %></td>
+          <td><%= property.value %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No properties</p>
+<% end %>

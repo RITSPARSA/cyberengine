@@ -1,4 +1,4 @@
-unless Rails.env.production?
+unless Rails.env.production? #|| Rails.env.development?
   class ActiveSupport::BufferedLogger
     def formatter=(formatter)
       @log.formatter = formatter

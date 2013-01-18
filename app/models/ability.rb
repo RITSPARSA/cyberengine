@@ -26,31 +26,35 @@ class Ability
 
   def blueteam
     can [:new, :create, :destroy], :session
-    can [:index, :show], Team
+    can [:index, :show, :overview], Team
     can [:index, :show], Server
-    can [:index, :show], Service
+    can [:index, :show, :modal_properties, :modal_users, :modal_latest_check], Service
     can [:index, :show], Property
-    can [:index, :show], Check
+    can [:index], Check
+    can [:show], Check, service: { server: { team_id: @member.team_id } }
     can [:index, :show], User
   end
 
   def redteam
     can [:new, :create, :destroy], :session
-    can [:index, :show], Team
-    can [:index, :show], Server
-    can [:index, :show], Service
-    can [:index, :show], Property
-    can [:index, :show], Check
+    can [:index, :show, :overview], Team
+    can [:index, :show, :properties], Server
+    can [:index, :show, :properties], Service
+    can [:index, :show, :modal], Property
+    can [:index], Check
+    can [:show], Check, service: { server: { team_id: @member.id } }
     can [:index, :show], User
   end
 
   def guest
     can [:new, :create, :destroy], :session
-    can [:index, :show], Team
+    can [:index, :show, :overview], Team
+    can [:index, :show, :properties], Server
+    can [:index, :show, :properties], Service
     can [:index, :show], Server
-    can [:index, :show], Service
-    can [:index, :show], Property
-    can [:index, :show], Check
+    can [:index, :show, :modal], Property
+    can [:index], Check
+    can [:show], Check, service: { server: { team_id: @member.id } }
     can [:index, :show], User
   end
 

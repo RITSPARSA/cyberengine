@@ -1,5 +1,21 @@
 class ServicesController < ApplicationController
+  layout false, only: [:modal_properties, :modal_latest_check, :modal_users]
   load_and_authorize_resource
+
+  def modal_properties
+    @service = Service.find(params[:id])
+    @properties = @service.properties
+  end
+
+  def modal_latest_check
+    @service = Service.find(params[:id])
+    @check = @service.checks.latest
+  end
+
+  def modal_users
+    @service = Service.find(params[:id])
+    @users = @service.users
+  end
 
   # GET /services
   # GET /services.json

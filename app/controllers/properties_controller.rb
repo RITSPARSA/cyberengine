@@ -1,6 +1,13 @@
 class PropertiesController < ApplicationController
   load_and_authorize_resource
 
+  def modal 
+    @property = Property.find(params[:id])
+    respond_to do |format|
+      format.html 
+    end
+  end
+
   # GET /properties
   # GET /properties.json
   def index

@@ -1,16 +1,19 @@
 <ul class="nav">
+  <li><%= link_to 'Teams', teams_path %></li>
+
   <% if blueteam? %>
-  <li><%= link_to 'Servers', servers_path %></li>
-  <li><%= link_to 'Services', services_path %></li>
-  <li><%= link_to 'Properties', properties_path %></li>
-  <li><%= link_to 'Checks', checks_path %></li>
-  <% elsif whiteteam? %>
-  <li><%= link_to 'Servers', servers_path %></li>
-  <li><%= link_to 'Services', services_path %></li>
-  <li><%= link_to 'Properties', properties_path %></li>
-  <li><%= link_to 'Checks', checks_path %></li>
-  <li><%= link_to 'Members', members_path %></li>
-  <% else %>
   <% end %>
+
+  <% if whiteteam? %>
+    <li><%= link_to 'Servers', servers_path %></li>
+    <li><%= link_to 'Services', services_path %></li>
+    <li><%= link_to 'Properties', properties_path %></li>
+    <li><%= link_to 'Checks', checks_path %></li>
+    <li><%= link_to 'Users', members_path %></li>
+  <% end %>
+
+  <% if redteam? %>
+  <% end %>
+
   <li><%= link_to 'Scoreboard', '#' %></li>
 </ul>

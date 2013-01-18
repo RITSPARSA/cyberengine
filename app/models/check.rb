@@ -7,4 +7,7 @@ class Check < ActiveRecord::Base
   validates :response, presence: true
   validates :service, presence: { message: "must exist" }
 
+  def self.latest
+    first(order: 'created_at DESC')
+  end
 end

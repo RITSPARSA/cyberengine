@@ -1,0 +1,22 @@
+<% unless @users.count == 0 %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.id, user_path(user) %></td>
+          <td><%= user.username %></td>
+          <td><%= user.password %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No users</p>
+<% end %>

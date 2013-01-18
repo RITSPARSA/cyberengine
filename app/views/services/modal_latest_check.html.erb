@@ -1,0 +1,16 @@
+<% unless @check.nil? %>
+  <dl class="dl-horizontal">
+    <dt><strong>Id:</strong></dt>
+    <dd><%= @check.id %></dd>
+    <dt><strong>Passed:</strong></dt>
+    <dd><%= @check.passed %></dd>
+  </dl>
+  <dl>
+    <dt><strong>Request:</strong></dt>
+    <dd><pre><%= @check.request %></pre></dd>
+    <dt><strong>Response:</strong></dt>
+    <dd><pre><%= @check.response %></pre></dd>
+  </dl>
+<% else %>
+  <p>No checks</p>
+<% end %>

@@ -1,8 +1,21 @@
 <ul class="nav pull-right">
-  <% if logged_in? %>
-  <li><%= link_to 'Teams', teams_path %></li>
-  <li><%= link_to 'Logout', session_path, method: 'delete' %></li>
-  <% else %>
-  <li><%= link_to 'Login', new_session_path %></li>
+
+  <% if blueteam? %>
+    <li><%= link_to 'Overview', overview_team_path(current_member.team) %></li>
   <% end %>
+
+  <% if whiteteam? %>
+    <li><%= link_to 'Members', members_path %></li>
+  <% end %>
+
+  <% if redteam? %>
+    <li><%= link_to 'Teams', teams_path %></li>
+  <% end %>
+
+  <% if logged_in? %>
+    <li><%= link_to 'Logout', session_path, method: 'delete' %></li>
+  <% else %>
+    <li><%= link_to 'Login', new_session_path %></li>
+  <% end %>
+
 </ul>

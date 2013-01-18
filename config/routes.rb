@@ -1,24 +1,29 @@
 Cyberengine::Application.routes.draw do
-  resources :users
-
-
-  resources :checks
-
-
-  resources :properties
-
-
-  resources :services
-
-
-  resources :servers
-
-
   root to: 'teams#index'
+
+  resources :users
+  resources :checks
+  resources :properties
+  resources :servers
+  resources :members
+
+  resources :teams do
+    member do
+      get 'overview'
+    end
+  end
+
+  resources :services do
+    member do
+      get 'modal_properties'
+      get 'modal_latest_check'
+      get 'modal_users'
+    end
+  end
+
+  # Authentication
   resources :sessions, only: [:new, :create]
   match 'session' => "sessions#destroy", via: :delete, as: 'session'
-  resources :members
-  resources :teams
 
   #scope '/auth', as: 'auth' do
   #  get 'login', to: 'sessions#new', as: 'login'
