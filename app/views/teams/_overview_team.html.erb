@@ -1,0 +1,40 @@
+<% team.servers.each do |server| %>
+  <div class="span12 center-text">
+    <h3><%= server.name %></h2>
+  </div>
+  <div class="span12">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Protocol</th>
+          <th>Version</th>
+          <th>Passing</th>
+          <th>Properties</th>
+          <th>Latest Check</th>
+          <th>Users</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% server.services.each do |service| %>
+          <% latest = service.checks.latest %>
+          <tr>
+            <td><%= service.name %></td>
+            <td><%= service.protocol %></td>
+            <td><%= service.version %></td>
+            <% if latest && latest.passed %>
+              <td class="success"><%= latest.passed %></td>
+            <% elsif latest.nil? %>
+              <td>No Checks</td>
+            <% else %>
+              <td class="error"><%= latest.passed %></td>
+            <% end %>
+            <td><%= link_to "Properties", modal_properties_service_path(service), class: 'btn btn-small', data: { toggle: "modal", target: "#propertiesModal" } %></td>
+            <td><%= link_to "Check Details", modal_latest_check_service_path(service), class: 'btn btn-small', data: { toggle: "modal", target: "#checksModal" } %></td>
+            <td><%= link_to "Users", modal_users_service_path(service), class: 'btn btn-small', data: { toggle: "modal", target: "#usersModal" } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

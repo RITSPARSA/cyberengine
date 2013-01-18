@@ -2,9 +2,10 @@ class TeamsController < ApplicationController
   load_and_authorize_resource 
 
   def overview
-    @team = Team.find(params[:id])
-    respond_to do |format|
-      format.html
+    if params[:id]
+      @team = Team.find(params[:id])
+    else
+      @teams = Team.blueteams
     end
   end
 

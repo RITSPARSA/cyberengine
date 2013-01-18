@@ -8,6 +8,9 @@ Cyberengine::Application.routes.draw do
   resources :members
 
   resources :teams do
+    collection do
+      get 'overview'
+    end
     member do
       get 'overview'
     end

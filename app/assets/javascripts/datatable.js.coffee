@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-###
 $ ->
   $(".datatable-id").dataTable iDisplayLength: 50
   $("body").on "hidden", ".modal", ->
@@ -144,4 +140,5 @@ $(document).ready ->
     oLanguage:
       sLengthMenu: "_MENU_ records per page"
 
-###
+
+

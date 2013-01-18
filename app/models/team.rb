@@ -12,6 +12,10 @@ class Team < ActiveRecord::Base
   validates :alias, presence: true
   validates :color, presence: true, inclusion: { in: ['white','red','blue'] }
 
+  def self.blueteams
+    where(color: "blue")
+  end
+
   private
 
   def downcase_color

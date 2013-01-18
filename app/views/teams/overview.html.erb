@@ -1,5 +1,26 @@
-<div class="page-header">
-  <h1>Overview</h1>
-</div>
-<%= render 'overview_table' %>
-<% #= link_to 'New Team', new_team_path, class: 'btn btn-primary' if whiteteam? %>
+<% content_for :rows do %>
+
+  <% if @team %>
+    <div class="row">
+      <div class="page-header">
+        <h1>Overview: <%= @team.alias %></h1>
+      </div>
+      <%= render 'overview_team', team: @team %>
+    </div>
+  <% end %>
+  
+  <% if @teams %>
+    <% @teams.each do |team| %>
+      <div class="row">
+        <div class="page-header">
+          <h2>Overview <%= team.alias %></h2>
+        </div>
+        <%= render 'overview_team', team: team %>
+      </div>
+      <br />
+    <% end %>
+  <% end %>
+  
+  <br />
+  <%= render 'overview_modals' %>
+<% end %>
