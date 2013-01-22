@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  layout false, only: [:modal]
 
   # GET /users
   # GET /users.json
@@ -59,6 +60,9 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    unless can? :update_usernames, @user
+      params[:user].delete(:username) if params[:user][:username] 
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -82,4 +86,9 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def modal
+    @service = Service.find_by_id(params[:service_id])
+  end
+
 end

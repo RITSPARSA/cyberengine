@@ -1,0 +1,28 @@
+<% service = @service if @service %>
+<% properties = service.properties %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if properties.count == 0 %>
+      <tr>
+        <td colspan="3">No Properties</td>
+      </tr>
+    <% else %>
+      <% properties.each do |property| %>
+        <tr>
+          <td><%= property.category %></td>
+          <td><%= property.property %></td>
+          <td><%= property.value %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+

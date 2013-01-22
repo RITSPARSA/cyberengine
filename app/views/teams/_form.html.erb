@@ -1,4 +1,4 @@
-<%= form_for @team, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @team, html: { class: 'form-horizontal' }  do |f| %>
 
   <% if @team.errors.any? %>
     <% flash[:error] = @team.errors.full_messages.to_s %>
@@ -21,13 +21,8 @@
   <div class="control-group">
     <%= f.label :color, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :color, class: 'text_field' %>
+      <%= select :team, :color, [["blue","blue"],["white","white"],["red","red"]] %>
     </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', teams_path, class: 'btn' %>
   </div>
 
 <% end %>

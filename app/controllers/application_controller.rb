@@ -16,16 +16,19 @@ class ApplicationController < ActionController::Base
   def logged_in?
     @current_member
   end
-  
+
   def whiteteam?
     @current_member if @current_member && @current_member.team && @current_member.team.color == "white"
   end
+
   def redteam?
     @current_member if @current_member && @current_member.team && @current_member.team.color == "red"
   end
+
   def blueteam?
     @current_member if @current_member && @current_member.team && @current_member.team.color == "blue"
   end
+
   def member?(team)
     @current_member if team && @current_member && @current_member.team_id == team.id
   end

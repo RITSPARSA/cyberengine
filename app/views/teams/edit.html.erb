@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>Edit <%= @team.alias %></h1>
+  <table>
+    <tr>
+      <td>Edit <%= @team.alias %></td>
+      <td>
+        <%= submit_tag 'Update Team', onclick: "$('#edit_team_#{@team.id}').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', teams_path, class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>

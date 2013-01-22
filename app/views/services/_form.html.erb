@@ -1,4 +1,4 @@
-<%= form_for @service, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@team,@service], html: { class: 'form-horizontal' } do |f| %>
   <% if @service.errors.any? %>
     <% flash[:error] = @service.errors.full_messages.to_s %>
   <% end %>
@@ -27,27 +27,33 @@
   <div class="control-group">
     <%= f.label :enabled, class: 'control-label' %>
     <div class="controls">
-      <% if :new == params[:action] %>
-        <%= f.check_box :enabled, class: 'check_box' %>
+      <% if @service.enabled == true %>
+        <%= f.check_box :enabled, class: 'check_box', checked: true %>
       <% else %>
-        <% if @service.enabled == true %>
-          <%= f.check_box :enabled, class: 'check_box', checked: true %>
-        <% else %>
-          <%= f.check_box :enabled, class: 'check_box' %>
-        <% end %>
+        <%= f.check_box :enabled, class: 'check_box' %>
       <% end %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :points, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :points, class: 'text_field', value: 10 %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :team_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:service, :team_id, [[@team.alias, @team.id]] ) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :server_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:service, :server_id, Server.all.collect { |s| ["#{s.team.alias}: #{s.name}", s.id] }, { prompt: 'Select Server' }) %>
+      <%= select(:service, :server_id, Server.where(team_id: @team.id).collect { |s| [s.name, s.id] }, { prompt: 'Select Server' }) %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', services_path, class: 'btn' %>
-  </div>
 <% end %>

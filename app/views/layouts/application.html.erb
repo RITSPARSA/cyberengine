@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= render 'layouts/brand_nav' %>
+          <% #= render 'layouts/brand_nav' %>
           <div class="container nav-collapse">
             <%= render 'layouts/team_nav' %>
             <%= render 'layouts/auth_nav' %>
@@ -58,6 +58,7 @@
         <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
+          <br />
         </div>
       </div><!--/row-->
       <%= yield :rows %>

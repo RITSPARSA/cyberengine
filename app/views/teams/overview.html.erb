@@ -1,26 +1,16 @@
 <% content_for :rows do %>
-
-  <% if @team %>
+  <% @teams.each do |team| %>
     <div class="row">
       <div class="page-header">
-        <h1>Overview: <%= @team.alias %></h1>
+        <h2><%= team.alias %></h2>
       </div>
-      <%= render 'overview_team', team: @team %>
+      <div class="span12">
+        <%= render partial: 'team_services', locals: { team: team } %>
+      </div>
     </div>
   <% end %>
-  
-  <% if @teams %>
-    <% @teams.each do |team| %>
-      <div class="row">
-        <div class="page-header">
-          <h2>Overview <%= team.alias %></h2>
-        </div>
-        <%= render 'overview_team', team: team %>
-      </div>
-      <br />
-    <% end %>
-  <% end %>
-  
-  <br />
-  <%= render 'overview_modals' %>
 <% end %>
+
+<%= render partial: 'checks/modal' %>
+<%= render partial: 'properties/modal' %>
+<%= render partial: 'users/modal' %>

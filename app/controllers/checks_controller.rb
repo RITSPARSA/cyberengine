@@ -1,5 +1,7 @@
 class ChecksController < ApplicationController
   load_and_authorize_resource
+  layout false, only: [:modal]
+
 
   # GET /checks
   # GET /checks.json
@@ -82,4 +84,14 @@ class ChecksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def modal
+    @service = Service.find_by_id(params[:service_id])
+    if params[:id]
+      @check = Check.find_by_id(params[:id])
+    else
+      @check = @service.checks.latest || Check.new
+    end
+  end
+
 end

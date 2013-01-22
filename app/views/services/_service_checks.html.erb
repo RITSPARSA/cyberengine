@@ -1,0 +1,66 @@
+<% service = @service if @service %>
+<% latest = service.checks.latest %>
+<% recent = service.checks.order('created_at DESC').limit(11) %>
+
+<% if latest.nil? %>
+  <p>No checks</p>
+<% else %>
+
+  <div class="page-header">
+    <h3>Latest Check</h3>
+  </div>
+
+  <div class="table-dl-horizontal">
+    <table>
+      <tr>
+        <td>Passed:</td>
+        <% if latest.passed %>
+          <td><span class="label label-success"><%= latest.passed %></span></td>
+        <% else %>
+          <td><span class="label label-important"><%= latest.passed %></span></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Request:</td>
+        <td><%= latest.request %></td>
+      </tr>
+      <tr>
+        <td>Response:</td>
+        <td><%= latest.response %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-header">
+    <h3>Last 10 Checks</h3>
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Created At</th>
+        <th>Passed</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if recent.count == 0 %>
+        <tr>
+          <td colspan="3">No Other Checks</td>
+        </tr>
+      <% else %>
+        <% recent.each do |check| %>
+        <% background = case check.passed when true then "success"; else "error" end %>
+  <% #check.passed ? backgroud = "success" : background = "error" %>
+          <tr>
+            <td><%= check.created_at %></td>
+            <td class="<%= background %>"><%= check.passed %></td>
+            <td><%= link_to "Show", modal_team_service_check_path(@team,service,check), class: "btn btn-small", data: { toggle: "modal", target: "#checksModal" } %>
+            <td><%= link_to 'Check', team_service_check_path(@team,service,check), class: 'btn' %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  
+<% end %>

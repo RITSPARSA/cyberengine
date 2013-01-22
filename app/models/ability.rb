@@ -25,37 +25,30 @@ class Ability
   end
 
   def blueteam
+    # Everyone
     can [:new, :create, :destroy], :session
-    can [:index, :show, :overview], Team
+    can [:index, :overview], Team
     can [:index, :show], Server
-    can [:index, :show, :modal_properties, :modal_users, :modal_latest_check], Service
-    can [:index, :show], Property
-    can [:index], Check
+    can [:index, :show], Service
+    can [:index], User
+
+    # Restrictions
+    can [:show], Team, color: 'blue' # Shows team in index
+
+    # Owner 
     can [:show], Check, service: { server: { team_id: @member.team_id } }
-    can [:index, :show], User
+    can [:show], Property, service: { server: { team_id: @member.team_id } }
+    can [:update_username], User, service: { server: { team_id: @member.team_id } }
+    can [:show, :edit, :update], User, service: { server: { team_id: @member.team_id } }
+    can [:modal_properties, :modal_users, :modal_latest_check], Service, server: { team_id: @member.team_id } 
   end
 
   def redteam
-    can [:new, :create, :destroy], :session
-    can [:index, :show, :overview], Team
-    can [:index, :show, :properties], Server
-    can [:index, :show, :properties], Service
-    can [:index, :show, :modal], Property
-    can [:index], Check
-    can [:show], Check, service: { server: { team_id: @member.id } }
-    can [:index, :show], User
+    can :manage, :all
   end
 
   def guest
-    can [:new, :create, :destroy], :session
-    can [:index, :show, :overview], Team
-    can [:index, :show, :properties], Server
-    can [:index, :show, :properties], Service
-    can [:index, :show], Server
-    can [:index, :show, :modal], Property
-    can [:index], Check
-    can [:show], Check, service: { server: { team_id: @member.id } }
-    can [:index, :show], User
+    can :manage, :all
   end
 
 end

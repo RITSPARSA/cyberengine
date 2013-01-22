@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
   load_and_authorize_resource
+  layout false, only: [:modal]
 
   def modal 
     @property = Property.find(params[:id])
@@ -89,4 +90,9 @@ class PropertiesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def modal
+    @service = Service.find_by_id(params[:service_id])
+  end
+
 end

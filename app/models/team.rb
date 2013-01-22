@@ -7,6 +7,11 @@ class Team < ActiveRecord::Base
 
   has_many :members, dependent: :destroy
   has_many :servers, dependent: :destroy
+  has_many :services, dependent: :destroy
+  has_many :properties, dependent: :destroy
+  has_many :checks, dependent: :destroy
+  has_many :users, dependent: :destroy
+
 
   validates :name, presence: true
   validates :alias, presence: true

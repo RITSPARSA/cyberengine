@@ -1,0 +1,43 @@
+<% server = @server if @server %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Protocol</th>
+      <th>Version</th>
+      <th>Status</th>
+      <% if member?(@team) || can?(:edit, server) %>
+        <th>Current</th>
+        <th>Actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% server.services.each do |service| %>
+      <% users = service.users %>
+      <% checks = service.checks %>
+      <% properties = service.properties %>
+      <% latest = checks.latest %>
+      <% latest.nil? ? passed = "No Checks" : passed = case latest.passed when true then "Passing"; else "Failing" end %>
+      <% background = case passed when "Passing" then "success"; when "Failing" then "error"; else "" end %>
+      <tr>
+        <td><%= service.name %></td>
+        <td><%= service.protocol %></td>
+        <td><%= service.version %></td>
+        <td class="<%= background %>"><%= passed %></td>
+        <% if member?(@team) || can?(:edit, server) %>
+          <td>
+            <%= link_to "Check", modal_team_service_checks_path(@team,service), class: "btn btn-small #{'disabled' if latest.nil?}", data: { toggle: "modal", target: "#checksModal" } %>
+            <%= link_to "Users", modal_team_service_users_path(@team,service), class: "btn btn-small #{'disabled' if users.count == 0}", data: { toggle: "modal", target: "#usersModal" } %>
+            <%= link_to "Properties", modal_team_service_properties_path(@team,service), class: "btn btn-small #{'disabled' if properties.count == 0}", data: { toggle: "modal", target: "#propertiesModal" } %>
+          </td>
+          <td> 
+            <%= link_to "Show", team_service_path(@team,service), class: 'btn btn-small' if can? :show, service %>
+            <%= link_to "Edit", edit_team_service_path(@team,service), class: 'btn btn-small' if can? :edit, service %>
+            <%= link_to 'Delete', team_service_path(@team,service), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } if can? :destroy, service %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,18 +1,38 @@
 <div class="page-header">
-  <h1>Show Server</h1>
+  <table>
+    <tr>
+      <td><%= @team.alias %> Server: <%= @server.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_team_server_path(@team,@server), class: 'btn' if can? :edit, @server %>
+        <%= link_to 'Delete', team_server_path(@team,@server), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @team %>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong>Name:</strong></dt>
-  <dd><%= @server.name %></dd>
-  <dt><strong>Team:</strong></dt>
-  <dd><%= @server.team_id %></dd>
-</dl>
+<div class="table-dl-horizontal">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><%= @server.id %></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><%= @server.name %></td>
+    </tr>
+    <tr>
+      <td>Team Id:</td>
+      <td><%= @server.team_id %></td>
+    </tr>
+  </table>
+</div>
 
-<% if whiteteam? %>
-  <div class="form-actions">
-    <%= link_to 'Back', servers_path, class: 'btn' %>
-    <%= link_to 'Edit', edit_server_path(@server), class: 'btn' %>
-    <%= link_to 'Delete', server_path(@server), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
-  </div>
-<% end %>
+<div class="page-header">
+  <h2>Services</h2>
+</div>
+
+<%= render partial: 'server_services' %>
+<%= render partial: 'checks/modal' %>
+<%= render partial: 'properties/modal' %>
+<%= render partial: 'users/modal' %>
+

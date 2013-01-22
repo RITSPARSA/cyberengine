@@ -1,15 +1,13 @@
 <ul class="nav pull-right">
 
   <% if blueteam? %>
-    <li><%= link_to 'Overview', overview_team_path(current_member.team) %></li>
+    <li><%= link_to 'Home', team_path(current_member.team) %></li>
+    <li><%= link_to 'Servers', team_servers_path(current_member.team) %></li>
+    <li><%= link_to 'Services', team_services_path(current_member.team) %></li>
   <% end %>
 
   <% if whiteteam? %>
     <li><%= link_to 'Members', members_path %></li>
-  <% end %>
-
-  <% if redteam? %>
-    <li><%= link_to 'Teams', teams_path %></li>
   <% end %>
 
   <% if logged_in? %>

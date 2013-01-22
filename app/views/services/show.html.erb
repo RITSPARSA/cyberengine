@@ -1,24 +1,62 @@
 <div class="page-header">
-  <h1>Show Server</h1>
+  <table>
+    <tr>
+      <td><%= @team.alias %> Service: <%= @service.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_team_service_path(@team,@service), class: 'btn' if can? :edit, @service %>
+        <%= link_to 'Delete', team_service_path(@team,@service), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @team %>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong>Name:</strong></dt>
-  <dd><%= @service.name %></dd>
-  <dt><strong>Server:</strong></dt>
-  <dd><%= "#{@service.server.team.alias}: #{@service.server.name}" %></dd>
-  <dt><strong>Protocol:</strong></dt>
-  <dd><%= @service.protocol %></dd>
-  <dt><strong>Version:</strong></dt>
-  <dd><%= @service.version %></dd>
-  <dt><strong>Enabled:</strong></dt>
-  <dd><%= @service.enabled %></dd>
-</dl>
+<div class="table-dl-horizontal">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><%= @service.id %></td>
+    </tr>
+    <tr>
+      <td>Server Id:</td>
+      <td><%= @service.server_id %></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><%= @service.name %></td>
+    </tr>
+    <tr>
+      <td>Protocol:</td>
+      <td><%= @service.protocol %></td>
+    </tr>
+    <tr>
+      <td>Version:</td>
+      <td><%= @service.version %></td>
+    </tr>
+    <tr>
+      <td>Enabled:</td>
+      <td><%= @service.enabled %></td>
+    </tr>
+    <tr>
+      <td>Points:</td>
+      <td><%= @service.points %></td>
+    </tr>
+  </table>
+</div>
 
-<% if whiteteam? %>
-  <div class="form-actions">
-    <%= link_to 'Back', services_path, class: 'btn' %>
-    <%= link_to 'Edit', edit_service_path(@service), class: 'btn' %>
-    <%= link_to 'Delete', service_path(@service), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
-  </div>
-<% end %>
+<div class="page-header">
+  <h2>Properties</h2>
+</div>
+<%= render partial: 'service_properties' %>
+
+<div class="page-header">
+  <h2>Users</h2>
+</div>
+<%= render partial: 'service_users' %>
+
+<div class="page-header">
+  <h2>Checks</h2>
+</div>
+<%= render partial: 'service_checks' %>
+<%= render partial: 'checks/modal' %>
+
+

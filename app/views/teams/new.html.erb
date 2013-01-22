@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>New Team</h1>
+  <table>
+    <tr>
+      <td>New Team</td>
+      <td>
+        <%= submit_tag 'Create Team', onclick: "$('#new_team').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', teams_path, class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>

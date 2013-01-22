@@ -1,4 +1,4 @@
-<%= form_for @check, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@team,@service,@check], html: { class: 'form-horizontal' } do |f| %>
   <% if @check.errors.any? %>
     <% flash[:error] = @check.errors.full_messages.to_s %>
   <% end %>
@@ -35,7 +35,7 @@
   <div class="control-group">
     <%= f.label :service_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:check, :service_id, Service.all.collect { |s| ["#{s.server.team.alias}: #{s.server.name}: #{s.name}", s.id] }, { prompt: 'Select Service' }) %>
+      <%= select(:check, :service_id, @team.services.all.collect { |s| ["#{s.name}", s.id] }, { prompt: 'Select Service' }) %>
     </div>
   </div>
 

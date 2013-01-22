@@ -2,11 +2,7 @@ class TeamsController < ApplicationController
   load_and_authorize_resource 
 
   def overview
-    if params[:id]
-      @team = Team.find(params[:id])
-    else
-      @teams = Team.blueteams
-    end
+    @teams = Team.blueteams
   end
 
   # GET /teams

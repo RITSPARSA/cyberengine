@@ -1,4 +1,4 @@
-<%= form_for @server, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@team, @server], html: { class: 'form-horizontal' } do |f| %>
   <% if @server.errors.any? %>
     <% flash[:error] = @server.errors.full_messages.to_s %>
   <% end %>
@@ -13,13 +13,9 @@
   <div class="control-group">
     <%= f.label :team_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:server, :team_id, Team.all.collect { |t| [t.name, t.id] }, { prompt: 'Select Team' }) %>
+      <%= select(:server, :team_id, [[@team.alias, @team.id]] ) %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', servers_path, class: 'btn' %>
-  </div>
 <% end %>
 

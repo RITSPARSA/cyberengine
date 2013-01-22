@@ -9,6 +9,10 @@ class Member < ActiveRecord::Base
   validates :password, presence: true
   validates :team, presence: { message: "must exist" }
 
+=begin
+  def owner?(team)
+    self if self.team_id == team.id 
+  end
   def whiteteam?
     self if self.team && self.team.color == 'white'
   end
@@ -18,4 +22,5 @@ class Member < ActiveRecord::Base
   def redteam?
     self if self.team && self.team.color == 'red'
   end
+=end
 end

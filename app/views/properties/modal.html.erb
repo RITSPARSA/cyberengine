@@ -1,17 +1,18 @@
-<% unless @properties.count == 0 %>
+<% properties = @service.properties %>
+<% if properties.count == 0 %>
+  <p>No properties</p>
+<% else %>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Type</th>
+        <th>Category</th>
         <th>Property</th>
         <th>Value</th>
       </tr>
     </thead>
     <tbody>
-      <% @properties.each do |property| %>
+      <% properties.each do |property| %>
         <tr>
-          <td><%= link_to "Property", property_path(property) %></td>
           <td><%= property.category %></td>
           <td><%= property.property %></td>
           <td><%= property.value %></td>
@@ -19,6 +20,4 @@
       <% end %>
     </tbody>
   </table>
-<% else %>
-  <p>No properties</p>
 <% end %>

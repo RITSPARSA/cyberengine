@@ -1,5 +1,13 @@
 <div class="page-header">
-  <h1>Services</h1>
+  <table>
+    <tr>
+      <td><%= @team.alias %> Services</td>
+      <td><%= link_to "New Service", new_team_service_path(@team), class: 'btn btn-primary' if can? :new, Service %></td>
+    </tr>
+  </table>
 </div>
-<%= render partial: 'index_table' %>
-<%= link_to 'New Service', new_service_path, class: 'btn btn-primary' if whiteteam? %>
+
+<%= render partial: 'teams/team_services' %>
+<%= render partial: 'checks/modal' %>
+<%= render partial: 'properties/modal' %>
+<%= render partial: 'users/modal' %>

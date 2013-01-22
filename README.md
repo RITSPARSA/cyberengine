@@ -39,8 +39,8 @@ The rails frontend is a fully functional application that can authenticate membe
 Install ruby (version >= 1.9.3) - Ruby Version Manager [rvm](https://rvm.io/rvm/install/)
 
     curl -L https://get.rvm.io | bash -s stable
-    source ~/.bash_profile
-    rvm requirements 
+    source ~/.bashrc
+    rvm requirements # install dependencies 
     rvm install 1.9.3
     rvm use 1.9.3 --default
 
@@ -50,6 +50,15 @@ Download cyberengine
     git clone https://github.com/griffithchaffee/cyberengine.git
     cd cyberengine
     bundle install
+    rake db:drop # Should not be any db to start with
+    rake db:migrate
+    rake db:seed
     gem install passenger
-    ./quickstart
-   
+    ./quickstart.sh
+  
+
+Default login:
+
+Username: whiteteam
+
+Password: whiteteam 

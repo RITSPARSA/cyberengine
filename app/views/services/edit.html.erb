@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>Edit Service</h1>
+  <table>
+    <tr>
+      <td>Edit <%= @team.alias %> Service:  <%= @service.name %></td>
+      <td>
+        <%= submit_tag "Update Service", onclick: "$('#edit_service_#{@service.id}').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', team_services_path(@team), class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>
