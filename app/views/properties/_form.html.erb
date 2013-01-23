@@ -1,4 +1,4 @@
-<%= form_for @property, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@team,@server,@service,@property], html: { class: 'form-horizontal' } do |f| %>
   <% if @property.errors.any? %>
     <% flash[:error] = @property.errors.full_messages.to_s %>
   <% end %>
@@ -13,27 +13,35 @@
   <div class="control-group">
     <%= f.label :property, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :property, class: 'text_field', autofocus: true %>
+      <%= f.text_field :property, class: 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :value, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :value, class: 'text_field', autofocus: true %>
+      <%= f.text_field :value, class: 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :team_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:property, :team_id, [[@team.alias, @team.id]]) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :server_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:property, :server_id, [[@server.name, @server.id]]) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :service_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:property, :service_id, Service.all.collect { |s| ["#{s.server.team.alias}: #{s.server.name}: #{s.name}", s.id] }, { prompt: 'Select Service' }) %>
+      <%= select(:property, :service_id, [[@service.name, @service.id]]) %>
     </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', properties_path, class: 'btn' %>
-  </div>
 <% end %>
-

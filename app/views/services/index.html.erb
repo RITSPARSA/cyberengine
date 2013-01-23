@@ -1,13 +1,13 @@
 <div class="page-header">
   <table>
     <tr>
-      <td><%= @team.alias %> Services</td>
-      <td><%= link_to "New Service", new_team_service_path(@team), class: 'btn btn-primary' if can? :new, Service %></td>
+      <td><%= @server.name %> Services</td>
+      <td><%= link_to "New Service", new_team_server_service_path(@team,@server), class: 'btn btn-primary' if can? :new, Service %></td>
     </tr>
   </table>
 </div>
 
-<%= render partial: 'teams/team_services' %>
+<%= render partial: 'servers/server_services' %>
 <%= render partial: 'checks/modal' %>
 <%= render partial: 'properties/modal' %>
 <%= render partial: 'users/modal' %>

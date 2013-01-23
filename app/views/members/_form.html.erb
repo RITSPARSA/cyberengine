@@ -27,12 +27,7 @@
   <div class="control-group">
     <%= f.label :team_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:member, :team_id, Team.all.collect { |t| [t.name, t.id] }, { prompt: 'Select Team' }) %>
+      <%= select(:member, :team_id, Team.all.collect { |t| [t.alias, t.id] }, { prompt: 'Select Team' }) %>
     </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', members_path, class: 'btn' %>
   </div>
 <% end %>

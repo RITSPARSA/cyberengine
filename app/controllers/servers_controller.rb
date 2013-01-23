@@ -1,9 +1,9 @@
 class ServersController < ApplicationController
   load_and_authorize_resource
 
-  before_filter :get_team
-  def get_team
-    @team = Team.find_by_id(params[:team_id]) if params[:team_id]
+  before_filter :read_path
+  def read_path
+    @team = Team.find_by_id(params[:team_id]) 
   end
  
   def index

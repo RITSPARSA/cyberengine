@@ -1,5 +1,81 @@
 <div class="page-header">
-  <h1>Checks</h1>
+  <table>
+    <tr>
+      <td><%= @service.name %> Checks</td>
+      <td><%= link_to "New Check", new_team_server_service_check_path(@team,@server,@service), class: 'btn btn-primary' if can? :new, Check %></td>
+    </tr>
+  </table>
 </div>
-<%= render partial: 'index_table' %>
-<%= link_to 'New Check', new_check_path, class: 'btn btn-primary' if whiteteam? %>
+
+<% service = @service if @service %>
+<% latest = service.checks.latest %>
+<% checks = service.checks.order('created_at DESC') %>
+
+<% if latest.nil? %>
+  <p>No checks</p>
+<% else %>
+
+  <div class="page-header">
+    <h3>Latest Check</h3>
+  </div>
+
+  <div class="table-dl-horizontal">
+    <table>
+      <tr>
+        <td>Passed:</td>
+        <% if latest.passed %>
+          <td><span class="label label-success"><%= latest.passed %></span></td>
+        <% else %>
+          <td><span class="label label-important"><%= latest.passed %></span></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Request:</td>
+        <td><%= latest.request %></td>
+      </tr>
+      <tr>
+        <td>Response:</td>
+        <td><%= latest.response %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-header">
+    <h3>All Checks</h3>
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Created At</th>
+        <th>Passed</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if checks.count == 0 %>
+        <tr>
+          <td colspan="3">No Other Checks</td>
+        </tr>
+      <% else %>
+        <% checks.each do |check| %>
+          <% background = case check.passed when true then "success"; else "error" end %>
+          <tr>
+            <td><%= check.created_at %></td>
+            <td class="<%= background %>"><%= check.passed %></td>
+            <td>
+              <%= link_to "Show", modal_team_server_service_check_path(@team,@server,service,check), class: "btn btn-small", data: { toggle: "modal", target: "#checksModal" } if can? :show, check%>
+              <%= link_to 'Check', team_server_service_check_path(@team,@server,service,check), class: 'btn btn-small' if can? :show, check %>
+              <%= link_to "Edit", edit_team_server_service_check_path(@team,@server,service,check), class: 'btn btn-small' if can? :edit, check %>
+              <%= link_to 'Delete', team_server_service_check_path(@team,@server,service,check), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } if can? :destroy, check %>
+
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  
+<% end %>
+
+<%= render partial: 'modal' %>

@@ -1,15 +1,14 @@
 <% team = @team if @team %>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>Server</th>
       <th>Service</th>
+      <th>Server</th>
       <th>Protocol</th>
       <th>Version</th>
       <th>Status</th>
       <% if member?(team) || can?(:edit, team) %>
         <th>Current</th>
-        <th>Actions</th>
       <% end %>
     </tr>
   </thead>
@@ -21,23 +20,18 @@
         <% properties = service.properties %>
         <% latest = checks.latest || Check.new %>
         <% passed = case latest.passed when true then "Passing"; when false then "Failing"; else "No Checks" end %>
-        <% background = case passed when "Passing" then "success"; when "Failing" then "error"; else "" end %>
+        <% background = case passed when "Passing" then "success"; when "Failing" then "error"; else "info" end %>
         <tr>
-          <td><%= service.server.name %></td>
-          <td><%= service.name %></td>
+          <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
+          <td><%= server.name %></td>
           <td><%= service.protocol %></td>
           <td><%= service.version %></td>
           <td class="<%= background %>"><%= passed %></td>
           <% if member?(team) || can?(:edit, team) %>
             <td>
-              <%= link_to "Check", modal_team_service_checks_path(team,service), class: "btn btn-small #{'disabled' if latest.id.nil?}", data: { toggle: "modal", target: "#checksModal" } %>
-              <%= link_to "Users", modal_team_service_users_path(team,service), class: "btn btn-small #{'disabled' if users.count == 0}", data: { toggle: "modal", target: "#usersModal" } %>
-              <%= link_to "Properties", modal_team_service_properties_path(team,service), class: "btn btn-small #{'disabled' if properties.count == 0}", data: { toggle: "modal", target: "#propertiesModal" } %>
-            </td>
-            <td> 
-              <%= link_to "Show", team_service_path(team,service), class: 'btn btn-small' if can? :show, service %>
-              <%= link_to "Edit", edit_team_service_path(team,service), class: 'btn btn-small' if can? :edit, service %>
-              <%= link_to 'Delete', team_service_path(team,service), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } if can? :destroy, service %>
+              <%= link_to "Check", modal_team_server_service_checks_path(team,server,service), class: "btn btn-small #{'disabled' if latest.id.nil?}", data: { toggle: "modal", target: "#checksModal" } %>
+              <%= link_to "Users", modal_team_server_service_users_path(team,server,service), class: "btn btn-small #{'disabled' if users.count == 0}", data: { toggle: "modal", target: "#usersModal" } %>
+              <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), class: "btn btn-small #{'disabled' if properties.count == 0}", data: { toggle: "modal", target: "#propertiesModal" } %>
             </td>
           <% end %>
         </tr>

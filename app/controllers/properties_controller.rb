@@ -1,98 +1,54 @@
 class PropertiesController < ApplicationController
   load_and_authorize_resource
-  layout false, only: [:modal]
 
-  def modal 
-    @property = Property.find(params[:id])
-    respond_to do |format|
-      format.html 
-    end
+  before_filter :read_path
+  def read_path
+    @team = Team.find_by_id(params[:team_id])
+    @server = Server.find_by_id(params[:server_id])
+    @service = Service.find_by_id(params[:service_id])
   end
 
-  # GET /properties
-  # GET /properties.json
   def index
-    @properties = Property.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @properties }
-    end
+    @properties = Property.where(service_id: @service.id)
   end
 
-  # GET /properties/1
-  # GET /properties/1.json
   def show
     @property = Property.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @property }
-    end
   end
 
-  # GET /properties/new
-  # GET /properties/new.json
   def new
     @property = Property.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @property }
-    end
   end
 
-  # GET /properties/1/edit
   def edit
     @property = Property.find(params[:id])
   end
 
-  # POST /properties
-  # POST /properties.json
   def create
     @property = Property.new(params[:property])
-
-    respond_to do |format|
-      if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
-        format.json { render json: @property, status: :created, location: @property }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
-      end
+    if @property.save
+      redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully created.'
+    else
+      render action: "new"
     end
   end
 
-  # PUT /properties/1
-  # PUT /properties/1.json
   def update
     @property = Property.find(params[:id])
-
-    respond_to do |format|
-      if @property.update_attributes(params[:property])
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
-      end
+    if @property.update_attributes(params[:property])
+      redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
-  # DELETE /properties/1
-  # DELETE /properties/1.json
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
-
-    respond_to do |format|
-      format.html { redirect_to properties_url }
-      format.json { head :no_content }
-    end
+    redirect_to team_server_service_properties_path(@team,@server,@service)
   end
 
+  layout false, only: [:modal]
   def modal
-    @service = Service.find_by_id(params[:service_id])
   end
-
 end

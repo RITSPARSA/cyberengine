@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
-  authorize_resource :class => false
+  authorize_resource class: false
 
   def new
-    # Rendering new page
   end
 
   def create
@@ -11,15 +10,15 @@ class SessionsController < ApplicationController
     member = Member.find_by_username(username)
     if member && member.authenticate(password)
       session[:member_id] = member.id
-      redirect_to team_path(member.team_id), :notice => "Successfully logged in"
+      redirect_to team_path(member.team_id), notice: "Successfully logged in"
     else
       flash.now.alert = "Invalid username or password"
-      redirect_to new_session_path, :alert => "Invalid username or password"
+      redirect_to new_session_path, alert: "Invalid username or password"
     end
   end
 
   def destroy
     session[:member_id] = nil
-    redirect_to teams_path, :notice => "Successfully logged out"
+    redirect_to teams_path, notice: "Successfully logged out"
   end
 end

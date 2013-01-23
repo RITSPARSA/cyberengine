@@ -3,6 +3,7 @@
     <tr>
       <td><%= @team.alias %> : <%= @team.name %></td>
       <td>
+        <%= link_to "Servers", team_servers_path(@team), class: "btn btn-inverse" %>
         <%= link_to 'Edit', edit_team_path(@team), class: 'btn' if can? :edit, @team %>
         <%= link_to 'Delete', team_path(@team), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @team %>
       </td>

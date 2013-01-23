@@ -1,4 +1,4 @@
-<%= form_for @user, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@team,@server,@service,@user], html: { class: 'form-horizontal' } do |f| %>
   <% if @user.errors.any? %>
     <% flash[:error] = @user.errors.full_messages.to_s %>
   <% end %>
@@ -18,15 +18,24 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :service_id, class: 'control-label' %>
+    <%= f.label :team_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:user, :service_id, Service.all.collect { |s| ["#{s.server.team.alias}: #{s.server.name}: #{s.name}", s.id] }, { prompt: 'Select Service' }) %>
+      <%= select(:user, :team_id, [[@team.alias, @team.id]]) %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', users_path, class: 'btn' %>
+  <div class="control-group">
+    <%= f.label :server_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:user, :server_id, [[@server.name, @server.id]]) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :service_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:user, :service_id, [[@service.name, @service.id]]) %>
+    </div>
   </div>
 <% end %>
 

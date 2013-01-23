@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>Edit User <%= @user.username %></h1>
+  <table>
+    <tr>
+      <td>Edit User</td>
+      <td>
+        <%= submit_tag "Update User", onclick: "$('#edit_user_#{@user.id}').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', team_server_service_users_path(@team,@server,@service), class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>

@@ -1,26 +1,11 @@
 class Member < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :username, :team_id, :password, :password_confirmation
+  attr_accessible :team_id, :username, :password, :password_confirmation
 
   belongs_to :team
 
-  validates :username, presence: true, uniqueness: { scope: :team_id, message: "already taken" }
+  validates :username, presence: true, uniqueness: { scope: :team_id, message: "already taken for Team" }
   validates :password, presence: true
   validates :team, presence: { message: "must exist" }
-
-=begin
-  def owner?(team)
-    self if self.team_id == team.id 
-  end
-  def whiteteam?
-    self if self.team && self.team.color == 'white'
-  end
-  def blueteam?
-    self if self.team && self.team.color == 'blue'
-  end
-  def redteam?
-    self if self.team && self.team.color == 'red'
-  end
-=end
 end

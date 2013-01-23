@@ -1,5 +1,36 @@
 <div class="page-header">
-  <h1>Members</h1>
+  <table>
+    <tr>
+      <td><h1>All Members</h1></td>
+      <td><%= link_to "New Member", new_member_path, class: 'btn btn-primary' %></td>
+    </tr>
+  </table>
 </div>
-<%= render partial: 'index_table' %>
-<%= link_to 'New Member', new_member_path, class: 'btn btn-primary' if whiteteam? %>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Team</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <td><%= Team.find_by_id(member.team_id).alias %></td>
+        <td><%= member.username %></td>
+        <td><%= member.password_digest %></td>
+        <td>
+          <%= link_to 'Show', member_path(member), class: 'btn btn-small' %>
+          <%= link_to 'Edit', edit_member_path(member), class: 'btn btn-small' %>
+          <%= link_to 'Delete', member_path(member), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

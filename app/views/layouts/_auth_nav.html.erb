@@ -1,19 +1,19 @@
 <ul class="nav pull-right">
 
-  <% if blueteam? %>
-    <li><%= link_to 'Home', team_path(current_member.team) %></li>
-    <li><%= link_to 'Servers', team_servers_path(current_member.team) %></li>
-    <li><%= link_to 'Services', team_services_path(current_member.team) %></li>
-  <% end %>
-
-  <% if whiteteam? %>
-    <li><%= link_to 'Members', members_path %></li>
-  <% end %>
-
   <% if logged_in? %>
+    <% team = current_member.team %>
+    <li class="divider-vertical"></li>
+    <% if blueteam? %>
+      <li><%= link_to 'Home', team_path(team) %></li>
+      <li><%= link_to 'Servers', team_servers_path(team) %></li>
+    <% elsif whiteteam? %>
+      <li><%= link_to 'Members', members_path %></li>
+    <% end %>
+    <li class="divider-vertical"></li>
     <li><%= link_to 'Logout', session_path, method: 'delete' %></li>
   <% else %>
     <li><%= link_to 'Login', new_session_path %></li>
   <% end %>
 
+  <li class="divider-vertical"></li>
 </ul>

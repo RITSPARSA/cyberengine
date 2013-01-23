@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>New Property</h1>
+  <table>
+    <tr>
+      <td>New Property</td>
+      <td>
+        <%= submit_tag 'Create Property', onclick: "$('#new_property').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', team_server_service_properties_path(@team,@server,@service), class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>

@@ -1,28 +1,45 @@
 <div class="page-header">
-  <h1>Show Server</h1>
+  <table>
+    <tr>
+      <td>Property: <%= @property.property %></td>
+      <td>
+        <%= link_to "Service", team_server_service_path(@team,@server,@service), class: "btn" %>
+        <%= link_to 'Edit', edit_team_server_service_property_path(@team,@server,@service,@property), class: 'btn' if can? :edit, @property %>
+        <%= link_to 'Delete', team_server_service_property_path(@team,@server,@service,@property), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @property %>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong>Id:</strong></dt>
-  <dd><%= @property.id %></dd>
-  <dt><strong>Team:</strong></dt>
-  <dd><%= @property.service.server.team.alias %></dd>
-  <dt><strong>Server:</strong></dt>
-  <dd><%= @property.service.server.name %></dd>
-  <dt><strong>Service:</strong></dt>
-  <dd><%= @property.service.name %></dd>
-  <dt><strong>Category:</strong></dt>
-  <dd><%= @property.category %></dd>
-  <dt><strong>Property:</strong></dt>
-  <dd><%= @property.property %></dd>
-  <dt><strong>Value:</strong></dt>
-  <dd><%= @property.value %></dd>
-</dl>
-
-<% if whiteteam? %>
-  <div class="form-actions">
-    <%= link_to 'Back', properties_path, class: 'btn' %>
-    <%= link_to 'Edit', edit_property_path(@property), class: 'btn' %>
-    <%= link_to 'Delete', property_path(@property), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
-  </div>
-<% end %>
+<div class="table-dl-horizontal">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><%= @property.id %></td>
+    </tr>
+    <tr>
+      <td>Team:</td>
+      <td><%= @team.alias %></td>
+    </tr>
+    <tr>
+      <td>Server:</td>
+      <td><%= @server.name %></td>
+    </tr>
+    <tr>
+      <td>Service:</td>
+      <td><%= @service.name %></td>
+    </tr>
+    <tr>
+      <td>Category:</td>
+      <td><%= @property.category %></td>
+    </tr>
+    <tr>
+      <td>Property:</td>
+      <td><%= @property.property %></td>
+    </tr>
+    <tr>
+      <td>Value:</td>
+      <td><%= @property.value %></td>
+    </tr>
+  </table>
+</div>

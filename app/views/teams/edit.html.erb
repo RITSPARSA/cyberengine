@@ -1,7 +1,7 @@
 <div class="page-header">
   <table>
     <tr>
-      <td>Edit <%= @team.alias %></td>
+      <td>Edit Team</td>
       <td>
         <%= submit_tag 'Update Team', onclick: "$('#edit_team_#{@team.id}').trigger('submit')", class: 'btn btn-primary' %>
         <%= link_to 'Cancel', teams_path, class: 'btn' %>

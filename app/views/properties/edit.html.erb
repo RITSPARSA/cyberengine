@@ -1,4 +1,14 @@
 <div class="page-header">
-  <h1>Edit <%= @property.name %></h1>
+  <table>
+    <tr>
+      <td>Edit Property</td>
+      <td>
+        <%= submit_tag "Update Property", onclick: "$('#edit_property_#{@property.id}').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', team_server_service_properties_path(@team,@server,@service), class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>
+

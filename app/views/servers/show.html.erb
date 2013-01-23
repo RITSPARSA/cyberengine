@@ -1,10 +1,12 @@
 <div class="page-header">
   <table>
     <tr>
-      <td><%= @team.alias %> Server: <%= @server.name %></td>
+      <td>Server: <%= @server.name %></td>
       <td>
+        <%= link_to "Team", team_path(@team), class: "btn btn-inverse" %>
+        <%= link_to "Services", team_server_services_path(@team,@server), class: "btn btn-inverse #{'disabled' if @server.services.count == 0}" %>
         <%= link_to 'Edit', edit_team_server_path(@team,@server), class: 'btn' if can? :edit, @server %>
-        <%= link_to 'Delete', team_server_path(@team,@server), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @team %>
+        <%= link_to 'Delete', team_server_path(@team,@server), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @server %>
       </td>
     </tr>
   </table>
@@ -21,8 +23,8 @@
       <td><%= @server.name %></td>
     </tr>
     <tr>
-      <td>Team Id:</td>
-      <td><%= @server.team_id %></td>
+      <td>Team:</td>
+      <td><%= Team.find_by_id(@server.team_id).alias %></td>
     </tr>
   </table>
 </div>

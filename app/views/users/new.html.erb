@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>New User</h1>
+  <table>
+    <tr>
+      <td>New User</td>
+      <td>
+        <%= submit_tag 'Create User', onclick: "$('#new_user').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', team_server_service_users_path(@team,@server,@service), class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>

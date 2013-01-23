@@ -1,4 +1,4 @@
-<%= form_for [@team,@service,@check], html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@team,@server,@service,@check], html: { class: 'form-horizontal' } do |f| %>
   <% if @check.errors.any? %>
     <% flash[:error] = @check.errors.full_messages.to_s %>
   <% end %>
@@ -6,14 +6,10 @@
   <div class="control-group">
     <%= f.label :passed, class: 'control-label' %>
     <div class="controls">
-      <% if :new == params[:action] %>
-        <%= f.check_box :passed, class: 'check_box' %>
+      <% if @check.passed == true %>
+        <%= f.check_box :passed, class: 'check_box', checked: true %>
       <% else %>
-        <% if @check.passed == true %>
-          <%= f.check_box :passed, class: 'check_box', checked: true %>
-        <% else %>
-          <%= f.check_box :passed, class: 'check_box' %>
-        <% end %>
+        <%= f.check_box :passed, class: 'check_box' %>
       <% end %>
     </div>
   </div>
@@ -21,27 +17,38 @@
   <div class="control-group">
     <%= f.label :request, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_area :request, class: 'text_area', autofocus: true %>
+      <%= f.text_area :request, class: 'text_area horizontal_text_area', autofocus: true %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :response, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_area :response, class: 'text_area' %>
+      <%= f.text_area :response, class: 'text_area horizontal_text_area' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :team_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:check, :team_id, [[@team.alias, @team.id]]) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :server_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select(:check, :server_id, [[@server.name, @server.id]]) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :service_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:check, :service_id, @team.services.all.collect { |s| ["#{s.name}", s.id] }, { prompt: 'Select Service' }) %>
+      <%= select(:check, :service_id, [[@service.name, @service.id]]) %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', checks_path, class: 'btn' %>
-  </div>
+
 <% end %>
 

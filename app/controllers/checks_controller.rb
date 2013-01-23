@@ -1,97 +1,65 @@
 class ChecksController < ApplicationController
   load_and_authorize_resource
-  layout false, only: [:modal]
 
+  before_filter :read_path
+  def read_path
+    @team = Team.find_by_id(params[:team_id]) if params[:team_id]
+    @server = Server.find_by_id(params[:server_id]) if params[:server_id]
+    @service = Service.find_by_id(params[:service_id]) if params[:service_id]
+  end
 
-  # GET /checks
-  # GET /checks.json
   def index
-    @checks = Check.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @checks }
+    if @service
+      @checks = Check.where(service_id: @service.id)
+    elsif @server
+      @checks = Check.where(server_id: @server.id) if @server
+    else 
+      @checks = Check.where(team_id: @team.id) if @team
     end
   end
 
-  # GET /checks/1
-  # GET /checks/1.json
   def show
     @check = Check.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @check }
-    end
   end
 
-  # GET /checks/new
-  # GET /checks/new.json
   def new
     @check = Check.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @check }
-    end
   end
 
-  # GET /checks/1/edit
   def edit
     @check = Check.find(params[:id])
   end
 
-  # POST /checks
-  # POST /checks.json
   def create
     @check = Check.new(params[:check])
-
-    respond_to do |format|
-      if @check.save
-        format.html { redirect_to @check, notice: 'Check was successfully created.' }
-        format.json { render json: @check, status: :created, location: @check }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @check.errors, status: :unprocessable_entity }
-      end
+    if @check.save
+      redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully created.'
+    else
+      render action: "new"
     end
   end
 
-  # PUT /checks/1
-  # PUT /checks/1.json
   def update
     @check = Check.find(params[:id])
-
-    respond_to do |format|
-      if @check.update_attributes(params[:check])
-        format.html { redirect_to @check, notice: 'Check was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @check.errors, status: :unprocessable_entity }
-      end
+    if @check.update_attributes(params[:check])
+      redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
-  # DELETE /checks/1
-  # DELETE /checks/1.json
   def destroy
     @check = Check.find(params[:id])
     @check.destroy
-
-    respond_to do |format|
-      format.html { redirect_to checks_url }
-      format.json { head :no_content }
-    end
+    redirect_to team_server_service_checks_path(@team,@server,@service)
   end
 
+  layout false, only: [:modal]
   def modal
-    @service = Service.find_by_id(params[:service_id])
     if params[:id]
       @check = Check.find_by_id(params[:id])
     else
       @check = @service.checks.latest || Check.new
     end
   end
-
 end

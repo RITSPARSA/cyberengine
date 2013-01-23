@@ -1,14 +1,14 @@
 class ServicesController < ApplicationController
   load_and_authorize_resource
-  layout false, only: [:modal_properties, :modal_latest_check, :modal_users]
-  before_filter :get_team
 
-  def get_team
+  before_filter :read_path
+  def read_path
     @team = Team.find_by_id(params[:team_id]) 
+    @server = Server.find_by_id(params[:server_id]) 
   end
 
   def index
-    @services = Service.where(team_id: @team.id)
+    @services = Service.where(team_id: @server.id)
   end
 
   def show
@@ -26,7 +26,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(params[:service])
     if @service.save
-      redirect_to team_services_path(@team), notice: 'Service was successfully created'
+      redirect_to team_server_services_path(@team,@server), notice: 'Service was successfully created'
     else
       render action: "new"
     end
@@ -35,7 +35,7 @@ class ServicesController < ApplicationController
   def update
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
-      redirect_to team_services_path(@team), notice: 'Service was successfully updated'
+      redirect_to team_server_services_path(@team,@server), notice: 'Service was successfully updated'
     else
       render action: "edit"
     end
@@ -44,22 +44,6 @@ class ServicesController < ApplicationController
   def destroy
     @service = Service.find(params[:id])
     @service.destroy
-    redirect_to team_services_path(@team), notice: 'Service was successfully deleted'
+    redirect_to team_server_services_path(@team,@server), notice: 'Service was successfully deleted'
   end
-
-  def modal_properties
-    @service = Service.find(params[:id])
-    @properties = @service.properties
-  end
-
-  def modal_latest_check
-    @service = Service.find(params[:id])
-    @check = @service.checks.latest
-  end
-
-  def modal_users
-    @service = Service.find(params[:id])
-    @users = @service.users
-  end
-
 end

@@ -1,28 +1,50 @@
 <div class="page-header">
-  <h1>Show Check</h1>
+  <table>
+    <tr>
+      <td>Check: <%= @check.id %></td>
+      <td>
+        <%= link_to "Service", team_server_service_path(@team,@server,@service), class: "btn" %>
+        <%= link_to 'Edit', edit_team_server_service_check_path(@team,@server,@service,@check), class: 'btn' if can? :edit, @check %>
+        <%= link_to 'Delete', team_server_service_check_path(@team,@server,@service,@check), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @check %>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong>Id:</strong></dt>
-  <dd><%= @check.id %></dd>
-  <dt><strong>Team:</strong></dt>
-  <dd><%= @check.service.server.team.alias %></dd>
-  <dt><strong>Server:</strong></dt>
-  <dd><%= @check.service.server.name %></dd>
-  <dt><strong>Service:</strong></dt>
-  <dd><%= @check.service.name %></dd>
-  <dt><strong>Passed:</strong></dt>
-  <dd><%= @check.passed %></dd>
-  <dt><strong>Request:</strong></dt>
-  <dd><%= @check.request %></dd>
-  <dt><strong>Response:</strong></dt>
-  <dd><%= @check.response %></dd>
-</dl>
+<div class="table-dl-horizontal">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><%= @check.id %></td>
+    </tr>
+    <tr>
+      <td>Team:</td>
+      <td><%= @team.alias %></td>
+    </tr>
+    <tr>
+      <td>Server:</td>
+      <td><%= @server.name %></td>
+    </tr>
+    <tr>
+      <td>Service:</td>
+      <td><%= @service.name %></td>
+    </tr>
+    <tr>
+      <td>Passed:</td>
+      <% if @check.passed %>
+        <td><span class="label label-success"><%= @check.passed %></span></td>
+      <% else %>
+        <td><span class="label label-important"><%= @check.passed %></span></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Request:</td>
+      <td><%= @check.request %></td>
+    </tr>
+    <tr>
+      <td>Response:</td>
+      <td><%= @check.response %></td>
+    </tr>
+  </table>
+</div>
 
-<% if whiteteam? %>
-  <div class="form-actions">
-    <%= link_to 'Back', checks_path, class: 'btn' %>
-    <%= link_to 'Edit', edit_check_path(@check), class: 'btn' %>
-    <%= link_to 'Delete', check_path(@check), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
-  </div>
-<% end %>

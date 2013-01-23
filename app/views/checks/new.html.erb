@@ -1,4 +1,13 @@
 <div class="page-header">
-  <h1>New Check</h1>
+  <table>
+    <tr>
+      <td>New Check</td>
+      <td>
+        <%= submit_tag 'Create Check', onclick: "$('#new_check').trigger('submit')", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', team_server_service_checks_path(@team,@server,@service), class: 'btn' %>
+      </td>
+    </tr>
+  </table>
 </div>
+
 <%= render partial: 'form' %>

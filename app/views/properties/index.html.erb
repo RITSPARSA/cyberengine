@@ -1,5 +1,44 @@
 <div class="page-header">
-  <h1>Properties</h1>
+  <table>
+    <tr>
+      <td><%= @service.name %> Properties</td>
+      <td><%= link_to "New Property", new_team_server_service_property_path(@team,@server,@service), class: 'btn btn-primary' if can? :new, Property %></td>
+    </tr>
+  </table>
 </div>
-<%= render partial: 'index_table' %>
-<%= link_to 'New Property', new_property_path, class: 'btn btn-primary' if whiteteam? %>
+
+<% service = @service if @service %>
+<% properties = service.properties.order('updated_at DESC') %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Updated At</th>
+      <th>Category</th>
+      <th>Property</th>
+      <th>Value</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if properties.count == 0 %>
+      <tr>
+        <td colspan="5">No Properties</td>
+      </tr>
+    <% else %>
+      <% properties.each do |property| %>
+        <tr>
+          <td><%= property.updated_at %></td>
+          <td><%= property.category %></td>
+          <td><%= property.property %></td>
+          <td><%= property.value %></td>
+          <td>
+            <%= link_to "Show", team_server_service_property_path(@team,@server,service,property), class: "btn btn-small" if can? :show, property%>
+            <%= link_to "Edit", edit_team_server_service_property_path(@team,@server,service,property), class: 'btn btn-small' if can? :edit, property %>
+            <%= link_to 'Delete', team_server_service_property_path(@team,@server,service,property), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } if can? :destroy, property %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,18 +1,32 @@
 <div class="page-header">
-  <h1>Show Member</h1>
+  <table>
+    <tr>
+      <td><%= @member.username %></td>
+      <td>
+        <%= link_to 'Edit', edit_member_path(@member), class: 'btn' %>
+        <%= link_to 'Delete', member_path(@member), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong>Username:</strong></dt>
-  <dd><%= @member.username %></dd>
-  <dt><strong>Password:</strong></dt>
-  <dd><%= @member.password_digest %></dd>
-  <dt><strong>Team:</strong></dt>
-  <dd><%= @member.team_id %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to 'Back', members_path, class: 'btn' %>
-  <%= link_to 'Edit', edit_member_path(@member), class: 'btn' %>
-  <%= link_to 'Delete', member_path(@member), method: :delete, class: 'btn btn-danger' %>
+<div class="table-dl-horizontal">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><%= @member.id %></td>
+    </tr>
+    <tr>
+      <td>Team:</td>
+      <td><%= Team.find_by_id(@member.team_id).alias %></td>
+    </tr>
+    <tr>
+      <td>Username:</td>
+      <td><%= @member.username %></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><%= @member.password_digest %></td>
+    </tr>
+  </table>
 </div>

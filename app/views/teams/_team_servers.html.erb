@@ -1,32 +1,13 @@
-<% max = @team.servers.collect.map {|s|s.services.count}.zip.flatten.max || 0 %>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Name</th>
-      <% max.times do |i| %>
-        <th>Service<%= i+1 %></th>
-      <% end %>
-      <% if can?(:show, @team) || can?(:edit, @team) %>
-        <th>Actions</th>
-      <% end %>
     </tr>
   </thead>
   <tbody>
     <% @team.servers.each do |server| %>
-      <% leftover = max - server.services.count %>
       <tr>
-        <td><%= server.name %></td>
-        <% server.services.each do |service| %>
-          <td><%= service.name %></td>
-        <% end %>
-        <% leftover.times do |i| %>
-          <td></td>
-        <% end %>
-        <td>
-          <%= link_to "Show", team_server_path(@team,server), class: 'btn btn-small' if can? :show, server %>
-          <%= link_to "Edit", edit_team_server_path(@team,server), class: 'btn btn-small' if can? :edit, server %>
-          <%= link_to 'Delete', team_server_path(@team,server), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } if can? :destroy, server  %>
-        </td>
+        <td><%= link_to server.name, team_server_path(@team,server) %></td>
       </tr>
     <% end %>
   </tbody>

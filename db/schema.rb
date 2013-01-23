@@ -11,73 +11,73 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117152449) do
+ActiveRecord::Schema.define(version: 20130117152449) do
 
-  create_table "checks", :force => true do |t|
-    t.integer  "team_id",    :null => false
-    t.integer  "server_id",  :null => false
-    t.integer  "service_id", :null => false
-    t.boolean  "passed",     :null => false
-    t.text     "request",    :null => false
-    t.text     "response",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "checks", force: true do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "server_id",  null: false
+    t.integer  "service_id", null: false
+    t.boolean  "passed",     null: false
+    t.text     "request",    null: false
+    t.text     "response",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "members", :force => true do |t|
-    t.string   "username",        :null => false
-    t.string   "password_digest", :null => false
-    t.integer  "team_id",         :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "members", force: true do |t|
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.integer  "team_id",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "properties", :force => true do |t|
-    t.integer  "team_id",    :null => false
-    t.integer  "server_id",  :null => false
-    t.integer  "service_id", :null => false
-    t.string   "category",   :null => false
-    t.string   "property",   :null => false
-    t.text     "value",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "properties", force: true do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "server_id",  null: false
+    t.integer  "service_id", null: false
+    t.string   "category",   null: false
+    t.string   "property",   null: false
+    t.text     "value",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "servers", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "team_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "servers", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "team_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "services", :force => true do |t|
-    t.integer  "team_id",    :null => false
-    t.integer  "server_id",  :null => false
-    t.string   "name",       :null => false
-    t.string   "protocol",   :null => false
-    t.string   "version",    :null => false
-    t.boolean  "enabled",    :null => false
-    t.integer  "points",     :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "services", force: true do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "server_id",  null: false
+    t.string   "name",       null: false
+    t.string   "protocol",   null: false
+    t.string   "version",    null: false
+    t.boolean  "enabled",    null: false
+    t.integer  "points",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "teams", :force => true do |t|
-    t.string   "alias",      :null => false
-    t.string   "name",       :null => false
-    t.string   "color",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "teams", force: true do |t|
+    t.string   "alias",      null: false
+    t.string   "name",       null: false
+    t.string   "color",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", :force => true do |t|
-    t.integer  "team_id",    :null => false
-    t.integer  "server_id",  :null => false
-    t.integer  "service_id", :null => false
-    t.string   "username",   :null => false
-    t.string   "password",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "users", force: true do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "server_id",  null: false
+    t.integer  "service_id", null: false
+    t.string   "username",   null: false
+    t.string   "password",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
