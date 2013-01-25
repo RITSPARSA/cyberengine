@@ -2,9 +2,12 @@
   <table>
     <tr>
       <td><%= @team.alias %> Servers</td>
-      <td><%= link_to "New Server", new_team_server_path(@team), class: 'btn btn-primary' if can? :new, Server %></td>
+      <td>
+        <%= link_to "New Server", new_team_server_path(@team), class: 'btn btn-primary' if whiteteam? %>
+     </td>
     </tr>
   </table>
 </div>
 
-<%= render partial: 'teams/team_servers' %>
+<%= render partial: 'team', locals: { team: @team } %>
+

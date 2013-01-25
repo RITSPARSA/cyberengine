@@ -3,8 +3,6 @@
     <tr>
       <td>Server: <%= @server.name %></td>
       <td>
-        <%= link_to "Team", team_path(@team), class: "btn btn-inverse" %>
-        <%= link_to "Services", team_server_services_path(@team,@server), class: "btn btn-inverse #{'disabled' if @server.services.count == 0}" %>
         <%= link_to 'Edit', edit_team_server_path(@team,@server), class: 'btn' if can? :edit, @server %>
         <%= link_to 'Delete', team_server_path(@team,@server), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @server %>
       </td>
@@ -14,10 +12,6 @@
 
 <div class="table-dl-horizontal">
   <table>
-    <tr>
-      <td>Id:</td>
-      <td><%= @server.id %></td>
-    </tr>
     <tr>
       <td>Name:</td>
       <td><%= @server.name %></td>
@@ -33,7 +27,7 @@
   <h2>Services</h2>
 </div>
 
-<%= render partial: 'server_services' %>
+<%= render partial: 'services/server', locals: { server: @server, team: @team } %>
 <%= render partial: 'checks/modal' %>
 <%= render partial: 'properties/modal' %>
 <%= render partial: 'users/modal' %>

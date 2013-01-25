@@ -29,26 +29,32 @@ class Ability
     can [:new, :create, :destroy], :session
     can [:index, :overview], Team
     can [:index, :show], Server
-    can [:index, :show], Service
-    can [:index], User
+    can [:index], Service
 
     # Restrictions
-    can [:show], Team, color: 'blue' # Shows team in index
+    can [:show], Team, color: 'blue' # Shows only  blueteams in index
 
     # Owner 
-    can [:show], Check, service: { server: { team_id: @member.team_id } }
-    can [:show], Property, service: { server: { team_id: @member.team_id } }
-    can [:update_username], User, service: { server: { team_id: @member.team_id } }
-    can [:show, :edit, :update], User, service: { server: { team_id: @member.team_id } }
-    can [:modal_properties, :modal_users, :modal_latest_check], Service, server: { team_id: @member.team_id } 
+    can [:show], Service, server: { team_id: @member.team_id } 
+    can [:index, :show, :modal], Check, service: { server: { team_id: @member.team_id } }
+    can [:index, :show, :modal], Property, service: { server: { team_id: @member.team_id } } 
+    can [:index, :show, :modal, :edit, :update], User, service: { server: { team_id: @member.team_id } } # add ":update_usernames" to enable username changes
   end
 
   def redteam
-    can :manage, :all
+    can [:new, :create, :destroy], :session
+    can [:index, :overview], Team
+    can [:index, :show], Server
+    can [:index], Service
+    can [:show], Team, color: ['blue','red'] # Shows only  blueteams in index
   end
 
   def guest
-    can :manage, :all
+    can [:new, :create, :destroy], :session
+    can [:index, :overview], Team
+    can [:index, :show], Server
+    can [:index], Service
+    can [:show], Team, color: 'blue' # Shows only  blueteams in index
   end
 
 end

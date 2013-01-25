@@ -3,7 +3,6 @@
     <tr>
       <td>User: <%= @user.username %></td>
       <td>
-        <%= link_to "Service", team_server_service_path(@team,@server,@service), class: "btn" %>
         <%= link_to 'Edit', edit_team_server_service_user_path(@team,@server,@service,@user), class: 'btn' if can? :edit, @user %>
         <%= link_to 'Delete', team_server_service_user_path(@team,@server,@service,@user), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @user %>
       </td>
@@ -13,22 +12,6 @@
 
 <div class="table-dl-horizontal">
   <table>
-    <tr>
-      <td>Id:</td>
-      <td><%= @user.id %></td>
-    </tr>
-    <tr>
-      <td>Team:</td>
-      <td><%= @team.alias %></td>
-    </tr>
-    <tr>
-      <td>Server:</td>
-      <td><%= @server.name %></td>
-    </tr>
-    <tr>
-      <td>Service:</td>
-      <td><%= @service.name %></td>
-    </tr>
     <tr>
       <td>Username:</td>
       <td><%= @user.username %></td>

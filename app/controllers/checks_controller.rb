@@ -58,8 +58,22 @@ class ChecksController < ApplicationController
   def modal
     if params[:id]
       @check = Check.find_by_id(params[:id])
+      @check.nil? ? render(partial: 'modal_empty') : render(partial: 'modal_check')
+    elsif @service
+      @check = @service.checks.latest
+      @checks = @service.checks
+      if @check
+        render(partial: 'modal_check') 
+        render(partial: 'modal_checks')
+      end
     else
-      @check = @service.checks.latest || Check.new
+      @checks = @server.checks
+      @checks.count == 0 ? render(partial: 'modal_empty') : render(partial: 'modal_checks')
     end
+  end
+
+  def whiteteam
+    redirect_to teams_path unless whiteteam?
+    @checks = Checks.all
   end
 end

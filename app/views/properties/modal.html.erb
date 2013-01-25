@@ -1,10 +1,12 @@
-<% properties = @service.properties %>
+<% properties = @service.properties if @service %>
+<% properties = @server.properties if properties.nil? && @server %>
 <% if properties.count == 0 %>
   <p>No properties</p>
 <% else %>
   <table class="table table-hover">
     <thead>
       <tr>
+        <th>Service</th>
         <th>Category</th>
         <th>Property</th>
         <th>Value</th>
@@ -13,6 +15,7 @@
     <tbody>
       <% properties.each do |property| %>
         <tr>
+          <td><%= property.service.name %></td>
           <td><%= property.category %></td>
           <td><%= property.property %></td>
           <td><%= property.value %></td>

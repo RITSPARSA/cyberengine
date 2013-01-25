@@ -5,15 +5,22 @@
     <li class="divider-vertical"></li>
     <% if blueteam? %>
       <li><%= link_to 'Home', team_path(team) %></li>
+      <li class="divider-vertical"></li>
       <li><%= link_to 'Servers', team_servers_path(team) %></li>
+      <li class="divider-vertical"></li>
     <% elsif whiteteam? %>
       <li><%= link_to 'Members', members_path %></li>
+      <li class="divider-vertical"></li>
+    <% else %>
     <% end %>
-    <li class="divider-vertical"></li>
     <li><%= link_to 'Logout', session_path, method: 'delete' %></li>
   <% else %>
+    <li class="divider-vertical"></li>
     <li><%= link_to 'Login', new_session_path %></li>
   <% end %>
 
   <li class="divider-vertical"></li>
 </ul>
+
+
+

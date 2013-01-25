@@ -50,5 +50,15 @@ class PropertiesController < ApplicationController
 
   layout false, only: [:modal]
   def modal
+    if @service
+      @properties = @service.properties
+    else
+      @properties = @server.properties
+    end
+    if @properties.count == 0
+      render(partial: 'modal_empty')
+    else
+      render(partial: 'modal_properties')
+    end
   end
 end

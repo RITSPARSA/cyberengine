@@ -3,7 +3,6 @@
     <tr>
       <td>Property: <%= @property.property %></td>
       <td>
-        <%= link_to "Service", team_server_service_path(@team,@server,@service), class: "btn" %>
         <%= link_to 'Edit', edit_team_server_service_property_path(@team,@server,@service,@property), class: 'btn' if can? :edit, @property %>
         <%= link_to 'Delete', team_server_service_property_path(@team,@server,@service,@property), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @property %>
       </td>
@@ -13,22 +12,6 @@
 
 <div class="table-dl-horizontal">
   <table>
-    <tr>
-      <td>Id:</td>
-      <td><%= @property.id %></td>
-    </tr>
-    <tr>
-      <td>Team:</td>
-      <td><%= @team.alias %></td>
-    </tr>
-    <tr>
-      <td>Server:</td>
-      <td><%= @server.name %></td>
-    </tr>
-    <tr>
-      <td>Service:</td>
-      <td><%= @service.name %></td>
-    </tr>
     <tr>
       <td>Category:</td>
       <td><%= @property.category %></td>

@@ -1,0 +1,48 @@
+<% team = @team if @team %>
+<% server = @server if @server %>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Protocol</th>
+      <th>Version</th>
+      <th>Status</th>
+      <% if member?(team) || whiteteam? %>
+        <th>Information</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% server.services.each do |service| %>
+      <% users = service.users %>
+      <% properties = service.properties %>
+      <% latest = service.checks.latest || Check.new %>
+      <% icon_class = case latest.passed when true then "icon-ok success"; when false then "icon-remove error"; else "icon-minus info" end %>
+      <% icon_text = case latest.passed when true then "Passing"; when false then "Failing"; else "No Checks" end %>
+      <tr>
+        <% if can? :show, service %>
+          <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
+        <% else %>
+          <td><%= service.name %></td>
+        <% end %>
+        <td><%= service.protocol %></td>
+        <td><%= service.version %></td>
+        <td>
+          <% if latest.id.nil? || cannot?(:modal, latest) %>
+            <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
+          <% else %>
+            <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
+              <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
+            <% end %>
+          <% end %>
+        </td>
+        <% if member?(team) || whiteteam? %>
+          <td>
+            <%= link_to "Users", modal_team_server_service_users_path(team,server,service), class: "btn btn-small #{'disabled' if users.count == 0}", data: { toggle: "modal", target: "#usersModal" } %>
+            <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), class: "btn btn-small #{'disabled' if properties.count == 0}", data: { toggle: "modal", target: "#propertiesModal" } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

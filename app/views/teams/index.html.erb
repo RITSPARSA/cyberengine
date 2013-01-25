@@ -2,38 +2,38 @@
   <table>
     <tr>
       <td><h1>All Teams</h1></td>
-      <td><%= link_to "New Team", new_team_path, class: 'btn btn-primary' if can? :new, Team %></td>
+      <td><%= link_to "New Team", new_team_path, class: 'btn btn-primary' if whiteteam? %></td>
     </tr>
   </table>
 </div>
 
-<table class="table table-striped table-hover">
+<table class="table table-hover">
   <thead>
     <tr>
-      <% if can? :edit, Team %>
+      <% if whiteteam? %>
         <th>Id</th>
       <% end %>
       <th>Alias</th>
       <th>Name</th>
       <th>Color</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @teams.each do |team| %>
       <% next if cannot? :show, team %>
       <tr>
-        <% if can? :edit, Team %>
+        <% if whiteteam? %>
           <td><%= team.id %></td>
         <% end %>
-        <td><%= team.alias %></td>
+        <td><%= link_to team.alias, team_path(team) %></td>
         <td><%= team.name %></td>
-        <td><%= team.color %></td>
-        <td>
-          <%= link_to 'Show', team_path(team), class: 'btn btn-small' if can? :show, team %>
-          <%= link_to 'Edit', edit_team_path(team), class: 'btn btn-small' if can? :edit, team %>
-          <%= link_to 'Delete', team_path(team), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm! This will destroy all team data!' } if can? :destroy, team%>
-        </td>
+        <% if team.color == 'white' %>
+          <td><span class="label label-inverse"><%= team.color %></span></td>
+        <% elsif team.color == 'red' %>
+          <td><span class="label label-important"><%= team.color %></span></td>
+        <% else %>
+          <td><span class="label label-info"><%= team.color %></span></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -35,12 +35,16 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    unless can? :update_usernames, @user
-      params[:user].delete(:username) if params[:user][:username] 
-    end
-    if @user.update_attributes(params[:user])
-      redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully updated.'
+    username = params[:user][:username] if params[:user][:username]
+    params[:user][:username] ?  username = params[:user][:username] : username = nil
+    if can?(:update_usernames, @user) || username == @user.username || username.nil?
+      if @user.update_attributes(params[:user])
+        redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully updated.'
+      else
+        render action: "edit"
+      end
     else
+      flash.now[:warning] = "Cannot change usernames"
       render action: "edit"
     end
   end
@@ -53,6 +57,15 @@ class UsersController < ApplicationController
 
   layout false, only: [:modal]
   def modal
+    if @service
+      @users = @service.users
+    else
+      @users = @server.users
+    end
+    if @users.count == 0
+      render(partial: 'modal_empty')
+    else
+      render(partial: 'modal_users')
+    end
   end
-
 end

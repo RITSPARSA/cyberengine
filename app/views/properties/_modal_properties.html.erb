@@ -1,0 +1,20 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Category</th>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.service.name %></td>
+        <td><%= property.category %></td>
+        <td><%= property.property %></td>
+        <td><%= property.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
