@@ -14,21 +14,21 @@ Cyberengine is a Ruby on Rails web front-end designed to check and score common 
 
 ``` 
 Teams:
-  Members
-  Servers:
-    Services
-      Properties
-      Checks
-      Users
+    Members
+    Servers:
+        Services
+            Properties
+            Checks
+            Users
 ```
 
 ## Checks
 
-Any type of service can be defined, checked, and scored. The scoring is done by a script that usually pulls service's properties and users from the database and performs the required checks.
+Any type of service can be defined, checked, and scored. Scoring can be performed by any script by simply pulling service properties/users from the database.
 
 ### Example Check
 
-A simple script (written in any language) pulls all services and their properties with a protocol of "ping" across all teams from the database. For each service the script performs it's action which in this example is a ping against the address associated with service. If the address responds then it is determined to "pass" and a database insert is performed with the required check parameters. 
+A simple script (written in any language) pulls all services and their properties with a protocol of "ping" across all teams from the database. For each service the script performs it's action which in this example is a ping against the address associated with service (address defined by a service property). If the address responds then it is determined to "pass" and a database insert is performed with the required check parameters (passed, request, response). 
 
 ## Rails Frontend
 
@@ -51,9 +51,9 @@ Download cyberengine
     cd cyberengine
     bundle install
     rake db:drop # Should not be any db to start with
-    rake db:migrate
-    rake db:seed
-    gem install passenger
+    rake db:migrate # Build db schema
+    rake db:seed # Testing seed data
+    gem install passenger # Used in quickstart script as web server
     ./quickstart.sh
   
 
@@ -62,3 +62,9 @@ Default login:
 Username: whiteteam
 
 Password: whiteteam 
+
+
+Other logins:
+redteam:redteam
+team1:team1
+team2:team2

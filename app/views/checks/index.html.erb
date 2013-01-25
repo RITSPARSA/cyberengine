@@ -55,21 +55,25 @@
     <tbody>
       <% if checks.count == 0 %>
         <tr>
-          <td colspan="3">No Other Checks</td>
+          <td colspan="3">No Checks</td>
         </tr>
       <% else %>
         <% checks.each do |check| %>
-          <% background = case check.passed when true then "success"; else "error" end %>
+          <% icon_class = case check.passed when true then "icon-ok success"; when false then "icon-remove error"; else "icon-minus info" end %>
+          <% icon_text = case check.passed when true then "True"; when false then "False"; else "No Checks" end %>
           <tr>
             <td><%= check.created_at %></td>
-            <td class="<%= background %>"><%= check.passed %></td>
             <td>
-              <%= link_to "Show", modal_team_server_service_check_path(@team,@server,service,check), class: "btn btn-small", data: { toggle: "modal", target: "#checksModal" } if can? :show, check%>
-              <%= link_to 'Check', team_server_service_check_path(@team,@server,service,check), class: 'btn btn-small' if can? :show, check %>
-              <%= link_to "Edit", edit_team_server_service_check_path(@team,@server,service,check), class: 'btn btn-small' if can? :edit, check %>
-              <%= link_to 'Delete', team_server_service_check_path(@team,@server,service,check), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } if can? :destroy, check %>
-
+              <%= link_to modal_team_server_service_check_path(@team,@server,@service,check), data: { toggle: "modal", target: "#checksModal" } do %>
+                <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
+              <% end %>
             </td>
+            <td>
+              <%= link_to 'Show', team_server_service_check_path(@team,@server,@service,check), class: 'btn btn-small' if can? :show, check %>
+              <%= link_to 'Edit', edit_team_server_service_check_path(@team,@server,@service,check), class: 'btn btn-small' if can? :edit, check %>
+              <%= link_to 'Delete', team_server_service_check_path(@team,@server,@service,check), method: :delete, class: 'btn btn-small btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, check %>
+            </td>
+
           </tr>
         <% end %>
       <% end %>

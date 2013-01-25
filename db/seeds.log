@@ -1,0 +1,1534 @@
+Jan 20 06:33:01 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="565" x-info="http://www.rsyslog.com"] rsyslogd was HUPed
+Jan 20 06:43:48 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 06:43:48 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 06:43:48 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1328 seconds.
+Jan 20 07:05:56 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 07:05:56 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 07:05:56 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1310 seconds.
+Jan 20 07:27:46 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 07:27:47 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 07:27:47 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1282 seconds.
+Jan 20 07:49:09 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 07:49:09 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 07:49:09 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1355 seconds.
+Jan 20 08:11:44 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 08:11:44 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 08:11:44 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1401 seconds.
+Jan 20 08:32:57 fedora systemd-logind[554]: New session 9 of user root.
+Jan 20 08:35:05 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 08:35:07 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 08:35:07 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1456 seconds.
+Jan 20 08:59:23 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 08:59:23 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 08:59:23 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1575 seconds.
+Jan 20 09:25:38 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 09:25:40 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 09:25:40 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1467 seconds.
+Jan 20 09:50:07 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 09:50:09 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 09:50:09 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1613 seconds.
+Jan 20 10:17:02 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 10:17:02 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 10:17:02 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1479 seconds.
+Jan 20 10:41:41 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 10:41:42 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 10:41:42 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1534 seconds.
+Jan 20 11:07:16 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 11:07:16 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 11:07:16 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1595 seconds.
+Jan 20 11:33:51 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 11:33:51 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 11:33:51 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1606 seconds.
+Jan 20 11:35:19 fedora auditd[552]: Audit daemon rotating log files
+Jan 20 12:00:37 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 12:00:37 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 12:00:37 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1475 seconds.
+Jan 20 12:25:12 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 12:25:12 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 12:25:12 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1426 seconds.
+Jan 20 12:48:59 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 12:48:59 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 12:48:59 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1324 seconds.
+Jan 20 13:11:03 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 13:11:04 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 13:11:04 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1285 seconds.
+Jan 20 13:32:29 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 13:32:29 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 13:32:29 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1345 seconds.
+Jan 20 13:54:54 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 13:54:55 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 13:54:55 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1456 seconds.
+Jan 20 14:19:11 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 14:19:12 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 14:19:12 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1489 seconds.
+Jan 20 14:44:01 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 14:44:02 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 14:44:02 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1482 seconds.
+Jan 20 15:08:44 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 15:08:44 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 15:08:44 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1365 seconds.
+Jan 20 15:18:31 fedora systemd-logind[554]: New session 17 of user root.
+Jan 20 15:31:29 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 15:31:29 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 15:31:29 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1256 seconds.
+Jan 20 15:52:25 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 15:52:25 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 15:52:25 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1569 seconds.
+Jan 20 16:14:04 fedora systemd-logind[554]: Removed session 17.
+Jan 20 16:18:34 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 16:18:34 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 16:18:34 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1322 seconds.
+Jan 20 16:40:36 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 16:40:36 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 16:40:36 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1357 seconds.
+Jan 20 17:03:13 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 17:03:13 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 17:03:13 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1267 seconds.
+Jan 20 17:24:20 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 17:24:23 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 17:24:23 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1299 seconds.
+Jan 20 17:46:02 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 17:46:03 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 17:46:03 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1542 seconds.
+Jan 20 18:11:45 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 18:11:46 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 18:11:46 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1388 seconds.
+Jan 20 18:26:15 fedora systemd-logind[554]: Removed session 9.
+Jan 20 18:34:54 fedora dhclient[795]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 20 18:34:54 fedora dhclient[795]: DHCPACK from 192.168.122.1
+Jan 20 18:34:54 fedora dhclient[795]: bound to 192.168.122.159 -- renewal in 1298 seconds.
+Jan 21 05:42:45 fedora kernel: imklog 5.8.10, log source = /proc/kmsg started.
+Jan 21 05:42:45 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="561" x-info="http://www.rsyslog.com"] start
+Jan 21 05:42:45 fedora kernel: [    0.000000] Initializing cgroup subsys cpuset
+Jan 21 05:42:45 fedora kernel: [    0.000000] Initializing cgroup subsys cpu
+Jan 21 05:42:45 fedora kernel: [    0.000000] Linux version 3.4.7-1.fc16.x86_64 (mockbuild@buildvm-22.phx2.fedoraproject.org) (gcc version 4.6.3 20120306 (Red Hat 4.6.3-2) (GCC) ) #1 SMP Mon Jul 30 16:37:23 UTC 2012
+Jan 21 05:42:45 fedora kernel: [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 21 05:42:45 fedora kernel: [    0.000000] BIOS-provided physical RAM map:
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 0000000000100000 - 000000003fffe000 (usable)
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 000000003fffe000 - 0000000040000000 (reserved)
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 00000000feffc000 - 00000000ff000000 (reserved)
+Jan 21 05:42:45 fedora kernel: [    0.000000]  BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+Jan 21 05:42:45 fedora kernel: [    0.000000] NX (Execute Disable) protection: active
+Jan 21 05:42:45 fedora kernel: [    0.000000] DMI 2.4 present.
+Jan 21 05:42:45 fedora kernel: [    0.000000] No AGP bridge found
+Jan 21 05:42:45 fedora kernel: [    0.000000] last_pfn = 0x3fffe max_arch_pfn = 0x400000000
+Jan 21 05:42:45 fedora kernel: [    0.000000] PAT not supported by CPU.
+Jan 21 05:42:45 fedora kernel: [    0.000000] found SMP MP-table at [ffff8800000fdad0] fdad0
+Jan 21 05:42:45 fedora kernel: [    0.000000] init_memory_mapping: 0000000000000000-000000003fffe000
+Jan 21 05:42:45 fedora kernel: [    0.000000] RAMDISK: 36716000 - 37383000
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: RSDP 00000000000fd970 00014 (v00 BOCHS )
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: RSDT 000000003fffe440 00038 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: FACP 000000003fffff80 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: DSDT 000000003fffe480 0124A (v01   BXPC   BXDSDT 00000001 INTL 20100528)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: FACS 000000003fffff40 00040
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffffe90 000AF (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: APIC 000000003ffffd70 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: HPET 000000003ffffd30 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffff6d0 00654 (v01   BXPC BXSSDTPC 00000001 INTL 20100528)
+Jan 21 05:42:45 fedora kernel: [    0.000000] No NUMA configuration found
+Jan 21 05:42:45 fedora kernel: [    0.000000] Faking a node at 0000000000000000-000000003fffe000
+Jan 21 05:42:45 fedora kernel: [    0.000000] Initmem setup node 0 0000000000000000-000000003fffe000
+Jan 21 05:42:45 fedora kernel: [    0.000000]   NODE_DATA [000000003ffea000 - 000000003fffdfff]
+Jan 21 05:42:45 fedora kernel: [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+Jan 21 05:42:45 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:1cf4781, boot clock
+Jan 21 05:42:45 fedora kernel: [    0.000000] Zone PFN ranges:
+Jan 21 05:42:45 fedora kernel: [    0.000000]   DMA      0x00000010 -> 0x00001000
+Jan 21 05:42:45 fedora kernel: [    0.000000]   DMA32    0x00001000 -> 0x00100000
+Jan 21 05:42:45 fedora kernel: [    0.000000]   Normal   empty
+Jan 21 05:42:45 fedora kernel: [    0.000000] Movable zone start PFN for each node
+Jan 21 05:42:45 fedora kernel: [    0.000000] Early memory PFN ranges
+Jan 21 05:42:45 fedora kernel: [    0.000000]     0: 0x00000010 -> 0x0000009f
+Jan 21 05:42:45 fedora kernel: [    0.000000]     0: 0x00000100 -> 0x0003fffe
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: PM-Timer IO Port: 0xb008
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+Jan 21 05:42:45 fedora kernel: [    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Jan 21 05:42:45 fedora kernel: [    0.000000] Using ACPI (MADT) for SMP configuration information
+Jan 21 05:42:45 fedora kernel: [    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+Jan 21 05:42:45 fedora kernel: [    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+Jan 21 05:42:45 fedora kernel: [    0.000000] PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+Jan 21 05:42:45 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+Jan 21 05:42:45 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+Jan 21 05:42:45 fedora kernel: [    0.000000] Allocating PCI resources starting at 40000000 (gap: 40000000:beffc000)
+Jan 21 05:42:45 fedora kernel: [    0.000000] Booting paravirtualized kernel on KVM
+Jan 21 05:42:45 fedora kernel: [    0.000000] setup_percpu: NR_CPUS:256 nr_cpumask_bits:256 nr_cpu_ids:1 nr_node_ids:1
+Jan 21 05:42:45 fedora kernel: [    0.000000] PERCPU: Embedded 28 pages/cpu @ffff88003fc00000 s83200 r8192 d23296 u2097152
+Jan 21 05:42:45 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:3fc13781, primary cpu clock
+Jan 21 05:42:45 fedora kernel: [    0.000000] KVM setup async PF for cpu 0
+Jan 21 05:42:45 fedora kernel: [    0.000000] kvm-stealtime: cpu 0, msr 3fc0df80
+Jan 21 05:42:45 fedora kernel: [    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 257928
+Jan 21 05:42:45 fedora kernel: [    0.000000] Policy zone: DMA32
+Jan 21 05:42:45 fedora kernel: [    0.000000] Kernel command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 21 05:42:45 fedora kernel: [    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.000000] Checking aperture...
+Jan 21 05:42:45 fedora kernel: [    0.000000] No AGP bridge found
+Jan 21 05:42:45 fedora kernel: [    0.000000] Memory: 1002700k/1048568k available (6178k kernel code, 452k absent, 45416k reserved, 7003k data, 1004k init)
+Jan 21 05:42:45 fedora kernel: [    0.000000] SLUB: Genslabs=15, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Jan 21 05:42:45 fedora kernel: [    0.000000] Hierarchical RCU implementation.
+Jan 21 05:42:45 fedora kernel: [    0.000000] NR_IRQS:16640 nr_irqs:256 16
+Jan 21 05:42:45 fedora kernel: [    0.000000] Console: colour VGA+ 80x25
+Jan 21 05:42:45 fedora kernel: [    0.000000] console [tty0] enabled
+Jan 21 05:42:45 fedora kernel: [    0.000000] allocated 4194304 bytes of page_cgroup
+Jan 21 05:42:45 fedora kernel: [    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Jan 21 05:42:45 fedora kernel: [    0.000000] Detected 2394.560 MHz processor.
+Jan 21 05:42:45 fedora kernel: [    0.001999] Calibrating delay loop (skipped) preset value.. 4789.12 BogoMIPS (lpj=2394560)
+Jan 21 05:42:45 fedora kernel: [    0.002004] pid_max: default: 32768 minimum: 301
+Jan 21 05:42:45 fedora kernel: [    0.002360] Security Framework initialized
+Jan 21 05:42:45 fedora kernel: [    0.002675] SELinux:  Initializing.
+Jan 21 05:42:45 fedora kernel: [    0.003105] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.003657] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.004080] Mount-cache hash table entries: 256
+Jan 21 05:42:45 fedora kernel: [    0.004533] Initializing cgroup subsys cpuacct
+Jan 21 05:42:45 fedora kernel: [    0.005003] Initializing cgroup subsys memory
+Jan 21 05:42:45 fedora kernel: [    0.005347] Initializing cgroup subsys devices
+Jan 21 05:42:45 fedora kernel: [    0.005663] Initializing cgroup subsys freezer
+Jan 21 05:42:45 fedora kernel: [    0.006002] Initializing cgroup subsys net_cls
+Jan 21 05:42:45 fedora kernel: [    0.006340] Initializing cgroup subsys blkio
+Jan 21 05:42:45 fedora kernel: [    0.006654] Initializing cgroup subsys perf_event
+Jan 21 05:42:45 fedora kernel: [    0.007037] mce: CPU supports 10 MCE banks
+Jan 21 05:42:45 fedora kernel: [    0.007513] SMP alternatives: switching to UP code
+Jan 21 05:42:45 fedora kernel: [    0.020591] Freeing SMP alternatives: 24k freed
+Jan 21 05:42:45 fedora kernel: [    0.020881] ACPI: Core revision 20120320
+Jan 21 05:42:45 fedora kernel: [    0.023352] ftrace: allocating 22861 entries in 90 pages
+Jan 21 05:42:45 fedora kernel: [    0.034348] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Jan 21 05:42:45 fedora kernel: [    0.034677] CPU0: Intel QEMU Virtual CPU version 1.0.1 stepping 03
+Jan 21 05:42:45 fedora kernel: [    0.035997] Performance Events: unsupported p6 CPU model 2 no PMU driver, software events only.
+Jan 21 05:42:45 fedora kernel: [    0.035997] NMI watchdog: disabled (cpu0): hardware events not enabled
+Jan 21 05:42:45 fedora kernel: [    0.036018] Brought up 1 CPUs
+Jan 21 05:42:45 fedora kernel: [    0.036265] Total of 1 processors activated (4789.12 BogoMIPS).
+Jan 21 05:42:45 fedora kernel: [    0.036855] devtmpfs: initialized
+Jan 21 05:42:45 fedora kernel: [    0.037656] atomic64 test passed for x86-64 platform with CX8 and with SSE
+Jan 21 05:42:45 fedora kernel: [    0.038059] RTC time: 10:42:29, date: 01/21/13
+Jan 21 05:42:45 fedora kernel: [    0.038351] NET: Registered protocol family 16
+Jan 21 05:42:45 fedora kernel: [    0.039046] ACPI: bus type pci registered
+Jan 21 05:42:45 fedora kernel: [    0.039384] PCI: Using configuration type 1 for base access
+Jan 21 05:42:45 fedora kernel: [    0.040241] bio: create slab <bio-0> at 0
+Jan 21 05:42:45 fedora kernel: [    0.040656] ACPI: Added _OSI(Module Device)
+Jan 21 05:42:45 fedora kernel: [    0.040951] ACPI: Added _OSI(Processor Device)
+Jan 21 05:42:45 fedora kernel: [    0.041000] ACPI: Added _OSI(3.0 _SCP Extensions)
+Jan 21 05:42:45 fedora kernel: [    0.041292] ACPI: Added _OSI(Processor Aggregator Device)
+Jan 21 05:42:45 fedora kernel: [    0.043178] ACPI: Interpreter enabled
+Jan 21 05:42:45 fedora kernel: [    0.043444] ACPI: (supports S0 S5)
+Jan 21 05:42:45 fedora kernel: [    0.043798] ACPI: Using IOAPIC for interrupt routing
+Jan 21 05:42:45 fedora kernel: [    0.045784] ACPI: No dock devices found.
+Jan 21 05:42:45 fedora kernel: [    0.046000] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jan 21 05:42:45 fedora kernel: [    0.046545] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Jan 21 05:42:45 fedora kernel: [    0.047019] pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7]
+Jan 21 05:42:45 fedora kernel: [    0.047338] pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff]
+Jan 21 05:42:45 fedora kernel: [    0.047642] pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff]
+Jan 21 05:42:45 fedora kernel: [    0.048004] pci_root PNP0A03:00: host bridge window [mem 0x40000000-0xfebfffff]
+Jan 21 05:42:45 fedora kernel: [    0.049036] PCI host bridge to bus 0000:00
+Jan 21 05:42:45 fedora kernel: [    0.049302] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7]
+Jan 21 05:42:45 fedora kernel: [    0.049998] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff]
+Jan 21 05:42:45 fedora kernel: [    0.050297] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff]
+Jan 21 05:42:45 fedora kernel: [    0.050606] pci_bus 0000:00: root bus resource [mem 0x40000000-0xfebfffff]
+Jan 21 05:42:45 fedora kernel: [    0.052999] pci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI
+Jan 21 05:42:45 fedora kernel: [    0.053469] pci 0000:00:01.3: quirk: [io  0xb100-0xb10f] claimed by PIIX4 SMB
+Jan 21 05:42:45 fedora kernel: [    0.065448]  pci0000:00: Unable to request _OSC control (_OSC support mask: 0x1e)
+Jan 21 05:42:45 fedora kernel: [    0.067776] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+Jan 21 05:42:45 fedora kernel: [    0.068370] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+Jan 21 05:42:45 fedora kernel: [    0.069018] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+Jan 21 05:42:45 fedora kernel: [    0.069630] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+Jan 21 05:42:45 fedora kernel: [    0.070237] ACPI: PCI Interrupt Link [LNKS] (IRQs 9) *0
+Jan 21 05:42:45 fedora kernel: [    0.070818] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+Jan 21 05:42:45 fedora kernel: [    0.070996] vgaarb: loaded
+Jan 21 05:42:45 fedora kernel: [    0.071236] vgaarb: bridge control possible 0000:00:02.0
+Jan 21 05:42:45 fedora kernel: [    0.071563] SCSI subsystem initialized
+Jan 21 05:42:45 fedora kernel: [    0.072060] usbcore: registered new interface driver usbfs
+Jan 21 05:42:45 fedora kernel: [    0.072362] usbcore: registered new interface driver hub
+Jan 21 05:42:45 fedora kernel: [    0.072660] usbcore: registered new device driver usb
+Jan 21 05:42:45 fedora kernel: [    0.073044] PCI: Using ACPI for IRQ routing
+Jan 21 05:42:45 fedora kernel: [    0.073508] NetLabel: Initializing
+Jan 21 05:42:45 fedora kernel: [    0.073778] NetLabel:  domain hash size = 128
+Jan 21 05:42:45 fedora kernel: [    0.073995] NetLabel:  protocols = UNLABELED CIPSOv4
+Jan 21 05:42:45 fedora kernel: [    0.074280] NetLabel:  unlabeled traffic allowed by default
+Jan 21 05:42:45 fedora kernel: [    0.074610] HPET: 3 timers in total, 0 timers will be used for per-cpu timer
+Jan 21 05:42:45 fedora kernel: [    0.075007] hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+Jan 21 05:42:45 fedora kernel: [    0.075481] hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+Jan 21 05:42:45 fedora kernel: [    0.079100] Switching to clocksource kvm-clock
+Jan 21 05:42:45 fedora kernel: [    0.083309] pnp: PnP ACPI init
+Jan 21 05:42:45 fedora kernel: [    0.083624] ACPI: bus type pnp registered
+Jan 21 05:42:45 fedora kernel: [    0.084415] pnp: PnP ACPI: found 7 devices
+Jan 21 05:42:45 fedora kernel: [    0.084686] ACPI: ACPI bus type pnp unregistered
+Jan 21 05:42:45 fedora kernel: [    0.090736] NET: Registered protocol family 2
+Jan 21 05:42:45 fedora kernel: [    0.091078] IP route cache hash table entries: 32768 (order: 6, 262144 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.091773] TCP established hash table entries: 131072 (order: 9, 2097152 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.092583] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.093028] TCP: Hash tables configured (established 131072 bind 65536)
+Jan 21 05:42:45 fedora kernel: [    0.093337] TCP: reno registered
+Jan 21 05:42:45 fedora kernel: [    0.093619] UDP hash table entries: 512 (order: 2, 16384 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.093916] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.094279] NET: Registered protocol family 1
+Jan 21 05:42:45 fedora kernel: [    0.095198] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jan 21 05:42:45 fedora kernel: [    0.095549] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+Jan 21 05:42:45 fedora kernel: [    0.095853] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+Jan 21 05:42:45 fedora kernel: [    0.096292] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+Jan 21 05:42:45 fedora kernel: [    0.096791] Unpacking initramfs...
+Jan 21 05:42:45 fedora kernel: [    0.292881] Freeing initrd memory: 12724k freed
+Jan 21 05:42:45 fedora kernel: [    0.296348] audit: initializing netlink socket (disabled)
+Jan 21 05:42:45 fedora kernel: [    0.296737] type=2000 audit(1358764951.295:1): initialized
+Jan 21 05:42:45 fedora kernel: [    0.311295] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+Jan 21 05:42:45 fedora kernel: [    0.312663] VFS: Disk quotas dquot_6.5.2
+Jan 21 05:42:45 fedora kernel: [    0.312983] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Jan 21 05:42:45 fedora kernel: [    0.313870] msgmni has been set to 1983
+Jan 21 05:42:45 fedora kernel: [    0.314557] alg: No test for stdrng (krng)
+Jan 21 05:42:45 fedora kernel: [    0.314848] NET: Registered protocol family 38
+Jan 21 05:42:45 fedora kernel: [    0.315164] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+Jan 21 05:42:45 fedora kernel: [    0.315696] io scheduler noop registered
+Jan 21 05:42:45 fedora kernel: [    0.315958] io scheduler deadline registered
+Jan 21 05:42:45 fedora kernel: [    0.316281] io scheduler cfq registered (default)
+Jan 21 05:42:45 fedora kernel: [    0.316656] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+Jan 21 05:42:45 fedora kernel: [    0.316983] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+Jan 21 05:42:45 fedora kernel: [    0.317326] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Jan 21 05:42:45 fedora kernel: [    0.319479] acpiphp: Slot [3] registered
+Jan 21 05:42:45 fedora kernel: [    0.319764] acpiphp: Slot [4] registered
+Jan 21 05:42:45 fedora kernel: [    0.320055] acpiphp: Slot [5] registered
+Jan 21 05:42:45 fedora kernel: [    0.320324] acpiphp: Slot [6] registered
+Jan 21 05:42:45 fedora kernel: [    0.320599] acpiphp: Slot [7] registered
+Jan 21 05:42:45 fedora kernel: [    0.320871] acpiphp: Slot [8] registered
+Jan 21 05:42:45 fedora kernel: [    0.321151] acpiphp: Slot [9] registered
+Jan 21 05:42:45 fedora kernel: [    0.321421] acpiphp: Slot [10] registered
+Jan 21 05:42:45 fedora kernel: [    0.321715] acpiphp: Slot [11] registered
+Jan 21 05:42:45 fedora kernel: [    0.321986] acpiphp: Slot [12] registered
+Jan 21 05:42:45 fedora kernel: [    0.322279] acpiphp: Slot [13] registered
+Jan 21 05:42:45 fedora kernel: [    0.322575] acpiphp: Slot [14] registered
+Jan 21 05:42:45 fedora kernel: [    0.322868] acpiphp: Slot [15] registered
+Jan 21 05:42:45 fedora kernel: [    0.323176] acpiphp: Slot [16] registered
+Jan 21 05:42:45 fedora kernel: [    0.323481] acpiphp: Slot [17] registered
+Jan 21 05:42:45 fedora kernel: [    0.323776] acpiphp: Slot [18] registered
+Jan 21 05:42:45 fedora kernel: [    0.324089] acpiphp: Slot [19] registered
+Jan 21 05:42:45 fedora kernel: [    0.324383] acpiphp: Slot [20] registered
+Jan 21 05:42:45 fedora kernel: [    0.324678] acpiphp: Slot [21] registered
+Jan 21 05:42:45 fedora kernel: [    0.324971] acpiphp: Slot [22] registered
+Jan 21 05:42:45 fedora kernel: [    0.325279] acpiphp: Slot [23] registered
+Jan 21 05:42:45 fedora kernel: [    0.325589] acpiphp: Slot [24] registered
+Jan 21 05:42:45 fedora kernel: [    0.325878] acpiphp: Slot [25] registered
+Jan 21 05:42:45 fedora kernel: [    0.326181] acpiphp: Slot [26] registered
+Jan 21 05:42:45 fedora kernel: [    0.326483] acpiphp: Slot [27] registered
+Jan 21 05:42:45 fedora kernel: [    0.326775] acpiphp: Slot [28] registered
+Jan 21 05:42:45 fedora kernel: [    0.327078] acpiphp: Slot [29] registered
+Jan 21 05:42:45 fedora kernel: [    0.327369] acpiphp: Slot [30] registered
+Jan 21 05:42:45 fedora kernel: [    0.327669] acpiphp: Slot [31] registered
+Jan 21 05:42:45 fedora kernel: [    0.328123] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jan 21 05:42:45 fedora kernel: [    0.328683] ACPI: Power Button [PWRF]
+Jan 21 05:42:45 fedora kernel: [    0.330174] GHES: HEST is not enabled!
+Jan 21 05:42:45 fedora kernel: [    0.330590] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 10
+Jan 21 05:42:45 fedora kernel: [    0.331109] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+Jan 21 05:42:45 fedora kernel: [    0.331611] ACPI: PCI Interrupt Link [LNKB] enabled at IRQ 11
+Jan 21 05:42:45 fedora kernel: [    0.332137] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jan 21 05:42:45 fedora kernel: [    0.353921] serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+Jan 21 05:42:45 fedora kernel: [    0.375877] 00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+Jan 21 05:42:45 fedora kernel: [    0.409789] Non-volatile memory driver v1.3
+Jan 21 05:42:45 fedora kernel: [    0.410119] Linux agpgart interface v0.103
+Jan 21 05:42:45 fedora kernel: [    0.410859] loop: module loaded
+Jan 21 05:42:45 fedora kernel: [    0.411680] scsi0 : ata_piix
+Jan 21 05:42:45 fedora kernel: [    0.412037] scsi1 : ata_piix
+Jan 21 05:42:45 fedora kernel: [    0.412330] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc0e0 irq 14
+Jan 21 05:42:45 fedora kernel: [    0.414160] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc0e8 irq 15
+Jan 21 05:42:45 fedora kernel: [    0.414868] Fixed MDIO Bus: probed
+Jan 21 05:42:45 fedora kernel: [    0.415209] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Jan 21 05:42:45 fedora kernel: [    0.415596] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Jan 21 05:42:45 fedora kernel: [    0.415904] uhci_hcd: USB Universal Host Controller Interface driver
+Jan 21 05:42:45 fedora kernel: [    0.416285] uhci_hcd 0000:00:01.2: UHCI Host Controller
+Jan 21 05:42:45 fedora kernel: [    0.416645] uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+Jan 21 05:42:45 fedora kernel: [    0.417207] uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c040
+Jan 21 05:42:45 fedora kernel: [    0.417569] usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+Jan 21 05:42:45 fedora kernel: [    0.417937] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 21 05:42:45 fedora kernel: [    0.418458] usb usb1: Product: UHCI Host Controller
+Jan 21 05:42:45 fedora kernel: [    0.418755] usb usb1: Manufacturer: Linux 3.4.7-1.fc16.x86_64 uhci_hcd
+Jan 21 05:42:45 fedora kernel: [    0.419091] usb usb1: SerialNumber: 0000:00:01.2
+Jan 21 05:42:45 fedora kernel: [    0.419651] hub 1-0:1.0: USB hub found
+Jan 21 05:42:45 fedora kernel: [    0.419936] hub 1-0:1.0: 2 ports detected
+Jan 21 05:42:45 fedora kernel: [    0.420288] usbcore: registered new interface driver usbserial
+Jan 21 05:42:45 fedora kernel: [    0.420637] usbcore: registered new interface driver usbserial_generic
+Jan 21 05:42:45 fedora kernel: [    0.420969] USB Serial support registered for generic
+Jan 21 05:42:45 fedora kernel: [    0.421262] usbserial: USB Serial Driver core
+Jan 21 05:42:45 fedora kernel: [    0.421584] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Jan 21 05:42:45 fedora kernel: [    0.422704] serio: i8042 KBD port at 0x60,0x64 irq 1
+Jan 21 05:42:45 fedora kernel: [    0.423028] serio: i8042 AUX port at 0x60,0x64 irq 12
+Jan 21 05:42:45 fedora kernel: [    0.423399] mousedev: PS/2 mouse device common for all mice
+Jan 21 05:42:45 fedora kernel: [    0.423970] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+Jan 21 05:42:45 fedora kernel: [    0.427487] rtc_cmos 00:01: RTC can wake from S4
+Jan 21 05:42:45 fedora kernel: [    0.428100] rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+Jan 21 05:42:45 fedora kernel: [    0.428522] rtc0: alarms up to one day, 114 bytes nvram, hpet irqs
+Jan 21 05:42:45 fedora kernel: [    0.428910] device-mapper: uevent: version 1.0.3
+Jan 21 05:42:45 fedora kernel: [    0.429285] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+Jan 21 05:42:45 fedora kernel: [    0.429867] cpuidle: using governor ladder
+Jan 21 05:42:45 fedora kernel: [    0.430170] cpuidle: using governor menu
+Jan 21 05:42:45 fedora kernel: [    0.430499] EFI Variables Facility v0.08 2004-May-17
+Jan 21 05:42:45 fedora kernel: [    0.430869] usbcore: registered new interface driver usbhid
+Jan 21 05:42:45 fedora kernel: [    0.431217] usbhid: USB HID core driver
+Jan 21 05:42:45 fedora kernel: [    0.431586] ip_tables: (C) 2000-2006 Netfilter Core Team
+Jan 21 05:42:45 fedora kernel: [    0.431938] TCP: cubic registered
+Jan 21 05:42:45 fedora kernel: [    0.432204] Initializing XFRM netlink socket
+Jan 21 05:42:45 fedora kernel: [    0.432569] NET: Registered protocol family 10
+Jan 21 05:42:45 fedora kernel: [    0.433030] Mobile IPv6
+Jan 21 05:42:45 fedora kernel: [    0.433286] NET: Registered protocol family 17
+Jan 21 05:42:45 fedora kernel: [    0.433654] Registering the dns_resolver key type
+Jan 21 05:42:45 fedora kernel: [    0.434069] registered taskstats version 1
+Jan 21 05:42:45 fedora kernel: [    0.434606]   Magic number: 13:290:730
+Jan 21 05:42:45 fedora kernel: [    0.435000] rtc_cmos 00:01: setting system clock to 2013-01-21 10:42:29 UTC (1358764949)
+Jan 21 05:42:45 fedora kernel: [    0.435574] Initializing network drop monitor service
+Jan 21 05:42:45 fedora kernel: [    0.572207] ata2.00: ATAPI: QEMU DVD-ROM, 1.0.1, max UDMA/100
+Jan 21 05:42:45 fedora kernel: [    0.574703] ata2.00: configured for MWDMA2
+Jan 21 05:42:45 fedora kernel: [    0.577343] scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     1.0. PQ: 0 ANSI: 5
+Jan 21 05:42:45 fedora kernel: [    0.581656] sr0: scsi3-mmc drive: 4x/4x cd/rw xa/form2 tray
+Jan 21 05:42:45 fedora kernel: [    0.583023] cdrom: Uniform CD-ROM driver Revision: 3.20
+Jan 21 05:42:45 fedora kernel: [    0.585249] sr 1:0:0:0: Attached scsi generic sg0 type 5
+Jan 21 05:42:45 fedora kernel: [    0.590577] Freeing unused kernel memory: 1004k freed
+Jan 21 05:42:45 fedora kernel: [    0.592279] Write protecting the kernel read-only data: 12288k
+Jan 21 05:42:45 fedora kernel: [    0.600437] Freeing unused kernel memory: 1996k freed
+Jan 21 05:42:45 fedora kernel: [    0.604107] Freeing unused kernel memory: 1480k freed
+Jan 21 05:42:45 fedora kernel: [    0.722039] usb 1-1: new full-speed USB device number 2 using uhci_hcd
+Jan 21 05:42:45 fedora kernel: [    0.845406]  vda: vda1 vda2 vda3
+Jan 21 05:42:45 fedora kernel: [    0.860306] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input2
+Jan 21 05:42:45 fedora kernel: [    1.009838] usb 1-1: New USB device found, idVendor=0627, idProduct=0001
+Jan 21 05:42:45 fedora kernel: [    1.011275] usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=5
+Jan 21 05:42:45 fedora kernel: [    1.012816] usb 1-1: Product: QEMU USB Tablet
+Jan 21 05:42:45 fedora kernel: [    1.014246] usb 1-1: Manufacturer: QEMU 1.0.1
+Jan 21 05:42:45 fedora kernel: [    1.015361] usb 1-1: SerialNumber: 42
+Jan 21 05:42:45 fedora kernel: [    1.052250] input: QEMU 1.0.1 QEMU USB Tablet as /devices/pci0000:00/0000:00:01.2/usb1/1-1/1-1:1.0/input/input3
+Jan 21 05:42:45 fedora kernel: [    1.054859] generic-usb 0003:0627:0001.0001: input,hidraw0: USB HID v0.01 Pointer [QEMU 1.0.1 QEMU USB Tablet] on usb-0000:00:01.2-1/input0
+Jan 21 05:42:45 fedora kernel: [    1.296106] Refined TSC clocksource calibration: 2394.559 MHz.
+Jan 21 05:42:45 fedora kernel: [    1.312633] EXT4-fs (dm-1): INFO: recovery required on readonly filesystem
+Jan 21 05:42:45 fedora kernel: [    1.313062] EXT4-fs (dm-1): write access will be enabled during recovery
+Jan 21 05:42:45 fedora kernel: [    4.233173] EXT4-fs (dm-1): recovery complete
+Jan 21 05:42:45 fedora kernel: [    4.258003] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 05:42:45 fedora kernel: [    4.481546] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 05:42:45 fedora kernel: [    5.418160] SELinux:  Disabled at runtime.
+Jan 21 05:42:45 fedora kernel: [    5.418552] type=1404 audit(1358764954.483:2): selinux=0 auid=4294967295 ses=4294967295
+Jan 21 05:42:45 fedora kernel: [    7.113198] EXT4-fs (dm-1): re-mounted. Opts: (null)
+Jan 21 05:42:45 fedora kernel: [   10.422180] microcode: CPU0 sig=0x623, pf=0x0, revision=0x1
+Jan 21 05:42:45 fedora kernel: [   10.516181] microcode: Microcode Update Driver: v2.00 <tigran@aivazian.fsnet.co.uk>, Peter Oruba
+Jan 21 05:42:45 fedora kernel: [   10.987642] Adding 2064380k swap on /dev/mapper/vg_fedora-lv_swap.  Priority:0 extents:1 across:2064380k 
+Jan 21 05:42:45 fedora kernel: [   11.962634] piix4_smbus 0000:00:01.3: SMBus Host Controller at 0xb100, revision 0
+Jan 21 05:42:45 fedora kernel: [   13.250162] EXT4-fs (vda2): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 05:42:45 fedora auditctl[552]: No rules
+Jan 21 05:42:45 fedora auditctl[552]: AUDIT_STATUS: enabled=0 flag=1 pid=0 rate_limit=0 backlog_limit=320 lost=0 backlog=0
+Jan 21 05:42:45 fedora auditd[551]: Started dispatcher: /sbin/audispd pid: 583
+Jan 21 05:42:45 fedora auditd[551]: Init complete, auditd 2.2.1 listening for events (startup state enable)
+Jan 21 05:42:45 fedora audispd: No plugins found, exiting
+Jan 21 05:42:45 fedora systemd-logind[553]: New seat seat0.
+Jan 21 05:42:45 fedora kernel: [   16.690264] ip6_tables: (C) 2000-2006 Netfilter Core Team
+Jan 21 05:42:45 fedora kernel: [   16.789323] nf_conntrack version 0.5.0 (7968 buckets, 31872 max)
+Jan 21 05:42:45 fedora ip6tables.init[545]: ip6tables: Applying firewall rules: [  OK  ]
+Jan 21 05:42:46 fedora network[621]: Bringing up loopback interface:  [  OK  ]
+Jan 21 05:42:46 fedora network[621]: Bringing up interface eth0:
+Jan 21 05:42:47 fedora dhclient[737]: DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 8
+Jan 21 05:42:47 fedora dhclient[737]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 21 05:42:47 fedora dhclient[737]: DHCPOFFER from 192.168.122.1
+Jan 21 05:42:47 fedora dhclient[737]: DHCPACK from 192.168.122.1
+Jan 21 05:42:48 fedora NET[799]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 21 05:42:48 fedora dhclient[737]: bound to 192.168.122.159 -- renewal in 1750 seconds.
+Jan 21 05:42:48 fedora network[621]: Determining IP information for eth0... done.
+Jan 21 05:42:48 fedora network[621]: [  OK  ]
+Jan 21 05:42:48 fedora pg_ctl[864]: pg_ctl: another server might be running; trying to start server anyway
+Jan 21 05:42:52 fedora systemd[1]: Startup finished in 612ms 114us (kernel) + 5s 4ms 823us (initrd) + 17s 645ms 740us (userspace) = 23s 262ms 677us.
+Jan 21 05:45:16 fedora systemd-logind[553]: New session 1 of user root.
+Jan 21 06:11:58 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 06:11:58 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 06:11:58 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1652 seconds.
+Jan 21 06:39:30 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 06:39:30 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 06:39:30 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1399 seconds.
+Jan 21 07:02:50 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 07:02:50 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 07:02:50 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1243 seconds.
+Jan 21 07:23:33 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 07:23:36 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 07:23:36 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1250 seconds.
+Jan 21 07:44:26 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 07:44:26 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 07:44:26 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1544 seconds.
+Jan 21 08:10:10 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 08:10:10 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 08:10:10 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1440 seconds.
+Jan 21 08:34:10 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 08:34:10 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 08:34:10 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1661 seconds.
+Jan 21 09:01:51 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 09:01:51 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 09:01:51 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1594 seconds.
+Jan 21 09:28:25 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 09:28:25 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 09:28:25 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1528 seconds.
+Jan 21 09:53:53 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 09:53:53 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 09:53:53 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1490 seconds.
+Jan 21 10:18:43 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 10:18:44 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 10:18:44 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1312 seconds.
+Jan 21 10:40:36 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 10:40:36 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 10:40:36 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1463 seconds.
+Jan 21 11:04:59 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 11:04:59 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 11:04:59 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1286 seconds.
+Jan 21 11:26:25 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 11:26:25 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 11:26:25 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1396 seconds.
+Jan 21 11:49:41 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 11:49:41 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 11:49:41 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1603 seconds.
+Jan 21 12:16:24 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 12:16:24 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 12:16:25 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1348 seconds.
+Jan 21 12:38:53 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 12:38:54 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 12:38:54 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1339 seconds.
+Jan 21 13:01:13 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 13:01:14 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 13:01:14 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1389 seconds.
+Jan 21 13:15:49 fedora systemd-logind[553]: New session 10 of user root.
+Jan 21 13:24:23 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 13:24:26 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 13:24:26 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1436 seconds.
+Jan 21 13:48:22 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 13:48:23 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 13:48:23 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1516 seconds.
+Jan 21 14:13:39 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 14:13:39 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 14:13:39 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1345 seconds.
+Jan 21 14:36:04 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 14:36:06 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 14:36:06 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1478 seconds.
+Jan 21 15:00:44 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 15:00:44 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 15:00:44 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1301 seconds.
+Jan 21 15:22:25 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 15:22:25 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 15:22:25 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1326 seconds.
+Jan 21 15:44:31 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 15:44:32 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 15:44:32 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1288 seconds.
+Jan 21 16:06:00 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 16:06:00 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 16:06:00 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1318 seconds.
+Jan 21 16:27:58 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 16:27:59 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 16:27:59 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1398 seconds.
+Jan 21 16:51:17 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 16:51:19 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 16:51:19 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1401 seconds.
+Jan 21 17:09:14 fedora systemd-logind[553]: Removed session 10.
+Jan 21 17:14:40 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 17:14:43 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 17:14:43 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1214 seconds.
+Jan 21 17:34:57 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 17:34:57 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 17:34:57 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1519 seconds.
+Jan 21 18:00:17 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 18:00:18 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 18:00:18 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1432 seconds.
+Jan 21 18:24:10 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 18:24:10 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 18:24:10 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1297 seconds.
+Jan 21 18:45:47 fedora dhclient[803]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 18:45:49 fedora dhclient[803]: DHCPACK from 192.168.122.1
+Jan 21 18:45:49 fedora dhclient[803]: bound to 192.168.122.159 -- renewal in 1566 seconds.
+Jan 21 19:17:14 fedora kernel: imklog 5.8.10, log source = /proc/kmsg started.
+Jan 21 19:17:14 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="555" x-info="http://www.rsyslog.com"] start
+Jan 21 19:17:14 fedora kernel: [    0.000000] Initializing cgroup subsys cpuset
+Jan 21 19:17:14 fedora kernel: [    0.000000] Initializing cgroup subsys cpu
+Jan 21 19:17:14 fedora kernel: [    0.000000] Linux version 3.4.7-1.fc16.x86_64 (mockbuild@buildvm-22.phx2.fedoraproject.org) (gcc version 4.6.3 20120306 (Red Hat 4.6.3-2) (GCC) ) #1 SMP Mon Jul 30 16:37:23 UTC 2012
+Jan 21 19:17:14 fedora kernel: [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 21 19:17:14 fedora kernel: [    0.000000] BIOS-provided physical RAM map:
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 0000000000100000 - 000000003fffe000 (usable)
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 000000003fffe000 - 0000000040000000 (reserved)
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 00000000feffc000 - 00000000ff000000 (reserved)
+Jan 21 19:17:14 fedora kernel: [    0.000000]  BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+Jan 21 19:17:14 fedora kernel: [    0.000000] NX (Execute Disable) protection: active
+Jan 21 19:17:14 fedora kernel: [    0.000000] DMI 2.4 present.
+Jan 21 19:17:14 fedora kernel: [    0.000000] No AGP bridge found
+Jan 21 19:17:14 fedora kernel: [    0.000000] last_pfn = 0x3fffe max_arch_pfn = 0x400000000
+Jan 21 19:17:14 fedora kernel: [    0.000000] PAT not supported by CPU.
+Jan 21 19:17:14 fedora kernel: [    0.000000] found SMP MP-table at [ffff8800000fdad0] fdad0
+Jan 21 19:17:14 fedora kernel: [    0.000000] init_memory_mapping: 0000000000000000-000000003fffe000
+Jan 21 19:17:14 fedora kernel: [    0.000000] RAMDISK: 36716000 - 37383000
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: RSDP 00000000000fd970 00014 (v00 BOCHS )
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: RSDT 000000003fffe440 00038 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: FACP 000000003fffff80 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: DSDT 000000003fffe480 0124A (v01   BXPC   BXDSDT 00000001 INTL 20100528)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: FACS 000000003fffff40 00040
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffffe90 000AF (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: APIC 000000003ffffd70 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: HPET 000000003ffffd30 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffff6d0 00654 (v01   BXPC BXSSDTPC 00000001 INTL 20100528)
+Jan 21 19:17:14 fedora kernel: [    0.000000] No NUMA configuration found
+Jan 21 19:17:14 fedora kernel: [    0.000000] Faking a node at 0000000000000000-000000003fffe000
+Jan 21 19:17:14 fedora kernel: [    0.000000] Initmem setup node 0 0000000000000000-000000003fffe000
+Jan 21 19:17:14 fedora kernel: [    0.000000]   NODE_DATA [000000003ffea000 - 000000003fffdfff]
+Jan 21 19:17:14 fedora kernel: [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+Jan 21 19:17:14 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:1cf4781, boot clock
+Jan 21 19:17:14 fedora kernel: [    0.000000] Zone PFN ranges:
+Jan 21 19:17:14 fedora kernel: [    0.000000]   DMA      0x00000010 -> 0x00001000
+Jan 21 19:17:14 fedora kernel: [    0.000000]   DMA32    0x00001000 -> 0x00100000
+Jan 21 19:17:14 fedora kernel: [    0.000000]   Normal   empty
+Jan 21 19:17:14 fedora kernel: [    0.000000] Movable zone start PFN for each node
+Jan 21 19:17:14 fedora kernel: [    0.000000] Early memory PFN ranges
+Jan 21 19:17:14 fedora kernel: [    0.000000]     0: 0x00000010 -> 0x0000009f
+Jan 21 19:17:14 fedora kernel: [    0.000000]     0: 0x00000100 -> 0x0003fffe
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: PM-Timer IO Port: 0xb008
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+Jan 21 19:17:14 fedora kernel: [    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Jan 21 19:17:14 fedora kernel: [    0.000000] Using ACPI (MADT) for SMP configuration information
+Jan 21 19:17:14 fedora kernel: [    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+Jan 21 19:17:14 fedora kernel: [    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+Jan 21 19:17:14 fedora kernel: [    0.000000] PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+Jan 21 19:17:14 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+Jan 21 19:17:14 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+Jan 21 19:17:14 fedora kernel: [    0.000000] Allocating PCI resources starting at 40000000 (gap: 40000000:beffc000)
+Jan 21 19:17:14 fedora kernel: [    0.000000] Booting paravirtualized kernel on KVM
+Jan 21 19:17:14 fedora kernel: [    0.000000] setup_percpu: NR_CPUS:256 nr_cpumask_bits:256 nr_cpu_ids:1 nr_node_ids:1
+Jan 21 19:17:14 fedora kernel: [    0.000000] PERCPU: Embedded 28 pages/cpu @ffff88003fc00000 s83200 r8192 d23296 u2097152
+Jan 21 19:17:14 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:3fc13781, primary cpu clock
+Jan 21 19:17:14 fedora kernel: [    0.000000] KVM setup async PF for cpu 0
+Jan 21 19:17:14 fedora kernel: [    0.000000] kvm-stealtime: cpu 0, msr 3fc0df80
+Jan 21 19:17:14 fedora kernel: [    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 257928
+Jan 21 19:17:14 fedora kernel: [    0.000000] Policy zone: DMA32
+Jan 21 19:17:14 fedora kernel: [    0.000000] Kernel command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 21 19:17:14 fedora kernel: [    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.000000] Checking aperture...
+Jan 21 19:17:14 fedora kernel: [    0.000000] No AGP bridge found
+Jan 21 19:17:14 fedora kernel: [    0.000000] Memory: 1002700k/1048568k available (6178k kernel code, 452k absent, 45416k reserved, 7003k data, 1004k init)
+Jan 21 19:17:14 fedora kernel: [    0.000000] SLUB: Genslabs=15, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Jan 21 19:17:14 fedora kernel: [    0.000000] Hierarchical RCU implementation.
+Jan 21 19:17:14 fedora kernel: [    0.000000] NR_IRQS:16640 nr_irqs:256 16
+Jan 21 19:17:14 fedora kernel: [    0.000000] Console: colour VGA+ 80x25
+Jan 21 19:17:14 fedora kernel: [    0.000000] console [tty0] enabled
+Jan 21 19:17:14 fedora kernel: [    0.000000] allocated 4194304 bytes of page_cgroup
+Jan 21 19:17:14 fedora kernel: [    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Jan 21 19:17:14 fedora kernel: [    0.000000] Detected 2394.560 MHz processor.
+Jan 21 19:17:14 fedora kernel: [    0.001999] Calibrating delay loop (skipped) preset value.. 4789.12 BogoMIPS (lpj=2394560)
+Jan 21 19:17:14 fedora kernel: [    0.002005] pid_max: default: 32768 minimum: 301
+Jan 21 19:17:14 fedora kernel: [    0.002397] Security Framework initialized
+Jan 21 19:17:14 fedora kernel: [    0.002708] SELinux:  Initializing.
+Jan 21 19:17:14 fedora kernel: [    0.003112] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.003662] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.004082] Mount-cache hash table entries: 256
+Jan 21 19:17:14 fedora kernel: [    0.004717] Initializing cgroup subsys cpuacct
+Jan 21 19:17:14 fedora kernel: [    0.005004] Initializing cgroup subsys memory
+Jan 21 19:17:14 fedora kernel: [    0.005346] Initializing cgroup subsys devices
+Jan 21 19:17:14 fedora kernel: [    0.005658] Initializing cgroup subsys freezer
+Jan 21 19:17:14 fedora kernel: [    0.006003] Initializing cgroup subsys net_cls
+Jan 21 19:17:14 fedora kernel: [    0.006322] Initializing cgroup subsys blkio
+Jan 21 19:17:14 fedora kernel: [    0.006642] Initializing cgroup subsys perf_event
+Jan 21 19:17:14 fedora kernel: [    0.007058] mce: CPU supports 10 MCE banks
+Jan 21 19:17:14 fedora kernel: [    0.007503] SMP alternatives: switching to UP code
+Jan 21 19:17:14 fedora kernel: [    0.021548] Freeing SMP alternatives: 24k freed
+Jan 21 19:17:14 fedora kernel: [    0.021847] ACPI: Core revision 20120320
+Jan 21 19:17:14 fedora kernel: [    0.022575] ftrace: allocating 22861 entries in 90 pages
+Jan 21 19:17:14 fedora kernel: [    0.029569] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Jan 21 19:17:14 fedora kernel: [    0.029913] CPU0: Intel QEMU Virtual CPU version 1.0.1 stepping 03
+Jan 21 19:17:14 fedora kernel: [    0.030997] Performance Events: unsupported p6 CPU model 2 no PMU driver, software events only.
+Jan 21 19:17:14 fedora kernel: [    0.030997] NMI watchdog: disabled (cpu0): hardware events not enabled
+Jan 21 19:17:14 fedora kernel: [    0.031017] Brought up 1 CPUs
+Jan 21 19:17:14 fedora kernel: [    0.031285] Total of 1 processors activated (4789.12 BogoMIPS).
+Jan 21 19:17:14 fedora kernel: [    0.031847] devtmpfs: initialized
+Jan 21 19:17:14 fedora kernel: [    0.032627] atomic64 test passed for x86-64 platform with CX8 and with SSE
+Jan 21 19:17:14 fedora kernel: [    0.033053] RTC time:  0:17:05, date: 01/22/13
+Jan 21 19:17:14 fedora kernel: [    0.033359] NET: Registered protocol family 16
+Jan 21 19:17:14 fedora kernel: [    0.033787] ACPI: bus type pci registered
+Jan 21 19:17:14 fedora kernel: [    0.034079] PCI: Using configuration type 1 for base access
+Jan 21 19:17:14 fedora kernel: [    0.035148] bio: create slab <bio-0> at 0
+Jan 21 19:17:14 fedora kernel: [    0.035453] ACPI: Added _OSI(Module Device)
+Jan 21 19:17:14 fedora kernel: [    0.035718] ACPI: Added _OSI(Processor Device)
+Jan 21 19:17:14 fedora kernel: [    0.036000] ACPI: Added _OSI(3.0 _SCP Extensions)
+Jan 21 19:17:14 fedora kernel: [    0.036308] ACPI: Added _OSI(Processor Aggregator Device)
+Jan 21 19:17:14 fedora kernel: [    0.037907] ACPI: Interpreter enabled
+Jan 21 19:17:14 fedora kernel: [    0.038000] ACPI: (supports S0 S5)
+Jan 21 19:17:14 fedora kernel: [    0.038350] ACPI: Using IOAPIC for interrupt routing
+Jan 21 19:17:14 fedora kernel: [    0.040467] ACPI: No dock devices found.
+Jan 21 19:17:14 fedora kernel: [    0.040729] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jan 21 19:17:14 fedora kernel: [    0.041050] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Jan 21 19:17:14 fedora kernel: [    0.041417] pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7]
+Jan 21 19:17:14 fedora kernel: [    0.041736] pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff]
+Jan 21 19:17:14 fedora kernel: [    0.042000] pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff]
+Jan 21 19:17:14 fedora kernel: [    0.042497] pci_root PNP0A03:00: host bridge window [mem 0x40000000-0xfebfffff]
+Jan 21 19:17:14 fedora kernel: [    0.043036] PCI host bridge to bus 0000:00
+Jan 21 19:17:14 fedora kernel: [    0.043320] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7]
+Jan 21 19:17:14 fedora kernel: [    0.043636] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff]
+Jan 21 19:17:14 fedora kernel: [    0.045005] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff]
+Jan 21 19:17:14 fedora kernel: [    0.045336] pci_bus 0000:00: root bus resource [mem 0x40000000-0xfebfffff]
+Jan 21 19:17:14 fedora kernel: [    0.048363] pci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI
+Jan 21 19:17:14 fedora kernel: [    0.048863] pci 0000:00:01.3: quirk: [io  0xb100-0xb10f] claimed by PIIX4 SMB
+Jan 21 19:17:14 fedora kernel: [    0.061181]  pci0000:00: Unable to request _OSC control (_OSC support mask: 0x1e)
+Jan 21 19:17:14 fedora kernel: [    0.063463] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+Jan 21 19:17:14 fedora kernel: [    0.064057] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+Jan 21 19:17:14 fedora kernel: [    0.064651] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+Jan 21 19:17:14 fedora kernel: [    0.065321] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+Jan 21 19:17:14 fedora kernel: [    0.066022] ACPI: PCI Interrupt Link [LNKS] (IRQs 9) *0
+Jan 21 19:17:14 fedora kernel: [    0.066613] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+Jan 21 19:17:14 fedora kernel: [    0.066997] vgaarb: loaded
+Jan 21 19:17:14 fedora kernel: [    0.067234] vgaarb: bridge control possible 0000:00:02.0
+Jan 21 19:17:14 fedora kernel: [    0.067556] SCSI subsystem initialized
+Jan 21 19:17:14 fedora kernel: [    0.067876] usbcore: registered new interface driver usbfs
+Jan 21 19:17:14 fedora kernel: [    0.068005] usbcore: registered new interface driver hub
+Jan 21 19:17:14 fedora kernel: [    0.068300] usbcore: registered new device driver usb
+Jan 21 19:17:14 fedora kernel: [    0.068615] PCI: Using ACPI for IRQ routing
+Jan 21 19:17:14 fedora kernel: [    0.069192] NetLabel: Initializing
+Jan 21 19:17:14 fedora kernel: [    0.069441] NetLabel:  domain hash size = 128
+Jan 21 19:17:14 fedora kernel: [    0.069702] NetLabel:  protocols = UNLABELED CIPSOv4
+Jan 21 19:17:14 fedora kernel: [    0.070003] NetLabel:  unlabeled traffic allowed by default
+Jan 21 19:17:14 fedora kernel: [    0.070327] HPET: 3 timers in total, 0 timers will be used for per-cpu timer
+Jan 21 19:17:14 fedora kernel: [    0.070646] hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+Jan 21 19:17:14 fedora kernel: [    0.071303] hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+Jan 21 19:17:14 fedora kernel: [    0.074101] Switching to clocksource kvm-clock
+Jan 21 19:17:14 fedora kernel: [    0.078564] pnp: PnP ACPI init
+Jan 21 19:17:14 fedora kernel: [    0.078860] ACPI: bus type pnp registered
+Jan 21 19:17:14 fedora kernel: [    0.079660] pnp: PnP ACPI: found 7 devices
+Jan 21 19:17:14 fedora kernel: [    0.079921] ACPI: ACPI bus type pnp unregistered
+Jan 21 19:17:14 fedora kernel: [    0.086217] NET: Registered protocol family 2
+Jan 21 19:17:14 fedora kernel: [    0.086541] IP route cache hash table entries: 32768 (order: 6, 262144 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.087227] TCP established hash table entries: 131072 (order: 9, 2097152 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.088040] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.088463] TCP: Hash tables configured (established 131072 bind 65536)
+Jan 21 19:17:14 fedora kernel: [    0.088791] TCP: reno registered
+Jan 21 19:17:14 fedora kernel: [    0.089046] UDP hash table entries: 512 (order: 2, 16384 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.089340] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.089689] NET: Registered protocol family 1
+Jan 21 19:17:14 fedora kernel: [    0.090569] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jan 21 19:17:14 fedora kernel: [    0.090880] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+Jan 21 19:17:14 fedora kernel: [    0.091191] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+Jan 21 19:17:14 fedora kernel: [    0.091597] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+Jan 21 19:17:14 fedora kernel: [    0.092058] Unpacking initramfs...
+Jan 21 19:17:14 fedora kernel: [    0.276953] Freeing initrd memory: 12724k freed
+Jan 21 19:17:14 fedora kernel: [    0.279151] audit: initializing netlink socket (disabled)
+Jan 21 19:17:14 fedora kernel: [    0.279457] type=2000 audit(1358813827.278:1): initialized
+Jan 21 19:17:14 fedora kernel: [    0.293693] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+Jan 21 19:17:14 fedora kernel: [    0.294907] VFS: Disk quotas dquot_6.5.2
+Jan 21 19:17:14 fedora kernel: [    0.295215] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Jan 21 19:17:14 fedora kernel: [    0.296048] msgmni has been set to 1983
+Jan 21 19:17:14 fedora kernel: [    0.296631] alg: No test for stdrng (krng)
+Jan 21 19:17:14 fedora kernel: [    0.296902] NET: Registered protocol family 38
+Jan 21 19:17:14 fedora kernel: [    0.297207] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+Jan 21 19:17:14 fedora kernel: [    0.297692] io scheduler noop registered
+Jan 21 19:17:14 fedora kernel: [    0.297952] io scheduler deadline registered
+Jan 21 19:17:14 fedora kernel: [    0.298259] io scheduler cfq registered (default)
+Jan 21 19:17:14 fedora kernel: [    0.298604] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+Jan 21 19:17:14 fedora kernel: [    0.298915] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+Jan 21 19:17:14 fedora kernel: [    0.299229] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Jan 21 19:17:14 fedora kernel: [    0.299573] acpiphp: Slot [3] registered
+Jan 21 19:17:14 fedora kernel: [    0.299849] acpiphp: Slot [4] registered
+Jan 21 19:17:14 fedora kernel: [    0.300125] acpiphp: Slot [5] registered
+Jan 21 19:17:14 fedora kernel: [    0.300390] acpiphp: Slot [6] registered
+Jan 21 19:17:14 fedora kernel: [    0.300665] acpiphp: Slot [7] registered
+Jan 21 19:17:14 fedora kernel: [    0.300933] acpiphp: Slot [8] registered
+Jan 21 19:17:14 fedora kernel: [    0.301212] acpiphp: Slot [9] registered
+Jan 21 19:17:14 fedora kernel: [    0.301478] acpiphp: Slot [10] registered
+Jan 21 19:17:14 fedora kernel: [    0.301754] acpiphp: Slot [11] registered
+Jan 21 19:17:14 fedora kernel: [    0.302033] acpiphp: Slot [12] registered
+Jan 21 19:17:14 fedora kernel: [    0.302300] acpiphp: Slot [13] registered
+Jan 21 19:17:14 fedora kernel: [    0.302566] acpiphp: Slot [14] registered
+Jan 21 19:17:14 fedora kernel: [    0.302842] acpiphp: Slot [15] registered
+Jan 21 19:17:14 fedora kernel: [    0.303120] acpiphp: Slot [16] registered
+Jan 21 19:17:14 fedora kernel: [    0.303387] acpiphp: Slot [17] registered
+Jan 21 19:17:14 fedora kernel: [    0.303663] acpiphp: Slot [18] registered
+Jan 21 19:17:14 fedora kernel: [    0.303931] acpiphp: Slot [19] registered
+Jan 21 19:17:14 fedora kernel: [    0.304209] acpiphp: Slot [20] registered
+Jan 21 19:17:14 fedora kernel: [    0.304477] acpiphp: Slot [21] registered
+Jan 21 19:17:14 fedora kernel: [    0.304776] acpiphp: Slot [22] registered
+Jan 21 19:17:14 fedora kernel: [    0.305054] acpiphp: Slot [23] registered
+Jan 21 19:17:14 fedora kernel: [    0.305322] acpiphp: Slot [24] registered
+Jan 21 19:17:14 fedora kernel: [    0.305589] acpiphp: Slot [25] registered
+Jan 21 19:17:14 fedora kernel: [    0.305863] acpiphp: Slot [26] registered
+Jan 21 19:17:14 fedora kernel: [    0.306156] acpiphp: Slot [27] registered
+Jan 21 19:17:14 fedora kernel: [    0.306423] acpiphp: Slot [28] registered
+Jan 21 19:17:14 fedora kernel: [    0.306784] acpiphp: Slot [29] registered
+Jan 21 19:17:14 fedora kernel: [    0.307242] acpiphp: Slot [30] registered
+Jan 21 19:17:14 fedora kernel: [    0.307533] acpiphp: Slot [31] registered
+Jan 21 19:17:14 fedora kernel: [    0.307958] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jan 21 19:17:14 fedora kernel: [    0.308474] ACPI: Power Button [PWRF]
+Jan 21 19:17:14 fedora kernel: [    0.309930] GHES: HEST is not enabled!
+Jan 21 19:17:14 fedora kernel: [    0.310371] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 10
+Jan 21 19:17:14 fedora kernel: [    0.310894] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+Jan 21 19:17:14 fedora kernel: [    0.311360] ACPI: PCI Interrupt Link [LNKB] enabled at IRQ 11
+Jan 21 19:17:14 fedora kernel: [    0.311861] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jan 21 19:17:14 fedora kernel: [    0.333589] serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+Jan 21 19:17:14 fedora kernel: [    0.355541] 00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+Jan 21 19:17:14 fedora kernel: [    0.382733] Non-volatile memory driver v1.3
+Jan 21 19:17:14 fedora kernel: [    0.384227] Linux agpgart interface v0.103
+Jan 21 19:17:14 fedora kernel: [    0.385554] loop: module loaded
+Jan 21 19:17:14 fedora kernel: [    0.386203] scsi0 : ata_piix
+Jan 21 19:17:14 fedora kernel: [    0.386482] scsi1 : ata_piix
+Jan 21 19:17:14 fedora kernel: [    0.386769] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc0e0 irq 14
+Jan 21 19:17:14 fedora kernel: [    0.387087] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc0e8 irq 15
+Jan 21 19:17:14 fedora kernel: [    0.387436] Fixed MDIO Bus: probed
+Jan 21 19:17:14 fedora kernel: [    0.387731] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Jan 21 19:17:14 fedora kernel: [    0.388055] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Jan 21 19:17:14 fedora kernel: [    0.388357] uhci_hcd: USB Universal Host Controller Interface driver
+Jan 21 19:17:14 fedora kernel: [    0.388769] uhci_hcd 0000:00:01.2: UHCI Host Controller
+Jan 21 19:17:14 fedora kernel: [    0.389310] uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+Jan 21 19:17:14 fedora kernel: [    0.389941] uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c040
+Jan 21 19:17:14 fedora kernel: [    0.390311] usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+Jan 21 19:17:14 fedora kernel: [    0.390655] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 21 19:17:14 fedora kernel: [    0.391155] usb usb1: Product: UHCI Host Controller
+Jan 21 19:17:14 fedora kernel: [    0.391445] usb usb1: Manufacturer: Linux 3.4.7-1.fc16.x86_64 uhci_hcd
+Jan 21 19:17:14 fedora kernel: [    0.391769] usb usb1: SerialNumber: 0000:00:01.2
+Jan 21 19:17:14 fedora kernel: [    0.392128] hub 1-0:1.0: USB hub found
+Jan 21 19:17:14 fedora kernel: [    0.392404] hub 1-0:1.0: 2 ports detected
+Jan 21 19:17:14 fedora kernel: [    0.392877] usbcore: registered new interface driver usbserial
+Jan 21 19:17:14 fedora kernel: [    0.393221] usbcore: registered new interface driver usbserial_generic
+Jan 21 19:17:14 fedora kernel: [    0.393549] USB Serial support registered for generic
+Jan 21 19:17:14 fedora kernel: [    0.393864] usbserial: USB Serial Driver core
+Jan 21 19:17:14 fedora kernel: [    0.394163] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Jan 21 19:17:14 fedora kernel: [    0.395256] serio: i8042 KBD port at 0x60,0x64 irq 1
+Jan 21 19:17:14 fedora kernel: [    0.395560] serio: i8042 AUX port at 0x60,0x64 irq 12
+Jan 21 19:17:14 fedora kernel: [    0.396263] mousedev: PS/2 mouse device common for all mice
+Jan 21 19:17:14 fedora kernel: [    0.396788] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+Jan 21 19:17:14 fedora kernel: [    0.399452] rtc_cmos 00:01: RTC can wake from S4
+Jan 21 19:17:14 fedora kernel: [    0.399922] rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+Jan 21 19:17:14 fedora kernel: [    0.400356] rtc0: alarms up to one day, 114 bytes nvram, hpet irqs
+Jan 21 19:17:14 fedora kernel: [    0.400766] device-mapper: uevent: version 1.0.3
+Jan 21 19:17:14 fedora kernel: [    0.401228] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+Jan 21 19:17:14 fedora kernel: [    0.401793] cpuidle: using governor ladder
+Jan 21 19:17:14 fedora kernel: [    0.402083] cpuidle: using governor menu
+Jan 21 19:17:14 fedora kernel: [    0.402393] EFI Variables Facility v0.08 2004-May-17
+Jan 21 19:17:14 fedora kernel: [    0.402760] usbcore: registered new interface driver usbhid
+Jan 21 19:17:14 fedora kernel: [    0.403059] usbhid: USB HID core driver
+Jan 21 19:17:14 fedora kernel: [    0.403417] ip_tables: (C) 2000-2006 Netfilter Core Team
+Jan 21 19:17:14 fedora kernel: [    0.403750] TCP: cubic registered
+Jan 21 19:17:14 fedora kernel: [    0.404017] Initializing XFRM netlink socket
+Jan 21 19:17:14 fedora kernel: [    0.404352] NET: Registered protocol family 10
+Jan 21 19:17:14 fedora kernel: [    0.404787] Mobile IPv6
+Jan 21 19:17:14 fedora kernel: [    0.405035] NET: Registered protocol family 17
+Jan 21 19:17:14 fedora kernel: [    0.405319] Registering the dns_resolver key type
+Jan 21 19:17:14 fedora kernel: [    0.405737] registered taskstats version 1
+Jan 21 19:17:14 fedora kernel: [    0.406256]   Magic number: 13:337:254
+Jan 21 19:17:14 fedora kernel: [    0.406668] rtc_cmos 00:01: setting system clock to 2013-01-22 00:17:06 UTC (1358813826)
+Jan 21 19:17:14 fedora kernel: [    0.407181] Initializing network drop monitor service
+Jan 21 19:17:14 fedora kernel: [    0.549653] ata2.00: ATAPI: QEMU DVD-ROM, 1.0.1, max UDMA/100
+Jan 21 19:17:14 fedora kernel: [    0.552097] ata2.00: configured for MWDMA2
+Jan 21 19:17:14 fedora kernel: [    0.554495] scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     1.0. PQ: 0 ANSI: 5
+Jan 21 19:17:14 fedora kernel: [    0.555880] sr0: scsi3-mmc drive: 4x/4x cd/rw xa/form2 tray
+Jan 21 19:17:14 fedora kernel: [    0.556199] cdrom: Uniform CD-ROM driver Revision: 3.20
+Jan 21 19:17:14 fedora kernel: [    0.556625] sr 1:0:0:0: Attached scsi generic sg0 type 5
+Jan 21 19:17:14 fedora kernel: [    0.558028] Freeing unused kernel memory: 1004k freed
+Jan 21 19:17:14 fedora kernel: [    0.558494] Write protecting the kernel read-only data: 12288k
+Jan 21 19:17:14 fedora kernel: [    0.563031] Freeing unused kernel memory: 1996k freed
+Jan 21 19:17:14 fedora kernel: [    0.568151] Freeing unused kernel memory: 1480k freed
+Jan 21 19:17:14 fedora kernel: [    0.694038] usb 1-1: new full-speed USB device number 2 using uhci_hcd
+Jan 21 19:17:14 fedora kernel: [    0.819309]  vda: vda1 vda2 vda3
+Jan 21 19:17:14 fedora kernel: [    0.830771] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input2
+Jan 21 19:17:14 fedora kernel: [    1.009684] usb 1-1: New USB device found, idVendor=0627, idProduct=0001
+Jan 21 19:17:14 fedora kernel: [    1.011388] usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=5
+Jan 21 19:17:14 fedora kernel: [    1.012897] usb 1-1: Product: QEMU USB Tablet
+Jan 21 19:17:14 fedora kernel: [    1.014047] usb 1-1: Manufacturer: QEMU 1.0.1
+Jan 21 19:17:14 fedora kernel: [    1.017175] usb 1-1: SerialNumber: 42
+Jan 21 19:17:14 fedora kernel: [    1.052937] input: QEMU 1.0.1 QEMU USB Tablet as /devices/pci0000:00/0000:00:01.2/usb1/1-1/1-1:1.0/input/input3
+Jan 21 19:17:14 fedora kernel: [    1.055499] generic-usb 0003:0627:0001.0001: input,hidraw0: USB HID v0.01 Pointer [QEMU 1.0.1 QEMU USB Tablet] on usb-0000:00:01.2-1/input0
+Jan 21 19:17:14 fedora kernel: [    1.280227] Refined TSC clocksource calibration: 2394.571 MHz.
+Jan 21 19:17:14 fedora kernel: [    1.343315] EXT4-fs (dm-1): INFO: recovery required on readonly filesystem
+Jan 21 19:17:14 fedora kernel: [    1.343676] EXT4-fs (dm-1): write access will be enabled during recovery
+Jan 21 19:17:14 fedora kernel: [    2.952725] EXT4-fs (dm-1): recovery complete
+Jan 21 19:17:14 fedora kernel: [    2.977682] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 19:17:14 fedora kernel: [    3.130097] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 19:17:14 fedora kernel: [    3.615245] SELinux:  Disabled at runtime.
+Jan 21 19:17:14 fedora kernel: [    3.616960] type=1404 audit(1358813829.710:2): selinux=0 auid=4294967295 ses=4294967295
+Jan 21 19:17:14 fedora kernel: [    5.154970] EXT4-fs (dm-1): re-mounted. Opts: (null)
+Jan 21 19:17:14 fedora kernel: [    6.005539] Adding 2064380k swap on /dev/mapper/vg_fedora-lv_swap.  Priority:0 extents:1 across:2064380k 
+Jan 21 19:17:14 fedora kernel: [    6.777477] microcode: CPU0 sig=0x623, pf=0x0, revision=0x1
+Jan 21 19:17:14 fedora kernel: [    6.956864] microcode: Microcode Update Driver: v2.00 <tigran@aivazian.fsnet.co.uk>, Peter Oruba
+Jan 21 19:17:14 fedora kernel: [    7.505098] piix4_smbus 0000:00:01.3: SMBus Host Controller at 0xb100, revision 0
+Jan 21 19:17:14 fedora kernel: [    7.869580] EXT4-fs (vda2): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 19:17:14 fedora auditctl[546]: No rules
+Jan 21 19:17:14 fedora auditctl[546]: AUDIT_STATUS: enabled=0 flag=1 pid=0 rate_limit=0 backlog_limit=320 lost=0 backlog=0
+Jan 21 19:17:14 fedora auditd[545]: Started dispatcher: /sbin/audispd pid: 585
+Jan 21 19:17:14 fedora audispd: No plugins found, exiting
+Jan 21 19:17:14 fedora auditd[545]: Init complete, auditd 2.2.1 listening for events (startup state enable)
+Jan 21 19:17:15 fedora systemd-logind[547]: New seat seat0.
+Jan 21 19:17:15 fedora kernel: [    9.154446] ip6_tables: (C) 2000-2006 Netfilter Core Team
+Jan 21 19:17:15 fedora kernel: [    9.221936] nf_conntrack version 0.5.0 (7968 buckets, 31872 max)
+Jan 21 19:17:15 fedora ip6tables.init[539]: ip6tables: Applying firewall rules: [  OK  ]
+Jan 21 19:17:15 fedora network[606]: Bringing up loopback interface:  [  OK  ]
+Jan 21 19:17:15 fedora network[606]: Bringing up interface eth0:
+Jan 21 19:17:17 fedora dhclient[722]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 21 19:17:17 fedora dhclient[722]: DHCPACK from 192.168.122.1
+Jan 21 19:17:17 fedora NET[782]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 21 19:17:17 fedora dhclient[722]: bound to 192.168.122.159 -- renewal in 1734 seconds.
+Jan 21 19:17:17 fedora network[606]: Determining IP information for eth0... done.
+Jan 21 19:17:17 fedora network[606]: [  OK  ]
+Jan 21 19:17:18 fedora pg_ctl[848]: pg_ctl: another server might be running; trying to start server anyway
+Jan 21 19:17:22 fedora systemd[1]: Startup finished in 576ms 71us (kernel) + 3s 129ms 797us (initrd) + 13s 31ms 378us (userspace) = 16s 737ms 246us.
+Jan 21 19:41:11 fedora systemd-logind[547]: New session 1 of user root.
+Jan 21 19:46:11 fedora dhclient[786]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 19:46:12 fedora dhclient[786]: DHCPACK from 192.168.122.1
+Jan 21 19:46:12 fedora dhclient[786]: bound to 192.168.122.159 -- renewal in 1232 seconds.
+Jan 21 20:06:44 fedora dhclient[786]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 20:06:44 fedora dhclient[786]: DHCPACK from 192.168.122.1
+Jan 21 20:06:44 fedora dhclient[786]: bound to 192.168.122.159 -- renewal in 1453 seconds.
+Jan 21 20:30:57 fedora dhclient[786]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 20:30:57 fedora dhclient[786]: DHCPACK from 192.168.122.1
+Jan 21 20:30:57 fedora dhclient[786]: bound to 192.168.122.159 -- renewal in 1394 seconds.
+Jan 21 20:38:30 fedora kernel: Kernel logging (proc) stopped.
+Jan 21 20:38:30 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="555" x-info="http://www.rsyslog.com"] exiting on signal 15.
+Jan 21 21:16:15 fedora kernel: imklog 5.8.10, log source = /proc/kmsg started.
+Jan 21 21:16:15 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="560" x-info="http://www.rsyslog.com"] start
+Jan 21 21:16:15 fedora kernel: [    0.000000] Initializing cgroup subsys cpuset
+Jan 21 21:16:15 fedora kernel: [    0.000000] Initializing cgroup subsys cpu
+Jan 21 21:16:15 fedora kernel: [    0.000000] Linux version 3.4.7-1.fc16.x86_64 (mockbuild@buildvm-22.phx2.fedoraproject.org) (gcc version 4.6.3 20120306 (Red Hat 4.6.3-2) (GCC) ) #1 SMP Mon Jul 30 16:37:23 UTC 2012
+Jan 21 21:16:15 fedora kernel: [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 21 21:16:15 fedora kernel: [    0.000000] BIOS-provided physical RAM map:
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 0000000000100000 - 000000003fffe000 (usable)
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 000000003fffe000 - 0000000040000000 (reserved)
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 00000000feffc000 - 00000000ff000000 (reserved)
+Jan 21 21:16:15 fedora kernel: [    0.000000]  BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+Jan 21 21:16:15 fedora kernel: [    0.000000] NX (Execute Disable) protection: active
+Jan 21 21:16:15 fedora kernel: [    0.000000] DMI 2.4 present.
+Jan 21 21:16:15 fedora kernel: [    0.000000] No AGP bridge found
+Jan 21 21:16:15 fedora kernel: [    0.000000] last_pfn = 0x3fffe max_arch_pfn = 0x400000000
+Jan 21 21:16:15 fedora kernel: [    0.000000] PAT not supported by CPU.
+Jan 21 21:16:15 fedora kernel: [    0.000000] found SMP MP-table at [ffff8800000fdad0] fdad0
+Jan 21 21:16:15 fedora kernel: [    0.000000] init_memory_mapping: 0000000000000000-000000003fffe000
+Jan 21 21:16:15 fedora kernel: [    0.000000] RAMDISK: 36716000 - 37383000
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: RSDP 00000000000fd970 00014 (v00 BOCHS )
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: RSDT 000000003fffe440 00038 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: FACP 000000003fffff80 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: DSDT 000000003fffe480 0124A (v01   BXPC   BXDSDT 00000001 INTL 20100528)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: FACS 000000003fffff40 00040
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffffe90 000AF (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: APIC 000000003ffffd70 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: HPET 000000003ffffd30 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffff6d0 00654 (v01   BXPC BXSSDTPC 00000001 INTL 20100528)
+Jan 21 21:16:15 fedora kernel: [    0.000000] No NUMA configuration found
+Jan 21 21:16:15 fedora kernel: [    0.000000] Faking a node at 0000000000000000-000000003fffe000
+Jan 21 21:16:15 fedora kernel: [    0.000000] Initmem setup node 0 0000000000000000-000000003fffe000
+Jan 21 21:16:15 fedora kernel: [    0.000000]   NODE_DATA [000000003ffea000 - 000000003fffdfff]
+Jan 21 21:16:15 fedora kernel: [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+Jan 21 21:16:15 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:1cf4781, boot clock
+Jan 21 21:16:15 fedora kernel: [    0.000000] Zone PFN ranges:
+Jan 21 21:16:15 fedora kernel: [    0.000000]   DMA      0x00000010 -> 0x00001000
+Jan 21 21:16:15 fedora auditctl[552]: No rules
+Jan 21 21:16:15 fedora auditctl[552]: AUDIT_STATUS: enabled=0 flag=1 pid=0 rate_limit=0 backlog_limit=320 lost=0 backlog=0
+Jan 21 21:16:15 fedora auditd[551]: Started dispatcher: /sbin/audispd pid: 588
+Jan 21 21:16:15 fedora auditd[551]: Init complete, auditd 2.2.1 listening for events (startup state enable)
+Jan 21 21:16:15 fedora audispd: No plugins found, exiting
+Jan 21 21:16:15 fedora kernel: [    0.000000]   DMA32    0x00001000 -> 0x00100000
+Jan 21 21:16:15 fedora kernel: [    0.000000]   Normal   empty
+Jan 21 21:16:15 fedora kernel: [    0.000000] Movable zone start PFN for each node
+Jan 21 21:16:15 fedora kernel: [    0.000000] Early memory PFN ranges
+Jan 21 21:16:15 fedora kernel: [    0.000000]     0: 0x00000010 -> 0x0000009f
+Jan 21 21:16:15 fedora kernel: [    0.000000]     0: 0x00000100 -> 0x0003fffe
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: PM-Timer IO Port: 0xb008
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+Jan 21 21:16:15 fedora kernel: [    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Jan 21 21:16:15 fedora kernel: [    0.000000] Using ACPI (MADT) for SMP configuration information
+Jan 21 21:16:15 fedora kernel: [    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+Jan 21 21:16:15 fedora kernel: [    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+Jan 21 21:16:15 fedora kernel: [    0.000000] PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+Jan 21 21:16:15 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+Jan 21 21:16:15 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+Jan 21 21:16:15 fedora kernel: [    0.000000] Allocating PCI resources starting at 40000000 (gap: 40000000:beffc000)
+Jan 21 21:16:15 fedora kernel: [    0.000000] Booting paravirtualized kernel on KVM
+Jan 21 21:16:15 fedora kernel: [    0.000000] setup_percpu: NR_CPUS:256 nr_cpumask_bits:256 nr_cpu_ids:1 nr_node_ids:1
+Jan 21 21:16:15 fedora kernel: [    0.000000] PERCPU: Embedded 28 pages/cpu @ffff88003fc00000 s83200 r8192 d23296 u2097152
+Jan 21 21:16:15 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:3fc13781, primary cpu clock
+Jan 21 21:16:15 fedora kernel: [    0.000000] KVM setup async PF for cpu 0
+Jan 21 21:16:15 fedora kernel: [    0.000000] kvm-stealtime: cpu 0, msr 3fc0df80
+Jan 21 21:16:15 fedora kernel: [    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 257928
+Jan 21 21:16:15 fedora kernel: [    0.000000] Policy zone: DMA32
+Jan 21 21:16:15 fedora kernel: [    0.000000] Kernel command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 21 21:16:15 fedora kernel: [    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.000000] Checking aperture...
+Jan 21 21:16:15 fedora kernel: [    0.000000] No AGP bridge found
+Jan 21 21:16:15 fedora kernel: [    0.000000] Memory: 1002700k/1048568k available (6178k kernel code, 452k absent, 45416k reserved, 7003k data, 1004k init)
+Jan 21 21:16:15 fedora kernel: [    0.000000] SLUB: Genslabs=15, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Jan 21 21:16:15 fedora kernel: [    0.000000] Hierarchical RCU implementation.
+Jan 21 21:16:15 fedora kernel: [    0.000000] NR_IRQS:16640 nr_irqs:256 16
+Jan 21 21:16:15 fedora kernel: [    0.000000] Console: colour VGA+ 80x25
+Jan 21 21:16:15 fedora kernel: [    0.000000] console [tty0] enabled
+Jan 21 21:16:15 fedora kernel: [    0.000000] allocated 4194304 bytes of page_cgroup
+Jan 21 21:16:15 fedora kernel: [    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Jan 21 21:16:15 fedora kernel: [    0.000000] Detected 2394.560 MHz processor.
+Jan 21 21:16:15 fedora kernel: [    0.001999] Calibrating delay loop (skipped) preset value.. 4789.12 BogoMIPS (lpj=2394560)
+Jan 21 21:16:15 fedora kernel: [    0.002003] pid_max: default: 32768 minimum: 301
+Jan 21 21:16:15 fedora kernel: [    0.002362] Security Framework initialized
+Jan 21 21:16:15 fedora kernel: [    0.002694] SELinux:  Initializing.
+Jan 21 21:16:15 fedora kernel: [    0.003105] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.003677] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.004079] Mount-cache hash table entries: 256
+Jan 21 21:16:15 fedora kernel: [    0.004552] Initializing cgroup subsys cpuacct
+Jan 21 21:16:15 fedora kernel: [    0.005003] Initializing cgroup subsys memory
+Jan 21 21:16:15 fedora kernel: [    0.005344] Initializing cgroup subsys devices
+Jan 21 21:16:15 fedora kernel: [    0.005684] Initializing cgroup subsys freezer
+Jan 21 21:16:15 fedora kernel: [    0.006002] Initializing cgroup subsys net_cls
+Jan 21 21:16:15 fedora kernel: [    0.006338] Initializing cgroup subsys blkio
+Jan 21 21:16:15 fedora kernel: [    0.006693] Initializing cgroup subsys perf_event
+Jan 21 21:16:15 fedora kernel: [    0.007061] mce: CPU supports 10 MCE banks
+Jan 21 21:16:15 fedora kernel: [    0.007566] SMP alternatives: switching to UP code
+Jan 21 21:16:15 fedora kernel: [    0.021048] Freeing SMP alternatives: 24k freed
+Jan 21 21:16:15 fedora kernel: [    0.021369] ACPI: Core revision 20120320
+Jan 21 21:16:15 fedora kernel: [    0.022261] ftrace: allocating 22861 entries in 90 pages
+Jan 21 21:16:15 fedora kernel: [    0.029849] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Jan 21 21:16:15 fedora kernel: [    0.029999] CPU0: Intel QEMU Virtual CPU version 1.0.1 stepping 03
+Jan 21 21:16:15 fedora kernel: [    0.030997] APIC calibration not consistent with PM-Timer: 101ms instead of 100ms
+Jan 21 21:16:15 fedora kernel: [    0.030997] APIC delta adjusted to PM-Timer: 6249956 (6313163)
+Jan 21 21:16:15 fedora kernel: [    0.030997] Performance Events: unsupported p6 CPU model 2 no PMU driver, software events only.
+Jan 21 21:16:15 fedora kernel: [    0.031265] NMI watchdog: disabled (cpu0): hardware events not enabled
+Jan 21 21:16:15 fedora kernel: [    0.032020] Brought up 1 CPUs
+Jan 21 21:16:15 fedora kernel: [    0.032326] Total of 1 processors activated (4789.12 BogoMIPS).
+Jan 21 21:16:15 fedora kernel: [    0.033204] devtmpfs: initialized
+Jan 21 21:16:15 fedora kernel: [    0.034311] atomic64 test passed for x86-64 platform with CX8 and with SSE
+Jan 21 21:16:15 fedora kernel: [    0.034771] RTC time:  2:16:08, date: 01/22/13
+Jan 21 21:16:15 fedora kernel: [    0.035043] NET: Registered protocol family 16
+Jan 21 21:16:15 fedora kernel: [    0.035622] ACPI: bus type pci registered
+Jan 21 21:16:15 fedora kernel: [    0.036096] PCI: Using configuration type 1 for base access
+Jan 21 21:16:15 fedora kernel: [    0.037197] bio: create slab <bio-0> at 0
+Jan 21 21:16:15 fedora kernel: [    0.037579] ACPI: Added _OSI(Module Device)
+Jan 21 21:16:15 fedora kernel: [    0.037914] ACPI: Added _OSI(Processor Device)
+Jan 21 21:16:15 fedora kernel: [    0.038000] ACPI: Added _OSI(3.0 _SCP Extensions)
+Jan 21 21:16:15 fedora kernel: [    0.038336] ACPI: Added _OSI(Processor Aggregator Device)
+Jan 21 21:16:15 fedora kernel: [    0.040540] ACPI: Interpreter enabled
+Jan 21 21:16:15 fedora kernel: [    0.040889] ACPI: (supports S0 S5)
+Jan 21 21:16:15 fedora kernel: [    0.041324] ACPI: Using IOAPIC for interrupt routing
+Jan 21 21:16:15 fedora kernel: [    0.046028] ACPI: No dock devices found.
+Jan 21 21:16:15 fedora kernel: [    0.047010] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jan 21 21:16:15 fedora kernel: [    0.048082] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Jan 21 21:16:15 fedora kernel: [    0.049068] pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7]
+Jan 21 21:16:15 fedora kernel: [    0.049448] pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff]
+Jan 21 21:16:15 fedora kernel: [    0.049829] pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff]
+Jan 21 21:16:15 fedora kernel: [    0.049999] pci_root PNP0A03:00: host bridge window [mem 0x40000000-0xfebfffff]
+Jan 21 21:16:15 fedora kernel: [    0.051033] PCI host bridge to bus 0000:00
+Jan 21 21:16:15 fedora kernel: [    0.051360] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7]
+Jan 21 21:16:15 fedora kernel: [    0.051735] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff]
+Jan 21 21:16:15 fedora kernel: [    0.051998] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff]
+Jan 21 21:16:15 fedora kernel: [    0.052385] pci_bus 0000:00: root bus resource [mem 0x40000000-0xfebfffff]
+Jan 21 21:16:15 fedora kernel: [    0.055409] pci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI
+Jan 21 21:16:15 fedora kernel: [    0.056006] pci 0000:00:01.3: quirk: [io  0xb100-0xb10f] claimed by PIIX4 SMB
+Jan 21 21:16:15 fedora kernel: [    0.071457]  pci0000:00: Unable to request _OSC control (_OSC support mask: 0x1e)
+Jan 21 21:16:15 fedora kernel: [    0.074898] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+Jan 21 21:16:15 fedora kernel: [    0.075633] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+Jan 21 21:16:15 fedora kernel: [    0.076441] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+Jan 21 21:16:15 fedora kernel: [    0.077065] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+Jan 21 21:16:15 fedora kernel: [    0.078073] ACPI: PCI Interrupt Link [LNKS] (IRQs 9) *0
+Jan 21 21:16:15 fedora kernel: [    0.078808] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+Jan 21 21:16:15 fedora kernel: [    0.078996] vgaarb: loaded
+Jan 21 21:16:15 fedora kernel: [    0.079312] vgaarb: bridge control possible 0000:00:02.0
+Jan 21 21:16:15 fedora kernel: [    0.080056] SCSI subsystem initialized
+Jan 21 21:16:15 fedora kernel: [    0.080467] usbcore: registered new interface driver usbfs
+Jan 21 21:16:15 fedora kernel: [    0.080873] usbcore: registered new interface driver hub
+Jan 21 21:16:15 fedora kernel: [    0.081020] usbcore: registered new device driver usb
+Jan 21 21:16:15 fedora kernel: [    0.081424] PCI: Using ACPI for IRQ routing
+Jan 21 21:16:15 fedora kernel: [    0.082247] NetLabel: Initializing
+Jan 21 21:16:15 fedora kernel: [    0.082562] NetLabel:  domain hash size = 128
+Jan 21 21:16:15 fedora kernel: [    0.082995] NetLabel:  protocols = UNLABELED CIPSOv4
+Jan 21 21:16:15 fedora kernel: [    0.083347] NetLabel:  unlabeled traffic allowed by default
+Jan 21 21:16:15 fedora kernel: [    0.083785] HPET: 3 timers in total, 0 timers will be used for per-cpu timer
+Jan 21 21:16:15 fedora kernel: [    0.084011] hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+Jan 21 21:16:15 fedora kernel: [    0.084609] hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+Jan 21 21:16:15 fedora kernel: [    0.090104] Switching to clocksource kvm-clock
+Jan 21 21:16:15 fedora kernel: [    0.095417] pnp: PnP ACPI init
+Jan 21 21:16:15 fedora kernel: [    0.095759] ACPI: bus type pnp registered
+Jan 21 21:16:15 fedora kernel: [    0.096761] pnp: PnP ACPI: found 7 devices
+Jan 21 21:16:15 fedora kernel: [    0.097109] ACPI: ACPI bus type pnp unregistered
+Jan 21 21:16:15 fedora kernel: [    0.104571] NET: Registered protocol family 2
+Jan 21 21:16:15 fedora kernel: [    0.104979] IP route cache hash table entries: 32768 (order: 6, 262144 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.105829] TCP established hash table entries: 131072 (order: 9, 2097152 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.106816] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.107367] TCP: Hash tables configured (established 131072 bind 65536)
+Jan 21 21:16:15 fedora kernel: [    0.107749] TCP: reno registered
+Jan 21 21:16:15 fedora kernel: [    0.108817] UDP hash table entries: 512 (order: 2, 16384 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.109225] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.109666] NET: Registered protocol family 1
+Jan 21 21:16:15 fedora kernel: [    0.110018] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jan 21 21:16:15 fedora kernel: [    0.110406] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+Jan 21 21:16:15 fedora kernel: [    0.110779] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+Jan 21 21:16:15 fedora kernel: [    0.111313] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+Jan 21 21:16:15 fedora kernel: [    0.111868] Unpacking initramfs...
+Jan 21 21:16:15 fedora kernel: [    0.344609] Freeing initrd memory: 12724k freed
+Jan 21 21:16:15 fedora kernel: [    0.347291] audit: initializing netlink socket (disabled)
+Jan 21 21:16:15 fedora kernel: [    0.347674] type=2000 audit(1358820970.346:1): initialized
+Jan 21 21:16:15 fedora kernel: [    0.365245] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+Jan 21 21:16:15 fedora kernel: [    0.366744] VFS: Disk quotas dquot_6.5.2
+Jan 21 21:16:15 fedora kernel: [    0.367137] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Jan 21 21:16:15 fedora kernel: [    0.367831] msgmni has been set to 1983
+Jan 21 21:16:15 fedora kernel: [    0.368904] alg: No test for stdrng (krng)
+Jan 21 21:16:15 fedora kernel: [    0.369329] NET: Registered protocol family 38
+Jan 21 21:16:15 fedora kernel: [    0.369697] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+Jan 21 21:16:15 fedora kernel: [    0.370326] io scheduler noop registered
+Jan 21 21:16:15 fedora kernel: [    0.370651] io scheduler deadline registered
+Jan 21 21:16:15 fedora kernel: [    0.371028] io scheduler cfq registered (default)
+Jan 21 21:16:15 fedora kernel: [    0.371458] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+Jan 21 21:16:15 fedora kernel: [    0.371831] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+Jan 21 21:16:15 fedora kernel: [    0.372287] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Jan 21 21:16:15 fedora kernel: [    0.372721] acpiphp: Slot [3] registered
+Jan 21 21:16:15 fedora kernel: [    0.373135] acpiphp: Slot [4] registered
+Jan 21 21:16:15 fedora kernel: [    0.375888] acpiphp: Slot [5] registered
+Jan 21 21:16:15 fedora kernel: [    0.377137] acpiphp: Slot [6] registered
+Jan 21 21:16:15 fedora kernel: [    0.378243] acpiphp: Slot [7] registered
+Jan 21 21:16:15 fedora kernel: [    0.379181] acpiphp: Slot [8] registered
+Jan 21 21:16:15 fedora kernel: [    0.380193] acpiphp: Slot [9] registered
+Jan 21 21:16:15 fedora kernel: [    0.380969] acpiphp: Slot [10] registered
+Jan 21 21:16:15 fedora kernel: [    0.382073] acpiphp: Slot [11] registered
+Jan 21 21:16:15 fedora kernel: [    0.383134] acpiphp: Slot [12] registered
+Jan 21 21:16:15 fedora kernel: [    0.384194] acpiphp: Slot [13] registered
+Jan 21 21:16:15 fedora kernel: [    0.385267] acpiphp: Slot [14] registered
+Jan 21 21:16:15 fedora kernel: [    0.386330] acpiphp: Slot [15] registered
+Jan 21 21:16:15 fedora kernel: [    0.387396] acpiphp: Slot [16] registered
+Jan 21 21:16:15 fedora kernel: [    0.388374] acpiphp: Slot [17] registered
+Jan 21 21:16:15 fedora kernel: [    0.389416] acpiphp: Slot [18] registered
+Jan 21 21:16:15 fedora kernel: [    0.389755] acpiphp: Slot [19] registered
+Jan 21 21:16:15 fedora kernel: [    0.390108] acpiphp: Slot [20] registered
+Jan 21 21:16:15 fedora kernel: [    0.390452] acpiphp: Slot [21] registered
+Jan 21 21:16:15 fedora kernel: [    0.390789] acpiphp: Slot [22] registered
+Jan 21 21:16:15 fedora kernel: [    0.391138] acpiphp: Slot [23] registered
+Jan 21 21:16:15 fedora kernel: [    0.391479] acpiphp: Slot [24] registered
+Jan 21 21:16:15 fedora kernel: [    0.391812] acpiphp: Slot [25] registered
+Jan 21 21:16:15 fedora kernel: [    0.392160] acpiphp: Slot [26] registered
+Jan 21 21:16:15 fedora kernel: [    0.392504] acpiphp: Slot [27] registered
+Jan 21 21:16:15 fedora kernel: [    0.392841] acpiphp: Slot [28] registered
+Jan 21 21:16:15 fedora kernel: [    0.393187] acpiphp: Slot [29] registered
+Jan 21 21:16:15 fedora kernel: [    0.393531] acpiphp: Slot [30] registered
+Jan 21 21:16:15 fedora kernel: [    0.393868] acpiphp: Slot [31] registered
+Jan 21 21:16:15 fedora kernel: [    0.394385] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jan 21 21:16:15 fedora kernel: [    0.394969] ACPI: Power Button [PWRF]
+Jan 21 21:16:15 fedora kernel: [    0.396746] GHES: HEST is not enabled!
+Jan 21 21:16:15 fedora kernel: [    0.397273] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 10
+Jan 21 21:16:15 fedora kernel: [    0.397887] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+Jan 21 21:16:15 fedora kernel: [    0.398487] ACPI: PCI Interrupt Link [LNKB] enabled at IRQ 11
+Jan 21 21:16:15 fedora kernel: [    0.399136] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jan 21 21:16:15 fedora kernel: [    0.421255] serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+Jan 21 21:16:15 fedora kernel: [    0.443642] 00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+Jan 21 21:16:15 fedora kernel: [    0.465515] Non-volatile memory driver v1.3
+Jan 21 21:16:15 fedora kernel: [    0.466273] Linux agpgart interface v0.103
+Jan 21 21:16:15 fedora kernel: [    0.467483] loop: module loaded
+Jan 21 21:16:15 fedora kernel: [    0.468415] scsi0 : ata_piix
+Jan 21 21:16:15 fedora kernel: [    0.468878] scsi1 : ata_piix
+Jan 21 21:16:15 fedora kernel: [    0.469352] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc0e0 irq 14
+Jan 21 21:16:15 fedora kernel: [    0.469735] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc0e8 irq 15
+Jan 21 21:16:15 fedora kernel: [    0.470179] Fixed MDIO Bus: probed
+Jan 21 21:16:15 fedora kernel: [    0.470536] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Jan 21 21:16:15 fedora kernel: [    0.470926] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Jan 21 21:16:15 fedora kernel: [    0.471323] uhci_hcd: USB Universal Host Controller Interface driver
+Jan 21 21:16:15 fedora kernel: [    0.471743] uhci_hcd 0000:00:01.2: UHCI Host Controller
+Jan 21 21:16:15 fedora kernel: [    0.472141] uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+Jan 21 21:16:15 fedora kernel: [    0.472812] uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c040
+Jan 21 21:16:15 fedora kernel: [    0.473245] usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+Jan 21 21:16:15 fedora kernel: [    0.473659] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 21 21:16:15 fedora kernel: [    0.474244] usb usb1: Product: UHCI Host Controller
+Jan 21 21:16:15 fedora kernel: [    0.474584] usb usb1: Manufacturer: Linux 3.4.7-1.fc16.x86_64 uhci_hcd
+Jan 21 21:16:15 fedora kernel: [    0.474956] usb usb1: SerialNumber: 0000:00:01.2
+Jan 21 21:16:15 fedora kernel: [    0.475415] hub 1-0:1.0: USB hub found
+Jan 21 21:16:15 fedora kernel: [    0.475752] hub 1-0:1.0: 2 ports detected
+Jan 21 21:16:15 fedora kernel: [    0.476176] usbcore: registered new interface driver usbserial
+Jan 21 21:16:15 fedora kernel: [    0.476580] usbcore: registered new interface driver usbserial_generic
+Jan 21 21:16:15 fedora kernel: [    0.476960] USB Serial support registered for generic
+Jan 21 21:16:15 fedora kernel: [    0.477361] usbserial: USB Serial Driver core
+Jan 21 21:16:15 fedora kernel: [    0.477714] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Jan 21 21:16:15 fedora kernel: [    0.478968] serio: i8042 KBD port at 0x60,0x64 irq 1
+Jan 21 21:16:15 fedora kernel: [    0.479348] serio: i8042 AUX port at 0x60,0x64 irq 12
+Jan 21 21:16:15 fedora kernel: [    0.479752] mousedev: PS/2 mouse device common for all mice
+Jan 21 21:16:15 fedora kernel: [    0.480761] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+Jan 21 21:16:15 fedora kernel: [    0.484143] rtc_cmos 00:01: RTC can wake from S4
+Jan 21 21:16:15 fedora kernel: [    0.484799] rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+Jan 21 21:16:15 fedora kernel: [    0.485322] rtc0: alarms up to one day, 114 bytes nvram, hpet irqs
+Jan 21 21:16:15 fedora kernel: [    0.485779] device-mapper: uevent: version 1.0.3
+Jan 21 21:16:15 fedora kernel: [    0.486497] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+Jan 21 21:16:15 fedora kernel: [    0.487207] cpuidle: using governor ladder
+Jan 21 21:16:15 fedora kernel: [    0.488097] cpuidle: using governor menu
+Jan 21 21:16:15 fedora kernel: [    0.489480] EFI Variables Facility v0.08 2004-May-17
+Jan 21 21:16:15 fedora kernel: [    0.489909] usbcore: registered new interface driver usbhid
+Jan 21 21:16:15 fedora kernel: [    0.490329] usbhid: USB HID core driver
+Jan 21 21:16:15 fedora kernel: [    0.490940] ip_tables: (C) 2000-2006 Netfilter Core Team
+Jan 21 21:16:15 fedora kernel: [    0.491355] TCP: cubic registered
+Jan 21 21:16:15 fedora kernel: [    0.491676] Initializing XFRM netlink socket
+Jan 21 21:16:15 fedora kernel: [    0.492155] NET: Registered protocol family 10
+Jan 21 21:16:15 fedora kernel: [    0.492676] Mobile IPv6
+Jan 21 21:16:15 fedora kernel: [    0.492974] NET: Registered protocol family 17
+Jan 21 21:16:15 fedora kernel: [    0.493363] Registering the dns_resolver key type
+Jan 21 21:16:15 fedora kernel: [    0.493843] registered taskstats version 1
+Jan 21 21:16:15 fedora kernel: [    0.496159]   Magic number: 13:549:258
+Jan 21 21:16:15 fedora kernel: [    0.496884] rtc_cmos 00:01: setting system clock to 2013-01-22 02:16:09 UTC (1358820969)
+Jan 21 21:16:15 fedora kernel: [    0.498050] Initializing network drop monitor service
+Jan 21 21:16:15 fedora kernel: [    0.639179] ata2.00: ATAPI: QEMU DVD-ROM, 1.0.1, max UDMA/100
+Jan 21 21:16:15 fedora kernel: [    0.642090] ata2.00: configured for MWDMA2
+Jan 21 21:16:15 fedora kernel: [    0.645102] scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     1.0. PQ: 0 ANSI: 5
+Jan 21 21:16:15 fedora kernel: [    0.649563] sr0: scsi3-mmc drive: 4x/4x cd/rw xa/form2 tray
+Jan 21 21:16:15 fedora kernel: [    0.649957] cdrom: Uniform CD-ROM driver Revision: 3.20
+Jan 21 21:16:15 fedora kernel: [    0.650631] sr 1:0:0:0: Attached scsi generic sg0 type 5
+Jan 21 21:16:15 fedora kernel: [    0.652386] Freeing unused kernel memory: 1004k freed
+Jan 21 21:16:15 fedora kernel: [    0.652904] Write protecting the kernel read-only data: 12288k
+Jan 21 21:16:15 fedora kernel: [    0.658680] Freeing unused kernel memory: 1996k freed
+Jan 21 21:16:15 fedora kernel: [    0.663414] Freeing unused kernel memory: 1480k freed
+Jan 21 21:16:15 fedora kernel: [    0.778042] usb 1-1: new full-speed USB device number 2 using uhci_hcd
+Jan 21 21:16:15 fedora kernel: [    0.915723] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input2
+Jan 21 21:16:15 fedora kernel: [    0.964789]  vda: vda1 vda2 vda3
+Jan 21 21:16:15 fedora kernel: [    1.009327] usb 1-1: New USB device found, idVendor=0627, idProduct=0001
+Jan 21 21:16:15 fedora kernel: [    1.009748] usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=5
+Jan 21 21:16:15 fedora kernel: [    1.010161] usb 1-1: Product: QEMU USB Tablet
+Jan 21 21:16:15 fedora kernel: [    1.010499] usb 1-1: Manufacturer: QEMU 1.0.1
+Jan 21 21:16:15 fedora kernel: [    1.010844] usb 1-1: SerialNumber: 42
+Jan 21 21:16:15 fedora kernel: [    1.045492] input: QEMU 1.0.1 QEMU USB Tablet as /devices/pci0000:00/0000:00:01.2/usb1/1-1/1-1:1.0/input/input3
+Jan 21 21:16:15 fedora kernel: [    1.046358] generic-usb 0003:0627:0001.0001: input,hidraw0: USB HID v0.01 Pointer [QEMU 1.0.1 QEMU USB Tablet] on usb-0000:00:01.2-1/input0
+Jan 21 21:16:15 fedora kernel: [    1.348185] Refined TSC clocksource calibration: 2394.559 MHz.
+Jan 21 21:16:15 fedora kernel: [    1.352786] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 21:16:15 fedora kernel: [    1.534184] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 21:16:15 fedora kernel: [    2.127074] SELinux:  Disabled at runtime.
+Jan 21 21:16:15 fedora kernel: [    2.128534] type=1404 audit(1358820971.131:2): selinux=0 auid=4294967295 ses=4294967295
+Jan 21 21:16:15 fedora kernel: [    3.433332] EXT4-fs (dm-1): re-mounted. Opts: (null)
+Jan 21 21:16:15 fedora kernel: [    4.199562] microcode: CPU0 sig=0x623, pf=0x0, revision=0x1
+Jan 21 21:16:15 fedora kernel: [    4.329076] Adding 2064380k swap on /dev/mapper/vg_fedora-lv_swap.  Priority:0 extents:1 across:2064380k 
+Jan 21 21:16:15 fedora kernel: [    4.425909] microcode: Microcode Update Driver: v2.00 <tigran@aivazian.fsnet.co.uk>, Peter Oruba
+Jan 21 21:16:15 fedora kernel: [    4.500650] piix4_smbus 0000:00:01.3: SMBus Host Controller at 0xb100, revision 0
+Jan 21 21:16:15 fedora kernel: [    4.581477] EXT4-fs (vda2): mounted filesystem with ordered data mode. Opts: (null)
+Jan 21 21:16:15 fedora kernel: [    6.234416] ip6_tables: (C) 2000-2006 Netfilter Core Team
+Jan 21 21:16:15 fedora kernel: [    6.331729] nf_conntrack version 0.5.0 (7968 buckets, 31872 max)
+Jan 21 21:16:15 fedora systemd-logind[553]: New seat seat0.
+Jan 21 21:16:15 fedora ip6tables.init[538]: ip6tables: Applying firewall rules: [  OK  ]
+Jan 21 21:16:16 fedora network[605]: Bringing up loopback interface:  [  OK  ]
+Jan 21 21:16:16 fedora network[605]: Bringing up interface eth0:
+Jan 21 21:16:16 fedora dhclient[723]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 21 21:16:16 fedora dhclient[723]: DHCPACK from 192.168.122.1
+Jan 21 21:16:17 fedora NET[783]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 21 21:16:17 fedora dhclient[723]: bound to 192.168.122.159 -- renewal in 1611 seconds.
+Jan 21 21:16:17 fedora network[605]: Determining IP information for eth0... done.
+Jan 21 21:16:17 fedora network[605]: [  OK  ]
+Jan 21 21:16:20 fedora systemd[1]: Startup finished in 672ms 916us (kernel) + 1s 576ms 252us (initrd) + 9s 589ms 869us (userspace) = 11s 839ms 37us.
+Jan 21 21:16:25 fedora systemd-logind[553]: New session 1 of user root.
+Jan 21 21:43:08 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 21:43:08 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 21 21:43:08 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1640 seconds.
+Jan 21 22:10:28 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 22:10:28 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 21 22:10:28 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1331 seconds.
+Jan 21 22:32:39 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 22:32:39 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 21 22:32:39 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1675 seconds.
+Jan 21 23:00:34 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 21 23:00:34 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 21 23:00:34 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1442 seconds.
+Jan 21 23:22:51 fedora kernel: [ 7602.349286] Clocksource tsc unstable (delta = -30809196679 ns)
+Jan 22 05:19:57 fedora dhclient[787]: DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 4
+Jan 22 05:19:58 fedora dhclient[787]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 22 05:19:58 fedora dhclient[787]: DHCPOFFER from 192.168.122.1
+Jan 22 05:19:58 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 05:19:58 fedora NET[5126]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 22 05:19:58 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1451 seconds.
+Jan 22 05:44:09 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 05:44:09 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 05:44:09 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1534 seconds.
+Jan 22 06:09:43 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 06:09:43 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 06:09:43 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1211 seconds.
+Jan 22 06:29:54 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 06:29:54 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 06:29:54 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1564 seconds.
+Jan 22 06:55:58 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 06:55:58 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 06:55:58 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1255 seconds.
+Jan 22 07:16:53 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 07:16:53 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 07:16:53 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1604 seconds.
+Jan 22 18:57:39 fedora dhclient[787]: DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 7
+Jan 22 18:57:39 fedora dhclient[787]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 22 18:57:39 fedora dhclient[787]: DHCPOFFER from 192.168.122.1
+Jan 22 18:57:40 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 18:57:40 fedora NET[11429]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 22 18:57:40 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1674 seconds.
+Jan 22 19:25:34 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 19:25:35 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 19:25:35 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1302 seconds.
+Jan 22 19:47:17 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 19:47:17 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 19:47:17 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1277 seconds.
+Jan 22 20:08:34 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 20:08:34 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 20:08:34 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1518 seconds.
+Jan 22 20:33:52 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 20:33:52 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 20:33:52 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1382 seconds.
+Jan 22 20:56:54 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 20:56:55 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 20:56:55 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1295 seconds.
+Jan 22 21:18:30 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 21:18:30 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 21:18:30 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1265 seconds.
+Jan 22 21:39:35 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 21:39:35 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 21:39:35 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1471 seconds.
+Jan 22 22:04:06 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 22:04:06 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 22:04:06 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1495 seconds.
+Jan 22 22:29:01 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 22:29:01 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 22:29:01 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1233 seconds.
+Jan 22 22:49:34 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 22:49:34 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 22:49:34 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1621 seconds.
+Jan 22 23:16:35 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 22 23:16:35 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 22 23:16:35 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1491 seconds.
+Jan 23 05:31:36 fedora dhclient[787]: DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 7
+Jan 23 05:31:37 fedora dhclient[787]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 23 05:31:37 fedora dhclient[787]: DHCPOFFER from 192.168.122.1
+Jan 23 05:31:37 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 05:31:38 fedora NET[28187]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 23 05:31:38 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1724 seconds.
+Jan 23 06:00:22 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 06:00:22 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 06:00:22 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1436 seconds.
+Jan 23 06:24:18 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 06:24:18 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 06:24:18 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1370 seconds.
+Jan 23 06:47:08 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 06:47:08 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 06:47:08 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1244 seconds.
+Jan 23 07:07:52 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 07:07:52 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 07:07:52 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1517 seconds.
+Jan 23 19:06:32 fedora dhclient[787]: DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 8
+Jan 23 19:06:32 fedora dhclient[787]: DHCPREQUEST on eth0 to 255.255.255.255 port 67
+Jan 23 19:06:32 fedora dhclient[787]: DHCPOFFER from 192.168.122.1
+Jan 23 19:06:32 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 19:06:32 fedora NET[30444]: /sbin/dhclient-script : updated /etc/resolv.conf
+Jan 23 19:06:32 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1620 seconds.
+Jan 23 19:33:32 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 19:33:32 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 19:33:32 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1314 seconds.
+Jan 23 19:55:26 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 19:55:26 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 19:55:26 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1504 seconds.
+Jan 23 20:20:30 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 20:20:30 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 20:20:30 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1419 seconds.
+Jan 23 20:44:09 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 20:44:09 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 20:44:09 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1460 seconds.
+Jan 23 21:08:29 fedora dhclient[787]: DHCPREQUEST on eth0 to 192.168.122.1 port 67
+Jan 23 21:08:29 fedora dhclient[787]: DHCPACK from 192.168.122.1
+Jan 23 21:08:29 fedora dhclient[787]: bound to 192.168.122.159 -- renewal in 1328 seconds.
+Jan 23 21:17:02 fedora kernel: Kernel logging (proc) stopped.
+Jan 23 21:17:02 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="560" x-info="http://www.rsyslog.com"] exiting on signal 15.
+Jan 23 21:17:16 fedora kernel: imklog 5.8.10, log source = /proc/kmsg started.
+Jan 23 21:17:16 fedora rsyslogd: [origin software="rsyslogd" swVersion="5.8.10" x-pid="563" x-info="http://www.rsyslog.com"] start
+Jan 23 21:17:16 fedora kernel: [    0.000000] Initializing cgroup subsys cpuset
+Jan 23 21:17:16 fedora kernel: [    0.000000] Initializing cgroup subsys cpu
+Jan 23 21:17:16 fedora kernel: [    0.000000] Linux version 3.4.7-1.fc16.x86_64 (mockbuild@buildvm-22.phx2.fedoraproject.org) (gcc version 4.6.3 20120306 (Red Hat 4.6.3-2) (GCC) ) #1 SMP Mon Jul 30 16:37:23 UTC 2012
+Jan 23 21:17:16 fedora kernel: [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 23 21:17:16 fedora kernel: [    0.000000] BIOS-provided physical RAM map:
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 0000000000100000 - 000000003fffe000 (usable)
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 000000003fffe000 - 0000000040000000 (reserved)
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 00000000feffc000 - 00000000ff000000 (reserved)
+Jan 23 21:17:16 fedora kernel: [    0.000000]  BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+Jan 23 21:17:16 fedora kernel: [    0.000000] NX (Execute Disable) protection: active
+Jan 23 21:17:16 fedora kernel: [    0.000000] DMI 2.4 present.
+Jan 23 21:17:16 fedora kernel: [    0.000000] No AGP bridge found
+Jan 23 21:17:16 fedora kernel: [    0.000000] last_pfn = 0x3fffe max_arch_pfn = 0x400000000
+Jan 23 21:17:16 fedora kernel: [    0.000000] PAT not supported by CPU.
+Jan 23 21:17:16 fedora kernel: [    0.000000] found SMP MP-table at [ffff8800000fdad0] fdad0
+Jan 23 21:17:16 fedora kernel: [    0.000000] init_memory_mapping: 0000000000000000-000000003fffe000
+Jan 23 21:17:16 fedora kernel: [    0.000000] RAMDISK: 36716000 - 37383000
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: RSDP 00000000000fd970 00014 (v00 BOCHS )
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: RSDT 000000003fffe440 00038 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: FACP 000000003fffff80 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: DSDT 000000003fffe480 0124A (v01   BXPC   BXDSDT 00000001 INTL 20100528)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: FACS 000000003fffff40 00040
+Jan 23 21:17:16 fedora auditctl[552]: No rules
+Jan 23 21:17:16 fedora auditctl[552]: AUDIT_STATUS: enabled=0 flag=1 pid=0 rate_limit=0 backlog_limit=320 lost=0 backlog=0
+Jan 23 21:17:16 fedora auditd[551]: Started dispatcher: /sbin/audispd pid: 571
+Jan 23 21:17:16 fedora auditd[551]: Init complete, auditd 2.2.1 listening for events (startup state enable)
+Jan 23 21:17:16 fedora audispd: No plugins found, exiting
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffffe90 000AF (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: APIC 000000003ffffd70 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: HPET 000000003ffffd30 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: SSDT 000000003ffff6d0 00654 (v01   BXPC BXSSDTPC 00000001 INTL 20100528)
+Jan 23 21:17:16 fedora kernel: [    0.000000] No NUMA configuration found
+Jan 23 21:17:16 fedora kernel: [    0.000000] Faking a node at 0000000000000000-000000003fffe000
+Jan 23 21:17:16 fedora kernel: [    0.000000] Initmem setup node 0 0000000000000000-000000003fffe000
+Jan 23 21:17:16 fedora kernel: [    0.000000]   NODE_DATA [000000003ffea000 - 000000003fffdfff]
+Jan 23 21:17:16 fedora kernel: [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+Jan 23 21:17:16 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:1cf4781, boot clock
+Jan 23 21:17:16 fedora kernel: [    0.000000] Zone PFN ranges:
+Jan 23 21:17:16 fedora kernel: [    0.000000]   DMA      0x00000010 -> 0x00001000
+Jan 23 21:17:16 fedora kernel: [    0.000000]   DMA32    0x00001000 -> 0x00100000
+Jan 23 21:17:16 fedora kernel: [    0.000000]   Normal   empty
+Jan 23 21:17:16 fedora kernel: [    0.000000] Movable zone start PFN for each node
+Jan 23 21:17:16 fedora kernel: [    0.000000] Early memory PFN ranges
+Jan 23 21:17:16 fedora kernel: [    0.000000]     0: 0x00000010 -> 0x0000009f
+Jan 23 21:17:16 fedora kernel: [    0.000000]     0: 0x00000100 -> 0x0003fffe
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: PM-Timer IO Port: 0xb008
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+Jan 23 21:17:16 fedora kernel: [    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Jan 23 21:17:16 fedora kernel: [    0.000000] Using ACPI (MADT) for SMP configuration information
+Jan 23 21:17:16 fedora kernel: [    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+Jan 23 21:17:16 fedora kernel: [    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+Jan 23 21:17:16 fedora kernel: [    0.000000] PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+Jan 23 21:17:16 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+Jan 23 21:17:16 fedora kernel: [    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+Jan 23 21:17:16 fedora kernel: [    0.000000] Allocating PCI resources starting at 40000000 (gap: 40000000:beffc000)
+Jan 23 21:17:16 fedora kernel: [    0.000000] Booting paravirtualized kernel on KVM
+Jan 23 21:17:16 fedora kernel: [    0.000000] setup_percpu: NR_CPUS:256 nr_cpumask_bits:256 nr_cpu_ids:1 nr_node_ids:1
+Jan 23 21:17:16 fedora kernel: [    0.000000] PERCPU: Embedded 28 pages/cpu @ffff88003fc00000 s83200 r8192 d23296 u2097152
+Jan 23 21:17:16 fedora kernel: [    0.000000] kvm-clock: cpu 0, msr 0:3fc13781, primary cpu clock
+Jan 23 21:17:16 fedora kernel: [    0.000000] KVM setup async PF for cpu 0
+Jan 23 21:17:16 fedora kernel: [    0.000000] kvm-stealtime: cpu 0, msr 3fc0df80
+Jan 23 21:17:16 fedora kernel: [    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 257928
+Jan 23 21:17:16 fedora kernel: [    0.000000] Policy zone: DMA32
+Jan 23 21:17:16 fedora kernel: [    0.000000] Kernel command line: BOOT_IMAGE=/vmlinuz-3.4.7-1.fc16.x86_64 root=/dev/mapper/vg_fedora-lv_root ro rd.lvm.lv=vg_fedora/lv_root rd.md=0 rd.luks=0 LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 rd.lvm.lv=vg_fedora/lv_swap KEYTABLE=us rd.dm=0
+Jan 23 21:17:16 fedora kernel: [    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.000000] Checking aperture...
+Jan 23 21:17:16 fedora kernel: [    0.000000] No AGP bridge found
+Jan 23 21:17:16 fedora kernel: [    0.000000] Memory: 1002700k/1048568k available (6178k kernel code, 452k absent, 45416k reserved, 7003k data, 1004k init)
+Jan 23 21:17:16 fedora kernel: [    0.000000] SLUB: Genslabs=15, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Jan 23 21:17:16 fedora kernel: [    0.000000] Hierarchical RCU implementation.
+Jan 23 21:17:16 fedora kernel: [    0.000000] NR_IRQS:16640 nr_irqs:256 16
+Jan 23 21:17:16 fedora kernel: [    0.000000] Console: colour VGA+ 80x25
+Jan 23 21:17:16 fedora kernel: [    0.000000] console [tty0] enabled
+Jan 23 21:17:16 fedora kernel: [    0.000000] allocated 4194304 bytes of page_cgroup
+Jan 23 21:17:16 fedora kernel: [    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Jan 23 21:17:16 fedora kernel: [    0.000000] Detected 2394.560 MHz processor.
+Jan 23 21:17:16 fedora kernel: [    0.001999] Calibrating delay loop (skipped) preset value.. 4789.12 BogoMIPS (lpj=2394560)
+Jan 23 21:17:16 fedora kernel: [    0.002004] pid_max: default: 32768 minimum: 301
+Jan 23 21:17:16 fedora kernel: [    0.002368] Security Framework initialized
+Jan 23 21:17:16 fedora kernel: [    0.002685] SELinux:  Initializing.
+Jan 23 21:17:16 fedora kernel: [    0.003109] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.003686] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.004088] Mount-cache hash table entries: 256
+Jan 23 21:17:16 fedora kernel: [    0.004531] Initializing cgroup subsys cpuacct
+Jan 23 21:17:16 fedora kernel: [    0.005003] Initializing cgroup subsys memory
+Jan 23 21:17:16 fedora kernel: [    0.005364] Initializing cgroup subsys devices
+Jan 23 21:17:16 fedora kernel: [    0.005704] Initializing cgroup subsys freezer
+Jan 23 21:17:16 fedora kernel: [    0.006002] Initializing cgroup subsys net_cls
+Jan 23 21:17:16 fedora kernel: [    0.006367] Initializing cgroup subsys blkio
+Jan 23 21:17:16 fedora kernel: [    0.006685] Initializing cgroup subsys perf_event
+Jan 23 21:17:16 fedora kernel: [    0.007072] mce: CPU supports 10 MCE banks
+Jan 23 21:17:16 fedora kernel: [    0.007553] SMP alternatives: switching to UP code
+Jan 23 21:17:16 fedora kernel: [    0.020679] Freeing SMP alternatives: 24k freed
+Jan 23 21:17:16 fedora kernel: [    0.020972] ACPI: Core revision 20120320
+Jan 23 21:17:16 fedora kernel: [    0.021564] ftrace: allocating 22861 entries in 90 pages
+Jan 23 21:17:16 fedora kernel: [    0.028882] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Jan 23 21:17:16 fedora kernel: [    0.028999] CPU0: Intel QEMU Virtual CPU version 1.0.1 stepping 03
+Jan 23 21:17:16 fedora kernel: [    0.029997] Performance Events: unsupported p6 CPU model 2 no PMU driver, software events only.
+Jan 23 21:17:16 fedora kernel: [    0.029997] NMI watchdog: disabled (cpu0): hardware events not enabled
+Jan 23 21:17:16 fedora kernel: [    0.030017] Brought up 1 CPUs
+Jan 23 21:17:16 fedora kernel: [    0.030259] Total of 1 processors activated (4789.12 BogoMIPS).
+Jan 23 21:17:16 fedora kernel: [    0.030828] devtmpfs: initialized
+Jan 23 21:17:16 fedora kernel: [    0.031624] atomic64 test passed for x86-64 platform with CX8 and with SSE
+Jan 23 21:17:16 fedora kernel: [    0.032048] RTC time:  2:17:10, date: 01/24/13
+Jan 23 21:17:16 fedora kernel: [    0.032334] NET: Registered protocol family 16
+Jan 23 21:17:16 fedora kernel: [    0.032767] ACPI: bus type pci registered
+Jan 23 21:17:16 fedora kernel: [    0.033071] PCI: Using configuration type 1 for base access
+Jan 23 21:17:16 fedora kernel: [    0.033881] bio: create slab <bio-0> at 0
+Jan 23 21:17:16 fedora kernel: [    0.034039] ACPI: Added _OSI(Module Device)
+Jan 23 21:17:16 fedora kernel: [    0.034309] ACPI: Added _OSI(Processor Device)
+Jan 23 21:17:16 fedora kernel: [    0.034572] ACPI: Added _OSI(3.0 _SCP Extensions)
+Jan 23 21:17:16 fedora kernel: [    0.034999] ACPI: Added _OSI(Processor Aggregator Device)
+Jan 23 21:17:16 fedora kernel: [    0.036651] ACPI: Interpreter enabled
+Jan 23 21:17:16 fedora kernel: [    0.036932] ACPI: (supports S0 S5)
+Jan 23 21:17:16 fedora kernel: [    0.037251] ACPI: Using IOAPIC for interrupt routing
+Jan 23 21:17:16 fedora kernel: [    0.039181] ACPI: No dock devices found.
+Jan 23 21:17:16 fedora kernel: [    0.039444] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jan 23 21:17:16 fedora kernel: [    0.039985] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Jan 23 21:17:16 fedora kernel: [    0.040069] pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7]
+Jan 23 21:17:16 fedora kernel: [    0.040380] pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff]
+Jan 23 21:17:16 fedora kernel: [    0.040680] pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff]
+Jan 23 21:17:16 fedora kernel: [    0.040999] pci_root PNP0A03:00: host bridge window [mem 0x40000000-0xfebfffff]
+Jan 23 21:17:16 fedora kernel: [    0.041499] PCI host bridge to bus 0000:00
+Jan 23 21:17:16 fedora kernel: [    0.041999] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7]
+Jan 23 21:17:16 fedora kernel: [    0.042292] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff]
+Jan 23 21:17:16 fedora kernel: [    0.042587] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff]
+Jan 23 21:17:16 fedora kernel: [    0.042998] pci_bus 0000:00: root bus resource [mem 0x40000000-0xfebfffff]
+Jan 23 21:17:16 fedora kernel: [    0.045332] pci 0000:00:01.3: quirk: [io  0xb000-0xb03f] claimed by PIIX4 ACPI
+Jan 23 21:17:16 fedora kernel: [    0.045824] pci 0000:00:01.3: quirk: [io  0xb100-0xb10f] claimed by PIIX4 SMB
+Jan 23 21:17:16 fedora kernel: [    0.058584]  pci0000:00: Unable to request _OSC control (_OSC support mask: 0x1e)
+Jan 23 21:17:16 fedora kernel: [    0.060874] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+Jan 23 21:17:16 fedora kernel: [    0.061478] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+Jan 23 21:17:16 fedora kernel: [    0.062048] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+Jan 23 21:17:16 fedora kernel: [    0.062630] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+Jan 23 21:17:16 fedora kernel: [    0.063235] ACPI: PCI Interrupt Link [LNKS] (IRQs 9) *0
+Jan 23 21:17:16 fedora kernel: [    0.063829] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+Jan 23 21:17:16 fedora kernel: [    0.063996] vgaarb: loaded
+Jan 23 21:17:16 fedora kernel: [    0.064244] vgaarb: bridge control possible 0000:00:02.0
+Jan 23 21:17:16 fedora kernel: [    0.064571] SCSI subsystem initialized
+Jan 23 21:17:16 fedora kernel: [    0.065062] usbcore: registered new interface driver usbfs
+Jan 23 21:17:16 fedora kernel: [    0.065382] usbcore: registered new interface driver hub
+Jan 23 21:17:16 fedora kernel: [    0.065676] usbcore: registered new device driver usb
+Jan 23 21:17:16 fedora kernel: [    0.066033] PCI: Using ACPI for IRQ routing
+Jan 23 21:17:16 fedora kernel: [    0.066496] NetLabel: Initializing
+Jan 23 21:17:16 fedora kernel: [    0.066745] NetLabel:  domain hash size = 128
+Jan 23 21:17:16 fedora kernel: [    0.066995] NetLabel:  protocols = UNLABELED CIPSOv4
+Jan 23 21:17:16 fedora kernel: [    0.067275] NetLabel:  unlabeled traffic allowed by default
+Jan 23 21:17:16 fedora kernel: [    0.067624] HPET: 3 timers in total, 0 timers will be used for per-cpu timer
+Jan 23 21:17:16 fedora kernel: [    0.068008] hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+Jan 23 21:17:16 fedora kernel: [    0.068496] hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+Jan 23 21:17:16 fedora kernel: [    0.075065] Switching to clocksource kvm-clock
+Jan 23 21:17:16 fedora kernel: [    0.078977] pnp: PnP ACPI init
+Jan 23 21:17:16 fedora kernel: [    0.079303] ACPI: bus type pnp registered
+Jan 23 21:17:16 fedora kernel: [    0.080086] pnp: PnP ACPI: found 7 devices
+Jan 23 21:17:16 fedora kernel: [    0.080346] ACPI: ACPI bus type pnp unregistered
+Jan 23 21:17:16 fedora kernel: [    0.086155] NET: Registered protocol family 2
+Jan 23 21:17:16 fedora kernel: [    0.086480] IP route cache hash table entries: 32768 (order: 6, 262144 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.086974] TCP established hash table entries: 131072 (order: 9, 2097152 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.087776] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.088237] TCP: Hash tables configured (established 131072 bind 65536)
+Jan 23 21:17:16 fedora kernel: [    0.088546] TCP: reno registered
+Jan 23 21:17:16 fedora kernel: [    0.088792] UDP hash table entries: 512 (order: 2, 16384 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.089112] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.089462] NET: Registered protocol family 1
+Jan 23 21:17:16 fedora kernel: [    0.090347] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jan 23 21:17:16 fedora kernel: [    0.090648] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+Jan 23 21:17:16 fedora kernel: [    0.090945] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+Jan 23 21:17:16 fedora kernel: [    0.091388] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+Jan 23 21:17:16 fedora kernel: [    0.091833] Unpacking initramfs...
+Jan 23 21:17:16 fedora kernel: [    0.268631] Freeing initrd memory: 12724k freed
+Jan 23 21:17:16 fedora kernel: [    0.271255] audit: initializing netlink socket (disabled)
+Jan 23 21:17:16 fedora kernel: [    0.271633] type=2000 audit(1358993832.270:1): initialized
+Jan 23 21:17:16 fedora kernel: [    0.288331] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+Jan 23 21:17:16 fedora kernel: [    0.290471] VFS: Disk quotas dquot_6.5.2
+Jan 23 21:17:16 fedora kernel: [    0.290975] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Jan 23 21:17:16 fedora kernel: [    0.291801] msgmni has been set to 1983
+Jan 23 21:17:16 fedora kernel: [    0.292695] alg: No test for stdrng (krng)
+Jan 23 21:17:16 fedora kernel: [    0.294200] NET: Registered protocol family 38
+Jan 23 21:17:16 fedora kernel: [    0.294734] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+Jan 23 21:17:16 fedora kernel: [    0.295954] io scheduler noop registered
+Jan 23 21:17:16 fedora kernel: [    0.296268] io scheduler deadline registered
+Jan 23 21:17:16 fedora kernel: [    0.296595] io scheduler cfq registered (default)
+Jan 23 21:17:16 fedora kernel: [    0.296961] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+Jan 23 21:17:16 fedora kernel: [    0.297311] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+Jan 23 21:17:16 fedora kernel: [    0.297636] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Jan 23 21:17:16 fedora kernel: [    0.298018] acpiphp: Slot [3] registered
+Jan 23 21:17:16 fedora kernel: [    0.298317] acpiphp: Slot [4] registered
+Jan 23 21:17:16 fedora kernel: [    0.298600] acpiphp: Slot [5] registered
+Jan 23 21:17:16 fedora kernel: [    0.298885] acpiphp: Slot [6] registered
+Jan 23 21:17:16 fedora kernel: [    0.299219] acpiphp: Slot [7] registered
+Jan 23 21:17:16 fedora kernel: [    0.299529] acpiphp: Slot [8] registered
+Jan 23 21:17:16 fedora kernel: [    0.299815] acpiphp: Slot [9] registered

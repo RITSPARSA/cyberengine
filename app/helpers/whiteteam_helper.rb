@@ -1,0 +1,2 @@
+module WhiteteamHelper
+end

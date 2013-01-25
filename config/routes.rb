@@ -1,9 +1,9 @@
 Cyberengine::Application.routes.draw do
   root to: 'teams#index'
 
-  #namespace :whiteteam do
-  #  get 'checks', controller: 'whiteteam'
-  #end
+  namespace :whiteteam do
+    get 'checks'
+  end
 
   # Teams, Servers, Services
   resources :teams do

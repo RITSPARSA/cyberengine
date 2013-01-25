@@ -2,7 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(member)
-    # can [:index, :show, :new, :create, :update, :edit, :destroy], [Session]
     @member = member
     @member ||= Member.new
     if @member && @member.team

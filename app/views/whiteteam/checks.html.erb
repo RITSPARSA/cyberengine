@@ -6,7 +6,7 @@
   </table>
 </div>
 
-<table class="table table-bordered table-hover">
+<table class="table datatable">
   <thead>
     <tr>
       <th>Id</th>
@@ -36,7 +36,7 @@
           <td><%= server.name %></td>
           <td><%= service.name %></td>
           <td>
-            <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
+            <%= link_to modal_team_server_service_check_path(team,server,service,check), data: { toggle: "modal", target: "#checksModal" } do %>
               <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
             <% end %>
           </td>
@@ -51,3 +51,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= render partial: 'checks/modal' %>
+<%= render partial: 'properties/modal' %>
+<%= render partial: 'users/modal' %>
+
