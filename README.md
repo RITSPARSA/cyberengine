@@ -65,6 +65,9 @@ Password: whiteteam
 
 
 Other logins:
+
 redteam:redteam
+
 team1:team1
+
 team2:team2
