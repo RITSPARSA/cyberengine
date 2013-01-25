@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'
+gem 'passenger'
 
 group :development do
   gem 'thin'

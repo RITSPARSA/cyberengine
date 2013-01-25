@@ -38,36 +38,74 @@ The rails frontend is a fully functional application that can authenticate membe
 
 Install ruby (version >= 1.9.3) - Ruby Version Manager [rvm](https://rvm.io/rvm/install/)
 
+    # From fresh installation (minimal) as root
+    yum install -y bash tar curl git patch httpd sqlite sqlite-devel # Changing sqlite to postgres soon
     curl -L https://get.rvm.io | bash -s stable
-    source ~/.bashrc
-    rvm requirements # install dependencies 
-    rvm install 1.9.3
+    source /etc/profile.d/rvm.sh
+    rvm requirements # run install command for ruby dependencies 
+    # Example - Fedora 17:
+    yum install gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
+    rvm install 1.9.3 --verify-downloads 1
     rvm use 1.9.3 --default
+    rvm gemset create cyberengine
+    rvm gemset use cyberengine 
 
 
 Download cyberengine 
 
-    git clone https://github.com/griffithchaffee/cyberengine.git
+    mkdir /var/rails
+    cd /var/rails
+    git clone -v https://github.com/griffithchaffee/cyberengine.git
+    chown -R apache:apache /var/rails/cyberengine # If you dont do this you may get permission errors
     cd cyberengine
     bundle install
-    rake db:drop # Should not be any db to start with
-    rake db:migrate # Build db schema
-    rake db:seed # Testing seed data
-    gem install passenger # Used in quickstart script as web server
-    ./quickstart.sh
+    rake db:drop          # Should not be any db to start with
+    rake db:migrate       # Build db schema
+    rake db:seed          # Testing seed data
+    ./quickstart.sh       # test installation - not ment for production
+
   
+Apache hosting is done using a mod called phusion passenger. It is very easy to setup. 
+
+    # Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
+    passenger-install-apache2-module # run install command for apache dependencies
+    # Example - Fedora 17:
+    yum install httpd-devel apr-devel apr-util-devel curl-devel
+
+    
+/etc/httpd/conf/httpd.conf # I appended to end of file
+
+    LoadModule passenger_module /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19/ext/apache2/mod_passenger.so
+    PassengerRoot /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19
+    PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.3-p374@cyberengine/ruby
+    NameVirtualHost *:80
+    <VirtualHost *:80>
+      RailsEnv development
+      ServerName 192.168.122.159
+      ServerAlias 192.168.122.159
+      # !!! Be sure to point DocumentRoot to 'public'!
+      DocumentRoot /var/rails/cyberengine/public
+      <Directory /var/rails/cyberengine/public>
+         #order allow,deny
+         #allow from all
+         # This relaxes Apache security settings.
+         AllowOverride all
+         # MultiViews must be turned off.
+         Options -MultiViews
+      </Directory>
+    </VirtualHost>
+    
 
 Default login:
 
-Username: whiteteam
-
-Password: whiteteam 
+    Username: whiteteam
+    Password: whiteteam 
 
 
 Other logins:
 
-redteam:redteam
+    redteam:redteam
+    team1:team1
+    team2:team2
 
-team1:team1
 
-team2:team2
