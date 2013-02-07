@@ -5,6 +5,7 @@
 <% breadcrumbs << @service if @service %>
 <% breadcrumbs << @server if @server %>
 <% breadcrumbs << @team if @team %>
+
 <% if breadcrumbs.size != 0 %>
   <ul class="breadcrumb">
     <% while breadcrumbs.size != 0 %>
@@ -12,32 +13,56 @@
     
       <% if crumb.class == Team %>
         <% team = crumb %>
-        <li>Team: <%= link_to team.alias, team_path(team) %></li>
+        <% if team.id %>
+          <li>Team: <%= link_to team.alias, team_path(team) %></li>
+        <% else %>
+          <li>Team: <%= params[:action] %></li>
+        <% end %>
       <% end %>
     
       <% if crumb.class == Server %>
         <% server = crumb %>
-        <li>Server: <%= link_to server.name, team_server_path(team,server) %></li>
+        <% if server.id %>
+          <li>Server: <%= link_to server.name, team_server_path(team,server) %></li>
+        <% else %>
+          <li>Server: <%= params[:action] %></li>
+        <% end %>
       <% end %>
     
       <% if crumb.class == Service %>
         <% service = crumb %>
-        <li>Service: <%= link_to service.name, team_server_service_path(team,server,service) %></li>
+        <% if service.id %>
+          <li>Service: <%= link_to service.name, team_server_service_path(team,server,service) %></li>
+        <% else %>
+          <li>Service: <%= params[:action] %></li>
+        <% end %>
       <% end %>
     
       <% if crumb.class == Check %>
         <% check = crumb %>
-        <li>Check: <%= link_to check.id, team_server_service_check_path(team,server,service,check) %></li>
+        <% if check.id %>
+          <li>Check: <%= link_to check.id, team_server_service_check_path(team,server,service,check) %></li>
+        <% else %>
+          <li>Check: <%= params[:action] %></li>
+        <% end %>
       <% end %>
     
       <% if crumb.class == Property %>
         <% property = crumb %>
-        <li>Property: <%= link_to property.property, team_server_service_property_path(team,server,service,property) %></li>
+        <% if property.id %>
+          <li>Property: <%= link_to property.property, team_server_service_property_path(team,server,service,property) %></li>
+        <% else %>
+          <li>Property: <%= params[:action] %></li>
+        <% end %>
       <% end %>
       
       <% if crumb.class == User %>
         <% user = crumb %>
-        <li>User: <%= link_to user.username, team_server_service_user_path(team,server,service,user) %></li>
+        <% if user.id %>
+          <li>User: <%= link_to user.username, team_server_service_user_path(team,server,service,user) %></li>
+        <% else %>
+          <li>User: <%= params[:action] %></li>
+        <% end %>
       <% end %>
     
       <% if breadcrumbs.size != 0 %>
@@ -45,7 +70,7 @@
       <% else %>
         <% unless check || user || property %>
           <li><span class="divider">/</span></li>
-          <% if service %> 
+          <% if service && service.id %> 
             <li>
             [
               <%= link_to 'Checks', team_server_service_checks_path(team,server,service) %>,
@@ -53,13 +78,13 @@
               <%= link_to 'Properties', team_server_service_properties_path(team,server,service) %>
             ]
             </li>
-          <% elsif server %>
+          <% elsif server && server.id %>
             <li>
             [
               <%= link_to 'Services', team_server_services_path(team,server) %>
             ]
             </li>
-          <% elsif team %>
+          <% elsif team && team.id %>
             <li>
             [
               <%= link_to 'Servers', team_servers_path(team) %>
@@ -72,3 +97,4 @@
     <% end %>
   </ul>
 <% end %>
+

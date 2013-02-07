@@ -1,8 +1,20 @@
 Cyberengine::Application.routes.draw do
   root to: 'teams#index'
+  get 'welcome', as: 'welcome', controller: :static
 
   namespace :whiteteam do
-    get 'checks'
+    get 'home', as: 'home'
+    namespace :duplicate do 
+      resource :server, only: [:new, :create]
+      resource :service, only: [:new, :create]
+    end
+    #resources :home, only: [:index]
+    #root to: 'home'
+    #match 'home' => '#index', as: 'home'
+    get 'checks', as: 'checks'
+    #namespace :duplicate do
+      #resource :service, only: [:new, :create],
+    #end
   end
 
   # Teams, Servers, Services

@@ -33,7 +33,7 @@ class ChecksController < ApplicationController
   def create
     @check = Check.new(params[:check])
     if @check.save
-      redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully created.'
+      redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully created'
     else
       render action: "new"
     end
@@ -42,7 +42,7 @@ class ChecksController < ApplicationController
   def update
     @check = Check.find(params[:id])
     if @check.update_attributes(params[:check])
-      redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully updated.'
+      redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully updated'
     else
       render action: "edit"
     end
@@ -51,7 +51,7 @@ class ChecksController < ApplicationController
   def destroy
     @check = Check.find(params[:id])
     @check.destroy
-    redirect_to team_server_service_checks_path(@team,@server,@service)
+    redirect_to team_server_service_checks_path(@team,@server,@service), notice: 'Check was successfully deleted'
   end
 
   layout false, only: [:modal]

@@ -7,7 +7,7 @@ class CreateServices < ActiveRecord::Migration
       t.string :protocol,  null: false
       t.string :version,  null: false
       t.boolean :enabled,  null: false
-      t.integer :points,  null: false
+      t.integer :points_per_check,  null: false
 
       t.timestamps
     end

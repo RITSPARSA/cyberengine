@@ -49,6 +49,7 @@ class Ability
   end
 
   def guest
+    can [:welcome], :static
     can [:new, :create, :destroy], :session
     can [:index, :overview], Team
     can [:index, :show], Server

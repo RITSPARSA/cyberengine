@@ -36,9 +36,9 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :points, class: 'control-label' %>
+    <%= f.label :points_per_check, class: 'control-label' %>
     <div class="controls">
-      <%= f.number_field :points, min: 0, step: 10, value: 10 %>
+      <%= f.number_field :points_per_check, min: 0, step: 10, value: 10 %>
     </div>
   </div>
 
@@ -55,5 +55,16 @@
       <%= select(:service, :server_id, [[@server.name, @server.id]]) %>
     </div>
   </div>
+
+  <% if whiteteam? %>
+    <br />
+    <h2>Whiteteam Options</h2> <hr />
+    <div class="control-group">
+      <%= label_tag :whiteteam, "Duplicate for all blueteams?", class: 'control-label' %>
+      <div class="controls">
+        <%= check_box(:whiteteam, :duplicate, { class: 'check_box' }, "yes", "no") %>
+      </div>
+    </div>
+  <% end %>
 
 <% end %>

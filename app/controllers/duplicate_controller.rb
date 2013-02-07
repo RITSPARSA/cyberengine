@@ -1,5 +1,4 @@
-class WhiteteamController < ApplicationController
-  
+class DuplicateController < WhiteteamController 
   skip_authorization_check only: [:checks]
   before_filter :whiteteam_only
   def whiteteam_only

@@ -1,5 +1,5 @@
 $ ->
-  $(".datatable").dataTable iDisplayLength: 100
+  $(".datatable").dataTable iDisplayLength: 10
   $("body").on "hidden", ".modal", ->
     $(this).removeData "modal"
 

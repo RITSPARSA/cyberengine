@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully created.'
+      redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully created'
     else
       render action: "new"
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     params[:user][:username] ?  username = params[:user][:username] : username = nil
     if can?(:update_usernames, @user) || username == @user.username || username.nil?
       if @user.update_attributes(params[:user])
-        redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully updated.'
+        redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully updated'
       else
         render action: "edit"
       end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to team_server_service_users_path(@team,@server,@service)
+    redirect_to team_server_service_users_path(@team,@server,@service), notice: 'User was successfully deleted'
   end
 
   layout false, only: [:modal]

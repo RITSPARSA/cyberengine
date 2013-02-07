@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  check_authorization
-
-  private
+  check_authorization #unless: [:whiteteam_controller?, :duplicate_controller?]
+  #check_authorization if: :request_details
 
   def current_member
     if session[:member_id]
@@ -36,9 +35,14 @@ class ApplicationController < ActionController::Base
   alias_method :current_user, :current_member
   helper_method :current_member, :logged_in?, :current_user
   helper_method :whiteteam?, :redteam?, :blueteam?, :member?
+  helper_method :redteam?, :blueteam?, :member?
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, alert: exception.message
+    if exception.message == "You are not authorized to access this page."
+      redirect_to root_url, alert: "You are not authorized to access that page."
+    else
+      redirect_to root_url, alert: exception.message
+    end
   end
 
 end

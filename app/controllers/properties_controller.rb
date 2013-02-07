@@ -27,7 +27,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(params[:property])
     if @property.save
-      redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully created.'
+      redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully created'
     else
       render action: "new"
     end
@@ -36,7 +36,7 @@ class PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
     if @property.update_attributes(params[:property])
-      redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully updated.'
+      redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully updated'
     else
       render action: "edit"
     end
@@ -45,7 +45,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
-    redirect_to team_server_service_properties_path(@team,@server,@service)
+    redirect_to team_server_service_properties_path(@team,@server,@service), notice: 'Property was successfully deleted'
   end
 
   layout false, only: [:modal]

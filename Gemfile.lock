@@ -40,11 +40,13 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     commonjs (0.2.6)
+    daemon_controller (1.1.0)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fastthread (1.0.7)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -66,6 +68,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
+    passenger (3.0.19)
+      daemon_controller (>= 1.0.0)
+      fastthread (>= 1.0.1)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.3)
     rack (1.4.3)
     rack-cache (1.2)
@@ -135,6 +142,7 @@ DEPENDENCIES
   jquery-datatables-rails
   jquery-rails
   less-rails
+  passenger
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   sqlite3
