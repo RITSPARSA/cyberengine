@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130117152449) do
     t.boolean  "passed",     :null => false
     t.text     "request",    :null => false
     t.text     "response",   :null => false
+    t.integer  "round",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

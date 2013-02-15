@@ -49,15 +49,14 @@ team2 = Team.create(color: 'blue', name: 'DropTables', alias: 'Team2' )
 
 puts "Populating random checks with db/seeds.log..."
 check = ""
-File.readlines("#{File.dirname(__FILE__)}/seeds.log").each do |line|
-  check += line
-  service = rand(1..3)
-  if rand(1..10) != 1
-    next
-  else
-    rand(1..2) == 1 ? passed = true : passed = false
-    Check.create(team_id: team1.id, server_id: team1_server1.id, service_id: service, request: 'random seed data', response: check, passed: passed )
-    check = ""
+for i in 1..25 do
+  round = i
+  File.open("#{File.dirname(__FILE__)}/seeds.log") do |f| 
+    line = f.readline
+    for service in 1..3 do 
+      rand(1..2) == 1 ? passed = true : passed = false
+      Check.create(team_id: team1.id, server_id: team1_server1.id, service_id: service, request: 'random seed data', response: line, passed: passed, round: round )
+    end
   end
 end
 

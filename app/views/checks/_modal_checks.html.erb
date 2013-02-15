@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Service</th>
+      <th>Round</th>
       <th>Category</th>
       <th>Property</th>
       <th>Value</th>
@@ -11,6 +12,7 @@
     <% @checks.each do |check| %>
       <tr>
         <td><%= check.service.name %></td>
+        <td><%= check.round %></td>
         <td><%= check.passed %></td>
         <td><%= check.request %></td>
         <td><%= check.response %></td>

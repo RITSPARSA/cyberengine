@@ -44,4 +44,5 @@ class TeamsController < ApplicationController
     @team.destroy
     redirect_to teams_url, notice: 'Team was successfully deleted'
   end
+  
 end

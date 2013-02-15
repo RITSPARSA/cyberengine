@@ -6,6 +6,8 @@ gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'
 gem 'passenger'
+gem 'jquery-rails'
+
 
 group :development do
   gem 'thin'
@@ -18,7 +20,7 @@ group :assets do
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
   gem 'jquery-datatables-rails'
+  gem 'highcharts-rails'
 end
 
-gem 'jquery-rails'
 

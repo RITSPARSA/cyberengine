@@ -7,6 +7,7 @@ class CreateChecks < ActiveRecord::Migration
       t.boolean :passed, null: false
       t.text :request, null: false
       t.text :response, null: false
+      t.integer :round, null: false
 
       t.timestamps
     end

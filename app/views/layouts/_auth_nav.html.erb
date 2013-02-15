@@ -11,8 +11,6 @@
     <% elsif whiteteam? %>
       <li><%= link_to 'Members', members_path %></li>
       <li class="divider-vertical"></li>
-      <li><%= link_to 'Checks', whiteteam_checks_path %></li>
-      <li class="divider-vertical"></li>
     <% else %>
     <% end %>
     <li><%= link_to 'Logout', session_path, method: 'delete' %></li>

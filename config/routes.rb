@@ -1,21 +1,7 @@
 Cyberengine::Application.routes.draw do
   root to: 'teams#index'
   get 'welcome', as: 'welcome', controller: :static
-
-  namespace :whiteteam do
-    get 'home', as: 'home'
-    namespace :duplicate do 
-      resource :server, only: [:new, :create]
-      resource :service, only: [:new, :create]
-    end
-    #resources :home, only: [:index]
-    #root to: 'home'
-    #match 'home' => '#index', as: 'home'
-    get 'checks', as: 'checks'
-    #namespace :duplicate do
-      #resource :service, only: [:new, :create],
-    #end
-  end
+  get 'scoreboard', as: 'scoreboard', controller: :static
 
   # Teams, Servers, Services
   resources :teams do
@@ -51,5 +37,4 @@ Cyberengine::Application.routes.draw do
   resources :members
   resources :sessions, only: [:new, :create]
   match 'session' => "sessions#destroy", via: :delete, as: 'session'
-
 end

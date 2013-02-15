@@ -1,5 +1,5 @@
 class Check < ActiveRecord::Base
-  attr_accessible :team_id, :server_id, :service_id, :passed, :request, :response
+  attr_accessible :team_id, :server_id, :service_id, :passed, :request, :response, :round
 
   belongs_to :team
   belongs_to :server
@@ -10,6 +10,7 @@ class Check < ActiveRecord::Base
   validates :team, presence: { message: "must exist" }
   validates :server, presence: { message: "must exist" }
   validates :service, presence: { message: "must exist" }
+  validates :round, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, uniqueness: { scope: :service_id, message: "already taken" }
   validate :right_team?
 
   def self.latest

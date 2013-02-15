@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  check_authorization #unless: [:whiteteam_controller?, :duplicate_controller?]
-  #check_authorization if: :request_details
+  check_authorization 
 
   def current_member
     if session[:member_id]

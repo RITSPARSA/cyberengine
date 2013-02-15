@@ -72,8 +72,4 @@ class ChecksController < ApplicationController
     end
   end
 
-  def whiteteam
-    redirect_to teams_path unless whiteteam?
-    @checks = Checks.all
-  end
 end
