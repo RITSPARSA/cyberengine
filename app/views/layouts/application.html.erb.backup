@@ -35,27 +35,7 @@
     <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="navbar navbar-fluid-top navbar-inverse offset1 span11">
-          <div class="navbar-inner">
-                    <a class="brand" href="#">Title</a>
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                    </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-<!--
-        <div class="navbar navbar-fluid-top">
-        <div class="navbar-inner">
--->
-
-<!--
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="navbar-inner">
         <div class="container row offset1">
@@ -71,9 +51,9 @@
         </div>
       </div>
     </div>
-   --> 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    
+    <div class="container">
+      <div class="row">
         <div class="span12">
           <%= render partial: 'layouts/breadcrumbs' %>
         </div>

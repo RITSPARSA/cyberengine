@@ -21,12 +21,20 @@ class Service < ActiveRecord::Base
   validates :server, presence: { message: "must exist" }
   validate :right_team?
 
+
   private
+  def self.versions
+    select(:version).uniq
+  end
+
+  def self.protocols
+    select(:protocol).uniq
+  end
 
   def right_team?
     team = Team.find_by_id(team_id)
     server = Server.find_by_id(server_id)
-    unless team.id == server.team_id && team.id == team_id
+    unless team && server && team.id == server.team_id && team.id == team_id
       errors.add_to_base("Server and Service must belong to same Team")
     end
   end

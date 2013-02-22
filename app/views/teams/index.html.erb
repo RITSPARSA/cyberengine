@@ -1,18 +1,19 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td><h1>All Teams</h1></td>
-      <td><%= link_to "New Team", new_team_path, class: 'btn btn-primary' if whiteteam? %></td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do "All Teams" end %>
+
+<% if whiteteam? %>
+  <% content_for :actions do %>
+    <li class="new"> 
+      <%= link_to new_team_path do %>
+        New Team<i class="icon-plus-sign"></i>
+      <% end %>
+    </li>
+  <% end %>  
+<% end %>  
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <% if whiteteam? %>
-        <th>Id</th>
-      <% end %>
+      <th>Id</th>
       <th>Alias</th>
       <th>Name</th>
       <th>Color</th>
@@ -21,19 +22,11 @@
   <tbody>
     <% @teams.each do |team| %>
       <% next if cannot? :show, team %>
+      <% label = { red: 'important', blue: 'info', white:'inverse' } %>
       <tr>
-        <% if whiteteam? %>
-          <td><%= team.id %></td>
-        <% end %>
         <td><%= link_to team.alias, team_path(team) %></td>
         <td><%= team.name %></td>
-        <% if team.color == 'white' %>
-          <td><span class="label label-inverse"><%= team.color %></span></td>
-        <% elsif team.color == 'red' %>
-          <td><span class="label label-important"><%= team.color %></span></td>
-        <% else %>
-          <td><span class="label label-info"><%= team.color %></span></td>
-        <% end %>
+        <td><span class="label label-<%= label[team.color.to_sym] %>"><%= team.color %></span></td>
       </tr>
     <% end %>
   </tbody>

@@ -17,12 +17,17 @@ class Team < ActiveRecord::Base
   validates :alias, presence: true
   validates :color, presence: true, inclusion: { in: ['white','red','blue'] }
 
+
   def self.blueteams
     where(color: "blue")
   end
 
-  private
+  def self.rounds
+    puts Check.select('round').uniq.map{|c| c.round}.size
+  end
 
+
+  private
   def downcase_color
     self.color = self.color.downcase if self.color.present?
   end

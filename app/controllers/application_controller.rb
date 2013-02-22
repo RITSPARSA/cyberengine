@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   check_authorization 
+  layout 'cyberengine'
 
   def current_member
     if session[:member_id]

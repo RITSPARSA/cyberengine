@@ -1,10 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Whiteteam
 whiteteam = Team.create(color: 'white', name: 'Whiteteam', alias: 'Whiteteam' )
@@ -14,49 +9,91 @@ whiteteam_member = Member.create(username: 'whiteteam', team_id: whiteteam.id, p
 redteam = Team.create(color: 'red', name: 'Redteam', alias: 'Redteam' )
 redteam_member = Member.create(username: 'redteam', team_id: redteam.id, password: 'redteam', password_confirmation: 'redteam')
 
-# Blueteams
-## Team 1
-team1 = Team.create(color: 'blue', name: 'AwesomeSauce', alias: 'Team1' )
-  team1_member = Member.create(username: 'team1', team_id: team1.id, password: 'team1', password_confirmation: 'team1')
+teams = Array(1..10)
+servers = Array(1..50)
+services = Array(1..100)
+properties = Array(1..400)
+users = Array(1..400)
+rounds = Array(1..400)
 
-  team1_server1 = Server.create(name: 'Awesome', team_id: team1.id)
-    team1_service1 = Service.create(name: 'Primary DNS', team_id: team1.id, server_id: team1_server1.id, protocol: 'dns', version: 'ipv4', enabled: true, points_per_check: 10)
-      team1_property1 = Property.create(team_id: team1.id, server_id: team1_server1.id, service_id: team1_service1.id, category: 'address', property: 'ip', value: '10.0.1.10')
-      team1_property2 = Property.create(team_id: team1.id, server_id: team1_server1.id, service_id: team1_service1.id, category: 'dns', property: 'forward', value: 'dns.team1.com')
-      team1_property2 = Property.create(team_id: team1.id, server_id: team1_server1.id, service_id: team1_service1.id, category: 'dns', property: 'reverse', value: '10.1.0.10.in-addr.arpa')
-      team1_user1 = User.create(team_id: team1.id, server_id: team1_server1.id, service_id: team1_service1.id, username: 'user1', password: 'user1')
-      team1_user1 = User.create(team_id: team1.id, server_id: team1_server1.id, service_id: team1_service1.id, username: 'user2', password: 'user2')
-    team1_service3 = Service.create(name: 'HTTP Server', team_id: team1.id, server_id: team1_server1.id, protocol: 'http', version: 'ipv4', enabled: true, points_per_check: 10)
-    team1_service4 = Service.create(name: 'HTTPS Server', team_id: team1.id, server_id: team1_server1.id, protocol: 'https', version: 'ipv4', enabled: false, points_per_check: 10)
+protocols = ['dns','ftp','http','https','smtp','pop3','ssh']
+versions = ['ipv4','ipv6']
+boolean = [true,false]
+points_per_checks = [5,10,15,20,25]
 
-  team1_server2 = Server.create(name: 'Sauce', team_id: team1.id)
-    team1_service2 = Service.create(name: 'Secondary DNS', team_id: team1.id, server_id: team1_server2.id, protocol: 'dns', version: 'ipv4', enabled: true, points_per_check: 10)
-      team1_check2 = Check.create(team_id: team1.id, server_id: team1_server2.id, service_id: team1_service2.id, request: 'dig +short dns.team1.com', response: '10.0.1.10', passed: true)
-      team1_check3 = Check.create(team_id: team1.id, server_id: team1_server2.id, service_id: team1_service2.id, request: 'dig dns.team1.com', response: ';; connection timed out; no servers could be reached <script>alert("XSS")</script>', passed: false)
-
-  team1_server3 = Server.create(name: 'Empty', team_id: team1.id)
-
-
-team2 = Team.create(color: 'blue', name: 'DropTables', alias: 'Team2' )
-  team2_member = Member.create(username: 'team2', team_id: team2.id, password: 'team2', password_confirmation: 'team2')
-  team2_server1 = Server.create(name: 'ExampleServer', team_id: team2.id)
-    team2_service1 = Service.create(name: 'Primary DNS', team_id: team2.id, server_id: team2_server1.id, protocol: 'dns', version: 'ipv4', enabled: true, points_per_check: 10)
-      team2_property1 = Property.create(team_id: team2.id, server_id: team2_server1.id, service_id: team2_service1.id, category: 'address', property: 'ip', value: '10.0.1.10')
-      team2_property2 = Property.create(team_id: team2.id, server_id: team2_server1.id, service_id: team2_service1.id, category: 'dns', property: 'forward', value: 'dns.team2.com')
-      team2_property2 = Property.create(team_id: team2.id, server_id: team2_server1.id, service_id: team2_service1.id, category: 'dns', property: 'reverse', value: '10.1.0.10.in-addr.arpa')
-      team2_user1 = User.create(team_id: team2.id, server_id: team2_server1.id, service_id: team2_service1.id, username: 'user1', password: 'user1')
-      team2_user1 = User.create(team_id: team2.id, server_id: team2_server1.id, service_id: team2_service1.id, username: 'user2', password: 'user2')
-
-puts "Populating random checks with db/seeds.log..."
-check = ""
-for i in 1..25 do
-  round = i
-  File.open("#{File.dirname(__FILE__)}/seeds.log") do |f| 
-    line = f.readline
-    for service in 1..3 do 
-      rand(1..2) == 1 ? passed = true : passed = false
-      Check.create(team_id: team1.id, server_id: team1_server1.id, service_id: service, request: 'random seed data', response: line, passed: passed, round: round )
-    end
-  end
+def random
+  (0...10).map{(65+rand(26)).chr}.join
 end
 
+puts "\nPopulating #{teams.size} random teams"
+for team in teams do 
+  print "#{team}"; 
+  print "," unless team == teams.size
+  name = "team#{team}"
+  Team.create(color: 'blue', name: name, alias: name)
+  Member.create(team_id: team, username: name, password: name, password_confirmation: name)
+end
+teams = teams.map{|t| t+2}
+
+puts "\n\nPopulating #{servers.size} random servers"
+for server in servers do
+  print "#{server}"
+  print "," unless server == servers.size
+  team = teams.sample
+  Server.create(team_id: team, name: "Server#{server}")
+end
+
+puts "\n\nPopulating #{services.size} random services"
+for service in services do
+  print "#{service}"
+  print "," unless service == services.size
+  team = teams.sample
+  server = Team.find(team).servers.map {|s| s.id }.sample
+  next unless server
+  protocol = protocols.sample
+  version = versions.sample
+  enabled = boolean.sample
+  points_per_check = points_per_checks.sample
+  Service.create(team_id: team, name: "Service#{service}", server_id: server, protocol: protocol, version: version, enabled: enabled, points_per_check: points_per_check)
+end
+
+puts "\n\nPopulating random #{properties.size} properties"
+for property in properties do
+  print "#{property}"
+  print "," unless property == properties.size
+  team = teams.sample
+  server = Team.find(team).servers.map {|s| s.id }.sample
+  next unless server
+  service = Server.find(server).services.map {|s| s.id }.sample
+  next unless service
+  Property.create(team_id: team, server_id: server, service_id: service, category: random, property: random, value: random)
+end
+
+puts "\n\nPopulating random #{users.size} users"
+for user in users do
+  print "#{user}"
+  print "," unless user == users.size
+  team = teams.sample
+  server = Team.find(team).servers.map {|s| s.id }.sample
+  next unless server
+  service = Server.find(server).services.map {|s| s.id }.sample
+  next unless service
+  User.create(team_id: team, server_id: server, service_id: service, username: random, password: random)
+end
+
+puts "\n\nPopulating #{rounds.size} random check rounds"
+for round in rounds do
+  print "#{round}"
+  print "," unless round == rounds.size
+  log = 'line1 line1 line1 line1 line1 line1 line1 line1 line1\n line2 line2 line2 line2 line2 line2 line2 line2 line2'
+  teams.sample(rand(1..teams.length)).each do |team|
+    server = Team.find(team).servers.map {|s| s.id }.sample
+    next unless server
+    service = Server.find(server).services.map {|s| s.id }.sample
+    next unless service
+    Check.create(team_id: team, server_id: server, service_id: service, request: 'random seed data', response: log, passed: boolean.sample, round: round )
+    Check.create(team_id: team, server_id: server, service_id: service, request: 'random seed data', response: log, passed: boolean.sample, round: round )
+    Check.create(team_id: team, server_id: server, service_id: service, request: 'random seed data', response: log, passed: boolean.sample, round: round )
+  end
+end
+puts "\n\nCompleted population of seed data"
