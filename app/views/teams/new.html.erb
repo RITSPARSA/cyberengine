@@ -1,13 +1,24 @@
+<% if can?(:new, Team) %>
+  <% content_for :actions do %>
+    <% if can? :new, Team %>
+      <li class='new'>
+        <%= link_to '#', onclick: "$('#new_team').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to teams_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to teams_path do %>Teams<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td>New Team</td>
-      <td>
-        <%= submit_tag 'Create Team', onclick: "$('#new_team').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', teams_path, class: 'btn' %>
-      </td>
-    </tr>
-  </table>
+  <h3>New Team</h3>
 </div>
 
 <%= render partial: 'form' %>

@@ -44,10 +44,23 @@ i span {
   color: #333333;
 }
 
-table.services-table td { 
+table table.inner-table td { border: none; }
+table table.inner-table tr { padding: 0px; }
+table table.inner-table tr:first-child > td { padding-top: 0px; }
+table table.inner-table tr > td { padding-bottom: 0px; }
+/*
+table table.inner-table tbody tr:first-child  {
+  padding-top: 0px;
+}
+table table.inner-table tbody tr:last-child  {
+  padding-bottom: 0px;
+}
+*/
+/*table table.inner-table td { 
   border:none; 
   padding: 4px 8px 4px 4px; 
-}
+}*/
+
 
 h2 { margin: 20px 0px 10px 0px; }
 h3 { margin: 10px 0px 5px 0px; }
@@ -111,18 +124,28 @@ margin-left: 220px;
   color: #ffffff;
   cursor: auto;
 }
+.sidebar > li:first-child { padding-top: 11px; }
 .sidebar .nav-header { font-size: 14px; }
-.sidebar .danger a i { color: #b94a48; }
 .sidebar .new a i { color: #468847; }
-.sidebar a { text-align: left; }
-.sidebar a div { display:inline-block; width: 20px; text-align:center; }
+.sidebar .edit a i { color: #468847; }
+.sidebar .submit a i { color: #468847; }
+.sidebar .destroy a i { color: #b94a48; }
+.sidebar .cancel a i { color: #b94a48; }
+
+.sidebar a { text-align: left; text-transform:capitalize; }
+.sidebar .indent a span { margin-left:15px; }
 .sidebar a i { float: right }
 
-.sidebar .header {
-  font-size: 18px;
-  color: #333333;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eeeeee;
-  text-align: right;
-  padding-right: 0px;
+.main > div.page-header:first-child { margin-top: 0px; }
+.main > div.page-header > h3 { 
+  margin: 0px; 
+  line-height:25px; 
+  text-transform:capitalize; 
 }
+
+.page-header {
+  margin: 20px 0px 20px 0px;
+  //padding: 0px 0px 0px 0px;
+}
+
+//.table > tbody > tr:last-child { border-bottom: 1px solid #dddddd; }

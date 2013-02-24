@@ -1,13 +1,35 @@
+<% if can?(:edit, @team)%>
+  <% content_for :actions do %>
+    <% if can? :edit, @team %>
+      <li class='submit'>
+        <%= link_to '#', onclick: "$('#edit_team_#{@team.id}').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <% if can? :edit, @team %>
+      <li class='cancel'>
+        <%= link_to teams_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :navigation do %>
+  <li class='navigation'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-right"></i><% end %>
+  </li>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb indent'>
+    <%= link_to team_path(@team) do %><span><%= @team.alias %><span><i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td>Edit Team</td>
-      <td>
-        <%= submit_tag 'Update Team', onclick: "$('#edit_team_#{@team.id}').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', teams_path, class: 'btn' %>
-      </td>
-    </tr>
-  </table>
+  <h3><%= @team.alias %></h3>
 </div>
 
 <%= render partial: 'form' %>

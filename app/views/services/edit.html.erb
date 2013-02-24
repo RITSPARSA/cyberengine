@@ -1,13 +1,41 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td>Edit Service</td>
-      <td>
-        <%= submit_tag "Update Service", onclick: "$('#edit_service_#{@service.id}').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', team_server_services_path(@team,@server), class: 'btn' %>
-      </td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do 'Edit Service' end %>
+
+<% if can? [:edit], @service %>
+  <% content_for :actions do %>
+    <% if can? :edit, @service %>
+      <li class='submit'>
+        <%= link_to '#', onclick: "$('#edit_service_#{@service.id}').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to team_server_services_path(@team,@server) do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<% content_for :navigation do %>
+  <li class='navigation'>
+    <%= link_to team_server_service_users_path(@team,@server,@service) do %>Users<i class="icon-chevron-right"></i><% end %>
+  </li>
+  <li class='navigation'>
+    <%= link_to team_server_service_properties_path(@team,@server,@service) do %>Properties<i class="icon-chevron-right"></i><% end %>
+  </li>
+  <li class='navigation'>
+    <%= link_to team_server_service_checks_path(@team,@server,@service) do %>Checks<i class="icon-chevron-right"></i><% end %>
+  </li>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <%= render partial: 'form' %>

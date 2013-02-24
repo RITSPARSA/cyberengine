@@ -1,13 +1,20 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td><%= @team.alias %> Servers</td>
-      <td>
-        <%= link_to "New Server", new_team_server_path(@team), class: 'btn btn-primary' if whiteteam? %>
-     </td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do "#{@team.alias} Servers" end %>
+
+<% if can? [:new], Server %>
+  <% content_for :actions do %>
+    <% if can? :new, Server %>
+      <li class="new"> 
+        <%= link_to new_team_server_path(@team) do %>New Server<i class="icon-plus-sign"></i><% end %>
+      </li>
+    <% end %>  
+  <% end %>  
+<% end %> 
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <%= render partial: 'team', locals: { team: @team } %>
-

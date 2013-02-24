@@ -1,13 +1,27 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td><%= @server.name %> Services</td>
-      <td>
-        <%= link_to "New Service", new_team_server_service_path(@team,@server), class: 'btn btn-primary' if can? :new, Service %>
-     </td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do "#{@server.name} Services" end %>
+
+<% if can? [:new], Service %>
+  <% content_for :actions do %>
+    <% if can? :new, Service %>
+      <li class="new"> 
+        <%= link_to new_team_server_service_path(@team,@server) do %>New Service<i class="icon-plus-sign"></i><% end %>
+      </li>
+    <% end %>  
+  <% end %>  
+<% end %> 
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <%= render partial: 'server', locals: {team: @team, server: @server } %>
 <%= render partial: 'checks/modal' %>

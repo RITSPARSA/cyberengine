@@ -1,19 +1,21 @@
-<% content_for :header do "All Teams" end %>
-
-<% if whiteteam? %>
+<% if can?(:new, Team) %>
   <% content_for :actions do %>
-    <li class="new"> 
-      <%= link_to new_team_path do %>
-        New Team<i class="icon-plus-sign"></i>
-      <% end %>
-    </li>
+    <% if can? :new, Team %>
+      <li class="new"> 
+        <%= link_to new_team_path do %>New Team<i class="icon-plus-sign"></i><% end %>
+      </li>
+    <% end %>  
   <% end %>  
 <% end %>  
+
+
+<div class="page-header">
+  <h3>Teams</h3>
+</div>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Id</th>
       <th>Alias</th>
       <th>Name</th>
       <th>Color</th>

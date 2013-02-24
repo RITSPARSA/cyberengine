@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberengine</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Cyberengine" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -12,94 +12,108 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
 
-    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '144x144' %>
+    <%= favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
 
     <!-- For iPhone with high-resolution Retina display: -->
     <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-114x114-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '114x114' %>
+    <%= favicon_link_tag 'images/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
 
     <!-- For first- and second-generation iPad: -->
     <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-72x72-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '72x72' %>
+    <%= favicon_link_tag 'images/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
 
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
+    <%= favicon_link_tag 'images/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="navbar navbar-fluid-top navbar-inverse offset1 span11">
-          <div class="navbar-inner">
-                    <a class="brand" href="#">Title</a>
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                    </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-<!--
-        <div class="navbar navbar-fluid-top">
-        <div class="navbar-inner">
--->
-
-<!--
-    <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar navbar-fluid-top navbar-inverse">
       <div class="navbar-inner">
-        <div class="container row offset1">
+        <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <div class="container nav-collapse">
-            <%= render 'layouts/team_nav' %>
-            <%= render 'layouts/auth_nav' %>
-          </div><!--/.nav-collapse -->
+          <%= link_to 'Cyberengine', welcome_path, class: 'brand' %>
+          <div class="container-fluid nav-collapse">
+
+            <ul class="nav">
+              <li class="divider-vertical"></li>
+              <li><%= link_to 'Teams', teams_path %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to 'Overview', overview_teams_path %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to 'Scoreboard', scoreboard_path %></li>
+              <li class="divider-vertical"></li>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="divider-vertical"></li>
+              <% unless logged_in? %>
+                <li><%= link_to 'Login', new_session_path %></li>
+              <% else %>
+                <% team = current_member.team %>
+                <% if blueteam? %>
+                  <li><%= link_to 'Home', team_path(team) %></li>
+                  <li class="divider-vertical"></li>
+                <% end %>
+                <% if whiteteam? %>
+                  <li><%= link_to 'Members', members_path %></li>
+                  <li class="divider-vertical"></li>
+                <% end %>
+                <li><%= link_to 'Logout', session_path, method: 'delete' %></li>
+              <% end %>
+              <li class="divider-vertical"></li>
+            </ul>
+
+          </div>
         </div>
       </div>
     </div>
-   --> 
+
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span12">
-          <%= render partial: 'layouts/breadcrumbs' %>
+        <div class="span2">
+            <ul class="nav nav-tabs nav-stacked sidebar">
+
+              <% if content_for?(:actions) %>
+                <li class="nav-header">Actions</li>
+                <%= yield :actions %>
+              <% end %>
+
+              <% if content_for?(:navigation) %>
+                <li class="nav-header">Navigation</li>
+                <%= yield :navigation %>
+              <% end %>
+
+              <% if content_for?(:crumbs) %>
+                <li class="nav-header">Path</li>
+                <%= yield :crumbs %>
+              <% end %>
+              
+            </ul>
         </div>
-      </div>
-      <div class="row">
-        <div class="span1">
-          <ul class="nav nav-list">
-            <li class="nav-header">List header</li>
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-          </ul>
-        </div>
-        <div class="span11">
+        <div class="span10 main">
           <%= bootstrap_flash %>
           <%= yield %>
-          <br />
         </div>
-      </div><!--/row-->
-      <%= yield :rows %>
+      </div>
     </div> <!-- /container -->
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-    <% #= javascript_include_tag params[:controller] %>
 
   </body>
 </html>

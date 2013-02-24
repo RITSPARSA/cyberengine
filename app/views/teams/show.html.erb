@@ -1,14 +1,38 @@
+<% if can?(:edit, @team) || can?(:destroy, @team) %>
+  <% content_for :actions do %>
+    <% if can? :edit, @team %>
+      <li class='edit'>
+        <%= link_to edit_team_path(@team) do %>Edit Team<i class="icon-plus"></i><% end %>
+      </li>
+    <% end %>
+    <% if can? :destroy, @team %>
+      <li class='destroy'>
+        <%= link_to team_path(@team), method: :delete, data: { confirm: 'Please Confirm' } do %>Delete Team<i class="icon-warning-sign"></i><% end %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :navigation do %>
+  <li class='navigation'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-right"></i><% end %>
+  </li>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb indent'>
+    <%= link_to teams_path do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td><%= @team.alias %> : <%= @team.name %></td>
-      <td>
-        <%= link_to 'Edit', edit_team_path(@team), class: 'btn' if can? :edit, @team %>
-        <%= link_to 'Delete', team_path(@team), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @team %>
-      </td>
-    </tr>
-  </table>
+  <h3><%= @team.alias %></h3>
 </div>
+
 
 <div class="table-dl-horizontal">
   <table>
@@ -24,13 +48,13 @@
 </div>
 
 <div class="page-header">
-  <h2>Servers</h2>
+  <h3>Servers</h3>
 </div>
 
 <%= render partial: 'servers/team', locals: { team: @team } %>
 
 <div class="page-header">
-  <h2>Services</h2>
+  <h3>Services</h3>
 </div>
 
 <%= render partial: 'services/team', locals: { team: @team } %>
@@ -38,4 +62,3 @@
 <%= render partial: 'checks/modal' %>
 <%= render partial: 'properties/modal' %>
 <%= render partial: 'users/modal' %>
-

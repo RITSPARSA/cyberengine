@@ -16,18 +16,4 @@
       <%= select(:server, :team_id, [[@team.alias, @team.id]] ) %>
     </div>
   </div>
-
-  <% if whiteteam? && params[:action] == 'new' %>
-    <br />
-    <h2>Whiteteam Options</h2>
-    <hr />
-    <div class="control-group-long">
-      <%= label_tag :whiteteam, "Duplicate across blueteams?", class: 'control-label' %>
-      <div class="controls">
-        <%= check_box(:whiteteam, :duplicate, { class: 'check_box' }, "yes", "no") %>
-      </div>
-    </div>
-  <% end %>
-
 <% end %>
-

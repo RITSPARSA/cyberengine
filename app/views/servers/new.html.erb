@@ -1,13 +1,26 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td>New Server</td>
-      <td>
-        <%= submit_tag 'Create Server', onclick: "$('#new_server').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', team_servers_path(@team), class: 'btn' %>
-      </td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do 'New Server' end %>
+
+<% if can?([:new], Server) %>
+  <% content_for :actions do %>
+    <% if can? :new, Server %>
+      <li class='new'>
+        <%= link_to '#', onclick: "$('#new_server').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to team_servers_path(@team) do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <%= render partial: 'form' %>

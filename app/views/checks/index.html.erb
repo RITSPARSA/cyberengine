@@ -1,11 +1,33 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td><%= @service.name %> Checks</td>
-      <td><%= link_to "New Check", new_team_server_service_check_path(@team,@server,@service), class: 'btn btn-primary' if can? :new, Check %></td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do "#{@service.name} Checks" end %>
+
+<% if can? :new, Check %>
+  <% content_for :actions do %>
+    <% if can? :new, Check %>
+      <li class="new"> 
+        <%= link_to new_team_server_service_check_path(@team,@server,@service) do %>New Check<i class="icon-plus-sign"></i><% end %>
+      </li>
+    <% end %>  
+  <% end %>  
+<% end %> 
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_services_path(@team,@server) do %>Services<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_service_path(@team,@server,@service) do %>Service<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <% service = @service if @service %>
 <% latest = service.checks.latest %>

@@ -1,14 +1,41 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td>Property: <%= @property.property %></td>
-      <td>
-        <%= link_to 'Edit', edit_team_server_service_property_path(@team,@server,@service,@property), class: 'btn' if can? :edit, @property %>
-        <%= link_to 'Delete', team_server_service_property_path(@team,@server,@service,@property), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, @property %>
-      </td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do @property.property end %>
+
+<% if can?(:edit, @property) || can?(:destroy, @property) %>
+  <% content_for :actions do %>
+    <% if can? :edit, @property %>
+      <li class='edit'>
+        <%= link_to edit_team_server_service_property_path(@team,@server,@service,@property) do %>Edit<i class="icon-plus"></i><% end %>
+      </li>
+    <% end %>
+    <% if can? :destroy, @property %>
+      <li class='destroy'>
+        <%= link_to team_server_service_property_path(@team,@server,@service,@property), method: :delete, data: { confirm: 'Please Confirm' } do %>Delete<i class="icon-warning-sign"></i><% end %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_services_path(@team,@server) do %>Services<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_service_path(@team,@server,@service) do %>Service<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_service_properties_path(@team,@server,@service) do %>Properties<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <div class="table-dl-horizontal">
   <table>

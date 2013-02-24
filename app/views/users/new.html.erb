@@ -1,13 +1,38 @@
-<div class="page-header">
-  <table>
-    <tr>
-      <td>New User</td>
-      <td>
-        <%= submit_tag 'Create User', onclick: "$('#new_user').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', team_server_service_users_path(@team,@server,@service), class: 'btn' %>
-      </td>
-    </tr>
-  </table>
-</div>
+<% content_for :header do 'New User' end %>
+
+<% if can? :new, User %>
+  <% content_for :actions do %>
+    <% if can? :new, User %>
+      <li class='new'>
+        <%= link_to '#', onclick: "$('#new_user').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to team_server_service_users_path(@team,@server,@service) do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<% content_for :crumbs do %>
+  <li class='crumb'>
+    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_services_path(@team,@server) do %>Services<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_service_path(@team,@server,@service) do %>Service<i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='crumb'>
+    <%= link_to team_server_service_users_path(@team,@server,@service) do %>Users<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <%= render partial: 'form' %>
