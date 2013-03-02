@@ -1,5 +1,5 @@
 Cyberengine::Application.routes.draw do
-  root to: 'teams#index'
+  root to: 'static#welcome'
   get 'welcome', as: 'welcome', controller: :static
   get 'scoreboard', as: 'scoreboard', controller: :static
 

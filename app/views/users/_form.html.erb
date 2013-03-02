@@ -37,5 +37,7 @@
       <%= select(:user, :service_id, [[@service.name, @service.id]]) %>
     </div>
   </div>
+
+  <%= f.submit 'Login', class: 'invisible-submit' %>
 <% end %>
 

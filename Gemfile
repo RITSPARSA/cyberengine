@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'sqlite3'
+gem 'pg'
+# gem 'sqlite3'
+# gem 'mysql2' 
 gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'

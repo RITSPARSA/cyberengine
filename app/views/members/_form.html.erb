@@ -30,4 +30,6 @@
       <%= select(:member, :team_id, Team.all.collect { |t| [t.alias, t.id] }, { prompt: 'Select Team' }) %>
     </div>
   </div>
+
+  <%= f.submit 'Login', class: 'invisible-submit' %>
 <% end %>

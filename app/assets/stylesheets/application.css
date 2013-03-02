@@ -118,4 +118,10 @@ margin-left: 220px;
 .page-header {
   margin: 30px 0px 20px 0px;
 }
-
+form input[type="submit"].invisible-submit {
+  padding: 0px;
+  margin: 0px;
+  width: 0px;
+  height: 0px;
+  border: 0px;
+}

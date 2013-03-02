@@ -16,4 +16,6 @@
       <%= select(:server, :team_id, [[@team.alias, @team.id]] ) %>
     </div>
   </div>
+
+  <%= f.submit 'Login', class: 'invisible-submit' %>
 <% end %>

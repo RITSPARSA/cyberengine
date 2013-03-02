@@ -59,10 +59,8 @@ Download cyberengine
     chown -R apache:apache /var/rails/cyberengine # If you dont do this you may get permission errors
     cd cyberengine
     bundle install
-    rake db:drop          # Should not be any db to start with
-    rake db:migrate       # Build db schema
-    rake db:seed          # Testing seed data
-    ./quickstart.sh       # test installation - not ment for production
+    rake setup:reset      # Resets databases and installs basic teams: Whiteteam and Redteam - Logins: whiteteam:whiteteam, redteam:redteam
+    sh quickstart.sh      # test installation - not ment for production
 
   
 Apache hosting is done using a mod called phusion passenger. It is very easy to setup. 
@@ -73,7 +71,7 @@ Apache hosting is done using a mod called phusion passenger. It is very easy to 
     yum install httpd-devel apr-devel apr-util-devel curl-devel
 
     
-/etc/httpd/conf/httpd.conf # I appended to end of file
+/etc/httpd/conf/httpd.conf # Usually append to end 
 
     LoadModule passenger_module /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19/ext/apache2/mod_passenger.so
     PassengerRoot /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19
@@ -81,9 +79,9 @@ Apache hosting is done using a mod called phusion passenger. It is very easy to 
     NameVirtualHost *:80
     <VirtualHost *:80>
       RailsEnv development
-      ServerName 192.168.122.159
-      ServerAlias 192.168.122.159
-      # !!! Be sure to point DocumentRoot to 'public'!
+      ServerName 192.168.1.10
+      ServerAlias 192.168.1.10
+      # Be sure to point DocumentRoot to 'public' directory
       DocumentRoot /var/rails/cyberengine/public
       <Directory /var/rails/cyberengine/public>
          #order allow,deny
@@ -101,11 +99,19 @@ Default login:
     Username: whiteteam
     Password: whiteteam 
 
-
-Other logins:
-
-    redteam:redteam
-    team1:team1
-    team2:team2
+    Username: redteam
+    Password: redteam
 
 
+
+yum install postgresql-server
+postgresql-setup initdb
+systemctl enable postgresql.service
+systemctl start postgresql.service
+su postgres
+psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
+
+rails console
+ActiveRecord::Base.establish_connection(Rails.configuration.database_configuration[Rails.env])
+
+rake setup:basic

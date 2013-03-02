@@ -1,5 +1,4 @@
 <%= form_for @team, html: { class: 'form-horizontal' }  do |f| %>
-
   <% if @team.errors.any? %>
     <% flash[:error] = @team.errors.full_messages.to_s %>
   <% end %>
@@ -25,4 +24,5 @@
     </div>
   </div>
 
+  <%= f.submit 'Login', class: 'invisible-submit' %>
 <% end %>

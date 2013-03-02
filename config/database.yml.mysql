@@ -1,24 +1,30 @@
-# PostgreSQL - 9.x
+# MySQL - 5.x
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: cyberengine_production
   pool: 5
   username: cyberengine
   password: cyberengine
+  socket: /tmp/mysql.sock
 
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: cyberengine_development
   pool: 5
   username: cyberengine
   password: cyberengine
+  socket: /tmp/mysql.sock
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: cyberengine_test
   pool: 5
   username: cyberengine
   password: cyberengine
+  socket: /tmp/mysql.sock
