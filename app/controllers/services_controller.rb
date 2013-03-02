@@ -8,7 +8,6 @@ class ServicesController < ApplicationController
   end
 
   def index
-    @services = Service.where(team_id: @server.id)
   end
 
   def show

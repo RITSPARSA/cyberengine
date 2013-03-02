@@ -59,16 +59,8 @@ class ChecksController < ApplicationController
     if params[:id]
       @check = Check.find_by_id(params[:id])
       @check.nil? ? render(partial: 'modal_empty') : render(partial: 'modal_check')
-    elsif @service
-      @check = @service.checks.latest
-      @checks = @service.checks
-      if @check
-        render(partial: 'modal_check') 
-        render(partial: 'modal_checks')
-      end
     else
-      @checks = @server.checks
-      @checks.count == 0 ? render(partial: 'modal_empty') : render(partial: 'modal_checks')
+      render(partial: 'modal_empty') 
     end
   end
 

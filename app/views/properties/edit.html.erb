@@ -1,6 +1,4 @@
-<% content_for :header do 'Edit Property' end %>
-
-<% if can? :edit, @property %>
+<% if can?(:edit, @property) %>
   <% content_for :actions do %>
     <% if can? :edit, @property %>
       <li class='submit'>
@@ -13,26 +11,36 @@
   <% end %>
 <% end %>
 
-<% content_for :crumbs do %>
-  <li class='crumb'>
-    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  <li class='path'>
+    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_server_services_path(@team,@server) do %>Services<i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_server_service_path(@team,@server,@service) do %>Service<i class="icon-chevron-left"></i><% end %>
+  <li class='path'>
+    <%= link_to team_server_services_path(@team,@server) do %><span>Services</span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_server_service_properties_path(@team,@server,@service) do %>Properties<i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to team_server_service_path(@team,@server,@service) do %><span><%= @service.name %></span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path'>
+    <%= link_to team_server_service_users_path(@team,@server,@service) do %><span>Properties</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path indent'>
+    <%= link_to team_server_service_check_path(@team,@server,@service,@property) do %><span><%= @property.category %></span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
 
+
+<div class="page-header">
+  <h3><%= @property.category %><h3>
+</div>
 
 <%= render partial: 'form' %>

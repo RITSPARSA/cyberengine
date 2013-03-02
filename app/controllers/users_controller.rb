@@ -24,6 +24,41 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def csv
+    if params[:csv]
+      csv = params[:csv]
+      users_list = Array.new
+      users = User.where(service_id: @service.id)
+      passed = Array.new
+      unknown = Array.new
+      failed = Array.new
+      csv.gsub!(/(\r\n)+/,"\r\n")
+      csv.split.each do |csv_user| 
+        split = csv_user.split(',',2)
+        users_list << { username: split.first, password: split.last }
+      end
+      users_list.each do |hash|
+        username = hash[:username]
+        password = hash[:password]
+        user = users.where('username = ?', username).first
+        if user
+          user.update_attributes(password: password)
+          if user.save 
+            passed << username 
+          else 
+            failed << "#{username} [#{user.errors.full_messages.join(',')}]"
+          end
+        else
+          unknown << username
+        end
+      end
+      flash.now[:success] = "Updated: #{passed.join(', ')}" unless passed.empty?
+      flash.now[:error] = "Failed: #{failed.join(', ')}" unless failed.empty?
+      flash.now[:info] = "Unknown username: #{unknown.join(', ')}" unless unknown.empty?
+    end
+    @users = User.where(service_id: @service.id).map{|u| "#{u.username},#{u.password}"}.join("\r\n")
+  end
+
   def create
     @user = User.new(params[:user])
     if @user.save

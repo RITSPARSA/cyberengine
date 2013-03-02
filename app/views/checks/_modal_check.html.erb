@@ -1,16 +1,18 @@
 <div class="table-dl-horizontal">
   <table>
     <tr>
-      <td>Passed:</td>
-      <% if @check.passed %>
-        <td><span class="label label-success"><%= @check.passed %></span></td>
-      <% else %>
-        <td><span class="label label-important"><%= @check.passed %></span></td>
-      <% end %>
-    </tr>
-    <tr>
       <td>Round:</td>
       <td><%= @check.round %></td>
+    </tr>
+    <tr>
+      <td>Status:</td>
+      <% label_class = @check.passed ? "success" : "important" %>
+      <% label_text = @check.passed ? "Passed" : "Failed" %>
+      <td><span class="label label-<%= label_class %>"><%= label_text %></span></td>
+    </tr>
+    <tr>
+      <td>Created At:</td>
+      <td><%= @check.created_at %></td>
     </tr>
     <tr>
       <td>Request:</td>

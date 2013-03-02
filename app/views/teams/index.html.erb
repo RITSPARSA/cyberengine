@@ -8,6 +8,12 @@
   <% end %>  
 <% end %>  
 
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
 
 <div class="page-header">
   <h3>Teams</h3>
@@ -23,7 +29,6 @@
   </thead>
   <tbody>
     <% @teams.each do |team| %>
-      <% next if cannot? :show, team %>
       <% label = { red: 'important', blue: 'info', white:'inverse' } %>
       <tr>
         <td><%= link_to team.alias, team_path(team) %></td>

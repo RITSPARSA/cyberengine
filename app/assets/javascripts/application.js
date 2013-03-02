@@ -13,8 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require highcharts
-//= require highcharts/highcharts-more
-//= require highcharts/themes/gray
-//= require dataTables/jquery.dataTables
-//= require_tree .

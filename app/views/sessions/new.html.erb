@@ -1,4 +1,19 @@
+<% if can?(:new, :session) %>
+  <% content_for :actions do %>
+    <% if can? :new, :session %>
+      <li class='new'>
+        <%= link_to '#', onclick: "$('#new_session').trigger('submit')" do %>Login<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to teams_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+
 <div class="page-header">
-  <h1>Login</h1>
+  <h3>Login</h3>
 </div>
+
 <%= render partial: 'form' %>

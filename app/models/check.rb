@@ -15,17 +15,25 @@ class Check < ActiveRecord::Base
 
 
   private
+  def self.ordered
+    order('round ASC')
+  end
+
   def self.latest
-    first(order: 'created_at DESC')
+    order('round DESC').first
   end
 
   def self.linegraph_compact
     linegraph = [[0,0]]
-    checks = passing 
+    checks = self.ordered
     return linegraph if checks.empty?
-    checks.select('round,service_id').includes(:service).each {|check| linegraph << [check.round,check.service.points_per_check]}
-    linegraph = linegraph.sort.group_by{|a,b| a }.map{|k,v| v.compact.inject{|a,b| [a[0], b[1]+a[1]] } }
-    for i in 1..linegraph.size-1 do linegraph[i] = [linegraph[i][0], linegraph[i][1]+linegraph[i-1][1]] end
+    available_points = checks.first.service.available_points
+    checks.each do |check| 
+      points = checks.where('round <= ?',check.round).points
+      linegraph << [check.round,points]
+    end
+    #linegraph = linegraph.sort.group_by{|a,b| a }.map{|k,v| v.compact.inject{|a,b| [a[0], b[1]+a[1]] } }
+    #for i in 1..linegraph.size-1 do linegraph[i] = [linegraph[i][0], linegraph[i][1]+linegraph[i-1][1]] end
     linegraph
   end
 
@@ -45,19 +53,20 @@ class Check < ActiveRecord::Base
   end
 
   def self.linegraph
+    #self.linegraph_compact
     self.linegraph_full
   end
 
   def self.bargraph
-    points = 0
-    checks = passing 
-    return points if checks.empty?
-    checks.select('round,service_id').includes(:service).each {|check| points += check.service.points_per_check}
-    [points]
+    [self.points]
   end
 
   def self.points
-    self.bargraph.first
+    first = self.first
+    return 0 unless first
+    available_points = first.service.available_points
+    percent = self.percent
+    (available_points*percent).round(1)
   end
 
   def self.passing
@@ -70,8 +79,15 @@ class Check < ActiveRecord::Base
 
   def self.percent
     total = count.to_f
+    return 0.round(1) if total == 0
     pass = passing.count.to_f
-    (pass/total * 100).to_i
+    pass / total
+  end
+
+  def self.last_round
+    latest = self.latest
+    return 0 unless latest
+    latest.round
   end
 
   def right_team?

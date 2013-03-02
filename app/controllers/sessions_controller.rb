@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
     member = Member.find_by_username(username)
     if member && member.authenticate(password)
       session[:member_id] = member.id
-      redirect_to team_path(member.team_id), notice: "Successfully logged in"
+      if blueteam?
+        redirect_to team_path(member.team_id), notice: "Successfully logged in"
+      else
+        redirect_to teams_path, notice: "Successfully logged in"
+      end
     else
       flash.now.alert = "Invalid username or password"
       redirect_to new_session_path, alert: "Invalid username or password"

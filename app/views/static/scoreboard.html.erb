@@ -1,36 +1,76 @@
+<% content_for :fullscreen do %>
+  <div id="chart" style="height:550px;"></div>
 
-      <div id="chart" style="height:600px;"></div>
-
-<div class="tabbable tabs-right"> 
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Controls</a></li>
-    <li><a href="#tab2" data-toggle="tab">Graph</a></li>
-    <li><a href="#tab3" data-toggle="tab">Table</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
-      <p>Graph</p>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <p>Controls</p>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <p>Table</p>
-    </div>
+  <div class='page-header'>
+    <h3>Totals</h3>
   </div>
-</div>
+  <table class='table table-bordered table-hover'>
+    <thead>
+      <th>Team</th>
+      <th>Checks</th>
+      <th>Passed</th>
+      <th>Percent</th>
+      <th>Available</th>
+      <th>Points</th>
+    </thead>
+    <tbody>
+      <% @teams.each do |team| %>
+        <% scoring = team.services.scoring %>
+        <tr>
+          <td><%= team.alias %></td>
+          <td><%= scoring[:count] %></td>
+          <td><%= scoring[:passed] %></td>
+          <td><%= scoring[:percent_rounded] %></td>
+          <td><%= scoring[:available] %></td>
+          <td><%= scoring[:points_rounded] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br />
 
-
-<!--
-<ul class="nav nav-tabs">
-  <li><a href="#home" data-toggle="tab">Home</a></li>
-  <li><a href="#profile" data-toggle="tab">Profile</a></li>
-  <li><a href="#messages" data-toggle="tab">Messages</a></li>
-  <li><a href="#settings" data-toggle="tab">Settings</a></li>
-</ul>
-<div id="chart2" style="height:600px;"> </div>
--->
-<%= javascript_tag do %>
-  window.linegraph = <%= json_escape @linegraph.to_json.html_safe %>;
-  window.rounds = <%= json_escape @rounds.to_json.html_safe %>;
+  <div class='page-header'>
+    <h3>Breakdown</h3>
+  </div>
+  <% @teams.each do |team| %>
+    <div class='page-header'>
+      <h4><%= team.alias %></h4>
+    </div>
+    <table class='table table-bordered table-hover'>
+      <thead>
+        <th>Service</th>
+        <th>Version</th>
+        <th>Protocol</th>
+        <th>Checks</th>
+        <th>Passed</th>
+        <th>Percent</th>
+        <th>Available</th>
+        <th>Points</th>
+      </thead>
+      <tbody>
+        <% team.services.order('version,protocol ASC').each do |service| %>
+          <% scoring = service.scoring %>
+          <tr>
+            <td><%= service.name %></td>
+            <td><%= service.version %></td>
+            <td><%= service.protocol %></td>
+            <td><%= scoring[:count] %></td>
+            <td><%= scoring[:passed] %></td>
+            <td><%= scoring[:percent_rounded] %></td>
+            <td><%= scoring[:available] %></td>
+            <td><%= scoring[:points_rounded] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />
+  <% end %>
+<% end %>
+<% content_for :javascript_data do %>
+    window.teams = <%= json_escape @teams.map{|t| t.alias }.to_json.html_safe %>;
+    window.colors = <%= json_escape @colors.to_json.html_safe %>;
+    window.bargraph = <%= json_escape @bargraph.to_json.html_safe %>;
+<% end %>
+<% content_for :javascript do %>
+   <%= javascript_include_tag 'scoreboard' %>
 <% end %>

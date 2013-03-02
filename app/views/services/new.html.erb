@@ -1,6 +1,4 @@
-<% content_for :header do 'New Service' end %>
-
-<% if can?([:new], Service) %>
+<% if can?(:new, Service) %>
   <% content_for :actions do %>
     <% if can? :new, Service %>
       <li class='new'>
@@ -13,17 +11,27 @@
   <% end %>
 <% end %>
 
-<% content_for :crumbs do %>
-  <li class='crumb'>
-    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_server_path(@team,@server) do %>Server<i class="icon-chevron-left"></i><% end %>
+  <li class='path'>
+    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path indent'>
+    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path'>
+    <%= link_to team_server_services_path(@team,@server) do %><span>Services</span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
 
+
+<div class="page-header">
+  <h3>New Service</h3>
+</div>
 
 <%= render partial: 'form' %>

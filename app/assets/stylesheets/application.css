@@ -8,10 +8,114 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- * require dataTables/jquery.dataTables
  *= require_tree .
+ *= require_self
  */
 
 .center-text { text-align:center; }
+.sponsors-table th,
+.sponsors-table td {
+  padding: 10px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 0px solid #dddddd;
+  font-size: 25px;
+}
+
+#propertiesModal {
+  width: 800px;
+  margin: 0px 0px 0px -400px;
+}
+#checksModal {
+  width: 1000px;
+  margin: 0px 0px 0px -500px;
+}
+#usersModal {
+  width: 600px;
+  margin: 0px 0px 0px -300px;
+}
+
+a:hover {
+  color: #005580;
+  text-decoration: none;
+}
+
+i.success { color: #468847; }
+i.error { color: #b94a48; }
+i.info { color: #3a87ad; }
+i span {
+  margin: 0px 0px 0px 5px;
+  color: #333333;
+}
+
+table table.inner-table td { border: none; }
+table table.inner-table tr { padding: 0px; }
+table table.inner-table tr:first-child > td { padding-top: 0px; }
+table table.inner-table tr > td { padding-bottom: 0px; }
+
+h2 { margin: 20px 0px 10px 0px; }
+h3 { margin: 10px 0px 5px 0px; }
+.horizontal_text_area {
+  height: 200px; 
+  width: 500px;
+}
+
+div .table-dl-horizontal td:nth-of-type(1) {
+  text-align:right; 
+  padding-right:25px; 
+  vertical-align:top;
+  font-weight: bold;
+}
+.output { white-space: pre-wrap; }
+div .table-dl-horizontal td:nth-of-type(2) { white-space: pre-wrap; }
+
+.form-horizontal .control-group-long .control-label { 
+width: 200px; 
+}
+.form-horizontal .control-group-long .controls { 
+margin-left: 220px; 
+}
+
+.navbar-inner {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.sidebar [class^="icon-"] { line-height: 20px; }
+.sidebar [class*=" icon-"] { line-height: 20px; }
+.sidebar li.active a,
+.sidebar li.active a:hover { 
+  background-color: #0088cc; 
+  color: #ffffff;
+  cursor: auto;
+}
+.sidebar > li:first-child { padding-top: 11px; }
+.sidebar .nav-header { font-size: 14px; }
+.sidebar .new a i { color: #468847; }
+.sidebar .edit a i { color: #468847; }
+.sidebar .submit a i { color: #468847; }
+.sidebar .destroy a i { color: #b94a48; }
+.sidebar .cancel a i { color: #b94a48; }
+
+.sidebar a { text-align: left; text-transform:capitalize; }
+.sidebar .indent a span { margin-left:15px; }
+.sidebar a i { float: right }
+
+.main > div.page-header:first-child { margin-top: 0px; }
+.main > div.page-header > h3 { 
+  margin: 0px; 
+  line-height:25px; 
+  text-transform:capitalize; 
+}
+
+.page-header {
+  margin: 30px 0px 20px 0px;
+}
 

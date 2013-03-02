@@ -1,5 +1,3 @@
-<% content_for :header do @server.name end %>
-
 <% if can?(:edit, @server) || can?(:destroy, @server) %>
   <% content_for :actions do %>
     <% if can? :edit, @server %>
@@ -15,20 +13,31 @@
   <% end %>
 <% end %>
 
-<% content_for :navigation do %>
-  <li class='navigation'>
+<% content_for :resources do %>
+  <li class='resource'>
     <%= link_to team_server_services_path(@team,@server) do %>Services<i class="icon-chevron-right"></i><% end %>
   </li>
 <% end %>
 
-<% content_for :crumbs do %>
-  <li class='crumb'>
-    <%= link_to team_path(@team) do %>Team<i class="icon-chevron-left"></i><% end %>
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
   </li>
-  <li class='crumb'>
-    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path'>
+    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path indent'>
+    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
+
+
+<div class="page-header">
+  <h3><%= @server.name %></h3>
+</div>
 
 
 <div class="table-dl-horizontal">
@@ -39,17 +48,16 @@
     </tr>
     <tr>
       <td>Team:</td>
-      <td><%= Team.find_by_id(@server.team_id).alias %></td>
+      <td><%= @server.team.alias %></td>
     </tr>
   </table>
 </div>
 
 <div class="page-header">
-  <h2>Services</h2>
+  <h3>Services</h3>
 </div>
 
 <%= render partial: 'services/server', locals: { server: @server, team: @team } %>
 <%= render partial: 'checks/modal' %>
 <%= render partial: 'properties/modal' %>
 <%= render partial: 'users/modal' %>
-

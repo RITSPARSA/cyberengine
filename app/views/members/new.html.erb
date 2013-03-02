@@ -1,13 +1,25 @@
+<% if can?(:new, Member) %>
+  <% content_for :actions do %>
+    <% if can? :new, Member %>
+      <li class='new'>
+        <%= link_to '#', onclick: "$('#new_member').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to members_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to members_path do %>Members<i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td>New Member</td>
-      <td>
-        <%= submit_tag 'Create Member', onclick: "$('#new_member').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', members_path, class: 'btn' %>
-      </td>
-    </tr>
-  </table>
+  <h3>New Member</h3>
 </div>
 
 <%= render partial: 'form' %>

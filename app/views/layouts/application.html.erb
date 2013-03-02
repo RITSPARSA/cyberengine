@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Cyberengine" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "ISTS 10" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= link_to 'Cyberengine', welcome_path, class: 'brand' %>
+          <%= link_to 'ISTS', welcome_path, class: 'brand' %>
           <div class="container-fluid nav-collapse">
 
             <ul class="nav">
@@ -82,38 +82,53 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
+      <% unless content_for? :fullscreen %>
+        <div class="row-fluid">
+          <div class="span2">
             <ul class="nav nav-tabs nav-stacked sidebar">
-
-              <% if content_for?(:actions) %>
+              <% if content_for? :actions %>
                 <li class="nav-header">Actions</li>
                 <%= yield :actions %>
               <% end %>
-
-              <% if content_for?(:navigation) %>
-                <li class="nav-header">Navigation</li>
-                <%= yield :navigation %>
+              <% if content_for? :resources %>
+                <li class="nav-header">Resources</li>
+                <%= yield :resources %>
               <% end %>
-
-              <% if content_for?(:crumbs) %>
+              <% if content_for? :paths %>
                 <li class="nav-header">Path</li>
-                <%= yield :crumbs %>
+                <%= yield :paths %>
               <% end %>
-              
             </ul>
+          </div>
+          <div class="span10 main">
+            <%= bootstrap_flash %>
+            <%= yield %>
+          </div>
         </div>
-        <div class="span10 main">
-          <%= bootstrap_flash %>
-          <%= yield %>
+      <% end %>
+
+      <% if content_for? :fullscreen %>
+        <div class="row-fluid">
+          <div class="span12">
+            <%= yield :fullscreen %>
+          </div>
         </div>
-      </div>
+      <% end %>
+
     </div> <!-- /container -->
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+    <% if content_for? :javascript_data %>
+      <%= javascript_tag do %>
+        <%= yield :javascript_data %>
+      <% end %>
+    <% end %>
+    <% if content_for? :javascript %>
+      <%= yield :javascript %>
+    <% end %>
 
   </body>
 </html>

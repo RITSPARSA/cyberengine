@@ -1,34 +1,36 @@
+<% if can?(:new, Member) %>
+  <% content_for :actions do %>
+    <% if can? :new, Member %>
+      <li class="new"> 
+        <%= link_to new_member_path do %>New Member<i class="icon-plus-sign"></i><% end %>
+      </li>
+    <% end %>  
+  <% end %>  
+<% end %>  
+
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to members_path do %><span>Members</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td><h1>All Members</h1></td>
-      <td><%= link_to "New Member", new_member_path, class: 'btn btn-primary' %></td>
-    </tr>
-  </table>
+  <h3>Members</h3>
 </div>
 
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Id</th>
       <th>Team</th>
       <th>Username</th>
-      <th>Password</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @members.each do |member| %>
       <tr>
-        <td><%= member.id %></td>
-        <td><%= Team.find_by_id(member.team_id).alias %></td>
-        <td><%= member.username %></td>
-        <td><%= member.password_digest %></td>
-        <td>
-          <%= link_to 'Show', member_path(member), class: 'btn btn-small' %>
-          <%= link_to 'Edit', edit_member_path(member), class: 'btn btn-small' %>
-          <%= link_to 'Delete', member_path(member), class: 'btn btn-small btn-danger', method: :delete, data: { confirm: 'Please Confirm' } %>
-        </td>
+        <td><%= link_to member.team.alias, team_path(member.team) %></td>
+        <td><%= link_to member.username, member_path(member) %></td>
       </tr>
     <% end %>
   </tbody>

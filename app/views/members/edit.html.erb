@@ -1,13 +1,28 @@
+<% if can?(:edit, @member)%>
+  <% content_for :actions do %>
+    <% if can? :edit, @member %>
+      <li class='submit'>
+        <%= link_to '#', onclick: "$('#edit_member_#{@member.id}').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
+      </li>
+    <% end %>
+    <li class='cancel'>
+      <%= link_to members_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to members_path do %><span>Members</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path indent'>
+    <%= link_to member_path(@member) do %><span><%= @member.username %><span><i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td>Edit <%= @member.username %></td>
-      <td>
-        <%= submit_tag 'Update Member', onclick: "$('#edit_member_#{@member.id}').trigger('submit')", class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', members_path, class: 'btn' %>
-      </td>
-    </tr>
-  </table>
+  <h3><%= @member.username %></h3>
 </div>
 
 <%= render partial: 'form' %>

@@ -7,7 +7,6 @@ class ServersController < ApplicationController
   end
  
   def index
-    @servers = Server.where(team_id: @team.id)
   end
 
   def show

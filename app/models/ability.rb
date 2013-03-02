@@ -24,37 +24,50 @@ class Ability
   end
 
   def blueteam
-    # Everyone
+    # Basic permissions for everyone
     can [:new, :create, :destroy], :session
+    can [:welcome, :scoreboard], :static
     can [:index, :overview], Team
-    can [:index, :show], Server
-    can [:index], Service
 
-    # Restrictions
-    can [:show], Team, color: 'blue' # Shows only  blueteams in index
+    # Member's Team
+    can [:show], Team, { id: @member.team_id }
+    can [:show, :index], Server, team: { id: @member.team_id }
+    can [:show, :index], Service, team: { id: @member.team_id } 
+    can [:index, :show, :modal], Check, team: { id: @member.team_id }
+    can [:index, :show, :modal], Property, team: { id: @member.team_id }
+    can [:index, :show, :modal, :edit, :update, :csv], User, team: { id: @member.team_id } 
 
-    # Owner 
-    can [:show], Service, server: { team_id: @member.team_id } 
-    can [:index, :show, :modal], Check, service: { server: { team_id: @member.team_id } }
-    can [:index, :show, :modal], Property, service: { server: { team_id: @member.team_id } } 
-    can [:index, :show, :modal, :edit, :update], User, service: { server: { team_id: @member.team_id } } # add ":update_usernames" to enable username changes
+    # Uncomment to allow username changes
+    # can [:update_usernames], User, team: { id: @member.team_id } 
+
+    # Allow viewing from overview only
+    # can [:modal], User
+    # can [:modal], Property
+    # can [:modal], Check
   end
 
   def redteam
+    # Basic permissions for everyone
     can [:new, :create, :destroy], :session
+    can [:welcome, :scoreboard], :static
     can [:index, :overview], Team
-    can [:index, :show], Server
-    can [:index], Service
-    can [:show], Team, color: ['blue','red'] # Shows only  blueteams in index
+
+    # Allow viewing from overview only
+    # can [:modal], User
+    # can [:modal], Property
+    # can [:modal], Check
   end
 
   def guest
-    can [:welcome, :scoreboard], :static
+    # Basic permissions for everyone
     can [:new, :create, :destroy], :session
+    can [:welcome, :scoreboard], :static
     can [:index, :overview], Team
-    can [:index, :show], Server
-    can [:index], Service
-    can [:show], Team, color: 'blue' # Shows only  blueteams in index
+
+    # Allow viewing from overview only
+    # can [:modal], User
+    # can [:modal], Property
+    # can [:modal], Check
   end
 
 end

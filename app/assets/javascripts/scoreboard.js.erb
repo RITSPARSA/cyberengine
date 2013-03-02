@@ -1,0 +1,51 @@
+//= require highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/themes/gray
+
+$(document).ready(function() { 
+  var barchart = new Highcharts.Chart(baroptions);
+});
+
+var baroptions = {
+  chart: {
+    renderTo: 'chart', 
+    animation: { duration: 0 }, 
+    backgroundColor: { linearGradient: [0, 0, 0, "100%"], stops: [ [0.0, '#111111'], [0.3, '#222222'] ] },
+    borderRadius: 3,
+    defaultSeriesType: 'column'
+  },
+  colors: window.colors,
+  credits: { enabled: false },
+  title: { text: 'Total Points', style: { fontSize: '16px', fontWeight: 'bold', color: '#999999' } },
+  yAxis: { title: { text: 'Points' }, min: 0, allowDecimal: false, gridLineColor: 'rgba(255, 255, 255, .1)' },
+  xAxis: { categories: window.teams },
+  legend: { enabled: false },
+  tooltip: { 
+    backgroundColor: { linearGradient: [0, 200, 0, 100], stops: [ [0, 'rgba(34, 34, 34, .9)'], [1, 'rgba(17, 17, 17, .9)'] ] },
+    borderWidth: 0,
+    style: { color: '#FFFFFF', padding: 5, },
+    shared: false,
+    crosshairs: false,
+    formatter: function() {
+      var tooltip = '';
+      var sortedPoints = this.points.sort(function(a, b){ return ((a.y > b.y) ? -1 : ((a.y < b.y) ? 1 : 0)); });
+      $.each(sortedPoints, function(i, point) {
+        tooltip += '<span style="color:'+point.series.color+';">'+point.series.name+': </span><b>'+point.y+'</b><br>';
+      });
+      return tooltip;
+    }
+  },
+  plotOptions: {
+    column: {
+      borderWidth: 0, 
+      animation: { duration: 500 },
+      states: { hover: { enabled: false } },
+      dataLabels: { enabled: true, color: '#CCC', style: { fontWeight: 'bold' } }
+    }
+  },
+  series: [{
+    name: 'Teams',
+    data: window.bargraph
+  }]
+  //series: [{ name: 'Teams', data: window.bargraph }]
+};

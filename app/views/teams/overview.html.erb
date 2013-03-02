@@ -1,14 +1,17 @@
-<% content_for :rows do %>
-  <% @teams.each do |team| %>
-    <div class="row">
-      <div class="page-header">
-        <h2><%= link_to team.alias, team_path(team) %></h2>
-      </div>
-      <div class="span12">
-        <%= render partial: 'services/team', locals: { team: team } %>
-      </div>
-    </div>
-  <% end %>
+<div class="page-header">
+  <h3>Overview</h3>
+</div>
+
+<% @teams.each do |team| %>
+  <div class="page-header">
+    <% if can? :show, team %>
+      <h4><%= link_to team.alias, team_path(team) %></h4>
+    <% else %>
+      <h4><%= team.alias %></h4>
+    <% end %>
+  </div>
+  <%= render partial: 'services/overview', locals: { team: team } %>
+  <br />
 <% end %>
 
 <%= render partial: 'checks/modal' %>

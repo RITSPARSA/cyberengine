@@ -1,4 +1,4 @@
-<%= form_for 'session', url: sessions_path, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for 'session', url: sessions_path, html: { class: 'form-horizontal', id: 'new_session' } do |f| %>
 
   <div class="control-group">
     <%= f.label 'username', 'Username', class: 'control-label' %>
@@ -12,10 +12,6 @@
     <div class="controls">
       <%= f.password_field 'password', class: 'text_field' %>
     </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit 'Login', class: 'btn btn-primary' %>
   </div>
 
 <% end %>

@@ -7,28 +7,21 @@
       <th>Category</th>
       <th>Property</th>
       <th>Value</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% if properties.count == 0 %>
       <tr>
-        <td colspan="4">No Properties</td>
+        <td colspan="3">No Properties</td>
       </tr>
     <% else %>
       <% properties.each do |property| %>
         <tr>
-          <td><%= property.category %></td>
+          <td><%= link_to property.category, team_server_service_property_path(@team,@server,service,property) %></td>
           <td><%= property.property %></td>
           <td><%= property.value %></td>
-          <td>
-            <%= link_to 'Show', team_server_service_property_path(@team,@server,service,property), class: 'btn btn-small' if can? :show, property %>
-            <%= link_to 'Edit', edit_team_server_service_property_path(@team,@server,service,property), class: 'btn btn-small' if can? :edit, property %>
-            <%= link_to 'Delete', team_server_service_property_path(@team,@server,service,property), method: :delete, class: 'btn btn-small btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, property %>
-          </td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-

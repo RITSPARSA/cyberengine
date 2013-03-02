@@ -1,51 +1,58 @@
-<% team = @team if @team %>
+<% team = @team if @team  %>
+<% services = team.services.order("version,protocol DESC") %>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Service</th>
-      <th>Server</th>
-      <th>Protocol</th>
       <th>Version</th>
+      <th>Protocol</th>
       <th>Status</th>
-      <% if member?(team) || whiteteam? %>
-        <th>Information</th>
-      <% end %>
+      <th>Checks</th>
+      <th>Users</th>
+      <th>Properties</th>
     </tr>
   </thead>
   <tbody>
-    <% team.servers.each do |server| %>
-      <% server.services.each do |service| %>
-        <% users = service.users %>
-        <% properties = service.properties %>
-        <% latest = service.checks.latest || Check.new %>
-        <% icon_class = case latest.passed when true then "icon-ok success"; when false then "icon-remove error"; else "icon-minus info" end %>
-        <% icon_text = case latest.passed when true then "Passing"; when false then "Failing"; else "No Checks" end %>
-        <tr>
-          <% if can? :show, service %>
-            <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
+    <% services.each do |service| %>
+      <% server = service.server %>
+      <% latest = service.checks.latest || Check.new %>
+      <% label_class = latest.passed ? "success" : "important" %>
+      <% label_text = latest.passed ? "Passing" : "Failing" %>
+      <tr>
+        <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
+        <td><%= service.version %></td>
+        <td><%= service.protocol %></td>
+        <td>
+          <% if latest.id.nil? %>
+            <span class="label label-info">No Checks</span>
           <% else %>
-            <td><%= service.name %></td>
-          <% end %>
-          <td><%= link_to server.name, team_server_path(team,server) %></td>
-          <td><%= service.protocol %></td>
-          <td><%= service.version %></td>
-          <td>
-            <% if latest.id.nil? || cannot?(:modal, latest) %>
-              <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
-            <% else %>
-              <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
-                <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
-              <% end %>
+            <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
+              <span class="label label-<%= label_class %>"><%= label_text %></span>
             <% end %>
-          </td>
-          <% if member?(team) || whiteteam? %>
-            <td>
-              <%= link_to "Users", modal_team_server_service_users_path(team,server,service), class: "btn btn-small #{'disabled' if users.count == 0}", data: { toggle: "modal", target: "#usersModal" } %>
-              <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), class: "btn btn-small #{'disabled' if properties.count == 0}", data: { toggle: "modal", target: "#propertiesModal" } %>
-            </td>
           <% end %>
-        </tr>
-      <% end %>
+        </td>
+        <td>
+          <% if service.checks.count == 0 %>
+            No Checks
+          <% else %>
+            <%= link_to "Checks", team_server_service_checks_path(team,server,service) %>
+          <% end %>
+        </td>
+        <td>
+          <% if service.users.count == 0 %>
+            No Users
+          <% else %>
+            <%= link_to "Users", modal_team_server_service_users_path(team,server,service), data: { toggle: "modal", target: "#usersModal" } %>
+          <% end %>
+        </td>
+        <td>
+          <% if service.properties.count == 0 %>
+            No Properties
+          <% else %>
+            <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), data: { toggle: "modal", target: "#propertiesModal" } %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

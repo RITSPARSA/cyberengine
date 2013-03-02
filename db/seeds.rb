@@ -19,7 +19,7 @@ rounds = Array(1..400)
 protocols = ['dns','ftp','http','https','smtp','pop3','ssh']
 versions = ['ipv4','ipv6']
 boolean = [true,false]
-points_per_checks = [5,10,15,20,25]
+available_points = [250]
 
 def random
   (0...10).map{(65+rand(26)).chr}.join
@@ -31,7 +31,7 @@ for team in teams do
   print "," unless team == teams.size
   name = "team#{team}"
   Team.create(color: 'blue', name: name, alias: name)
-  Member.create(team_id: team, username: name, password: name, password_confirmation: name)
+  Member.create(team_id: team+2, username: name, password: name, password_confirmation: name)
 end
 teams = teams.map{|t| t+2}
 
@@ -53,8 +53,7 @@ for service in services do
   protocol = protocols.sample
   version = versions.sample
   enabled = boolean.sample
-  points_per_check = points_per_checks.sample
-  Service.create(team_id: team, name: "Service#{service}", server_id: server, protocol: protocol, version: version, enabled: enabled, points_per_check: points_per_check)
+  Service.create(team_id: team, name: "Service#{service}", server_id: server, protocol: protocol, version: version, enabled: enabled, available_points: available_points.sample)
 end
 
 puts "\n\nPopulating random #{properties.size} properties"

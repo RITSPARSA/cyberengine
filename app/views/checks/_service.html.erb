@@ -1,5 +1,5 @@
 <% latest = @service.checks.latest || Check.new %>
-<% recent = @service.checks.order('created_at DESC').limit(20) unless latest.id.nil? %>
+<% checks = @service.checks.select('id,round,passed,created_at').order('round DESC') unless latest.id.nil? %>
 
 <% if latest.id.nil? %>
   <p>No checks</p>
@@ -11,16 +11,18 @@
   <div class="table-dl-horizontal">
     <table>
       <tr>
-        <td>Passed:</td>
-        <% if latest.passed %>
-          <td><span class="label label-success"><%= latest.passed %></span></td>
-        <% else %>
-          <td><span class="label label-important"><%= latest.passed %></span></td>
-        <% end %>
-      </tr>
-      <tr>
         <td>Round:</td>
         <td><%= latest.round %></td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <% label_class = latest.passed ? "success" : "important" %>
+        <% label_text = latest.passed ? "Passed" : "Failed" %>
+        <td><span class="label label-<%= label_class %>"><%= label_text %></span></td>
+      </tr>
+      <tr>
+        <td>Created:</td>
+        <td><%= latest.created_at %></td>
       </tr>
       <tr>
         <td>Request:</td>
@@ -34,43 +36,30 @@
   </div>
 
   <div class="page-header">
-    <h3>Last 20 Checks</h3>
+    <h3>Checks</h3>
   </div>
 
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>Round</th>
-        <th>Passed</th>
-        <th>Actions</th>
+        <th>Status</th>
         <th>Created At</th>
       </tr>
     </thead>
     <tbody>
-      <% if recent.count == 0 %>
+      <% checks.each do |check| %>
+        <% label_class = check.passed ? "success" : "important" %>
+        <% label_text = check.passed ? "Passed" : "Failed" %>
         <tr>
-          <td colspan="4">No Checks</td>
+          <td><%= link_to check.round, team_server_service_check_path(@team,@server,@service,check) %></td>
+          <td>
+            <%= link_to modal_team_server_service_check_path(@team,@server,@service,check), data: { toggle: "modal", target: "#checksModal" } do %>
+              <span class="label label-<%= label_class %>"><%= label_text %></span>
+            <% end %>
+          </td>
+          <td><%= check.created_at %></td>
         </tr>
-      <% else %>
-        <% recent.each do |check| %>
-          <% icon_class = case check.passed when true then "icon-ok success"; when false then "icon-remove error"; else "icon-minus info" end %>
-          <% icon_text = case check.passed when true then "True"; when false then "False"; else "No Checks" end %>
-          <tr>
-            <td><%= check.round %></td>
-            <td>
-              <%= link_to modal_team_server_service_check_path(@team,@server,@service,check), data: { toggle: "modal", target: "#checksModal" } do %>
-                <i class="<%= icon_class %>"><span><%= icon_text %></span></i>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to 'Show', team_server_service_check_path(@team,@server,@service,check), class: 'btn btn-small' if can? :show, check %>
-              <%= link_to 'Edit', edit_team_server_service_check_path(@team,@server,@service,check), class: 'btn btn-small' if can? :edit, check %>
-              <%= link_to 'Delete', team_server_service_check_path(@team,@server,@service,check), method: :delete, class: 'btn btn-small btn-danger', data: { confirm: 'Please Confirm' } if can? :destroy, check %>
-            </td>
-            <td><%= check.created_at %></td>
-
-          </tr>
-        <% end %>
       <% end %>
     </tbody>
   </table>

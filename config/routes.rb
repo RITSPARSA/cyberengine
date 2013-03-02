@@ -2,9 +2,6 @@ Cyberengine::Application.routes.draw do
   root to: 'teams#index'
   get 'welcome', as: 'welcome', controller: :static
   get 'scoreboard', as: 'scoreboard', controller: :static
-  namespace :api, defaults: { format: 'json' } do
-    get 'blueteams'
-  end
 
   # Teams, Servers, Services
   resources :teams do
@@ -18,6 +15,8 @@ Cyberengine::Application.routes.draw do
         end
         resources :users do
           get 'modal', on: :collection
+          get 'csv', on: :collection
+          post 'csv', on: :collection
         end
         resources :properties do
           get 'modal', on: :collection

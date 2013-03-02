@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20130117152449) do
     t.string   "protocol",         :null => false
     t.string   "version",          :null => false
     t.boolean  "enabled",          :null => false
-    t.integer  "points_per_check", :null => false
+    t.integer  "available_points", :null => false
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

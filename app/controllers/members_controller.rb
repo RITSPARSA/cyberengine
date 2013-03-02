@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @members = Member.all
+    @members = Member.order('team_id ASC')
   end
 
   def show

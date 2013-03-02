@@ -2,7 +2,11 @@ class TeamsController < ApplicationController
   load_and_authorize_resource 
 
   def index
-    @teams = Team.all
+    if whiteteam?
+      @teams = Team.order('id')
+    else
+      @teams = Team.blueteams
+    end
   end
 
   def overview

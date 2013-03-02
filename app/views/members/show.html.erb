@@ -1,24 +1,37 @@
+<% if can?(:edit, @member) || can?(:destroy, @member) %>
+  <% content_for :actions do %>
+    <% if can? :edit, @member %>
+      <li class='edit'>
+        <%= link_to edit_member_path(@member) do %>Edit<i class="icon-plus"></i><% end %>
+      </li>
+    <% end %>
+    <% if can? :destroy, @member %>
+      <li class='destroy'>
+        <%= link_to member_path(@member), method: :delete, data: { confirm: 'Please Confirm' } do %>Delete<i class="icon-warning-sign"></i><% end %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :paths do %>
+  <li class='path'>
+    <%= link_to members_path do %><span>Members</span><i class="icon-chevron-left"></i><% end %>
+  </li>
+  <li class='path indent'>
+    <%= link_to members_path do %><span><%= @member.username %></span><i class="icon-chevron-left"></i><% end %>
+  </li>
+<% end %>
+
+
 <div class="page-header">
-  <table>
-    <tr>
-      <td><%= @member.username %></td>
-      <td>
-        <%= link_to 'Edit', edit_member_path(@member), class: 'btn' %>
-        <%= link_to 'Delete', member_path(@member), method: :delete, class: 'btn btn-danger', data: { confirm: 'Please Confirm' } %>
-      </td>
-    </tr>
-  </table>
+  <h3><%= @member.username %></h3>
 </div>
 
 <div class="table-dl-horizontal">
   <table>
     <tr>
-      <td>Id:</td>
-      <td><%= @member.id %></td>
-    </tr>
-    <tr>
       <td>Team:</td>
-      <td><%= Team.find_by_id(@member.team_id).alias %></td>
+      <td><%= @member.team.alias %></td>
     </tr>
     <tr>
       <td>Username:</td>

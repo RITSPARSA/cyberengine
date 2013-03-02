@@ -27,7 +27,7 @@
   <div class="control-group">
     <%= f.label :enabled, class: 'control-label' %>
     <div class="controls">
-      <% if @service.enabled == true %>
+      <% unless @service.enabled == false %>
         <%= f.check_box :enabled, class: 'check_box', checked: true %>
       <% else %>
         <%= f.check_box :enabled, class: 'check_box' %>
@@ -36,9 +36,9 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :points_per_check, class: 'control-label' %>
+    <%= f.label :available_points, class: 'control-label' %>
     <div class="controls">
-      <%= f.number_field :points_per_check, min: 0, step: 10, value: 10 %>
+      <%= f.number_field :available_points, min: 0, step: 10, value: 250 %>
     </div>
   </div>
 
