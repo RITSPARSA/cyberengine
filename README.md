@@ -7,14 +7,13 @@ Cyberengine is a Ruby on Rails web front-end designed to check and score common 
 * There are many **Teams** of type _white_, _red_, and _blue_
 * A **Member** belongs to a team
 * **Teams** have many **Servers**
-* **Servers** have many **Services** each defining a _protocol_ (dns, ftp, ssh...) and _version_ (ipv4 or ipv6) 
+* **Servers** have many **Services** each defining a _protocol_ (dns, ftp, ssh...) and _version_ (ipv4, ipv6...) 
 * **Services** have many **Properties** that define that **Service** such as _address_ and _port_
 * **Services** have many **Checks** that are _pass_ or _fail_
 * **Services** can have many **Users** that have a _username_ and _password_
 
 ``` 
 Teams:
-    Members
     Servers:
         Services
             Properties
@@ -28,11 +27,11 @@ Any type of service can be defined, checked, and scored. Scoring can be performe
 
 ### Example Check
 
-A simple script (written in any language) pulls all services and their properties with a protocol of "ping" across all teams from the database. For each service the script performs it's action which in this example is a ping against the address associated with service (address defined by a service property). If the address responds then it is determined to "pass" and a database insert is performed with the required check parameters (passed, request, response). 
+A script (written in any language) pulls services called "Alive" across all teams from the database. For each service, the script pings the address property associated with the service. If the destination responds then the service "passes". A database insert is performed with the required check parameters (passed, request, response, created_at. 
 
 ## Rails Frontend
 
-The rails frontend is a fully functional application that can authenticate members and provides them access to their teams servers and services. This allows them to view their current status and position in the competition. Whiteteam members have full access to all parts of the application while blueteam members can only access their own information.
+The rails frontend is a fully functional application that can authenticate members and provides them access to their teams servers and services. This allows them to view their current status and position in the competition. Whiteteam members have full access to all parts of the application while blueteam members can only access their own information. Teams can update service user's individually or CSV style. 
 
 ## Setup
 
@@ -62,30 +61,58 @@ Download cyberengine
     rake setup:reset      # Resets databases and installs basic teams: Whiteteam and Redteam - Logins: whiteteam:whiteteam, redteam:redteam
     sh quickstart.sh      # test installation - not ment for production
 
+
+Database Setup (Fedora - PostgreSQL):
+
+    # Install PostgreSQL
+    yum install postgresql-server
+    postgresql-setup initdb
+    systemctl enable postgresql.service
+    systemctl start postgresql.service
+ 
+    # Create cyberengine user/password
+    su postgres
+    psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
+
+    # Test database connection
+    # Database connection information config/database.yml (defaults should be fine)
+    cd <cyberengine-base-directory>
+    rails console
+    ActiveRecord::Base.establish_connection(Rails.configuration.database_configuration[Rails.env])
+    exit
+
+    # Reset/Create databases
+    rake cyberengine:reset
+ 
+    # Create Whiteteam and Redteam with default logins: whiteteam:whiteteam redteam:redteam
+    rake cyberengine:basic
+
   
 Apache hosting is done using a mod called phusion passenger. It is very easy to setup. 
 
+    # Apache on Fedora 17:
+    yum install httpd httpd-devel apr-devel apr-util-devel curl-devel
     # Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
-    passenger-install-apache2-module # run install command for apache dependencies
-    # Example - Fedora 17:
-    yum install httpd-devel apr-devel apr-util-devel curl-devel
+    passenger-install-apache2-module 
+    # install any leftover apache dependencies
 
     
 /etc/httpd/conf/httpd.conf # Usually append to end 
 
+    # Configuration will need some modification
     LoadModule passenger_module /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19/ext/apache2/mod_passenger.so
     PassengerRoot /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19
     PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.3-p374@cyberengine/ruby
     NameVirtualHost *:80
     <VirtualHost *:80>
-      RailsEnv development
+      RailsEnv development # production?
       ServerName 192.168.1.10
       ServerAlias 192.168.1.10
       # Be sure to point DocumentRoot to 'public' directory
       DocumentRoot /var/rails/cyberengine/public
       <Directory /var/rails/cyberengine/public>
-         #order allow,deny
-         #allow from all
+         Order allow,deny
+         Allow from all
          # This relaxes Apache security settings.
          AllowOverride all
          # MultiViews must be turned off.
@@ -94,24 +121,18 @@ Apache hosting is done using a mod called phusion passenger. It is very easy to 
     </VirtualHost>
     
 
-Default login:
+Important files:
 
-    Username: whiteteam
-    Password: whiteteam 
+    app/model/ability.rb 
+    # Defines permissions - uncommenting marked lines to allow teams to view other team users/passwords
 
-    Username: redteam
-    Password: redteam
+    app/views/static/welcome.html.erb 
+    # Basic welcome page. Will need editing based on competition information.
 
+    app/views/layouts/application.html.erb 
+    # Main layout page where "title" and "brand" can be set (default: ISTS 10)
 
-
-yum install postgresql-server
-postgresql-setup initdb
-systemctl enable postgresql.service
-systemctl start postgresql.service
-su postgres
-psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
-
-rails console
-ActiveRecord::Base.establish_connection(Rails.configuration.database_configuration[Rails.env])
-
-rake setup:basic
+    config/database.yml
+    # Database connection setup - default: PostgreSQL - cyberengine:cyberengine
+    # Other options: config/{database.yml.pg, database.yml.sqlite, database.yml.mysql}
+    

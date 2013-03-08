@@ -1,4 +1,4 @@
-namespace :setup do
+namespace :cyberengine do
   task :reset => :environment do
     puts "Dropping database => rake db:drop\n"
     Rake::Task["db:drop"].invoke
@@ -8,15 +8,10 @@ namespace :setup do
 
     puts "\nMigrating database schema => rake db:migrate\n"
     Rake::Task["db:migrate"].invoke
-
-    puts "\nSetting up basic teams => rake setup:basic\n"
-    Rake::Task["setup:basic"].execute
-
-    puts "\nFinished"
-    puts "Optional: rake setup:seed (seeds random teams for testing)"
   end
 
   task :basic => :environment do
+    puts "\nSetting up basic teams\n"
     # Whiteteam
     whiteteam = Team.create(color: 'white', name: 'Whiteteam', alias: 'Whiteteam' )
     whiteteam_member = Member.create(username: 'whiteteam', team_id: whiteteam.id, password: 'whiteteam', password_confirmation: 'whiteteam')
@@ -26,6 +21,9 @@ namespace :setup do
     redteam = Team.create(color: 'red', name: 'Redteam', alias: 'Redteam' )
     redteam_member = Member.create(username: 'redteam', team_id: redteam.id, password: 'redteam', password_confirmation: 'redteam')
     puts "Created: #{redteam.alias}, Login: #{redteam_member.username}:#{redteam_member.password}"
+
+    puts "\nFinished"
+    puts "Optional - Generate random data: rake setup:seed\n"
   end
 
   task :seed => :environment do

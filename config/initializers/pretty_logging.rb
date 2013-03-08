@@ -9,7 +9,6 @@ unless Rails.env.production? #|| Rails.env.development?
     SEVERITY_TO_COLOR_MAP   = {'DEBUG'=>'0;37', 'INFO'=>'32', 'WARN'=>'33', 'ERROR'=>'31', 'FATAL'=>'31', 'UNKNOWN'=>'37'}
 
     def call(severity, time, progname, msg)
-      
       pid = "\033[0;33m(pid:#{$$})\033[0m"
       if msg.strip == '' || (/\/assets\//).match(msg)
         nil
@@ -19,7 +18,7 @@ unless Rails.env.production? #|| Rails.env.development?
       else
         formatted_severity = sprintf("%-5s","#{severity}")
         severity = "\033[#{SEVERITY_TO_COLOR_MAP[severity]}m#{formatted_severity}\033[0m"
-        " [#{severity}] #{msg.strip} #{pid}\n"
+        "[#{severity}] #{msg.strip} #{pid}\n"
       end
       
     end

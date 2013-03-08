@@ -36,6 +36,10 @@ class Service < ActiveRecord::Base
     scoring
   end
 
+  def addresses
+    self.properties.select(:value).where('category = ?', 'address').map{|p| p.value}
+  end
+
   private
   def self.scoring
     services = all.map{|s| s.scoring }

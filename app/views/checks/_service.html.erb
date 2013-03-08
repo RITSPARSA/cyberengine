@@ -54,7 +54,7 @@
         <tr>
           <td><%= link_to check.round, team_server_service_check_path(@team,@server,@service,check) %></td>
           <td>
-            <%= link_to modal_team_server_service_check_path(@team,@server,@service,check), data: { toggle: "modal", target: "#checksModal" } do %>
+            <%= link_to modal_team_server_service_check_path(@team,@server,@service,check), data: { toggle: "modal", target: "#checksModal", cache: false } do %>
               <span class="label label-<%= label_class %>"><%= label_text %></span>
             <% end %>
           </td>

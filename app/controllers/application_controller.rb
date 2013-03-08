@@ -38,9 +38,9 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if exception.message == "You are not authorized to access this page."
-      redirect_to root_url, alert: "You are not authorized to access that page."
+      redirect_to teams_path, alert: "You are not authorized to access that page."
     else
-      redirect_to root_url, alert: exception.message
+      redirect_to teams_path, alert: exception.message
     end
   end
 
