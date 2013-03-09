@@ -208,3 +208,31 @@ category: 'address'
 property: 'domain' or 'ip'
 value: <domain> or <ip>
 ```
+
+### FTP Download Check
+* checks/ipv4/ftp-download.rb
+* checks/ipv6/ftp-download.rb
+
+#### Service
+```bash
+name: 'FTP Download'
+version: 'ipv4' or 'ipv6'
+protocol: 'ftp'
+```
+
+#### Properties
+* Required
+```bash
+category: 'address'
+property: 'domain' or 'ip'
+value: <domain> or <ip>
+```
+
+* Optional
+```bash
+category: 'option'
+property: 'filepath'
+# Default: cyberengine
+# Example: /var/log/messages
+value: <file-path>  
+```

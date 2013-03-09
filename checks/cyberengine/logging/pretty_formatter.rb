@@ -34,8 +34,8 @@ class PrettyFormatter
     severity = pretty_severity.delete(:severity)
     options.merge!(pretty_severity)
 
-    # PID
-    options[:pid] = start_color(:yellow) + "#{$$}" + clear_color
+    # PID - unused currently
+    # options[:pid] = start_color(:yellow) + $$.to_s + clear_color
 
     # Time
     time = time.strftime("%Y-%m-%d %H:%M:%S.") << time.usec.to_s[0..2].rjust(3)
@@ -44,7 +44,8 @@ class PrettyFormatter
     options = options.map{|k,v| "#{k}:" + v }.join(', ')
 
     # Return pretty log
-    "#{time} #{severity}  #{msg}  [#{options}]\n"
+    return "#{time} #{severity} - #{msg}  [#{options}]\n" unless options.empty?
+    "#{time} #{severity} - #{msg}\n"
   end
 
 

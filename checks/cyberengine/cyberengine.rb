@@ -3,6 +3,8 @@ class Cyberengine
   require 'logger'
   require 'erb' # For URL escaping
   require 'shellwords' # For shell escaping
+  require 'timeout' # Check timeouts
+  require 'pty' # Executing commands
   require 'active_record'
   require 'active_support'
 
@@ -22,8 +24,11 @@ class Cyberengine
   require_relative 'services/accessors'
 
 
-  attr_accessor :logger, :connection
+  attr_accessor :logger, :connection, :timeout
   def initialize(*logdevs)
+    # Check timeout
+    @timeout = 2
+
     # Setup logging
     @logger = Logger.new MultiIO.new(*logdevs)
     @logger.formatter = PrettyFormatter.new
@@ -63,11 +68,61 @@ class Cyberengine
     "\e[#{color_to_integer_map[color]}m"
   end
 
+
   def filename
     Time.now.strftime('%Y-%m-%d-%H-%M-%S').prepend('cyberengine-')
   end
+
+
+  def shellcommand(command)
+    response = ''
+    begin
+      Timeout::timeout(@timeout) do
+        PTY.spawn("#{command} 2>&1") do |stdout, stdin, pid|
+          begin
+            stdout.each { |line| response << line.strip.concat("\r\n") }
+          rescue Errno::EIO => exception # Benign error
+          end
+        end
+      end
+    rescue Timeout::Error => exception
+      response << "Check exceeded #{@timeout} second timeout" 
+    rescue Exception => exception
+      message = exception.message.empty? ? 'None' : exception.message
+      response << "Shell exection exception - Type: #{exception.class} - Message: #{message}"
+    end
+    response
+  end
+
+
+  def exception_handler(service,exception)
+    team = service.team.alias
+    service = service.name
+    logs = Array.new
+    logs << "Exception #{exception.class} raised during check - Team: #{team} - Service: #{service}"
+    logs << "Exception message: #{exception.message}"
+    logs << "Exception backtrace: #{exception.backtrace}"
+    logs.each do |log|
+      @logger.error { log }
+    end
+  end
+
+
+  def create_check(service,round,passed,request,response)
+    check = Hash.new
+    check[:team_id] = service.team_id
+    check[:server_id] = service.server_id
+    check[:service_id] = service.id
+    check[:round] = round
+    check[:passed] = passed
+    check[:request] = request
+    check[:response] = response
+    Check.create(check)
+  end
+
 end
 
+# Encoding passwords and usernames 
 class String
   def url_encode
     ERB::Util.url_encode(self)

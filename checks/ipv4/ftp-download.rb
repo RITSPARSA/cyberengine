@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../cyberengine/cyberengine'
-log = File.dirname(__FILE__) + '/../logs/ipv4/ftp-upload.log'
+log = File.dirname(__FILE__) + '/../logs/ipv4/ftp-download.log'
 @cyberengine = Cyberengine.new(STDOUT,log) 
 
 
@@ -10,9 +10,7 @@ def build_request(address,properties,users=[])
   # -4 Resolve names to IPv4 addresses only
   # -v Verbose mode. '>' means sent data. '<' means received data. '*' means additional info provided by curl
   # --ftp-pasv Force FTP passive mode (server opens high port for upload connection)
-  # --ftp-create-dirs Attempt creation of missing directories in upload (normally fails)
-  # -T Upload file or text from STDIN if '-' is used 
-  request = 'curl -s -S -4 -v --ftp-pasv --ftp-create-dirs '
+  request = 'curl -s -S -4 -v --ftp-pasv '
 
   # Just incase
   address = address.shellescape
@@ -25,14 +23,16 @@ def build_request(address,properties,users=[])
     username = user.username.url_encode
     password = user.password.url_encode
   end
+
+  # Default
+  filename = 'cyberengine'
+  unless properties.empty?
+    property = properties.where('category = ? AND property = ?', 'option', 'filepath').first
+    if property
+      filename = property.value.url_encode
+    end
+  end
  
-  # Upload gets text from STDIN
-  request.prepend("echo 'cyberengine check' | ")
-  request << ' -T - '
-
-  # FTP filename
-  filename = @cyberengine.filename
-
   # FTP URL   
   request << " ftp://#{username}:#{password}@#{address}/#{filename} "
 
@@ -50,7 +50,7 @@ def parse_response(response)
 end
 
 
-services = @cyberengine.get_services('FTP Upload','ipv4','ftp')
+services = @cyberengine.get_services('FTP Download','ipv4','ftp')
 services.each do |service|
   round = service.checks.next_round
   properties = service.properties

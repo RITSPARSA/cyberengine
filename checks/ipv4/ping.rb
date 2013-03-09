@@ -3,87 +3,56 @@ require_relative '../cyberengine/cyberengine'
 log = File.dirname(__FILE__) + '/../logs/ipv4/ping.log'
 @cyberengine = Cyberengine.new(STDOUT,log) 
 
-@logger = @cyberengine.logger
-
 
 def build_request(address,properties,users=[])
   # -n   = Do not resolve response IP to address
   # -c 1 = Wait for one successful response
   # -w 8 = Set timeout deadline to 8 seconds
-  request = "ping -n -c 1 -w 8 #{address}"
+  request = "ping -n -c 1 -w #{@cyberengine.timeout} #{address.shellescape}"
   request
 end
 
 
-def execute_request(request)
-  response = `#{request} 2>&1`
-  response
-end
-
-
 def parse_response(response)
-  passed = true
-  if response =~ /100% packet loss/ 
-    passed = false
+  passed = false
+  if response =~ /\d+ bytes from / 
+    passed = true
   end
   passed
 end
 
 
-def create_check(service,round,passed,request,response)
-  check = Hash.new
-  check[:team_id] = service.team_id
-  check[:server_id] = service.server_id
-  check[:service_id] = service.id
-  check[:round] = round
-  check[:passed] = passed
-  check[:request] = request
-  check[:response] = response
-  Check.create(check)
-end
-
-
-def exception_handler(service,exception)
-  team = service.team.alias
-  service = service.name
-  logs = Array.new
-  logs << "Exception raised during check - Team: #{team} - Service: #{service}"
-  logs << "Exception message: #{exception.message}"
-  logs << "Exception backtrace: #{exception.backtrace}"
-  logs.each do |log|
-    @logger.error('ping') { log }  
-  end
-end
-
-
 services = @cyberengine.get_services('Ping','ipv4','icmp')
-
 services.each do |service|
-  latest = service.checks.latest
-  round = latest ? latest.round + 1 : 1 
+  round = service.checks.next_round
   properties = service.properties
+  users = service.users
   properties.addresses.each do |address|
     # Mark start of check in log
-    @logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
+    @cyberengine.logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
+
     begin
       # Request command
-      request = build_request(address,properties) 
-      # Request output
-      response = execute_request(request) 
+      request = build_request(address,properties,users)
+
+      # Get request output
+      response = @cyberengine.shellcommand(request)
+
       # Passed: true/false
-      passed = parse_response(response) 
+      passed = parse_response(response)
+
       # Save check and get result
-      check = create_check(service,round,passed,request,response) 
+      check = @cyberengine.create_check(service,round,passed,request,response)
 
       # Check for errors in saving check 
       raise check.errors.full_messages.join(',') if check.errors.any?
 
       # Mark end of check in log
       result = passed ? 'Passed' : 'Failed'
-      @logger.info { "Completed check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address} - Result: #{result}" }
+      @cyberengine.logger.info { "Finished check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address} - Result: #{result}" }
+
     rescue Exception => exception
-      exception_handler(service,exception)
+      @cyberengine.exception_handler(service,exception)
     end
-  
   end
 end
