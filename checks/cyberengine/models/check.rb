@@ -19,6 +19,11 @@ class Check < ActiveRecord::Base
     order('round ASC')
   end
 
+  def self.next_round
+    latest = self.latest
+    latest ? latest.round + 1 : 1
+  end
+
   def self.latest
     order('round DESC').first
   end

@@ -17,7 +17,7 @@ class Property < ActiveRecord::Base
   private
 
   def self.addresses
-    self.select(:value).where('category = ?', 'address').map{|p| p.value}
+    self.select(:value).where('category = ?', 'address').where('property = ? OR property = ?','ip','domain').map{|p| p.value}
   end
 
   def right_team?

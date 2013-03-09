@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap
 
-$('body').on('hidden', '.modal', function () {
-  $(this).removeData('modal');
-});
+//$('body').on('hidden', '.modal', function () {
+//  $(this).removeData('modal');
+//});

@@ -1,33 +1,16 @@
 class PrettyFormatter 
-  def clear_color 
-    # Return "clear color" code
-    "\e[0m"
-  end
-
-
-  def start_color(color)
-    # Format color to equal map
-    color.downcase! if color.is_a?(String)
-    color = color.to_sym unless color.is_a?(Symbol)
-   
-    # Color map 
-    color_to_integer_map = { black: 30, red: 31, green: 32, yellow: 33, blue: 34, magenta: 35, cyan: 36, white: 37 }
-    color = :white unless color_to_integer_map[color]
- 
-    # Return color
-    "\e[#{color_to_integer_map[color]}m"
-  end
-
-
   def call(severity, time, progname, msg)
     # Log options at end
     options = Hash.new
 
-    # Remove colors
+    # Remove bold colors
     msg.gsub!(/\e\[.{0,4}m/,'')
 
     # Remove ending/leading spaces
     msg.strip!
+
+    # Remove multiple spaces
+    msg.gsub!(/\s+/,' ')
  
     # Beautify SQL logs
     if msg =~ /(SELECT|INSERT|UPDATE|DELETE|COUNT|JOIN)/
@@ -98,6 +81,9 @@ class PrettyFormatter
 
 
   def pretty_sql(sql)
+    # Remove any current colors
+    sql.gsub!(/\e\[.{0,4}m/,'')
+
     # Get model if available
     model_regex = /\A(?<model>[\w\s]+) Load\s+/
     match = sql.match(model_regex) || { model: nil }
@@ -135,4 +121,22 @@ class PrettyFormatter
     captures
   end
  
+  def clear_color 
+    # Return "clear color" code
+    "\e[0m"
+  end
+
+
+  def start_color(color)
+    # Format color to equal map
+    color.downcase! if color.is_a?(String)
+    color = color.to_sym unless color.is_a?(Symbol)
+   
+    # Color map 
+    color_to_integer_map = { black: 30, red: 31, green: 32, yellow: 33, blue: 34, magenta: 35, cyan: 36, white: 37 }
+    color = :white unless color_to_integer_map[color]
+ 
+    # Return color
+    "\e[#{color_to_integer_map[color]}m"
+  end
 end

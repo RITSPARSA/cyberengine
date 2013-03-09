@@ -35,104 +35,176 @@ The rails frontend is a fully functional application that can authenticate membe
 
 ## Setup
 
-Install ruby (version >= 1.9.3) - Ruby Version Manager [rvm](https://rvm.io/rvm/install/)
+1. Install ruby (version >= 1.9.3) - Ruby Version Manager [rvm](https://rvm.io/rvm/install/)
 
-    # From fresh installation (minimal) as root
-    yum install -y bash tar curl git patch httpd sqlite sqlite-devel # Changing sqlite to postgres soon
-    curl -L https://get.rvm.io | bash -s stable
-    source /etc/profile.d/rvm.sh
-    rvm requirements # run install command for ruby dependencies 
-    # Example - Fedora 17:
-    yum install gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
-    rvm install 1.9.3 --verify-downloads 1
-    rvm use 1.9.3 --default
-    rvm gemset create cyberengine
-    rvm gemset use cyberengine 
+```bash
+# From fresh installation (minimal) as root
+yum install -y bash tar curl git patch httpd sqlite sqlite-devel # Changing sqlite to postgres soon
+curl -L https://get.rvm.io | bash -s stable
+source /etc/profile.d/rvm.sh
+rvm requirements # run install command for ruby dependencies 
+# Example - Fedora 17:
+yum install gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
+rvm install 1.9.3 --verify-downloads 1
+rvm use 1.9.3 --default
+rvm gemset create cyberengine
+rvm gemset use cyberengine 
+```
+
+2. Download cyberengine 
+
+```bash
+mkdir /var/rails
+cd /var/rails
+git clone -v https://github.com/griffithchaffee/cyberengine.git
+chown -R apache:apache /var/rails/cyberengine # If you dont do this you may get permission errors
+cd cyberengine
+bundle install
+
+# Resets databases 
+# Installs basic teams
+# Basic teams: 
+## Whiteteam: whiteteam:whiteteam
+## Redteam: redteam:redteam
+rake setup:reset      
+
+# Test installation 
+# Browse to port 80 on localhost
+bash quickstart.sh      
+```
+
+3. Database Setup (Fedora - PostgreSQL):
+
+```bash
+# Install PostgreSQL
+yum install postgresql-server
+postgresql-setup initdb
+systemctl enable postgresql.service
+systemctl start postgresql.service
+
+# Create cyberengine user/password
+su postgres
+psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
+
+# Test database connection
+# Database connection information config/database.yml (defaults should be fine)
+cd <cyberengine-base-directory>
+rails console
+ActiveRecord::Base.establish_connection(Rails.configuration.database_configuration[Rails.env])
+exit
+
+# Reset/Create databases
+rake cyberengine:reset
+
+# Create Whiteteam and Redteam with default logins: whiteteam:whiteteam redteam:redteam
+rake cyberengine:basic
+```
+
+4. Apache hosting is done using a mod called phusion passenger. It is very easy to setup. 
+
+```bash
+# Apache on Fedora 17:
+# Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
+yum install httpd httpd-devel apr-devel apr-util-devel curl-devel
+
+# Follow install walkthrough 
+passenger-install-apache2-module # Read output
+```
+
+5. Update httpd.conf
+
+```bash    
+# Append to /etc/httpd/conf/httpd.conf 
+# Configuration will need some modification
+
+# Paths may be different
+LoadModule passenger_module /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19/ext/apache2/mod_passenger.so
+PassengerRoot /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19
+PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.3-p374@cyberengine/ruby
+
+NameVirtualHost *:80
+<VirtualHost *:80>
+  # Default to development, change to "production"
+  RailsEnv development
+  # Uncomment below for production
+  #RailsEnv production
+
+  # Change addresses (DNS?)
+  ServerName 192.168.1.10
+  ServerAlias 192.168.1.10
+
+  # Be sure to point DocumentRoot to 'public' directory
+  DocumentRoot /var/rails/cyberengine/public
+  <Directory /var/rails/cyberengine/public>
+     Order allow,deny
+     Allow from all
+     # This relaxes Apache security settings.
+     AllowOverride all
+     # MultiViews must be turned off.
+     Options -MultiViews
+  </Directory>
+</VirtualHost>
+```
+
+## Important files
+
+**config/initializers/cyberengine.rb**
+* Define application title (Default: ISTS)
+* Define application brand (Default: ISTS)
+
+**app/views/static/welcome.html.erb** 
+* Basic welcome page
+* Contains information about competition and sponsors
+
+**app/model/ability.rb**
+* Defines permissions
+* Option to allow username updates
+* Option to allow viewing of other all teams users/passwords (popular at end of competitions)
+
+**config/database.yml**
+* Database connection setup - default: PostgreSQL - cyberengine:cyberengine
+* Example default configurations: config/{database.yml.pg, database.yml.sqlite, database.yml.mysql}
+
+**checks/database.yml**
+* Database connection setup for checks
 
 
-Download cyberengine 
+## Prebuilt Checks ##
 
-    mkdir /var/rails
-    cd /var/rails
-    git clone -v https://github.com/griffithchaffee/cyberengine.git
-    chown -R apache:apache /var/rails/cyberengine # If you dont do this you may get permission errors
-    cd cyberengine
-    bundle install
-    rake setup:reset      # Resets databases and installs basic teams: Whiteteam and Redteam - Logins: whiteteam:whiteteam, redteam:redteam
-    sh quickstart.sh      # test installation - not ment for production
+### Ping Check
+* checks/ipv4/ping.rb
+* checks/ipv6/ping.rb
 
+#### Service
+```bash
+name: 'Ping'
+version: 'ipv4' or 'ipv6'
+protocol: 'icmp'
+```
 
-Database Setup (Fedora - PostgreSQL):
-
-    # Install PostgreSQL
-    yum install postgresql-server
-    postgresql-setup initdb
-    systemctl enable postgresql.service
-    systemctl start postgresql.service
+#### Properties
+* Required
+```bash
+category: 'address'
+property: 'domain' or 'ip'
+value: <domain> or <ip>
+```
  
-    # Create cyberengine user/password
-    su postgres
-    psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
+### FTP Upload Check
+* checks/ipv4/ftp-upload.rb
+* checks/ipv6/ftp-upload.rb
 
-    # Test database connection
-    # Database connection information config/database.yml (defaults should be fine)
-    cd <cyberengine-base-directory>
-    rails console
-    ActiveRecord::Base.establish_connection(Rails.configuration.database_configuration[Rails.env])
-    exit
+#### Service
+```bash
+name: 'FTP Upload'
+version: 'ipv4' or 'ipv6'
+protocol: 'ftp'
+```
 
-    # Reset/Create databases
-    rake cyberengine:reset
- 
-    # Create Whiteteam and Redteam with default logins: whiteteam:whiteteam redteam:redteam
-    rake cyberengine:basic
-
-  
-Apache hosting is done using a mod called phusion passenger. It is very easy to setup. 
-
-    # Apache on Fedora 17:
-    yum install httpd httpd-devel apr-devel apr-util-devel curl-devel
-    # Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
-    passenger-install-apache2-module 
-    # install any leftover apache dependencies
-
-    
-/etc/httpd/conf/httpd.conf # Usually append to end 
-
-    # Configuration will need some modification
-    LoadModule passenger_module /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19/ext/apache2/mod_passenger.so
-    PassengerRoot /usr/local/rvm/gems/ruby-1.9.3-p374@cyberengine/gems/passenger-3.0.19
-    PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.3-p374@cyberengine/ruby
-    NameVirtualHost *:80
-    <VirtualHost *:80>
-      RailsEnv development # production?
-      ServerName 192.168.1.10
-      ServerAlias 192.168.1.10
-      # Be sure to point DocumentRoot to 'public' directory
-      DocumentRoot /var/rails/cyberengine/public
-      <Directory /var/rails/cyberengine/public>
-         Order allow,deny
-         Allow from all
-         # This relaxes Apache security settings.
-         AllowOverride all
-         # MultiViews must be turned off.
-         Options -MultiViews
-      </Directory>
-    </VirtualHost>
-    
-
-Important files:
-
-    app/model/ability.rb 
-    # Defines permissions - uncommenting marked lines to allow teams to view other team users/passwords
-
-    app/views/static/welcome.html.erb 
-    # Basic welcome page. Will need editing based on competition information.
-
-    app/views/layouts/application.html.erb 
-    # Main layout page where "title" and "brand" can be set (default: ISTS 10)
-
-    config/database.yml
-    # Database connection setup - default: PostgreSQL - cyberengine:cyberengine
-    # Other options: config/{database.yml.pg, database.yml.sqlite, database.yml.mysql}
-    
+#### Properties
+* Required
+```bash
+category: 'address'
+property: 'domain' or 'ip'
+value: <domain> or <ip>
+```

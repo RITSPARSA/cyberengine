@@ -2,7 +2,6 @@ class Service < ActiveRecord::Base
 
   before_validation :downcase_protocol
   before_validation :downcase_version
-  before_validation :capitalize_name
 
   attr_accessible :team_id, :server_id, :enabled, :protocol, :version, :name, :available_points
 
@@ -92,10 +91,5 @@ class Service < ActiveRecord::Base
   def downcase_version
     self.version = self.version.downcase if self.version.present?
   end
-
-  def capitalize_name
-    self.name = self.name.downcase.capitalize if self.name.present?
-  end
-
 
 end

@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   validate :right_team?
 
   private
+  def self.random
+    self.order('RANDOM()').first
+  end
 
   def right_team?
     team = Team.find_by_id(team_id)
