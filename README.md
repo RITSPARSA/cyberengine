@@ -169,7 +169,46 @@ NameVirtualHost *:80
 * Database connection setup for checks
 
 
+## Property Best Practices
+* General groups
+* Should not take the place of the property option
+
+### Property Categories
+```bash
+category: 'address'
+# Almost always required
+# The address category is used to identify the domain or IP the service should be checked at.
+# Each address provided will have the the checks run against it.
+# This means there will be multiple checks per round if there are multiple addresses.
+# The advantage to this is that services can be checked by both IP and domain.
+# If the domain is not available (DNS is down) the team will still be getting checks by IP 
+```
+```bash
+category: 'random'
+# The random category is used when there are many properties with the same 'property' but different 'values' 
+# For example, many 'uri' properties could be defined for an HTTP Availability check but only one should be used per check
+# A SQL 'ORDER BY RANDOM() LIMIT(1)' statement is used to pull the random property
+```
+```bash
+category: 'option'
+# Optional category properties are not required for the check but may be desired
+# For example, the destination user/domain of an SMTP check defaults to whiteteam@cyberengine.ists
+# The user or domain could be changed using: category: 'option', property: 'rcpt-domain', value: 'whiteteam.ccdc'
+```
+
+### Properties
+* Lowercase with hyphen delimiters
+```bash
+# Good
+category: 'option', property: 'from-domain'
+category: 'option', property: 'file-name'
+# Bad
+category: 'option', property: 'From Domain'
+category: 'option', property: 'from_domain'
+```
+
 ## Prebuilt Checks ##
+
 
 ### Ping Check
 * checks/ipv4/ping.rb
@@ -181,13 +220,10 @@ name: 'Ping'
 version: 'ipv4' or 'ipv6'
 protocol: 'icmp'
 ```
-
 #### Properties
-* Required
 ```bash
 category: 'address'
 property: 'domain' or 'ip'
-value: <domain> or <ip>
 ```
  
 ### FTP Upload Check
@@ -202,12 +238,11 @@ protocol: 'ftp'
 ```
 
 #### Properties
-* Required
 ```bash
 category: 'address'
 property: 'domain' or 'ip'
-value: <domain> or <ip>
 ```
+
 
 ### FTP Download Check
 * checks/ipv4/ftp-download.rb
@@ -225,14 +260,66 @@ protocol: 'ftp'
 ```bash
 category: 'address'
 property: 'domain' or 'ip'
-value: <domain> or <ip>
 ```
 
 * Optional
 ```bash
 category: 'option'
-property: 'filepath'
+property: 'file-path'
 # Default: cyberengine
 # Example: /var/log/messages
-value: <file-path>  
+```
+
+
+### POP3 Login Check
+* checks/ipv4/pop3-login.rb
+* checks/ipv6/pop3-login.rb
+
+#### Service
+```bash
+name: 'POP3 Login'
+version: 'ipv4' or 'ipv6'
+protocol: 'pop3'
+```
+
+#### Properties
+* Required
+```bash
+category: 'address'
+property: 'domain' or 'ip'
+```
+
+
+### SMTP Send Mail Check
+* checks/ipv4/smtp-send-mail.rb
+* checks/ipv6/smtp-send-mail.rb
+
+#### Service
+```bash
+name: 'SMTP Send Mail'
+version: 'ipv4' or 'ipv6'
+protocol: 'smtp'
+```
+
+#### Properties
+* Required
+```bash
+category: 'address'
+property: 'domain' or 'ip'
+```
+```bash
+category: 'random'
+property: 'domain'
+# Default: cyberengine.ists
+# Appended to all --mail-from options
+```
+```bash
+category: 'option'
+property: 'rcpt-user'
+# Default: whiteteam
+```
+```bash
+category: 'option'
+property: 'rcpt-domain'
+# Default: cyberengine.ists
 ```

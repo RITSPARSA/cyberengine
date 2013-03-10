@@ -1,13 +1,18 @@
 FTP IPv4 PUT = "curl -sS4v --user #{user}:#{pass} -T #{temporary_file} ftp://#{server}/#{random_file_name}"
 FTP IPv4 GET = "curl -sS4v --user #{user}:#{pass} ftp://#{server}/#{random_file_name}"
+
 FTPS IPv4 GET = "curl -sS4vk --ssl-reqd --user #{user}:#{pass} -T #{temporary_file} ftps://#{server}/#{random_file_name}"
 FTPS IPv4 PUT = "curl -sS4vk --ssl-reqd --user #{user}:#{pass} ftps://#{server}/#{random_file_name}"
+
 HTTP IPv4 = "curl -sS4vL -A '#{useragent}' http://#{server}#{uri}"
 HTTPS IPv4 = "curl -sS4vkL --ssl-reqd -A '#{useragent}' https://#{server}#{uri}"
+
 POP3 IPv4 = "curl -sS4v --user #{user}:#{pass} pop3://#{server}"
 POP3S IPv4 = "curl -sS4vk --ssl-reqd --user #{user}:#{pass} pop3s://#{server}"
+
 SMTP IPv4 = "curl -sS4v --user #{user1}:#{pass1} --mail-from #{user1}@#{@team_domain}  --mail-rcpt #{user2}@#{@team_domain} smtp://#{server}"
 SMTPS IPv4 = "curl -sS4vk --ssl-reqd --user #{user1}:#{pass1} --mail-from #{user1}@#{@team_domain}  --mail-rcpt #{user2}@#{@team_domain} smtps://#{server}"
+
 FTP IPv6 PUT = "curl -sS6v --user #{user}:#{pass} -T #{temporary_file} ftp://#{server}/#{random_file_name}"
 FTP IPv6 GET = "curl -sS6v --user #{user}:#{pass} ftp://#{server}/#{random_file_name}"
 FTPS IPv6 PUT = "curl -sS6vk --ssl-reqd --user #{user}:#{pass} -T #{temporary_file} ftps://#{server}/#{random_file_name}"
