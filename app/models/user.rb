@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 
   private
   def self.random
-    self.order('RANDOM()').first
+    user = self.order('RANDOM()').first
+    user ? user : nil
   end
 
   def right_team?

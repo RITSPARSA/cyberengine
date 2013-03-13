@@ -1,4 +1,9 @@
 class PrettyFormatter 
+  attr_accessor :sql
+  def initialize()
+    @sql = /(ADD|EXCEPT|PERCENT|ALL|EXEC|PLAN|ALTER|EXECUTE|PRECISION|AND|EXISTS|PRIMARY|ANY|EXIT|PRINT|AS|FETCH|PROC|ASC|FILE|PROCEDURE|AUTHORIZATION|FILLFACTOR|PUBLIC|BACKUP|FOR|RAISERROR|BEGIN|FOREIGN|READ|BETWEEN|FREETEXT|READTEXT|BREAK|FREETEXTTABLE|RECONFIGURE|BROWSE|FROM|REFERENCES|BULK|FULL|REPLICATION|BY|FUNCTION|RESTORE|CASCADE|GOTO|RESTRICT|CASE|GRANT|RETURN|CHECK|GROUP|REVOKE|CHECKPOINT|HAVING|RIGHT|CLOSE|HOLDLOCK|ROLLBACK|CLUSTERED|IDENTITY|ROWCOUNT|COALESCE|IDENTITY|INSERT|ROWGUIDCOL|COLLATE|IDENTITYCOL|RULE|COLUMN|IF|SAVE|COMMIT|IN|SCHEMA|COMPUTE|INDEX|SELECT|CONSTRAINT|INNER|SESSION|USER|CONTAINS|INSERT|SET|CONTAINSTABLE|INTERSECT|SETUSER|CONTINUE|INTO|SHUTDOWN|CONVERT|IS|SOME|CREATE|JOIN|STATISTICS|CROSS|KEY|SYSTEM|USER|CURRENT|KILL|TABLE|CURRENT|DATE|LEFT|TEXTSIZE|CURRENT|TIME|LIKE|THEN|CURRENT|TIMESTAMP|LINENO|TO|CURRENT|USER|LOAD|TOP|CURSOR|NATIONAL|TRAN|DATABASE|NOCHECK|TRANSACTION|DBCC|NONCLUSTERED|TRIGGER|DEALLOCATE|NOT|TRUNCATE|DECLARE|NULL|TSEQUAL|DEFAULT|NULLIF|UNION|DELETE|OF|UNIQUE|DENY|OFF|UPDATE|DESC|OFFSETS|UPDATETEXT|DISK|ON|USE|DISTINCT|OPEN|USER|DISTRIBUTED|OPENDATASOURCE|VALUES|DOUBLE|OPENQUERY|VARYING|DROP|OPENROWSET|VIEW|DUMMY|OPENXML|WAITFOR|DUMP|OPTION|WHEN|ELSE|OR|WHERE|END|ORDER|WHILE|ERRLVL|OUTER|WITH|ESCAPE|OVER|WRITETEXT|RETURNING|SQL|LIMIT|shown|CR)/
+  end
+
   def call(severity, time, progname, msg)
     # Log options at end
     options = Hash.new
@@ -9,11 +14,8 @@ class PrettyFormatter
     # Remove ending/leading spaces
     msg.strip!
 
-    # Remove multiple spaces
-    msg.gsub!(/\s+/,' ')
- 
     # Beautify SQL logs
-    if msg =~ /(SELECT|INSERT|UPDATE|DELETE|COUNT|JOIN)/
+    if msg =~ @sql
       pretty_sql = pretty_sql(msg)
       msg = pretty_sql.delete(:sql)
       options.merge!(pretty_sql)
@@ -92,7 +94,13 @@ class PrettyFormatter
     sql.gsub!(model_regex,'') if model
 
     # Colorize SQL commands
-    sql.gsub!(/[A-Z]{2,}/) {|m| start_color(:green) + m.to_s + clear_color } if sql
+    sql_queries = sql.split(/\[\[.*\]\]/)
+    sql_queries.each do |query| 
+      colored = query.split(/\s+/).map do |word|
+        word =~ /\A#{@sql}\z/ ? start_color(:green) + word.to_s + clear_color : word
+      end.join(' ')
+      sql.gsub!(query,colored)
+    end
 
     # Colorize model
     model = start_color(:green) + model + clear_color if model
@@ -140,4 +148,5 @@ class PrettyFormatter
     # Return color
     "\e[#{color_to_integer_map[color]}m"
   end
+
 end

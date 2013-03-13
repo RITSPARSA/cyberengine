@@ -36,8 +36,25 @@
 <% latest = @service.checks.latest || Check.new %>
 <% checks = @service.checks.select('id,round,passed,created_at').order('round DESC') unless latest.id.nil? %>
 
+<div class="page-header">
+  <h3>Properties<h3>
+</div>
+
 <% if latest.id.nil? %>
-  <p>No checks</p>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Round</th>
+        <th>Status</th>
+        <th>Created At</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td colspan="3">No Checks</td>
+      </tr>
+    </tbody>
+  </table>
 <% else %>
   <div class="page-header">
     <h3>Latest Check</h3>

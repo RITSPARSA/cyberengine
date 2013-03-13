@@ -1,5 +1,38 @@
-class Cyberengine
-  def useragent
+namespace :cyberengine do
+  task :base => :environment do
+    # Whiteteam
+    team = Team.create(color: 'White', name: 'Whiteteam', alias: 'Whiteteam' )
+    member = Member.create(team_id: team.id, username: 'whiteteam', password: 'whiteteam', password_confirmation: 'whiteteam')
+    puts "Created: #{team.alias} - Login: #{member.username}:#{member.password}"
+
+    server = Server.create(team_id: team.id, name: "Defaults")
+
+    # DNS Forward
+    service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Forward", version: 'ipv4', protocol: 'dns', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+
+    # Echo Request
+    service = Service.create(team_id: team.id, server_id: server.id, name: "Echo Request", version: 'ipv4', protocol: 'icmp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '\d+ bytes from')
+
+    # FTP Download
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Download", version: 'ipv4', protocol: 'ftp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
+
+    # FTP Upload
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Upload", version: 'ipv4', protocol: 'ftp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
+
+    # HTTP Available
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTP Available", version: 'ipv4', protocol: 'http', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< (Status: 200|HTTP\/1.(1|0) 200 OK)')
     [
       'Baiduspider+(+http://www.baidu.com/search/spider.htm)',
       'curl/7.18.2 (i686-pc-linux-gnu) libcurl/7.18.2 GnuTLS/2.3.11 zlib/1.2.3',
@@ -61,7 +94,25 @@ class Cyberengine
       'msnbot-webmaster/1.0 (+http://search.msn.com/msnbot.htm)',
       'Opera/9.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.01',
       'Wget/1.10.2',
-      'YandexSomething/1.0',
-    ].sample(1)
+      'YandexSomething/1.0'
+    ].each do |useragent|
+      property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'useragent', value: useragent)
+    end
+
+    # POP3 Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "POP3 Login", version: 'ipv4', protocol: 'pop3', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
+
+    # SMTP Send Mail
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
+
+
+    # Redteam
+    team = Team.create(color: 'Red', name: 'Redteam', alias: 'Redteam' )
+    member = Member.create(team_id: team.id, username: 'redteam', password: 'redteam', password_confirmation: 'redteam')
+    puts "Created: #{team.alias} - Login: #{member.username}:#{member.password}"
   end
 end

@@ -33,7 +33,7 @@
       <tr>
         <td><%= link_to team.alias, team_path(team) %></td>
         <td><%= team.name %></td>
-        <td><span class="label label-<%= label[team.color.to_sym] %>"><%= team.color %></span></td>
+        <td><span class="label label-<%= label[team.color.downcase.to_sym] %>"><%= team.color %></span></td>
       </tr>
     <% end %>
   </tbody>

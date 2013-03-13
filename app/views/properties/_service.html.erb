@@ -16,6 +16,7 @@
       </tr>
     <% else %>
       <% properties.each do |property| %>
+        <% next if cannot? :show, property %>
         <tr>
           <td><%= link_to property.category, team_server_service_property_path(@team,@server,service,property) %></td>
           <td><%= property.property %></td>

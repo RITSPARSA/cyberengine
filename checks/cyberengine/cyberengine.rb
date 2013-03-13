@@ -20,14 +20,8 @@ class Cyberengine
   require_relative 'models/user'
   require_relative 'models/check'
 
-  # Service queries
-  require_relative 'services/accessors'
-
-
-  attr_accessor :logger, :connection, :timeout
+  attr_accessor :logger, :connection, :whiteteam
   def initialize(*logdevs)
-    # Check timeout
-    @timeout = 2
 
     # Setup logging
     @logger = Logger.new MultiIO.new(*logdevs)
@@ -46,6 +40,14 @@ class Cyberengine
 
     # Connect to database
     @connection = ActiveRecord::Base.establish_connection(config)
+
+    # Need whiteteam to find defaults
+    @whiteteam = Team.find_by_name('Whiteteam')
+  end
+
+
+  def defaults(name, version, protocol)
+    Service.where('team_id = ? AND name = ? AND version = ? AND protocol = ? AND enabled = ?', @whiteteam.id, name, version, protocol, false).first
   end
 
 
@@ -68,38 +70,47 @@ class Cyberengine
     "\e[#{color_to_integer_map[color]}m"
   end
 
-
-  def filename
-    Time.now.strftime('%Y-%m-%d-%H-%M-%S').prepend('cyberengine-')
+  module SafePty
+    def self.spawn(command,&block)
+      PTY.spawn(command) do |stdout, stdin, pid|
+        begin
+          yield stdout,stdin,pid
+        rescue Errno::EIO => exception# Benign errors
+        ensure
+          Process.wait pid
+        end
+      end
+      $?.exitstatus # Return exit status
+    end
   end
 
-
-  def shellcommand(command)
+  def shellcommand(command,service,defaults)
     response = ''
+    timeout = service.properties.option('timeout') || defaults.properties.option('timeout')
+    raise("Missing timeout property") unless timeout
+    timeout = timeout.to_f
+    @logger.debug { "Command: #{command}" }
+    @logger.debug { "Timeout: #{timeout}" }
     begin
-      Timeout::timeout(@timeout) do
-        PTY.spawn("#{command} 2>&1") do |stdout, stdin, pid|
-          begin
-            stdout.each { |line| response << line.strip.concat("\r\n") }
-          rescue Errno::EIO => exception # Benign error
-          end
+      Timeout::timeout(timeout) do
+        SafePty.spawn("#{command} 2>&1") do |stdout, stdin, pid|
+          @logger.debug { "PID: #{pid}" }
+          stdout.each_line { |line| response << line.strip.concat("\r\n") }
         end
       end
     rescue Timeout::Error => exception
-      response << "Check exceeded #{@timeout} second timeout" 
+      response << "Check exceeded #{timeout} second timeout" 
     rescue Exception => exception
       message = exception.message.empty? ? 'None' : exception.message
-      response << "Shell exection exception - Type: #{exception.class} - Message: #{message}"
+      raise "Shell command exection exception - Type: #{exception.class} - Message: #{message} - Command: #{command}"
     end
-    response
+    response ? response : "No Response"
   end
 
 
   def exception_handler(service,exception)
-    team = service.team.alias
-    service = service.name
     logs = Array.new
-    logs << "Exception #{exception.class} raised during check - Team: #{team} - Service: #{service}"
+    logs << "Exception #{exception.class} raised during check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name}"
     logs << "Exception message: #{exception.message}"
     logs << "Exception backtrace: #{exception.backtrace}"
     logs.each do |log|
@@ -120,11 +131,26 @@ class Cyberengine
     Check.create(check)
   end
 
+  def services(name, version, protocol)
+    # Get services
+    blueteams = Team.blueteams.map{|t| t.id }
+    services = Service.where('team_id IN (?) AND name = ? AND version = ? AND protocol = ? AND enabled = ?', blueteams, name, version, protocol, true)
+
+    # Convert from ActiveRecord::Relation to Array
+    services = services.map{|s| s }
+
+    # Return services
+    services
+  end
+
 end
 
 # Encoding passwords and usernames 
 class String
   def url_encode
     ERB::Util.url_encode(self)
+  end
+  def timestamped
+    self << '-' << Time.now.strftime('%Y-%m-%d-%H-%M-%S')
   end
 end

@@ -12,6 +12,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+checks/logs/*.log
 /tmp
 
 # Ignore other unneeded files.

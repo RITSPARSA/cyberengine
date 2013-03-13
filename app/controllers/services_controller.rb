@@ -5,6 +5,10 @@ class ServicesController < ApplicationController
   def read_path
     @team = Team.find_by_id(params[:team_id]) 
     @server = Server.find_by_id(params[:server_id]) 
+    [@team, @server].each do |resource| 
+      error_redirect if cannot? :show, resource
+    end
+
   end
 
   def index

@@ -9,6 +9,7 @@
   </thead>
   <tbody>
     <% @properties.each do |property| %>
+      <% next if cannot? :show, property %>
       <tr>
         <td><%= property.service.name %></td>
         <td><%= property.category %></td>

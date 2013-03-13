@@ -16,19 +16,23 @@ class ApplicationController < ActionController::Base
   end
 
   def whiteteam?
-    @current_member if @current_member && @current_member.team && @current_member.team.color == "white"
+    @current_member if @current_member && @current_member.team && @current_member.team.color == "White"
   end
 
   def redteam?
-    @current_member if @current_member && @current_member.team && @current_member.team.color == "red"
+    @current_member if @current_member && @current_member.team && @current_member.team.color == "Red"
   end
 
   def blueteam?
-    @current_member if @current_member && @current_member.team && @current_member.team.color == "blue"
+    @current_member if @current_member && @current_member.team && @current_member.team.color == "Blue"
   end
 
   def member?(team)
     @current_member if team && @current_member && @current_member.team_id == team.id
+  end
+
+  def error_redirect
+    redirect_to teams_path, alert: "You are not authorized to access that page."
   end
 
   alias_method :current_user, :current_member
@@ -38,7 +42,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if exception.message == "You are not authorized to access this page."
-      redirect_to teams_path, alert: "You are not authorized to access that page."
+      error_redirect
     else
       redirect_to teams_path, alert: exception.message
     end

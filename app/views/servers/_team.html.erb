@@ -19,11 +19,13 @@
         <% else %>
           <td>
             <% server.services.each do |service| %>
+              <% next if cannot? :show, service %>
               <%= link_to service.name, team_server_service_path(team,server,service) %><br />
             <% end %>
           </td>
           <td>
             <% server.services.each do |service| %>
+              <% next if cannot? :show, service %>
               <% latest = service.checks.latest || Check.new %>
               <% label_class = latest.passed ? "success" : "important" %>
               <% label_text = latest.passed ? "Passing" : "Failing" %>
@@ -33,8 +35,8 @@
                 <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
                   <span class="label label-<%= label_class %>"><%= label_text %></span>
                 <% end %>
-                <br />
               <% end %>
+              <br />
             <% end %>
           </td>
         <% end %>

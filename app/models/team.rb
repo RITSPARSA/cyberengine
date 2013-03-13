@@ -1,7 +1,6 @@
 class Team < ActiveRecord::Base
 
-  before_validation :downcase_color
-  before_validation :capitalize_name
+  before_validation :capitalize_color
 
   attr_accessible :color, :name, :alias
 
@@ -13,13 +12,13 @@ class Team < ActiveRecord::Base
   has_many :users, dependent: :destroy
 
 
-  validates :name, presence: true
-  validates :alias, presence: true
-  validates :color, presence: true, inclusion: { in: ['white','red','blue'] }
+  validates :name, presence: true, uniqueness: true
+  validates :alias, presence: true, uniqueness: true
+  validates :color, presence: true, inclusion: { in: ['White','Red','Blue'] }
 
 
   def self.blueteams
-    where(color: "blue")
+    where(color: 'Blue')
   end
 
   def self.rounds
@@ -28,12 +27,8 @@ class Team < ActiveRecord::Base
 
 
   private
-  def downcase_color
-    self.color = self.color.downcase if self.color.present?
-  end
-
-  def capitalize_name
-    self.name = self.name.downcase.capitalize if self.name.present?
+  def capitalize_color
+    self.color = self.color.capitalize if self.color.present?
   end
 
 end

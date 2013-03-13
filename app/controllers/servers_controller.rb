@@ -4,6 +4,9 @@ class ServersController < ApplicationController
   before_filter :read_path
   def read_path
     @team = Team.find_by_id(params[:team_id]) 
+    [@team].each do |resource| 
+      error_redirect if cannot? :show, resource
+    end
   end
  
   def index

@@ -2,7 +2,6 @@ class Service < ActiveRecord::Base
 
   before_validation :downcase_protocol
   before_validation :downcase_version
-  before_validation :capitalize_name
 
   attr_accessible :team_id, :server_id, :enabled, :protocol, :version, :name, :available_points
 
@@ -13,7 +12,7 @@ class Service < ActiveRecord::Base
   has_many :checks, dependent: :destroy
   has_many :users, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { scope: :server_id, message: "already taken" }
+  validates :name, presence: true #, uniqueness: { scope: :server_id, message: "already taken" }
   validates :version, presence: true, inclusion: { in: ['ipv4','ipv6'] }
   validates :protocol, presence: true
   validates :available_points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -36,9 +35,6 @@ class Service < ActiveRecord::Base
     scoring
   end
 
-  def addresses
-    self.properties.select(:value).where('category = ?', 'address').map{|p| p.value}
-  end
 
   private
   def self.scoring
@@ -92,14 +88,5 @@ class Service < ActiveRecord::Base
   def downcase_version
     self.version = self.version.downcase if self.version.present?
   end
-
-  def downcase_version
-    self.version = self.version.downcase if self.version.present?
-  end
-
-  def capitalize_name
-    self.name = self.name.downcase.capitalize if self.name.present?
-  end
-
 
 end

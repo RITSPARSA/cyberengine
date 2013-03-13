@@ -7,6 +7,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :category, null: false
       t.string :property, null: false
       t.text :value, null: false
+      t.boolean :visible, null: false
 
       t.timestamps
     end

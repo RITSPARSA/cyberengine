@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130117152449) do
     t.string   "category",   :null => false
     t.string   "property",   :null => false
     t.text     "value",      :null => false
+    t.boolean  "visible",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

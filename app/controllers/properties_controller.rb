@@ -6,6 +6,9 @@ class PropertiesController < ApplicationController
     @team = Team.find_by_id(params[:team_id])
     @server = Server.find_by_id(params[:server_id])
     @service = Service.find_by_id(params[:service_id])
+    [@team, @server, @service].each do |resource| 
+      error_redirect if cannot? :show, resource
+    end
   end
 
   def index

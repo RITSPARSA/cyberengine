@@ -45,5 +45,16 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :visible, class: 'control-label' %>
+    <div class="controls">
+      <% unless @property.visible == false %>
+        <%= f.check_box :visible, class: 'check_box', checked: true %>
+      <% else %>
+        <%= f.check_box :visible, class: 'check_box' %>
+      <% end %>
+    </div>
+  </div>
+
   <%= f.submit 'Login', class: 'invisible-submit' %>
 <% end %>

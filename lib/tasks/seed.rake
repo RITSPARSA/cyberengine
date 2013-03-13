@@ -1,31 +1,4 @@
 namespace :cyberengine do
-  task :reset => :environment do
-    puts "Dropping database => rake db:drop\n"
-    Rake::Task["db:drop"].invoke
-
-    puts "\nCreating database => rake db:create\n"
-    Rake::Task["db:create"].invoke
-
-    puts "\nMigrating database schema => rake db:migrate\n"
-    Rake::Task["db:migrate"].invoke
-  end
-
-  task :basic => :environment do
-    puts "\nSetting up basic teams\n"
-    # Whiteteam
-    whiteteam = Team.create(color: 'white', name: 'Whiteteam', alias: 'Whiteteam' )
-    whiteteam_member = Member.create(username: 'whiteteam', team_id: whiteteam.id, password: 'whiteteam', password_confirmation: 'whiteteam')
-    puts "Created: #{whiteteam.alias}, Login: #{whiteteam_member.username}:#{whiteteam_member.password}"
-
-    # Redteam
-    redteam = Team.create(color: 'red', name: 'Redteam', alias: 'Redteam' )
-    redteam_member = Member.create(username: 'redteam', team_id: redteam.id, password: 'redteam', password_confirmation: 'redteam')
-    puts "Created: #{redteam.alias}, Login: #{redteam_member.username}:#{redteam_member.password}"
-
-    puts "\nFinished"
-    puts "Optional - Generate random data: rake setup:seed\n"
-  end
-
   task :seed => :environment do
     teams = Array(1..10)
     teams = teams.map{|t| t+Team.all.size}
@@ -85,7 +58,7 @@ namespace :cyberengine do
       next unless server
       service = Server.find(server).services.map {|s| s.id }.sample
       next unless service
-      Property.create(team_id: team, server_id: server, service_id: service, category: random, property: random, value: random)
+      Property.create(team_id: team, server_id: server, service_id: service, category: random, property: random, value: random, visible: boolean.sample)
     end
     
     puts "\n\nPopulating random #{users.size} users"
@@ -116,6 +89,5 @@ namespace :cyberengine do
       end
     end
     puts "\n\nCompleted population of seed data"
-    
   end
 end

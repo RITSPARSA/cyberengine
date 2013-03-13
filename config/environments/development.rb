@@ -37,4 +37,7 @@ Cyberengine::Application.configure do
 
   # Custom thin logging
   config.assets.logger = false
+
+  # SSL
+  #config.force_ssl = true
 end

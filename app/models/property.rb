@@ -1,6 +1,6 @@
 class Property < ActiveRecord::Base
 
-  attr_accessible :team_id, :server_id, :service_id, :category, :value, :property
+  attr_accessible :team_id, :server_id, :service_id, :category, :value, :property, :visible
 
   belongs_to :team
   belongs_to :server
@@ -18,6 +18,33 @@ class Property < ActiveRecord::Base
 
   def self.addresses
     self.select(:value).where('category = ?', 'address').where('property = ? OR property = ?','ip','domain').map{|p| p.value}
+  end
+
+  def self.random(property)
+    property = self.where('category = ? AND property = ?', 'random', property).order('RANDOM()').first
+    property ? property.value : nil
+  end
+
+  def self.randoms(property)
+    self.where('category = ? AND property = ?', 'random', property).order('RANDOM()')
+  end
+
+  def self.option(property)
+    property = self.where('category = ? AND property = ?', 'option', property).first
+    property ? property.value : nil
+  end
+
+  def self.options(property)
+    self.where('category = ? AND property = ?', 'option', property)
+  end
+
+  def self.answer(property)
+    property = self.where('category = ? AND property = ?', 'answer', property).first
+    property ? property.value : nil
+  end
+
+  def self.answers(property)
+    self.where('category = ? AND property = ?', 'answer', property)
   end
 
   def right_team?

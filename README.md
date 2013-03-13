@@ -195,6 +195,14 @@ category: 'option'
 # For example, the destination user/domain of an SMTP check defaults to whiteteam@cyberengine.ists
 # The user or domain could be changed using: category: 'option', property: 'rcpt-domain', value: 'whiteteam.ccdc'
 ```
+```bash
+category: 'answer'
+# Used to map random category properties to answers
+# For example, a DNS domain mapped to it's 'answer' address
+# Full example:
+# category: 'random', property: 'domain', value: 'google-public-dns-a.google.com'
+# category: 'answer', property: 'google-public-dns-a.google.com', value: '8.8.8.8'
+```
 
 ### Properties
 * Lowercase with hyphen delimiters
@@ -221,23 +229,24 @@ version: 'ipv4' or 'ipv6'
 protocol: 'icmp'
 ```
 #### Properties
+* Required
 ```bash
 category: 'address'
 property: 'domain' or 'ip'
 ```
+
  
 ### FTP Upload Check
 * checks/ipv4/ftp-upload.rb
 * checks/ipv6/ftp-upload.rb
-
 #### Service
 ```bash
 name: 'FTP Upload'
 version: 'ipv4' or 'ipv6'
 protocol: 'ftp'
 ```
-
 #### Properties
+* Required
 ```bash
 category: 'address'
 property: 'domain' or 'ip'
@@ -247,41 +256,38 @@ property: 'domain' or 'ip'
 ### FTP Download Check
 * checks/ipv4/ftp-download.rb
 * checks/ipv6/ftp-download.rb
-
 #### Service
 ```bash
 name: 'FTP Download'
 version: 'ipv4' or 'ipv6'
 protocol: 'ftp'
 ```
-
 #### Properties
 * Required
 ```bash
 category: 'address'
 property: 'domain' or 'ip'
 ```
-
 * Optional
 ```bash
 category: 'option'
 property: 'file-path'
 # Default: cyberengine
 # Example: /var/log/messages
+# Note: Users usually start in home directory so 'cyberengine' is really /home/<user>/cyberengine if not chrooted
+# Note: ~/file will not work
 ```
 
 
 ### POP3 Login Check
 * checks/ipv4/pop3-login.rb
 * checks/ipv6/pop3-login.rb
-
 #### Service
 ```bash
 name: 'POP3 Login'
 version: 'ipv4' or 'ipv6'
 protocol: 'pop3'
 ```
-
 #### Properties
 * Required
 ```bash
@@ -293,14 +299,47 @@ property: 'domain' or 'ip'
 ### SMTP Send Mail Check
 * checks/ipv4/smtp-send-mail.rb
 * checks/ipv6/smtp-send-mail.rb
-
 #### Service
 ```bash
 name: 'SMTP Send Mail'
 version: 'ipv4' or 'ipv6'
 protocol: 'smtp'
 ```
+#### Properties
+* Required
+```bash
+category: 'address'
+property: 'domain' or 'ip'
+```
+```bash
+category: 'option'
+property: 'from-domain'
+# Mail domain: --mail-from username@<from-domain>
+# If no rcpt-domain is specified this domain is also used for the rcpt-user
+```
+* Optional
+* Note: Without rcpt-user and rcpt-domain the destination email address defaults to user for the same service (aka: internal email). Only set these if you want outbound mail (Example: whiteteam@whiteteam.ists)
+```bash
+category: 'option'
+property: 'rcpt-user'
+# Default: whiteteam if no users otherwise a random user
+```
+```bash
+category: 'option'
+property: 'rcpt-domain'
+# Default: from-domain
+```
 
+
+### DNS Forward Check
+* checks/ipv4/dns-forward.rb
+* checks/ipv6/dns-forward.rb
+#### Service
+```bash
+name: 'DNS Forward'
+version: 'ipv4' or 'ipv6'
+protocol: 'dns'
+```
 #### Properties
 * Required
 ```bash
@@ -310,16 +349,12 @@ property: 'domain' or 'ip'
 ```bash
 category: 'random'
 property: 'domain'
-# Default: cyberengine.ists
-# Appended to all --mail-from options
+# Domain to check
+# Example value: 'google-public-dns-a.google.com'
 ```
 ```bash
-category: 'option'
-property: 'rcpt-user'
-# Default: whiteteam
-```
-```bash
-category: 'option'
-property: 'rcpt-domain'
-# Default: cyberengine.ists
+category: 'answer'
+property: <domain>  # 'google-public-dns-a.google.com'
+# Address domain should resolve too
+# Example value: '8.8.8.8'
 ```

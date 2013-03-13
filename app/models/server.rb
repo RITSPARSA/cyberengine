@@ -11,5 +11,5 @@ class Server < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :team_id, message: "already taken" }
   validates :team, presence: { message: "must exist" }
-
+ 
 end

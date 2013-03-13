@@ -12,7 +12,7 @@ class Service < ActiveRecord::Base
   has_many :checks, dependent: :destroy
   has_many :users, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { scope: :server_id, message: "already taken" }
+  validates :name, presence: true #, uniqueness: { scope: :server_id, message: "already taken" }
   validates :version, presence: true, inclusion: { in: ['ipv4','ipv6'] }
   validates :protocol, presence: true
   validates :available_points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -34,6 +34,7 @@ class Service < ActiveRecord::Base
     scoring[:points_rounded] = scoring[:points].round(1)
     scoring
   end
+
 
   private
   def self.scoring
@@ -82,10 +83,6 @@ class Service < ActiveRecord::Base
 
   def downcase_protocol
     self.protocol = self.protocol.downcase if self.protocol.present?
-  end
-
-  def downcase_version
-    self.version = self.version.downcase if self.version.present?
   end
 
   def downcase_version

@@ -46,6 +46,7 @@
   </thead>
   <tbody>
     <% services.each do |service| %>
+      <% next if cannot? :show, service %>
       <% latest = service.checks.latest || Check.new %>
       <% label_class = latest.passed ? "success" : "important" %>
       <% label_text = latest.passed ? "Passed" : "Failed" %>
