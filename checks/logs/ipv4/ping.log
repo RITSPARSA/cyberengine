@@ -1,1 +1,0 @@
-2013-03-13 12:49:21.281 [[37mDEBUG[0m] - [32mSELECT[0m "teams".* [32mFROM[0m "teams" [32mWHERE[0m "teams"."name" = 'Whiteteam' [32mLIMIT[0m 1  [time:[33m5.2ms[0m]
