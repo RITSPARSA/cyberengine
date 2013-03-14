@@ -32,7 +32,61 @@ namespace :cyberengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "HTTP Available", version: 'ipv4', protocol: 'http', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+    useragents.each do |useragent|
+      property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'useragent', value: useragent)
+    end
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< (Status: 200|HTTP\/1.(1|0) 200 OK)')
+
+    # HTTP Content
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTP Content", version: 'ipv4', protocol: 'http', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+    useragents.each do |useragent|
+      property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'useragent', value: useragent)
+    end
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '<title>.*</title>')
+
+    # HTTPS Available
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTPS Available", version: 'ipv4', protocol: 'https', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+    useragents.each do |useragent|
+      property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'useragent', value: useragent)
+    end
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< (Status: 200|HTTP\/1.(1|0) 200 OK)')
+
+    # HTTPS Content
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTPS Content", version: 'ipv4', protocol: 'https', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+    useragents.each do |useragent|
+      property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'useragent', value: useragent)
+    end
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '<title>.*</title>')
+
+    # POP3 Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "POP3 Login", version: 'ipv4', protocol: 'pop3', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
+
+    # SMTP Send Mail
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
+
+    # SSH Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'echo "cyberengine check"')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^cyberengine check$')
+
+    # Redteam
+    team = Team.create(color: 'Red', name: 'Redteam', alias: 'Redteam' )
+    member = Member.create(team_id: team.id, username: 'redteam', password: 'redteam', password_confirmation: 'redteam')
+    puts "Created: #{team.alias} - Login: #{member.username}:#{member.password}"
+  end
+
+  def useragents
     [
       'Baiduspider+(+http://www.baidu.com/search/spider.htm)',
       'curl/7.18.2 (i686-pc-linux-gnu) libcurl/7.18.2 GnuTLS/2.3.11 zlib/1.2.3',
@@ -95,24 +149,6 @@ namespace :cyberengine do
       'Opera/9.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.01',
       'Wget/1.10.2',
       'YandexSomething/1.0'
-    ].each do |useragent|
-      property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'useragent', value: useragent)
-    end
-
-    # POP3 Login
-    service = Service.create(team_id: team.id, server_id: server.id, name: "POP3 Login", version: 'ipv4', protocol: 'pop3', enabled: false, available_points: 0)
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
-
-    # SMTP Send Mail
-    service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: false, available_points: 0)
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
-
-
-    # Redteam
-    team = Team.create(color: 'Red', name: 'Redteam', alias: 'Redteam' )
-    member = Member.create(team_id: team.id, username: 'redteam', password: 'redteam', password_confirmation: 'redteam')
-    puts "Created: #{team.alias} - Login: #{member.username}:#{member.password}"
+    ]
   end
 end

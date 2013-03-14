@@ -1,0 +1,236 @@
+#!/usr/bin/env ruby
+require 'pty'
+require_relative 'lib/cyberengine'
+puts ""
+
+# Put arguments in local variable
+@args = ARGV.dup
+
+# Available commands
+@commands = [:help, :enabled, :disabled, :enable, :disable, :start, :stop, :restart, :status, :errors, :tail, :logfiles, :test, :run].sort
+
+@checks = Dir.glob(Cyberengine.checks_dir + '/**/*').select {|file| File.file?(file) }.sort
+@names = Hash.new # echo-request to full path
+@paths = Hash.new # ipv4 to echo-request
+@checks.each do |check|
+  path = Cyberengine.path(check)
+  name = Cyberengine.basename(check)
+  @paths[path] = Array.new unless @paths[path]
+  @paths[path] << name
+  @names[name] = check
+end
+@disabled = /.disabled?\z/
+
+def format(notice)
+  "  #{notice}  %-#{@paths.max.size}s  %5s" 
+end
+
+def logfiles
+  @checks.each do |check|
+    check = Cyberengine.checkify(check,[])
+    puts Cyberengine.log_file(check)
+  end
+end
+
+
+# Start checks
+def start
+  @args.each do |arg|
+    @paths.each do |path,names|
+      names.each do |name|
+        if name == arg
+          unless @names[name] =~ @disabled
+            puts format("Starting:") % [path, name]
+          end  
+        end
+      end
+    end
+  end
+end
+
+# Run checks
+def run
+  @args.each do |arg|
+    @paths.each do |path|
+      checks(path).each do |check|
+        if basename(check) == arg && check !~ @disabled
+          puts format("Running:") % [path, basename(check)]
+          Daemons.run(check,daemon_options(@command.to_s))
+        end
+      end
+    end
+  end
+end
+
+# Stop checks
+def stop
+  @args.each do |arg|
+    @paths.each do |path|
+      checks(path).each do |check|
+        if basename(check) == arg && check !~ @disabled
+          puts format("Stopping:") % [path, basename(check)]
+          Daemons.run(check,daemon_options(@command.to_s))
+        end
+      end
+    end
+  end
+end
+
+# Restart checks
+def restart
+  @args.each do |arg|
+    @paths.each do |path|
+      checks(path).each do |check|
+        if basename(check) == arg && check !~ @disabled
+          puts format("Restarting:") % [path, basename(check)]
+          Daemons.run(check,daemon_options(@command.to_s))
+        end
+      end
+    end
+  end
+end
+
+# Status of checks
+def status
+  @args.each do |arg|
+    @paths.each do |path|
+      checks(path).each do |check|
+        if basename(check) == arg && check !~ @disabled
+          puts format("Status:") % [path, basename(check)]
+          Daemons.run(check,daemon_options(@command.to_s))
+        end
+      end
+    end
+  end
+end
+
+# Enabled checks
+def enabled
+  @paths.each do |path|
+    checks(path).each do |check|
+      unless check =~ @disabled
+        puts format("Enabled:") % [path,basename(check)] 
+      end
+    end
+  end
+end
+
+# Disabled checks
+def disabled
+  @paths.each do |path|
+    checks(path).each do |check|
+      if check =~ @disabled
+        puts format("Disabled:") % [path,basename(check)] 
+      end
+    end
+  end
+end
+
+# Enable check
+def enable
+  @args.each do |arg|
+    @paths.each do |path|
+      checks(path).each do |check|
+        if basename(check) == arg && check =~ @disabled
+          puts format("Enabling:") % [path,basename(check)]
+          File.rename(check,check.gsub(@disabled,''))
+        end
+      end
+    end
+  end
+end
+
+# Disable check
+def disable
+  @args.each do |arg|
+    @paths.each do |path,names|
+      names.each do |name|
+        if name == arg
+          unless @names[name] =~ @disabled
+            puts format("Disabling:") % [path, name]
+            File.rename(@names[name],@names[name]+'.disabled')
+          end
+        end
+      end
+    end
+  end
+end
+
+# Tail log
+def tail
+  tail = "tail -f -n0 " 
+  @args.each do |arg|
+    @paths.each do |path|
+      checks(path).each do |check|
+        if basename(check) == arg
+          tail << " " + @root + "/logs/#{path}/#{arg}.log"   
+        end
+      end
+    end
+  end
+  return true if tail == "tail -f -n0 "
+  puts "Tail: #{tail}"
+  PTY.spawn(tail) do |stdout, stdin, pid|
+    begin
+      stdout.each_line {|line| puts line }
+    rescue Errno::EIO => exception # Benign errors
+    end
+  end
+end
+
+# Find errors
+def errors
+  logs().each do |file|
+    puts file
+    filename = true
+    `grep -vE "(DEBUG|INFO)" #{file}`.each_line do |line|
+      if line !~ /\A\s*\z/
+        puts file if filename
+        filename = false
+        puts line 
+      end
+    end
+  end  
+end
+
+# Help text
+def help
+  puts "  Syntax:  cyberengine.rb <command> <path> <check> <check>, ..."
+  puts "  Commands:  " + @commands.join(' ')
+  puts "  Path:  ipv4 ipv6 (no path = all)"
+  puts "  Check:  http-availableftp-upload ... (all = every check)"
+  puts "  Example:  cyberengine.rb tail http-available"
+  puts "  Example:  cyberengine.rb disable ipv4 http-available http-content"
+  puts "  Example:  cyberengine.rb disable http-available http-content"
+  puts "  Example:  cyberengine.rb enable all"
+  puts "  Example:  cyberengine.rb enabled"
+  puts "  Example:  cyberengine.rb logfiles"
+  puts "  Example:  cyberengine.rb start ipv4 http-available"
+end
+
+
+
+
+# Parse command and execute related method
+@command = @args.first.to_s.to_sym || :help
+@args.delete_at(0) if @args.first
+
+# Limit path
+if @args.first && @paths.keys.include?(@args.first)
+  @paths.delete_if {|key,value| key != @args.first }
+  @args.delete_at(0)
+end
+
+# All option set?
+if @args.include?('all')
+  @args.delete('all')
+  @args += @paths.values
+end
+
+# Sort checks
+@args.sort!
+
+# Execute command
+@commands.include?(@command) ? send(@command) : send(:help) 
+
+puts ""

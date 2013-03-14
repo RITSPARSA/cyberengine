@@ -33,6 +33,21 @@ namespace :cyberengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
 
+    # HTTP Content
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTP Content", version: 'ipv4', protocol: 'http', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+
+    # HTTPS Available
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTPS Available", version: 'ipv4', protocol: 'https', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+
+    # HTTPS Content
+    service = Service.create(team_id: team.id, server_id: server.id, name: "HTTPS Content", version: 'ipv4', protocol: 'https', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'uri', value: '/')
+
     # POP3 Login
     service = Service.create(team_id: team.id, server_id: server.id, name: "POP3 Login", version: 'ipv4', protocol: 'pop3', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
@@ -43,6 +58,11 @@ namespace :cyberengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'from-domain', value: 'cyberengine.ists')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'rcpt-domain', value: 'cyberengine.ists')
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+
+    # SSH Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
     user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
   end
