@@ -84,14 +84,28 @@ module Cyberengine
 
   # Detach and become daemon
   def daemonize(check)
+    return get_pid(check) if get_pid(check)
     Process.daemon
     File.open(pid_file(check),'w') {|file| file.write(Process.pid) }
-    Process.pid # Return new daemon pid
+    nil # Return nil, anything else means error
   end
 
   # Return only filename without extensions
   def basename(file)
     File.basename(file).split('.').first.to_s
+  end
+
+  def get_pid(check)
+    pid_file = Cyberengine.pid_file(check)
+    if File.exists?(pid_file) && File.readable?(pid_file)
+      pid = File.read(pid_file).to_i
+      begin
+        Process.getpgid(pid)
+        return pid
+      rescue Errno::ESRCH
+      end
+    end
+    nil
   end
 
   # Return only filename's path 

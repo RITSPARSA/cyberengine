@@ -49,6 +49,7 @@
       </thead>
       <tbody>
         <% team.services.order('version,protocol ASC').each do |service| %>
+          <% next if cannot? :show, service %>
           <% scoring = service.scoring %>
           <tr>
             <td><%= service.name %></td>

@@ -24,7 +24,13 @@ module Cyberengine
   
       # Daemonize
       if @daemon
-        Cyberengine.daemonize(@check)
+        pid = Cyberengine.daemonize(@check)
+        if pid
+          puts "Failed to start #{@path} #{@name} - check already running with pid: #{pid}"
+          puts "Stop in Cyberengine: cyberengine stop #{@path} #{@name}"
+          puts "Stop in bash: kill -s TERM #{pid}"
+          exit
+        end
       end
       @pid = Process.pid
 

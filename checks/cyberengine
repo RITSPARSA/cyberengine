@@ -22,7 +22,7 @@ end
 @disabled = /.disabled?\z/
 
 def format(notice)
-  "  #{notice}  %-#{@paths.max.size}s  %5s" 
+  "  #{notice}  %-#{@paths.keys.max.size}s  %-5s" 
 end
 
 def logfiles
@@ -32,6 +32,9 @@ def logfiles
   end
 end
 
+def checkify_name(name)
+  Cyberengine.checkify(name,[])
+end
 
 # Start checks
 def start
@@ -40,22 +43,14 @@ def start
       names.each do |name|
         if name == arg
           unless @names[name] =~ @disabled
-            puts format("Starting:") % [path, name]
+            output = `ruby #{@names[name]} daemon`
+            pid = Cyberengine.get_pid(checkify_name(@names[name]))
+            if output
+              puts format("Already Running:") % [path, "#{name}  #{pid}"]
+            else
+              puts format("Started:") % [path, "#{name}  pid: #{pid}"]
+            end
           end  
-        end
-      end
-    end
-  end
-end
-
-# Run checks
-def run
-  @args.each do |arg|
-    @paths.each do |path|
-      checks(path).each do |check|
-        if basename(check) == arg && check !~ @disabled
-          puts format("Running:") % [path, basename(check)]
-          Daemons.run(check,daemon_options(@command.to_s))
         end
       end
     end
@@ -65,25 +60,16 @@ end
 # Stop checks
 def stop
   @args.each do |arg|
-    @paths.each do |path|
-      checks(path).each do |check|
-        if basename(check) == arg && check !~ @disabled
-          puts format("Stopping:") % [path, basename(check)]
-          Daemons.run(check,daemon_options(@command.to_s))
-        end
-      end
-    end
-  end
-end
-
-# Restart checks
-def restart
-  @args.each do |arg|
-    @paths.each do |path|
-      checks(path).each do |check|
-        if basename(check) == arg && check !~ @disabled
-          puts format("Restarting:") % [path, basename(check)]
-          Daemons.run(check,daemon_options(@command.to_s))
+    @paths.each do |path,names|
+      names.each do |name|
+        if name == arg
+          unless @names[name] =~ @disabled
+            pid = Cyberengine.get_pid(checkify_name(@names[name]))
+            if pid
+              Process.kill('TERM',pid)
+              puts format("Sent TERM Signal:") % [path, "#{name}  #{pid}"] 
+            end
+          end
         end
       end
     end
@@ -93,11 +79,17 @@ end
 # Status of checks
 def status
   @args.each do |arg|
-    @paths.each do |path|
-      checks(path).each do |check|
-        if basename(check) == arg && check !~ @disabled
-          puts format("Status:") % [path, basename(check)]
-          Daemons.run(check,daemon_options(@command.to_s))
+    @paths.each do |path,names|
+      names.each do |name|
+        if name == arg
+          unless @names[name] =~ @disabled
+            pid = Cyberengine.get_pid(checkify_name(@names[name]))
+            if pid
+              puts format("Running:") % [path, "#{name}  #{pid}"]
+            else
+              puts format("Stopped:") % [path, name]
+            end
+          end
         end
       end
     end
@@ -106,10 +98,10 @@ end
 
 # Enabled checks
 def enabled
-  @paths.each do |path|
-    checks(path).each do |check|
-      unless check =~ @disabled
-        puts format("Enabled:") % [path,basename(check)] 
+  @paths.each do |path,names|
+    names.each do |name|
+      unless @names[name] =~ @disabled
+        puts format("Enabled:") % [path,name]
       end
     end
   end
@@ -117,10 +109,10 @@ end
 
 # Disabled checks
 def disabled
-  @paths.each do |path|
-    checks(path).each do |check|
-      if check =~ @disabled
-        puts format("Disabled:") % [path,basename(check)] 
+  @paths.each do |path,names|
+    names.each do |name|
+      if @names[name] =~ @disabled
+        puts format("Disabled:") % [path,name] 
       end
     end
   end
@@ -129,11 +121,13 @@ end
 # Enable check
 def enable
   @args.each do |arg|
-    @paths.each do |path|
-      checks(path).each do |check|
-        if basename(check) == arg && check =~ @disabled
-          puts format("Enabling:") % [path,basename(check)]
-          File.rename(check,check.gsub(@disabled,''))
+    @paths.each do |path,names|
+      names.each do |name|
+        if name == arg
+          if @names[name] =~ @disabled
+            puts format("Enabling:") % [path, name]
+            File.rename(@names[name],@names[name].gsub(@disabled,''))
+          end
         end
       end
     end
@@ -224,7 +218,9 @@ end
 # All option set?
 if @args.include?('all')
   @args.delete('all')
-  @args += @paths.values
+  @paths.each do |path,names|
+    @args += names
+  end
 end
 
 # Sort checks
