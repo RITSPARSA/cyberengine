@@ -33,6 +33,7 @@
     <h3>Breakdown</h3>
   </div>
   <% @teams.each do |team| %>
+    <% next if cannot? :show, team %>
     <div class='page-header'>
       <h4><%= team.alias %></h4>
     </div>

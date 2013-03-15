@@ -43,12 +43,13 @@ def start
       names.each do |name|
         if name == arg
           unless @names[name] =~ @disabled
-            output = `ruby #{@names[name]} daemon`
+            `ruby #{@names[name]} daemon`
             pid = Cyberengine.get_pid(checkify_name(@names[name]))
-            if output
-              puts format("Already Running:") % [path, "#{name}  #{pid}"]
+            if pid
+              puts format("Started:") % [path, "#{name}  #{pid}"]
+              #puts format("Already Running:") % [path, "#{name}  #{pid}"]
             else
-              puts format("Started:") % [path, "#{name}  pid: #{pid}"]
+              puts format("Started:") % [path, "#{name}  #{pid}"]
             end
           end  
         end
@@ -154,11 +155,10 @@ end
 def tail
   tail = "tail -f -n0 " 
   @args.each do |arg|
-    @paths.each do |path|
-      checks(path).each do |check|
-        if basename(check) == arg
-          tail << " " + @root + "/logs/#{path}/#{arg}.log"   
-        end
+    @paths.each do |path,names|
+      if names.include?(arg)
+        log = Cyberengine.log_file(checkify_name(@names[arg]))
+        tail << log << ' '
       end
     end
   end
