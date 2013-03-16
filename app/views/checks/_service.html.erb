@@ -1,7 +1,6 @@
-<% latest = @service.checks.latest || Check.new %>
-<% checks = @service.checks.select('id,round,passed,created_at').order('round DESC') unless latest.id.nil? %>
-
-<% if latest.id.nil? %>
+<% latest_check = @service.checks.latest || Check.new %>
+<% checks = @service.checks.minimal.ordered unless latest_check.id.nil? %>
+<% if latest_check.id.nil? %>
   <p>No checks</p>
 <% else %>
   <div class="page-header">
@@ -12,25 +11,25 @@
     <table>
       <tr>
         <td>Round:</td>
-        <td><%= latest.round %></td>
+        <td><%= latest_check.round %></td>
       </tr>
       <tr>
         <td>Status:</td>
-        <% label_class = latest.passed ? "success" : "important" %>
-        <% label_text = latest.passed ? "Passed" : "Failed" %>
+        <% label_class = latest_check.passed ? "success" : "important" %>
+        <% label_text = latest_check.passed ? "Passed" : "Failed" %>
         <td><span class="label label-<%= label_class %>"><%= label_text %></span></td>
       </tr>
       <tr>
         <td>Created:</td>
-        <td><%= latest.created_at %></td>
+        <td><%= latest_check.created_at %></td>
       </tr>
       <tr>
         <td>Request:</td>
-        <td><%= latest.request %></td>
+        <td><%= latest_check.request %></td>
       </tr>
       <tr>
         <td>Response:</td>
-        <td><%= latest.response %></td>
+        <td><%= latest_check.response %></td>
       </tr>
     </table>
   </div>

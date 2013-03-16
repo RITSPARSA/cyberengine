@@ -1,30 +1,26 @@
-<% if can?(:edit, @team) || can?(:destroy, @team) %>
+<% if @team.can_edit?(current_member,@team.id) || @team.can_destroy?(current_member,@team.id) || Server.can_new?(current_member,@team.id) %>
   <% content_for :actions do %>
-    <% if can? :edit, @team %>
+    <% if @team.can_edit?(current_member,@team.id) %>
       <li class='edit'>
-        <%= link_to edit_team_path(@team) do %>Edit<i class="icon-plus"></i><% end %>
+        <%= link_to edit_team_path(@team) do %><i class="icon-plus"></i><span>Edit</span><% end %>
       </li>
     <% end %>
-    <% if can? :destroy, @team %>
+    <% if @team.can_destroy?(current_member,@team.id) %>
       <li class='destroy'>
-        <%= link_to team_path(@team), method: :delete, data: { confirm: 'Please Confirm' } do %>Delete<i class="icon-warning-sign"></i><% end %>
+        <%= link_to team_path(@team), method: :delete, data: { confirm: 'Please Confirm' } do %><i class="icon-warning-sign"></i><span>Delete</span><% end %>
+      </li>
+    <% end %>
+    <% if Server.can_new?(current_member,@team.id) %>
+      <li class="new">
+        <%= link_to new_team_server_path(@team) do %><i class="icon-plus-sign"></i><span>New Server</span><% end %>
       </li>
     <% end %>
   <% end %>
 <% end %>
 
-<% content_for :resources do %>
-  <li class='resource'>
-    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-right"></i><% end %>
-  </li>
-<% end %>
-
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
-  </li>
   <li class='path indent'>
-    <%= link_to teams_path do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Team: #{@team.alias}", teams_path %>
   </li>
 <% end %>
 

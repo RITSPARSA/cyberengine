@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
-  authorize_resource class: false
-
-  def new
-  end
+  def new; end
 
   def create
     username = params[:session][:username] || ''
@@ -10,18 +7,20 @@ class SessionsController < ApplicationController
     member = Member.find_by_username(username)
     if member && member.authenticate(password)
       session[:member_id] = member.id
-      if blueteam?
+      if member.blueteam?
         redirect_to team_path(member.team_id), notice: "Successfully logged in"
       else
         redirect_to teams_path, notice: "Successfully logged in"
       end
     else
-      flash.now.alert = "Invalid username or password"
       redirect_to new_session_path, alert: "Invalid username or password"
     end
   end
 
   def destroy
+    unless current_member.id == session[:member_id]
+      redirect_to teams_path, warn: "Now your getting the idea"
+    end 
     session[:member_id] = nil
     redirect_to teams_path, notice: "Successfully logged out"
   end

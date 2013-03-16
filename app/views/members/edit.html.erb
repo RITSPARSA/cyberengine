@@ -1,22 +1,15 @@
-<% if can?(:edit, @member)%>
-  <% content_for :actions do %>
-    <% if can? :edit, @member %>
-      <li class='submit'>
-        <%= link_to '#', onclick: "$('#edit_member_#{@member.id}').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
-    <li class='cancel'>
-      <%= link_to members_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
-    </li>
-  <% end %>
+<% content_for :actions do %>
+  <li class='submit'>
+    <%= link_to '#', onclick: "$('#edit_member_#{@member.id}').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Update</span><% end %>
+  </li>
+  <li class='cancel'>
+    <%= link_to members_path do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
+  </li>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to members_path do %><span>Members</span><i class="icon-chevron-left"></i><% end %>
-  </li>
   <li class='path indent'>
-    <%= link_to member_path(@member) do %><span><%= @member.username %><span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to member_path(@member) do %><span>Member: <%= @member.username %></span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
 

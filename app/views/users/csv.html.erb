@@ -1,37 +1,23 @@
-<% if can?(:csv, @service.users.first) %>
+<% if @users.can_edit?(current_member,@team.id) %>
   <% content_for :actions do %>
-    <% if can? :csv, @service.users.first %>
-      <li class='submit'>
-        <%= link_to '#', onclick: "$('#csv_users_update').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
+    <li class='submit'>
+      <%= link_to '#', onclick: "$('#csv_users_update').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Update</span><% end %>
+    </li>
     <li class='cancel'>
-      <%= link_to team_server_service_users_path(@team,@server,@service) do %>Cancel<i class="icon-ban-circle"></i><% end %>
+      <%= link_to team_server_service_path(@team,@server,@service) do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
     </li>
   <% end %>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to "Team: #{@team.alias}", team_path(@team) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Server: #{@server.name}", team_server_path(@team,@server) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_services_path(@team,@server) do %><span>Services</span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path indent'>
-    <%= link_to team_server_service_path(@team,@server,@service) do %><span><%= @service.name %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_service_users_path(@team,@server,@service) do %><span>Users</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Service: #{@service.name}", team_server_service_path(@team,@server,@service) %>
   </li>
 <% end %>
 
@@ -44,10 +30,10 @@
   <div class="control-group">
     <%= label_tag 'csv', 'CSV Users', class: 'control-label' %>
     <div class="controls">
-      <%= text_area_tag 'csv', @users, class: 'text_area horizontal_text_area' %>
+      <%= text_area_tag 'csv', @users.to_csv, class: 'text_area horizontal_text_area' %>
     </div>
   </div>
 
-  <%= f.submit 'Login', class: 'invisible-submit' %>
+  <%= submit_tag 'Update', class: 'invisible-submit' %>
 <% end %>
 

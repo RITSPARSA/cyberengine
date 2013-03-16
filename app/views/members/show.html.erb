@@ -1,24 +1,15 @@
-<% if can?(:edit, @member) || can?(:destroy, @member) %>
-  <% content_for :actions do %>
-    <% if can? :edit, @member %>
-      <li class='edit'>
-        <%= link_to edit_member_path(@member) do %>Edit<i class="icon-plus"></i><% end %>
-      </li>
-    <% end %>
-    <% if can? :destroy, @member %>
-      <li class='destroy'>
-        <%= link_to member_path(@member), method: :delete, data: { confirm: 'Please Confirm' } do %>Delete<i class="icon-warning-sign"></i><% end %>
-      </li>
-    <% end %>
-  <% end %>
+<% content_for :actions do %>
+  <li class='edit'>
+    <%= link_to edit_member_path(@member) do %><i class="icon-plus"></i><span>Edit</span><% end %>
+  </li>
+  <li class='destroy'>
+    <%= link_to member_path(@member), method: :delete, data: { confirm: 'Please Confirm' } do %><i class="icon-warning-sign"></i><span>Delete</span><% end %>
+  </li>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to members_path do %><span>Members</span><i class="icon-chevron-left"></i><% end %>
-  </li>
   <li class='path indent'>
-    <%= link_to members_path do %><span><%= @member.username %></span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to member_path(@member) do %><span>Member: <%= @member.username %></span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
 

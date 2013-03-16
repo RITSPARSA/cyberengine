@@ -105,8 +105,12 @@ margin-left: 220px;
 .sidebar .cancel a i { color: #b94a48; }
 
 .sidebar a { text-align: left; text-transform:capitalize; }
+.sidebar a i { float: left; margin-right: 12px; }
+/*
 .sidebar .indent a span { margin-left:15px; }
+.sidebar a span { margin-left: 12px; }
 .sidebar a i { float: right }
+*/
 
 .main > div.page-header:first-child { margin-top: 0px; }
 .main > div.page-header > h3 { 

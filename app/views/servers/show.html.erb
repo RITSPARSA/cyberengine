@@ -1,36 +1,29 @@
-<% if can?(:edit, @server) || can?(:destroy, @server) %>
+<% if @server.can_edit?(current_member,@team.id) || @server.can_destroy?(current_member,@team.id) || Service.can_new?(current_member,@team.id) %>
   <% content_for :actions do %>
-    <% if can? :edit, @server %>
+    <% if @server.can_edit?(current_member,@team.id) %>
       <li class='edit'>
-        <%= link_to edit_team_server_path(@team,@server) do %>Edit<i class="icon-plus"></i><% end %>
+        <%= link_to edit_team_server_path(@team,@server) do %><i class="icon-plus"></i><span>Edit</span><% end %>
       </li>
     <% end %>
-    <% if can? :destroy, @server %>
+    <% if @server.can_destroy?(current_member,@team.id) %>
       <li class='destroy'>
-        <%= link_to team_server_path(@team,@server), method: :delete, data: { confirm: 'Please Confirm' } do %>Delete<i class="icon-warning-sign"></i><% end %>
+        <%= link_to team_server_path(@team,@server), method: :delete, data: { confirm: 'Please Confirm' } do %><i class="icon-warning-sign"></i><span>Delete</span><% end %>
+      </li>
+    <% end %>
+    <% if Service.can_new?(current_member,@team.id) %>
+      <li class="new">
+        <%= link_to new_team_server_service_path(@team,@server) do %><i class="icon-plus-sign"></i><span>New Service</span><% end %>
       </li>
     <% end %>
   <% end %>
 <% end %>
 
-<% content_for :resources do %>
-  <li class='resource'>
-    <%= link_to team_server_services_path(@team,@server) do %>Services<i class="icon-chevron-right"></i><% end %>
-  </li>
-<% end %>
-
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to "Team: #{@team.alias}", team_path(@team) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path indent'>
-    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Server: #{@server.name}", team_server_path(@team,@server) %>
   </li>
 <% end %>
 
@@ -56,8 +49,18 @@
 <div class="page-header">
   <h3>Services</h3>
 </div>
-
 <%= render partial: 'services/server', locals: { server: @server, team: @team } %>
+
+<div class="page-header">
+  <h3>Users</h3>
+</div>
+<%= render partial: 'users/server', locals: { server: @server } %>
+
+<div class="page-header">
+  <h3>Properties</h3>
+</div>
+<%= render partial: 'properties/server', locals: { server: @server } %>
+
 <%= render partial: 'checks/modal' %>
 <%= render partial: 'properties/modal' %>
 <%= render partial: 'users/modal' %>

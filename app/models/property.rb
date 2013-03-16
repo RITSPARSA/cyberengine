@@ -14,12 +14,12 @@ class Property < ActiveRecord::Base
   validates :service, presence: { message: "must exist" }
   validate :right_team?
 
-  private
 
   def self.addresses
     self.select(:value).where('category = ?', 'address').where('property = ? OR property = ?','ip','domain').map{|p| p.value}
   end
 
+  def self.ordered; order('service_id ASC, category ASC, property ASC') end
   def self.random(property)
     property = self.where('category = ? AND property = ?', 'random', property).order('RANDOM()').first
     property ? property.value : nil
@@ -47,6 +47,8 @@ class Property < ActiveRecord::Base
     self.where('category = ? AND property = ?', 'answer', property)
   end
 
+  def self.visible; self.where('visible = ?',true) end
+
   def right_team?
     team = Team.find_by_id(team_id)
     server = Server.find_by_id(server_id)
@@ -59,4 +61,12 @@ class Property < ActiveRecord::Base
     end
   end
 
+  # Standard permissions
+  def can_show?(member,team_id) member.whiteteam? || visible || member.team_id == team_id end
+  def self.can_show?(member,team_id) member.whiteteam? || member.team_id == team_id end
+  def self.can_new?(member,team_id) member.whiteteam? end 
+  def can_edit?(member,team_id) member.whiteteam? end
+  def can_create?(member,team_id) member.whiteteam? end
+  def can_update?(member,team_id) member.whiteteam? end
+  def can_destroy?(member,team_id) member.whiteteam? end
 end

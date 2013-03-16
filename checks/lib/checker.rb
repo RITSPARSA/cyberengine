@@ -131,7 +131,8 @@ module Cyberengine
       end
   
       # Cant insert empty responses into database, so say "No Response"
-      response.empty? ? 'No Response' : response
+      # Strip to remove double newlines (HTTP) and replace with one
+      response.empty? ? "No Response" : response.strip.concant("\r\n")
     end
   
     # Default exception logger    

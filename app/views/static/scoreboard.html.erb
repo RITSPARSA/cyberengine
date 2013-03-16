@@ -1,39 +1,39 @@
-<% content_for :fullscreen do %>
-  <div id="chart" style="height:550px;"></div>
+<div id="chart" style="height:550px;"></div>
 
-  <div class='page-header'>
-    <h3>Totals</h3>
-  </div>
-  <table class='table table-bordered table-hover'>
-    <thead>
-      <th>Team</th>
-      <th>Checks</th>
-      <th>Passed</th>
-      <th>Percent</th>
-      <th>Available</th>
-      <th>Points</th>
-    </thead>
-    <tbody>
-      <% @teams.each do |team| %>
-        <% scoring = team.services.scoring %>
-        <tr>
-          <td><%= team.alias %></td>
-          <td><%= scoring[:count] %></td>
-          <td><%= scoring[:passed] %></td>
-          <td><%= scoring[:percent_rounded] %></td>
-          <td><%= scoring[:available] %></td>
-          <td><%= scoring[:points_rounded] %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br />
+<div class='page-header'>
+  <h3>Totals</h3>
+</div>
+<table class='table table-bordered table-hover'>
+  <thead>
+    <th>Team</th>
+    <th>Checks</th>
+    <th>Passed</th>
+    <th>Percent</th>
+    <th>Available</th>
+    <th>Points</th>
+  </thead>
+  <tbody>
+    <% @teams.ordered.each do |team| %>
+      <% scoring = team.services.scoring %>
+      <tr>
+        <td><%= team.alias %></td>
+        <td><%= scoring[:count] %></td>
+        <td><%= scoring[:passed] %></td>
+        <td><%= scoring[:percent_rounded] %></td>
+        <td><%= scoring[:available] %></td>
+        <td><%= scoring[:points_rounded] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
 
+<% if current_member.can_scoreboard? || (current_member.logged_in? && !current_member.redteam?)  %>
   <div class='page-header'>
     <h3>Breakdown</h3>
   </div>
-  <% @teams.each do |team| %>
-    <% next if cannot? :show, team %>
+  <% @teams.ordered.each do |team| %>
+    <% next unless current_member.can_scoreboard? || team.can_show?(current_member,team.id) %>
     <div class='page-header'>
       <h4><%= team.alias %></h4>
     </div>
@@ -49,8 +49,8 @@
         <th>Points</th>
       </thead>
       <tbody>
-        <% team.services.order('version,protocol ASC').each do |service| %>
-          <% next if cannot? :show, service %>
+        <% team.services.ordered.each do |service| %>
+          <% next unless current_member.can_scoreboard? || service.can_show?(current_member,team.id) %>
           <% scoring = service.scoring %>
           <tr>
             <td><%= service.name %></td>
@@ -69,10 +69,10 @@
   <% end %>
 <% end %>
 <% content_for :javascript_data do %>
-    window.teams = <%= json_escape @teams.map{|t| t.alias }.to_json.html_safe %>;
-    window.colors = <%= json_escape @colors.to_json.html_safe %>;
-    window.bargraph = <%= json_escape @bargraph.to_json.html_safe %>;
+  window.teams = <%= json_escape @teams.map{|t| t.alias }.to_json.html_safe %>;
+  window.colors = <%= json_escape @colors.to_json.html_safe %>;
+  window.bargraph = <%= json_escape @bargraph.to_json.html_safe %>;
 <% end %>
 <% content_for :javascript do %>
-   <%= javascript_include_tag 'scoreboard' %>
+  <%= javascript_include_tag 'scoreboard' %>
 <% end %>

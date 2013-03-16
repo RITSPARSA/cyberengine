@@ -14,19 +14,15 @@ class Check < ActiveRecord::Base
   validate :right_team?
 
 
-  private
-  def self.ordered
-    order('round ASC')
-  end
 
   def self.next_round
     latest = self.latest
     latest ? latest.round + 1 : 1
   end
 
-  def self.latest
-    order('round DESC').first
-  end
+  def self.ordered; order('round DESC') end
+  def self.latest; order('round DESC').first end
+  def self.minimal; select('id,passed,round,created_at') end
 
   def self.bargraph
     [self.points]
@@ -73,4 +69,12 @@ class Check < ActiveRecord::Base
     end
   end
 
+  # Standard permissions
+  def can_show?(member,team_id) member.whiteteam? || member.team_id == team_id end
+  def self.can_show?(member,team_id) member.whiteteam? || member.team_id == team_id end
+  def self.can_new?(member,team_id) member.whiteteam? end
+  def can_edit?(member,team_id) member.whiteteam? end
+  def can_create?(member,team_id) member.whiteteam? end
+  def can_update?(member,team_id) member.whiteteam? end
+  def can_destroy?(member,team_id) member.whiteteam? end
 end

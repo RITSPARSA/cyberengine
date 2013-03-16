@@ -1,19 +1,9 @@
-<% if can?(:new, Member) %>
-  <% content_for :actions do %>
-    <% if can? :new, Member %>
-      <li class='new'>
-        <%= link_to '#', onclick: "$('#new_member').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
-    <li class='cancel'>
-      <%= link_to members_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
-    </li>
-  <% end %>
-<% end %>
-
-<% content_for :paths do %>
-  <li class='path'>
-    <%= link_to members_path do %>Members<i class="icon-chevron-left"></i><% end %>
+<% content_for :actions do %>
+  <li class='new'>
+    <%= link_to '#', onclick: "$('#new_member').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Create</span><% end %>
+  </li>
+  <li class='cancel'>
+    <%= link_to members_path do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
   </li>
 <% end %>
 

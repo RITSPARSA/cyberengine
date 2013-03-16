@@ -1,17 +1,14 @@
-<% content_for :fullscreen do %>
-  <% @teams.each do |team| %>
-    <div class="page-header">
-      <% if can? :show, team %>
-        <h4><%= link_to team.alias, team_path(team) %></h4>
-      <% else %>
-        <h4><%= team.alias %></h4>
-      <% end %>
-    </div>
-    <%= render partial: 'services/overview', locals: { team: team } %>
-    <br />
-  <% end %>
-  
-  <%= render partial: 'checks/modal' %>
-  <%= render partial: 'properties/modal' %>
-  <%= render partial: 'users/modal' %>
+<% @teams.each do |team| %>
+  <div class="page-header">
+    <% if team.can_show?(current_member,team.id) %>
+      <h4><%= link_to team.alias, team_path(team) %></h4>
+    <% else %>
+      <h4><%= team.alias %></h4>
+    <% end %>
+  </div>
+  <%= render partial: 'services/overview', locals: { team: team } %>
 <% end %>
+
+<%= render partial: 'checks/modal' %>
+<%= render partial: 'properties/modal' %>
+<%= render partial: 'users/modal' %>

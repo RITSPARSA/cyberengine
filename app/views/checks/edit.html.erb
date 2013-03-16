@@ -1,40 +1,26 @@
-<% if can?(:edit, @check) %>
+<% if @check.can_edit?(current_member,@team.id) %>
   <% content_for :actions do %>
-    <% if can? :edit, @check %>
-      <li class='submit'>
-        <%= link_to '#', onclick: "$('#edit_check_#{@check.id}').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
+    <li class='submit'>
+      <%= link_to '#', onclick: "$('#edit_check_#{@check.id}').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Update</span><% end %>
+    </li>
     <li class='cancel'>
-      <%= link_to team_server_service_checks_path(@team,@server,@service) do %>Cancel<i class="icon-ban-circle"></i><% end %>
+      <%= link_to team_server_service_path(@team,@server,@service) do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
     </li>
   <% end %>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to "Team: #{@team.alias}", team_path(@team) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Server: #{@server.name}", team_server_path(@team,@server) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_services_path(@team,@server) do %><span>Services</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Service: #{@service.name}", team_server_service_path(@team,@server,@service) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_server_service_path(@team,@server,@service) do %><span><%= @service.name %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_service_checks_path(@team,@server,@service) do %><span>Checks</span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path indent'>
-    <%= link_to team_server_service_check_path(@team,@server,@service,@check) do %><span><%= @check.round %></span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Check: #{@check.round}", team_server_service_check_path(@team,@server,@service,@check) %>
   </li>
 <% end %>
 

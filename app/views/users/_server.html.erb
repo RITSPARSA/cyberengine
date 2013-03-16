@@ -1,0 +1,22 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if server.users.count == 0 %>
+      <tr>
+        <td colspan="2">No Users</td>
+      </tr>
+    <% else %>
+      <% server.users.includes(:service).ordered.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, team_server_service_user_path(@team,server,user.service,user) %></td>
+          <td><%= user.password %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,18 +1,10 @@
-<% if can?(:new, Team) %>
+<% if Team.can_new?(current_member) %>
   <% content_for :actions do %>
-    <% if can? :new, Team %>
-      <li class="new"> 
-        <%= link_to new_team_path do %>New Team<i class="icon-plus-sign"></i><% end %>
-      </li>
-    <% end %>  
+    <li class="new"> 
+      <%= link_to new_team_path do %><i class="icon-plus-sign"></i><span>New Team</span><% end %>
+    </li>
   <% end %>  
 <% end %>  
-
-<% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
-  </li>
-<% end %>
 
 
 <div class="page-header">
@@ -29,9 +21,14 @@
   </thead>
   <tbody>
     <% @teams.each do |team| %>
+      <% next unless team.can_index?(current_member,team.id) %>
       <% label = { red: 'important', blue: 'info', white:'inverse' } %>
       <tr>
-        <td><%= link_to team.alias, team_path(team) %></td>
+        <% if team.can_show?(current_member,team.id) %>
+          <td><%= link_to team.alias, team_path(team) %></td>
+        <% else %>
+          <td><%= team.alias %></td>
+        <% end %>
         <td><%= team.name %></td>
         <td><span class="label label-<%= label[team.color.downcase.to_sym] %>"><%= team.color %></span></td>
       </tr>

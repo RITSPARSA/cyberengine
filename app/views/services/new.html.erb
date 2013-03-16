@@ -1,31 +1,23 @@
-<% if can?(:new, Service) %>
+<% if Service.can_new?(current_member,@team.id) %>
   <% content_for :actions do %>
-    <% if can? :new, Service %>
-      <li class='new'>
-        <%= link_to '#', onclick: "$('#new_service').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
+    <li class='new'>
+      <%= link_to '#', onclick: "$('#new_service').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Create</span><% end %>
+    </li>
     <li class='cancel'>
-      <%= link_to team_server_services_path(@team,@server) do %>Cancel<i class="icon-ban-circle"></i><% end %>
+      <%= link_to team_server_path(@team,@server) do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
     </li>
   <% end %>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
+  <li class='path indent'>
+    <%= link_to "Team: #{@team.alias}", team_path(@team) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Server: #{@server.name}", team_server_path(@team,@server) %>
   </li>
   <li class='path indent'>
-    <%= link_to team_server_path(@team,@server) do %><span><%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_services_path(@team,@server) do %><span>Services</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to "Service: #{@service.name}", team_server_service_path(@team,@server,@service) %>
   </li>
 <% end %>
 

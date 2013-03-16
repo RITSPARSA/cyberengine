@@ -6,7 +6,6 @@ gem 'pg'
 # gem 'mysql2' 
 gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'cancan'
 gem 'passenger'
 gem 'jquery-rails'
 

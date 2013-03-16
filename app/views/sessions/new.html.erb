@@ -1,14 +1,10 @@
-<% if can?(:new, :session) %>
-  <% content_for :actions do %>
-    <% if can? :new, :session %>
-      <li class='new'>
-        <%= link_to '#', onclick: "$('#new_session').trigger('submit')" do %>Login<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
-    <li class='cancel'>
-      <%= link_to teams_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
-    </li>
-  <% end %>
+<% content_for :actions do %>
+  <li class='new'>
+    <%= link_to '#', onclick: "$('#new_session').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Login</span><% end %>
+  </li>
+  <li class='cancel'>
+    <%= link_to teams_path do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
+  </li>
 <% end %>
 
 

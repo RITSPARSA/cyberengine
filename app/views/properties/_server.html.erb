@@ -7,15 +7,15 @@
     </tr>
   </thead>
   <tbody>
-    <% if service.properties.visible.count == 0 %>
+    <% if server.properties.visible.count == 0 %>
       <tr>
         <td colspan="3">No Properties</td>
       </tr>
     <% else %>
-      <% service.properties.ordered.each do |property| %>
+      <% server.properties.includes(:service).ordered.each do |property| %>
         <% next unless property.can_show?(current_member,@team.id) %>
         <tr>
-          <td><%= link_to property.category, team_server_service_property_path(@team,@server,service,property) %></td>
+          <td><%= link_to property.category, team_server_service_property_path(@team,@server,property.service,property) %></td>
           <td><%= property.property %></td>
           <td><%= property.value %></td>
         </tr>

@@ -1,28 +1,15 @@
-<% if can?(:edit, @team)%>
-  <% content_for :actions do %>
-    <% if can? :edit, @team %>
-      <li class='submit'>
-        <%= link_to '#', onclick: "$('#edit_team_#{@team.id}').trigger('submit')" do %>Update<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
-    <li class='cancel'>
-      <%= link_to teams_path do %>Cancel<i class="icon-ban-circle"></i><% end %>
-    </li>
-  <% end %>
-<% end %>
-
-<% content_for :resources do %>
-  <li class='resource'>
-    <%= link_to team_servers_path(@team) do %>Servers<i class="icon-chevron-right"></i><% end %>
+<% content_for :actions do %>
+  <li class='submit'>
+    <%= link_to '#', onclick: "$('#edit_team_#{@team.id}').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Update</span><% end %>
+  </li>
+  <li class='cancel'>
+    <%= link_to teams_path do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
   </li>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
-  </li>
   <li class='path indent'>
-    <%= link_to team_path(@team) do %><span><%= @team.alias %><span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to teams_path do %><span>Team: <%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
 

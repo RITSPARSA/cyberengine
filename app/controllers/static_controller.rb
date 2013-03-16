@@ -1,11 +1,9 @@
 class StaticController < ApplicationController
-  authorize_resource class: false
-
   def welcome
   end
 
   def scoreboard
-    @teams = Team.blueteams.order('id ASC')
+    @teams = Team.blueteams.ordered
     @bargraph = Array.new
     @colors = ['#FF1493','#F08080','#DC143C','#FF4500','#FF0000','#FFD700','#008000','#32CD32','#40E0D0','#4169E1','#9370DB']
     @teams.each do |team|

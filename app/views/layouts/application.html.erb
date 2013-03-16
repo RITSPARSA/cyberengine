@@ -59,15 +59,14 @@
 
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
-              <% unless logged_in? %>
+              <% unless current_member.logged_in? %>
                 <li><%= link_to 'Login', new_session_path %></li>
               <% else %>
-                <% team = current_member.team %>
-                <% if blueteam? %>
-                  <li><%= link_to 'Home', team_path(team) %></li>
+                <% if current_member.blueteam? %>
+                  <li><%= link_to 'Home', team_path(current_member.team) %></li>
                   <li class="divider-vertical"></li>
                 <% end %>
-                <% if whiteteam? %>
+                <% if current_member.whiteteam? %>
                   <li><%= link_to 'Members', members_path %></li>
                   <li class="divider-vertical"></li>
                 <% end %>
@@ -82,8 +81,8 @@
     </div>
 
     <div class="container-fluid">
-      <% unless content_for? :fullscreen %>
-        <div class="row-fluid">
+      <div class="row-fluid">
+        <% if content_for?(:resources) || content_for?(:paths) || content_for?(:actions) %>
           <div class="span2">
             <ul class="nav nav-tabs nav-stacked sidebar">
               <% if content_for? :actions %>
@@ -104,17 +103,13 @@
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-        </div>
-      <% end %>
-
-      <% if content_for? :fullscreen %>
-        <div class="row-fluid">
-          <div class="span12">
-            <%= yield :fullscreen %>
+        <% else %>
+          <div class="span12 main">
+            <%= bootstrap_flash %>
+            <%= yield %>
           </div>
-        </div>
-      <% end %>
-
+        <% end %>
+      </div> <!-- /row-fluid -->
     </div> <!-- /container -->
 
     <!-- Javascripts

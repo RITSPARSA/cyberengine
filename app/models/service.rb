@@ -10,6 +10,7 @@ class Service < ActiveRecord::Base
 
   has_many :properties, dependent: :destroy
   has_many :checks, dependent: :destroy
+  has_many :checks_for_scoring, class_name: Check, select: "checks.id,service_id,checks.passed"
   has_many :users, dependent: :destroy
 
   validates :name, presence: true #, uniqueness: { scope: :server_id, message: "already taken" }
@@ -19,7 +20,6 @@ class Service < ActiveRecord::Base
   validates :team, presence: { message: "must exist" }
   validates :server, presence: { message: "must exist" }
   validate :right_team?
-
 
   def scoring
     checks = self.checks.all
@@ -34,26 +34,30 @@ class Service < ActiveRecord::Base
     scoring[:points_rounded] = scoring[:points].round(1)
     scoring
   end
-
-
-  private
+    
+  def self.ordered; order('version ASC,protocol ASC') end
   def self.scoring
     services = all.map{|s| s.scoring }
+    count = services.size == 0 ? 1 : services.size
     scoring = Hash.new
     scoring[:services] = services
     scoring[:count] = services.map{|s| s[:count] }.sum
     scoring[:passed] = services.map{|s| s[:passed] }.sum
     scoring[:available] = services.map{|s| s[:available] }.sum
-    scoring[:percent] = services.map{|s| s[:percent] }.sum / services.size
+    scoring[:percent] = services.map{|s| s[:percent] }.sum / count
     scoring[:percent_rounded] = (scoring[:percent] * 100).round(1)
     scoring[:points] = services.map{|s| s[:points] }.sum
     scoring[:points_rounded] = scoring[:points].round(1)
     scoring
   end
 
-  def self.checks
+  def self.checks(all=false)
     services = self.select('id').uniq.map{|s| s.id }
     Check.select('round,passed,service_id').where(service_id: services) 
+  end
+
+  def self.users
+    User.select('round,passed,service_id').where(service_id: services) 
   end
 
   def self.points
@@ -89,4 +93,14 @@ class Service < ActiveRecord::Base
     self.version = self.version.downcase if self.version.present?
   end
 
+  # Standard permissions
+  def can_show?(member,team_id) member.whiteteam? || enabled && member.team_id == team_id end
+  def self.can_new?(member,team_id) member.whiteteam? end 
+  def can_edit?(member,team_id) member.whiteteam? end
+  def can_create?(member,team_id) member.whiteteam? end
+  def can_update?(member,team_id) member.whiteteam? end
+  def can_destroy?(member,team_id) member.whiteteam? end
+
+  # Custom permissions
+  def can_overview?(member,team_id) member.whiteteam? || enabled end
 end

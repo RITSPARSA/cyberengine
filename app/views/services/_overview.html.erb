@@ -1,5 +1,3 @@
-<% team = @team if @team  %>
-<% services = team.services.order("version,protocol DESC") %>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -13,14 +11,15 @@
     </tr>
   </thead>
   <tbody>
-    <% services.each do |service| %>
-      <% next if cannot? :show, service %>
+    <% team_id = team.id %>
+    <% team.services.includes(:server).ordered.each do |service| %>
+      <% next unless service.can_overview?(current_member,team.id) %>
       <% server = service.server %>
-      <% latest = service.checks.latest || Check.new %>
-      <% label_class = latest.passed ? "success" : "important" %>
-      <% label_text = latest.passed ? "Passing" : "Failing" %>
+      <% latest_check = service.checks.minimal.latest || Check.new %>
+      <% label_class = latest_check.passed ? "success" : "important" %>
+      <% label_text = latest_check.passed ? "Passing" : "Failing" %>
       <tr>
-        <% if can? :show, service %>
+        <% if service.can_show?(current_member,service.team_id) %>
           <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
         <% else %>
           <td><%= service.name %></td>
@@ -28,11 +27,11 @@
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>
         <td>
-          <% if latest.id.nil? %>
+          <% if latest_check.id.nil? %>
             <span class="label label-info">No Checks</span>
           <% else %>
-            <% if can?(:modal, latest) || can?(:modal, Check) %>
-              <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
+            <% if Check.can_show?(current_member,team_id) %>
+              <%= link_to modal_team_server_service_check_path(team,server,service,latest_check), data: { toggle: "modal", target: "#checksModal" } do %>
                 <span class="label label-<%= label_class %>"><%= label_text %></span>
               <% end %>
             <% else %>
@@ -41,18 +40,18 @@
           <% end %>
         </td>
         <td>
-          <% if member?(team) || can?(:index, service.checks.first) %>
+          <% if Check.can_show?(current_member,team_id) %>
             <% if service.checks.count == 0 %>
               No Checks
             <% else %>
-              <%= link_to "Checks", team_server_service_checks_path(team,server,service) %>
+              <%= link_to "Checks", team_server_service_path(team,server,service) %>
             <% end %>
           <% else %>
             Unavailable
           <% end %>
         </td>
         <td>
-          <% if member?(team) || can?(:modal, service.users.first) || can?(:modal, User) %>
+          <% if User.can_show?(current_member,team_id) || current_member.can_overview_properties? %>
             <% if service.users.count == 0 %>
               No Users
             <% else %>
@@ -63,8 +62,8 @@
           <% end %>
         </td>
         <td>
-          <% if member?(team) || can?(:modal, service.properties.first) || can?(:modal, Property) %>
-            <% if service.properties.count == 0 %>
+          <% if Property.can_show?(current_member,team_id) || current_member.can_overview_users? %>
+            <% if service.properties.visible.count == 0 %>
               No Properties
             <% else %>
               <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), data: { toggle: "modal", target: "#propertiesModal" } %>

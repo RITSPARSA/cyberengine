@@ -1,25 +1,15 @@
-<% if can?(:new, Server) %>
-  <% content_for :actions do %>
-    <% if can? :new, Server %>
-      <li class='new'>
-        <%= link_to '#', onclick: "$('#new_server').trigger('submit')" do %>Create<i class="icon-ok-sign"></i><% end %>
-      </li>
-    <% end %>
-    <li class='cancel'>
-      <%= link_to team_servers_path(@team) do %>Cancel<i class="icon-ban-circle"></i><% end %>
-    </li>
-  <% end %>
+<% content_for :actions do %>
+  <li class='new'>
+    <%= link_to '#', onclick: "$('#new_server').trigger('submit')" do %><i class="icon-ok-sign"></i><span>Create</span><% end %>
+  </li>
+  <li class='cancel'>
+    <%= link_to team_path(@team) do %><i class="icon-ban-circle"></i><span>Cancel</span><% end %>
+  </li>
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path'>
-    <%= link_to teams_path do %><span>Teams</span><i class="icon-chevron-left"></i><% end %>
-  </li>
   <li class='path indent'>
-    <%= link_to team_path(@team) do %><span><%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_servers_path(@team) do %><span>Servers</span><i class="icon-chevron-left"></i><% end %>
+    <%= link_to team_path(@team) do %><span>Team: <%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
   </li>
 <% end %>
 
