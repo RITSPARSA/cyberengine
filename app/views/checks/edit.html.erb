@@ -9,21 +9,6 @@
   <% end %>
 <% end %>
 
-<% content_for :paths do %>
-  <li class='path'>
-    <%= link_to team_path(@team) do %><i class="icon-chevron-left"></i><span><%= @team.alias %></span><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_path(@team,@server) do %><i class="icon-chevron-left"></i><span><%= @server.name %></span><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_service_path(@team,@server,@service) do %><i class="icon-chevron-left"></i><span><%= @service.name %></span><% end %>
-  </li>
-  <li class='path'>
-    <%= link_to team_server_service_path(@team,@server,@service,@check) do %><i class="icon-chevron-left"></i><span><%= @check.round %></span><% end %>
-  </li>
-<% end %>
-
 
 <div class="page-header">
   <h3><%= @check.round %></h3>

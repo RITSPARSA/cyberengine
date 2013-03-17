@@ -13,21 +13,6 @@
   <% end %>
 <% end %>
 
-<% content_for :paths do %>
-  <li class='path indent'>
-    <%= link_to "Team: #{@team.alias}", team_path(@team) %>
-  </li>
-  <li class='path indent'>
-    <%= link_to "Server: #{@server.name}", team_server_path(@team,@server) %>
-  </li>
-  <li class='path indent'>
-    <%= link_to "Service: #{@service.name}", team_server_service_path(@team,@server,@service) %>
-  </li>
-  <li class='path indent'>
-    <%= link_to "Check: #{@check.round}", team_server_service_path(@team,@server,@service,@check) %>
-  </li>
-<% end %>
-
 
 <div class="page-header">
   <h3><%= @check.round %></h3>

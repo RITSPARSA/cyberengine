@@ -7,15 +7,6 @@
   </li>
 <% end %>
 
-<% content_for :paths do %>
-  <li class='path indent'>
-    <%= link_to team_path(@team) do %><span>Team: <%= @team.alias %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-  <li class='path indent'>
-    <%= link_to team_server_path(@team,@server) do %><span>Server: <%= @server.name %></span><i class="icon-chevron-left"></i><% end %>
-  </li>
-<% end %>
-
 
 <div class="page-header">
   <h3><%= @server.name %></h3>

@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <% if content_for? :meta %> 
+      <%= yield :meta %>
+    <% elsif params[:action] == "show" || params[:action] == "overview" %>
+      <meta http-equiv="refresh" content="300" />
+    <% end %>
     <title><%= Cyberengine.title %></title>
     <%= csrf_meta_tags %>
 
@@ -88,10 +93,6 @@
               <% if content_for? :actions %>
                 <li class="nav-header">Actions</li>
                 <%= yield :actions %>
-              <% end %>
-              <% if content_for? :resources %>
-                <li class="nav-header">Resources</li>
-                <%= yield :resources %>
               <% end %>
               <%= render partial: 'layouts/pathing' %>
             </ul>

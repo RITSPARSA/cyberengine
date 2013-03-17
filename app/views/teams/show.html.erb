@@ -18,12 +18,6 @@
   <% end %>
 <% end %>
 
-<% content_for :paths do %>
-  <li class='path indent'>
-    <%= link_to "Team: #{@team.alias}", teams_path %>
-  </li>
-<% end %>
-
 
 <div class="page-header">
   <h3><%= @team.alias %></h3>
