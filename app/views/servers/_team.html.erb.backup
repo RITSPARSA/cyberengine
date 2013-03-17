@@ -1,3 +1,4 @@
+<% servers = team.servers.ordered %>
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
@@ -9,10 +10,10 @@
     </tr>
   </thead>
   <tbody>
-    <% team.servers.includes(:services).ordered.each do |server| %>
+    <% servers.each do |server| %>
       <tr>
         <td><%= link_to server.name, team_server_path(team,server) %></td>
-        <% if server.services.empty? %>
+        <% unless server.services.exists? %>
           <td>No Services</td>
           <td>No Services</td>
         <% else %>
@@ -25,13 +26,13 @@
           <td>
             <% server.services.each do |service| %>
               <% next unless service.can_show?(current_member,@team.id) %>
-              <% latest_check = service.checks.latest || Check.new %>
-              <% label_class = latest_check.passed ? "success" : "important" %>
-              <% label_text = latest_check.passed ? "Passing" : "Failing" %>
-              <% if latest_check.id.nil? %>
+              <% latest = service.checks.latest || Check.new %>
+              <% label_class = latest.passed ? "success" : "important" %>
+              <% label_text = latest.passed ? "Passing" : "Failing" %>
+              <% if latest.id.nil? %>
                 <span class="label label-info">No Checks</span>
               <% else %>
-                <%= link_to modal_team_server_service_check_path(team,server,service,latest_check), data: { toggle: "modal", target: "#checksModal" } do %>
+                <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
                   <span class="label label-<%= label_class %>"><%= label_text %></span>
                 <% end %>
               <% end %>

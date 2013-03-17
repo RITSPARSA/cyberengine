@@ -10,17 +10,17 @@
 <% end %>
 
 <% content_for :paths do %>
-  <li class='path indent'>
-    <%= link_to "Team: #{@team.alias}", team_path(@team) %>
+  <li class='path'>
+    <%= link_to team_path(@team) do %><i class="icon-chevron-left"></i><span><%= @team.alias %></span><% end %>
   </li>
-  <li class='path indent'>
-    <%= link_to "Server: #{@server.name}", team_server_path(@team,@server) %>
+  <li class='path'>
+    <%= link_to team_server_path(@team,@server) do %><i class="icon-chevron-left"></i><span><%= @server.name %></span><% end %>
   </li>
-  <li class='path indent'>
-    <%= link_to "Service: #{@service.name}", team_server_service_path(@team,@server,@service) %>
+  <li class='path'>
+    <%= link_to team_server_service_path(@team,@server,@service) do %><i class="icon-chevron-left"></i><span><%= @service.name %></span><% end %>
   </li>
-  <li class='path indent'>
-    <%= link_to "Check: #{@check.round}", team_server_service_check_path(@team,@server,@service,@check) %>
+  <li class='path'>
+    <%= link_to team_server_service_path(@team,@server,@service,@check) do %><i class="icon-chevron-left"></i><span><%= @check.round %></span><% end %>
   </li>
 <% end %>
 

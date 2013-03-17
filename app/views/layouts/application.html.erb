@@ -82,7 +82,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <% if content_for?(:resources) || content_for?(:paths) || content_for?(:actions) %>
+        <% if content_for?(:resources) || content_for?(:pathing) || content_for?(:actions) %>
           <div class="span2">
             <ul class="nav nav-tabs nav-stacked sidebar">
               <% if content_for? :actions %>
@@ -93,10 +93,7 @@
                 <li class="nav-header">Resources</li>
                 <%= yield :resources %>
               <% end %>
-              <% if content_for? :paths %>
-                <li class="nav-header">Path</li>
-                <%= yield :paths %>
-              <% end %>
+              <%= render partial: 'layouts/pathing' %>
             </ul>
           </div>
           <div class="span10 main">

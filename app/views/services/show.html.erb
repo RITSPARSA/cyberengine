@@ -33,18 +33,6 @@
   <% end %>
 <% end %>
 
-<% content_for :resources do %>
-  <li class='resource'>
-    <%= link_to 'Checks', team_server_service_path(@team,@server,@service) %>
-  </li>
-  <li class='resource'>
-    <%= link_to 'Users', team_server_service_path(@team,@server,@service) %>
-  </li>
-  <li class='resource'>
-    <%= link_to 'Properties', team_server_service_path(@team,@server,@service) %>
-  </li>
-<% end %>
-
 <% content_for :paths do %>
   <li class='path indent'>
     <%= link_to "Team: #{@team.alias}", team_path(@team) %>

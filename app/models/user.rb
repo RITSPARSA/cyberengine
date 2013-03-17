@@ -12,15 +12,10 @@ class User < ActiveRecord::Base
   validates :service, presence: { message: "must exist" }
   validate :right_team?
 
-  def self.to_csv
-    all.map{|u| "#{u.username},#{u.password}"}.join("\r\n")
-  end
-  def self.random
-    user = self.order('RANDOM()').first
-    user ? user : nil
-  end
-
+  def self.to_csv; all.map{|u| "#{u.username},#{u.password}"}.join("\r\n") end
+  def self.random; order('RANDOM()').first || nil end
   def self.ordered; order('team_id ASC, server_id ASC, service_id ASC, username ASC') end
+
   def right_team?
     team = Team.find_by_id(team_id)
     server = Server.find_by_id(server_id)

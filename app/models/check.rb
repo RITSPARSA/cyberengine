@@ -14,32 +14,14 @@ class Check < ActiveRecord::Base
   validate :right_team?
 
 
-
   def self.minimal; select('team_id,server_id,service_id,id,passed,round,created_at') end
   def self.passing; where("passed = ?", true) end
   def self.failing; where("passed = ?", false) end
   def self.ordered; order('team_id ASC, server_id ASC, service_id ASC, round DESC, id DESC') end
-  def self.latest; ordered.first end
+  def self.latest; order('round DESC').first end
   def self.last_round; self.latest ? self.latest.round : 0 end
   def self.next_round; self.last_round == 0 ? 0 : self.last_round + 1 end
   def self.bargraph; [self.points] end
-
-  def self.points
-    first = self.first
-    return 0 unless first
-    available_points = first.service.available_points
-    percent = self.percent
-    (available_points*percent).round(1)
-  end
-
-
-  def self.percent
-    total = count.to_f
-    return 0.round(1) if total == 0
-    pass = passing.count.to_f
-    pass / total
-  end
-
 
   def right_team?
     team = Team.find_by_id(team_id)

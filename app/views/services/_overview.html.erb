@@ -15,7 +15,7 @@
     <% team.services.includes(:server).ordered.each do |service| %>
       <% next unless service.can_overview?(current_member,team.id) %>
       <% server = service.server %>
-      <% latest_check = service.checks.minimal.latest || Check.new %>
+      <% latest_check = service.checks.latest || Check.new %>
       <% label_class = latest_check.passed ? "success" : "important" %>
       <% label_text = latest_check.passed ? "Passing" : "Failing" %>
       <tr>
@@ -41,7 +41,7 @@
         </td>
         <td>
           <% if Check.can_show?(current_member,team_id) %>
-            <% if service.checks.count == 0 %>
+            <% unless service.checks.exists? %>
               No Checks
             <% else %>
               <%= link_to "Checks", team_server_service_path(team,server,service) %>
@@ -52,7 +52,7 @@
         </td>
         <td>
           <% if User.can_show?(current_member,team_id) || current_member.can_overview_properties? %>
-            <% if service.users.count == 0 %>
+            <% unless service.users.exists? %>
               No Users
             <% else %>
               <%= link_to "Users", modal_team_server_service_users_path(team,server,service), data: { toggle: "modal", target: "#usersModal" } %>
@@ -63,7 +63,7 @@
         </td>
         <td>
           <% if Property.can_show?(current_member,team_id) || current_member.can_overview_users? %>
-            <% if service.properties.visible.count == 0 %>
+            <% unless service.properties.visible.exists? %>
               No Properties
             <% else %>
               <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), data: { toggle: "modal", target: "#propertiesModal" } %>

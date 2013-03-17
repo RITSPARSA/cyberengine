@@ -12,7 +12,7 @@ class Server < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { scope: :team_id, message: "already taken" }
   validates :team, presence: { message: "must exist" }
 
-  def self.ordered; order('name ASC') end
+  def self.ordered; order('team_id ASC, name ASC, id DESC') end
 
   # Standard permissions
   def self.can_new?(member,team_id) member.whiteteam? end 

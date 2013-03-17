@@ -7,6 +7,12 @@
   </li>
 <% end %>
 
+<% content_for :paths do %>
+  <li class='path indent'>
+    <%= link_to "Members", members_path %>
+  </li>
+<% end %>
+
 
 <div class="page-header">
   <h3>New Member</h3>

@@ -1,6 +1,3 @@
-<% service = @service if @service %>
-<% users = service.users %>
-
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -9,12 +6,12 @@
     </tr>
   </thead>
   <tbody>
-    <% if users.count == 0 %>
+    <% unless service.users.exists? %>
       <tr>
         <td colspan="2">No Users</td>
       </tr>
     <% else %>
-      <% users.each do |user| %>
+      <% service.users.ordered.each do |user| %>
         <tr>
           <td><%= link_to user.username, team_server_service_user_path(@team,@server,service,user) %></td>
           <td><%= user.password %></td>

@@ -10,8 +10,7 @@ class Team < ActiveRecord::Base
   has_many :properties, dependent: :destroy
   has_many :checks, dependent: :destroy
   has_many :users, dependent: :destroy
-  has_many :checks_for_scoring, class_name: Check, select: "checks.team_id,checks.id,checks.service_id,checks.passed"
-
+  has_many :services_for_scoring, class_name: Service, order: 'name ASC, protocol ASC, version ASC'
 
   validates :name, presence: true, uniqueness: true
   validates :alias, presence: true, uniqueness: true
@@ -22,11 +21,7 @@ class Team < ActiveRecord::Base
   def blueteam?; color == 'Blue' end
   def redteam?; color == 'Red' end
   def self.blueteams; where(color: 'Blue') end
-  #def self.services; order("version,protocol DESC") end
-
-  def capitalize_color
-    self.color = self.color.capitalize if self.color.present?
-  end
+  def capitalize_color; self.color = self.color.capitalize if self.color.present?  end
 
   def self.ordered; order('color DESC,alias ASC'); end
   # Standard permissions

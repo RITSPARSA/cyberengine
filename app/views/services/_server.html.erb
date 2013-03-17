@@ -31,21 +31,21 @@
           <% end %>
         </td>
         <td>
-          <% if service.checks.count == 0 %>
+          <% unless service.checks.exists? %>
             No Checks
           <% else %>
             <%= link_to "Checks", team_server_service_path(@team,server,service) %>
           <% end %>
         </td>
         <td>
-          <% if service.users.count == 0 %>
+          <% unless service.users.exists? %>
             No Users
           <% else %>
             <%= link_to "Users", modal_team_server_service_users_path(@team,server,service), data: { toggle: "modal", target: "#usersModal" } %>
           <% end %>
         </td>
         <td>
-          <% if service.properties.visible.count == 0 %>
+          <% unless service.properties.visible.exists? %>
             No Properties
           <% else %>
             <%= link_to "Properties", modal_team_server_service_properties_path(@team,server,service), data: { toggle: "modal", target: "#propertiesModal" } %>

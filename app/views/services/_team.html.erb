@@ -14,38 +14,38 @@
     <% team.services.includes(:server).ordered.each do |service| %>
       <% next unless service.can_show?(current_member,team.id) %>
       <% server = service.server %>
-      <% latest = service.checks.latest || Check.new %>
-      <% label_class = latest.passed ? "success" : "important" %>
-      <% label_text = latest.passed ? "Passing" : "Failing" %>
+      <% latest_check = service.checks.latest || Check.new %>
+      <% label_class = latest_check.passed ? "success" : "important" %>
+      <% label_text = latest_check.passed ? "Passing" : "Failing" %>
       <tr>
         <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>
         <td>
-          <% if latest.id.nil? %>
+          <% if latest_check.id.nil? %>
             <span class="label label-info">No Checks</span>
           <% else %>
-            <%= link_to modal_team_server_service_check_path(team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>
+            <%= link_to modal_team_server_service_check_path(team,server,service,latest_check), data: { toggle: "modal", target: "#checksModal" } do %>
               <span class="label label-<%= label_class %>"><%= label_text %></span>
             <% end %>
           <% end %>
         </td>
         <td>
-          <% if service.checks.count == 0 %>
+          <% unless service.checks.exists? %>
             No Checks
           <% else %>
             <%= link_to "Checks", team_server_service_path(team,server,service) %>
           <% end %>
         </td>
         <td>
-          <% if service.users.count == 0 %>
+          <% unless service.users.exists? %>
             No Users
           <% else %>
             <%= link_to "Users", modal_team_server_service_users_path(team,server,service), data: { toggle: "modal", target: "#usersModal" } %>
           <% end %>
         </td>
         <td>
-          <% if service.properties.visible.count == 0 %>
+          <% unless service.properties.visible.exists? %>
             No Properties
           <% else %>
             <%= link_to "Properties", modal_team_server_service_users_path(team,server,service), data: { toggle: "modal", target: "#propertiesModal" } %>
