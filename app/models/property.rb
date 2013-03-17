@@ -19,7 +19,7 @@ class Property < ActiveRecord::Base
     self.select(:value).where('category = ?', 'address').where('property = ? OR property = ?','ip','domain').map{|p| p.value}
   end
 
-  def self.ordered; order('service_id ASC, category ASC, property ASC') end
+  def self.ordered; order('team_id ASC, server_id ASC, service_id ASC, category ASC, property ASC') end
   def self.random(property)
     property = self.where('category = ? AND property = ?', 'random', property).order('RANDOM()').first
     property ? property.value : nil

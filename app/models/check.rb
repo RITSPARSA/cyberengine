@@ -15,18 +15,14 @@ class Check < ActiveRecord::Base
 
 
 
-  def self.next_round
-    latest = self.latest
-    latest ? latest.round + 1 : 1
-  end
-
-  def self.ordered; order('round DESC') end
-  def self.latest; order('round DESC').first end
-  def self.minimal; select('id,passed,round,created_at') end
-
-  def self.bargraph
-    [self.points]
-  end
+  def self.minimal; select('team_id,server_id,service_id,id,passed,round,created_at') end
+  def self.passing; where("passed = ?", true) end
+  def self.failing; where("passed = ?", false) end
+  def self.ordered; order('team_id ASC, server_id ASC, service_id ASC, round DESC, id DESC') end
+  def self.latest; ordered.first end
+  def self.last_round; self.latest ? self.latest.round : 0 end
+  def self.next_round; self.last_round == 0 ? 0 : self.last_round + 1 end
+  def self.bargraph; [self.points] end
 
   def self.points
     first = self.first
@@ -36,13 +32,6 @@ class Check < ActiveRecord::Base
     (available_points*percent).round(1)
   end
 
-  def self.passing
-    where("passed = ?", true)
-  end
-
-  def self.failing
-    where("passed = ?", false)
-  end
 
   def self.percent
     total = count.to_f
@@ -51,11 +40,6 @@ class Check < ActiveRecord::Base
     pass / total
   end
 
-  def self.last_round
-    latest = self.latest
-    return 0 unless latest
-    latest.round
-  end
 
   def right_team?
     team = Team.find_by_id(team_id)

@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @users.includes(:service).ordered.each do |user| %>
       <tr>
         <td><%= user.service.name %></td>
         <td><%= user.username %></td>

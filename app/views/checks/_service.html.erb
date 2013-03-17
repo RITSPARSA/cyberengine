@@ -47,7 +47,7 @@
       </tr>
     </thead>
     <tbody>
-      <% checks.each do |check| %>
+      <% checks.ordered.each do |check| %>
         <% label_class = check.passed ? "success" : "important" %>
         <% label_text = check.passed ? "Passed" : "Failed" %>
         <tr>

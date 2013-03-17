@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     user ? user : nil
   end
 
-  def self.ordered; order('service_id ASC, username ASC') end
+  def self.ordered; order('team_id ASC, server_id ASC, service_id ASC, username ASC') end
   def right_team?
     team = Team.find_by_id(team_id)
     server = Server.find_by_id(server_id)
