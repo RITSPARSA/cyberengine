@@ -51,6 +51,7 @@ rvm gemset create cyberengine
 ```
 
 4. Setup database
+
 ```bash
 postgresql-setup initdb
 systemctl enable postgresql.service
