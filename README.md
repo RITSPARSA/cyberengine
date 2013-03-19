@@ -20,7 +20,8 @@ Cyberengine is the combination of a Ruby on Rails web front-end and backend serv
 The rails frontend is a fully functional application that can authenticate members and provides them access to their teams servers and services. This allows them to view their current status and position in the competition. Whiteteam members have full access to all parts of the application while blueteam members can only access their own information. Teams can update service user's individually or CSV style. 
 
 
-## Cyberengine Installation Process - Tested on a minimal Fedora 17 installation (must be root)
+## Cyberengine Installation Process 
+### Tested on a minimal Fedora 17 installation (must be root)
 1. Disable selinux
 ```bash
 echo 'SELINUX=disabled' >> /etc/selinux/config
