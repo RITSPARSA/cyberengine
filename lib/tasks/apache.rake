@@ -1,18 +1,17 @@
 namespace :cyberengine do
   task :apache => :environment do
 
-    apache_document_dir = File.expand_path(__FILE__).split('/')[1..-4].join('/').prepend('/')
-    apache_log_dir = File.expand_path(__FILE__).split('/')[1..-4].join('/').prepend('/')
-
-    cyberengine_dir = File.expand_path(__FILE__).split('/')[1..-3].join('/').prepend('/')
+    environment = Rails.env
+    cyberengine_dir = File.expand_path(__FILE__).split('/')[1..-4].join('/').prepend('/')
     cyberengine_public_dir = cyberengine_dir + '/public'
     cyberengine_ssl_certificate = cyberengine_dir + '/config/ssl_certificate.pem'
+    apache_document_dir = File.expand_path(__FILE__).split('/')[1..-5].join('/').prepend('/')
+    apache_log_dir = cyberengine_dir + '/log'
 
-    ip_address = `ip addr show scope global | grep -m1 -oE "inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"`.strip
-
+    ip_address = `ip addr show scope global | grep -m1 -oE "inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | cut -d' ' -f2`.strip
     passenger_mod = `find $GEM_HOME -name mod_passenger.so | grep -m1 --color=never "mod_passenger\.so"`.strip
     passenger_dir = passenger_mod.gsub('/ext/apache2/mod_passenger.so','')
-    ruby = `echo $MY_RUBY_HOME`.strip + '/bin/ruby' 
+    ruby = `echo $MY_RUBY_HOME`.strip + '/bin/ruby'
 
 httpd_conf = %Q[
 Listen 80
@@ -80,7 +79,7 @@ PassengerRuby #{ruby}
 # HTTP
 NameVirtualHost *:80
 <VirtualHost *:80>
-  RailsEnv #{:environment}
+  RailsEnv #{environment}
 
   ServerName #{ip_address}
   ServerAlias #{ip_address}
@@ -96,7 +95,7 @@ NameVirtualHost *:80
 NameVirtualHost *:443
 <VirtualHost *:443>
   SSLEngine on
-  RailsEnv #{:environment}
+  RailsEnv #{environment}
 
   ServerName #{ip_address}
   ServerAlias https://#{ip_address}
