@@ -22,13 +22,16 @@ The rails frontend is a fully functional application that can authenticate membe
 
 ## Cyberengine Installation Process 
 ### Tested on a minimal Fedora 17 installation (must be root)
+
 1. Disable selinux
+
 ```bash
 echo 'SELINUX=disabled' >> /etc/selinux/config
 reboot
 ```
 
 2. Install all required packages for: checks, rvm/ruby, database, and apache
+
 ```bash
 # Basic/Checks
 yum install -y bash tar git curl curl-devel bind-utils
@@ -41,6 +44,7 @@ yum install -y httpd httpd-devel apr-devel apr-util-devel mod_ssl
 ```
 
 3. Install ruby (version >= 1.9.3) via Ruby Version Manager (RVM) - https://rvm.io/rvm/install
+
 ```bash
 curl -kL https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
@@ -64,6 +68,7 @@ exit
 ```
 
 5. Download cyberengine and install gems (libraries)
+
 ```bash
 mkdir -p /var/rails
 cd /var/rails
@@ -79,6 +84,7 @@ rake cyberengine:setup
 ```
 
 6. Setup apache and mod_passenger. Phusion Passenger contains an apache mod that serves rails applications
+
 ```bash
 # Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
 # Passenger should already be installed from "bundle install", if not run: gem install passenger
