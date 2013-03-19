@@ -107,8 +107,6 @@ NameVirtualHost *:443
      Options -MultiViews
   </Directory>
 </VirtualHost>
-
-# Installation: yum install -y httpd httpd-devel apr-devel apr-util-devel mod_ssl
 ]
 
     puts httpd_conf
