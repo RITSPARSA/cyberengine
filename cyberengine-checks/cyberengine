@@ -202,7 +202,7 @@ end
 @args.delete_at(0) if @args.first
 
 # Get list of id's
-if @args.include?('all') || @args.empty?
+if @args.include?('all')
   @checks.each { |id,check| @checks[id] ? @ids << id : puts("Ignoring unknown check: #{id}") }
 else
   @args.each {|id| @checks[id] ? @ids << id : puts("Ignoring unknown check: #{id}") }

@@ -25,7 +25,11 @@ The rails frontend is a fully functional application that can authenticate membe
 
 1. Disable selinux
 ```bash
+# Disable selinux
 echo 'SELINUX=disabled' >> /etc/selinux/config
+# Dont need iptables messing things up for now
+systemctl stop iptables.service
+systemctl disable iptables.service
 reboot
 ```
 
@@ -36,7 +40,7 @@ yum install -y bash tar git curl curl-devel bind-utils
 # RVM/Ruby (copied from: rvm requirements) 
 yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
 # Database
-yum install -y postgresql-server
+yum install -y postgresql postgresql-devel postgresql-server
 # Apache
 yum install -y httpd httpd-devel apr-devel apr-util-devel mod_ssl
 ```
@@ -47,19 +51,30 @@ curl -kL https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
 rvm install 1.9.3 --verify-downloads 1
 rvm use 1.9.3 --default
-rvm gemset create cyberengine-checks
-rvm gemset create cyberengine
+# Answer yes to any 'cp: overwrite' options
 ```
 
 4. Setup database
 ```bash
 postgresql-setup initdb
+# Listen on all interfaces
+echo "listen_addresses = '*'" >> /var/lib/pgsql/data/postgresql.conf 
+# Comment out all current lines in pg access file
+sed -i 's/^/#/g' /var/lib/pgsql/data/pg_hba.conf
+# Allow valid username/password combinations access via sockets (localhost)
+echo 'local all all md5' >> /var/lib/pgsql/data/pg_hba.conf 
+# Allow valid username/password combinations access via tcp/ip
+echo 'host all all  0.0.0.0/0 md5' >> /var/lib/pgsql/data/pg_hba.conf 
+echo 'host all all  ::/0 md5' >> /var/lib/pgsql/data/pg_hba.conf 
+# Enable/start server
 systemctl enable postgresql.service
 systemctl start postgresql.service
-# Create cyberengine user/password (cyberengine:cyberengine)
+# Create cyberengine user/password (cyberengine:cyberengine) - change password in competition
+# If password changed, rails file config/database.yml will have to be updated
 su postgres
 psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
 exit
+
 ```
 
 5. Download cyberengine and install gems (libraries)
@@ -81,10 +96,12 @@ rake cyberengine:setup
 ```bash
 # Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
 # Passenger should already be installed from "bundle install", if not run: gem install passenger
-# This command quickly compiles mod_passenger.so
+# This command compiles mod_passenger.so
 passenger-install-apache2-module
+# Press <enter> and go through installation
+# Ignore ending apache configuration hints
 # Generate httpd.conf file
-cp /etc/httpd/conf/httpd.conf.orig
+cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.orig
 rake cyberengine:apache > /etc/httpd/conf/httpd.conf
 ```
 
@@ -106,6 +123,45 @@ rake cyberengine:apache > /etc/httpd/conf/httpd.conf
 
 
 ## Checks
+
+### Download
+1. Download
+```bash
+cd /var
+git clone -v https://github.com/griffithchaffee/cyberengine/cyberengine-checks.git
+# If you dont do this you may get permission errors
+cd cyberengine-checks/setup
+# Do you wish to trust this .rvmrc file? (/root/cyberengine/.rvmrc)
+# y[es], n[o], v[iew], c[ancel]> yes
+bundle install
+cd ..
+./cyberengine list
+./cyberengine help
+```
+
+* The cyberengine executable is a fully functional wrapper that makes it easy to stop/start enable/disable checks
+* Checks can be run in the forground or as daemons. As a daemon they log to their log file and can be terminated by sending the TERM signal.
+
+```bash
+./cyberengine status
+./cyberengine stop ipv4/ssh/login
+# Optional way to stop the service
+kill -s TERM <pid>
+```
+
+* You can check for errors or watch log files
+
+```bash
+./cyberengine errors ipv4/ssh/login
+./cyberengine tail ipv4/ssh/login
+```
+
+* All macro makes it easy to do mass changes
+```bash
+./cyberengine enable all
+./cyberengine enabled
+./cyberengine start all
+```
 
 ### Properties
 * Lowercase with hyphen delimiters
