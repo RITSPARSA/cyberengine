@@ -28,6 +28,7 @@ The rails frontend is a fully functional application that can authenticate membe
 echo 'SELINUX=disabled' >> /etc/selinux/config
 reboot
 ```
+
 2. Install all required packages for: checks, rvm/ruby, database, and apache
 ```bash
 # Basic/Checks
@@ -39,6 +40,7 @@ yum install -y postgresql-server
 # Apache
 yum install -y httpd httpd-devel apr-devel apr-util-devel mod_ssl
 ```
+
 3. Install ruby (version >= 1.9.3) via Ruby Version Manager (RVM) - https://rvm.io/rvm/install
 ```bash
 curl -kL https://get.rvm.io | bash -s stable
