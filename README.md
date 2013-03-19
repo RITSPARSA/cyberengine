@@ -52,12 +52,10 @@ rvm gemset create cyberengine
 ```
 
 4. Setup database
-
 ```bash
 postgresql-setup initdb
 systemctl enable postgresql.service
 systemctl start postgresql.service
-
 # Create cyberengine user/password (cyberengine:cyberengine)
 su postgres
 psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
@@ -65,7 +63,6 @@ exit
 ```
 
 5. Download cyberengine and install gems (libraries)
-
 ```bash
 mkdir -p /var/rails
 cd /var/rails
@@ -79,6 +76,7 @@ bundle install
 # Creates database tables, redteam, whiteteam, and an example blueteam
 rake cyberengine:setup
 ```
+
 6. Setup apache and mod_passenger. Phusion Passenger contains an apache mod that serves rails applications
 ```bash
 # Documentation: http://www.modrails.com/documentation/Users%20guide%20Apache.html
