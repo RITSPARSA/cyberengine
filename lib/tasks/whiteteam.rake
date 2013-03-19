@@ -8,8 +8,8 @@ namespace :cyberengine do
     # Default server
     server = Server.create(team_id: team.id, name: "Defaults")
 
-    # DNS Forward
-    service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Forward", version: 'ipv4', protocol: 'dns', enabled: false, available_points: 0)
+    # DNS Domain Query
+    service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Domain Query", version: 'ipv4', protocol: 'dns', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
 
     # ICMP Ping

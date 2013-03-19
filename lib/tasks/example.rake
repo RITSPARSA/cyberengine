@@ -7,14 +7,14 @@ namespace :cyberengine do
 
     server = Server.create(team_id: team.id, name: "Example Server")
 
-    # DNS Forward
-    service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Forward", version: 'ipv4', protocol: 'dns', enabled: true, available_points: 100)
+    # DNS Domain Query
+    service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Domain Query", version: 'ipv4', protocol: 'dns', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'query-type', value: 'A')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'query', value: 'google-public-dns-a.google.com')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'google-public-dns-a.google.com', value: '8.8.8.8')
 
-    # Echo Request
+    # ICMP Ping
     service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
 

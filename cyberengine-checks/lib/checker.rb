@@ -23,28 +23,23 @@ module Cyberengine
       @stop = false
 
       # Setup logging
-      @logging = Cyberengine::Logging.new(@check)
-      @logger = @logging.logger
+      @logger = Cyberengine::Logging.new(@check).logger
   
       # Daemonize
       if @daemon
         pid = Cyberengine.daemonize(@check)
-        unless pid.nil?
+        if pid
           @check[:daemon] = false
           @daemon = false
-          @logger.fatal { "Check #{@id} already running with pid: #{pid}" }
+          @logger.info { "Check #{@id} already running with pid: #{pid}" }
           terminate
         end
-        if @daemon
-          @logger.info { "Successfully daemonized" } 
-          @logging.daemonize
-        end
+        @logger.info { "Successfully daemonized" } 
       end
       @pid = Process.pid
-
   
       # Database connection
-      Cyberengine::Database.new(logger: @logger)
+      Cyberengine::Database.new(@logger)
 
       # Need whiteteam to find defaults
       @whiteteam = Team.find_by_name('Whiteteam')
@@ -78,19 +73,6 @@ module Cyberengine
       Service.where('team_id = ? AND name = ? AND version = ? AND protocol = ? AND enabled = ?', @whiteteam.id, name, version, protocol, false).first
     end
   
-    # Simple PTY module to help execute commands  
-    module SafePty
-      def self.spawn(command,&block)
-        PTY.spawn(command) do |stdout, stdin, pid|
-          begin
-            yield stdout,stdin,pid
-          rescue Errno::EIO => exception # Benign errors
-          end
-        end
-        return 1
-      end
-    end
- 
     # Run command capturing all output within timeout or command completion 
     def shellcommand(command,service)
       response = ''
@@ -107,7 +89,7 @@ module Cyberengine
       # Run command 
       begin
         Timeout::timeout(timeout) do
-          SafePty.spawn("#{command} 2>&1") do |stdout, stdin, pid|
+          Cyberengine::SafePty.spawn(command) do |stdout, stdin, pid|
             @logger.debug { "PID: #{pid}" }
             stdout.each_line { |line| response << line.strip.concat("\r\n") }
           end

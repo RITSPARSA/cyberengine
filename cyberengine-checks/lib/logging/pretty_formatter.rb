@@ -50,8 +50,9 @@ module Cyberengine
       options = options.map{|k,v| "#{k}:" + v }.join(', ')
   
       # Return pretty log
-      return "#{time} #{severity} - #{pid} - #{msg}  [#{options}]\n" unless options.empty?
-      "#{time} #{severity} - #{pid} - #{msg}\n"
+      result = options.empty? ? "#{time} #{severity} - #{pid} - #{msg}\n" : "#{time} #{severity} - #{pid} - #{msg}  [#{options}]\n"
+      puts result
+      result
     end
   
   

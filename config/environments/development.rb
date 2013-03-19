@@ -35,7 +35,7 @@ Cyberengine::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Custom thin logging
+  # Custom logging
   config.assets.logger = false
 
   # SSL
