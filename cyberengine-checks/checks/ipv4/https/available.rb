@@ -1,32 +1,36 @@
 #!/usr/bin/env ruby
-require_relative '../../lib/cyberengine'
-check = Cyberengine.checkify(__FILE__,ARGV.dup)
-@cyberengine = Cyberengine::Checker.new(check)
-@cyberengine.signals # Trap TERM signal and exit
-@services = @cyberengine.services('Echo Request','ipv4','icmp')
-@defaults = @cyberengine.defaults('Echo Request','ipv4','icmp')
+require_relative '../../../lib/cyberengine'
+@check = Cyberengine.checkify(__FILE__,ARGV.dup)
+@cyberengine = Cyberengine::Checker.new(@check)
+@cyberengine.signals
 
 
-# Build service check request
 def build_request(service,address)
-  # -n Do not resolve response IP to address
-  # -c 1 Wait for one successful response
-  # -w 8 Set timeout deadline to 8 seconds
-  request = "ping -n -c 1 "
+  # -s Silent or quiet mode. Dont show progress meter or error messages.  Makes Curl mute.
+  # -S When used with -s it makes curl show an error message if it fails.
+  # -4 Resolve names to IPv4 addresses only
+  # -v Verbose mode. '>' means sent data. '<' means received data. '*' means additional info provided by curl
+  # -L Follow 302 redirects
+  # -A Set request user-agent
+  # -k Ignore https certificate problems
+  # --ssl-reqd Force SSL use
+  request = 'curl -s -S -4 -v -L -k --ssl-reqd '
 
-  # Timeout
-  timeout = service.properties.option('timeout') || @defaults.properties.option('timeout')
-  raise("Missing timeout property") unless timeout
-  timeout = timeout.to_f
-  request << " -w #{timeout} "
+  # Useragent
+  useragent = service.properties.random('useragent') || @cyberengine.defaults.properties.random('useragent')
+  useragent.gsub!("'",'') if useragent
+  request << " -A '#{useragent}' " if useragent
+
+  # URI
+  uri = service.properties.random('uri') || @cyberengine.defaults.properties.random('uri')
+  raise("Missing uri property") unless uri
 
   # Each line regex match
-  @each_line_regex = service.properties.answer('each-line-regex') || @defaults.properties.answer('each-line-regex')
-  @full_text_regex = service.properties.answer('full-text-regex') || @defaults.properties.answer('full-text-regex')
+  @each_line_regex = service.properties.answer('each-line-regex') || @cyberengine.defaults.properties.answer('each-line-regex')
+  @full_text_regex = service.properties.answer('full-text-regex') || @cyberengine.defaults.properties.answer('full-text-regex')
   raise "Missing answer property: each-line-regex or full-text-regex required" unless @each_line_regex || @full_text_regex
-
-  # URL 
-  request << " #{address}"
+ 
+  request << " http://#{address}#{uri} "
 
   # Return request single spaced and without leading/ending spaces
   request.strip.squeeze(' ')
@@ -49,10 +53,11 @@ def parse_response(response)
   passed
 end
 
+
 # Loop until terminated (TERM Signal)
 until @cyberengine.stop
   begin
-    @services.each do |service|
+    @cyberengine.services.each do |service|
       service.properties.addresses.each do |address|
         # Mark start of check in log
         @cyberengine.logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
@@ -62,22 +67,22 @@ until @cyberengine.stop
           request = build_request(service,address) 
     
           # Get request output
-          response = @cyberengine.shellcommand(request,service,@defaults)
-    
+          response = @cyberengine.shellcommand(request,service)
+
           # Passed: true/false
-          passed = parse_response(response) 
-    
+          passed = parse_response(response)
+
           # Save check and get result
           round = service.checks.next_round
-          check = @cyberengine.create_check(service,round,passed,request,response) 
-    
+          check = @cyberengine.create_check(service,round,passed,request,response)
+
           # Check for errors in saving check 
           raise check.errors.full_messages.join(',') if check.errors.any?
-    
+
           # Mark end of check in log
           result = passed ? 'Passed' : 'Failed'
           @cyberengine.logger.info { "Finished check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address} - Result: #{result}" }
-    
+
         rescue StandardError => exception
           @cyberengine.exception_handler(service,exception)
         end

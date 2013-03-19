@@ -9,9 +9,9 @@ module Cyberengine
       # Log options at end
       options = Hash.new
   
-      # Remove bold colors
+      # Remove bold and colors
       msg.gsub!(/\e\[.{0,4}m/,'')
-  
+
       # Remove ending/leading spaces
       msg.strip!
   
@@ -39,7 +39,8 @@ module Cyberengine
   
       # PID - unused currently
       size = Process.pid.size
-      pid = start_color(:yellow) + Process.pid.to_s + clear_color
+      pid = Process.pid.to_s
+      #pid = Cyberengine.start_color(:yellow) + Process.pid.to_s + Cyberengine.clear_color
       #pid.prepend("pid:")
       
       # Time
@@ -71,8 +72,8 @@ module Cyberengine
       size = severity.length
   
       # Colorize severity
-      severity.gsub!(/\A\[/, '[' + start_color(color))
-      severity.gsub!(/\]\z/, clear_color + ']')
+      #severity.gsub!(/\A\[/, '[' + Cyberengine.start_color(color))
+      #severity.gsub!(/\]\z/, Cyberengine.clear_color + ']')
   
       # Format with spaces before string 
       # sprintf unreliable because of invisible color characters
@@ -87,7 +88,7 @@ module Cyberengine
   
   
     def pretty_sql(sql)
-      # Remove any current colors
+      # Remove bold and colors
       sql.gsub!(/\e\[.{0,4}m/,'')
   
       # Get model if available
@@ -97,16 +98,16 @@ module Cyberengine
       sql.gsub!(model_regex,'') if model
   
       # Colorize SQL commands
-      sql_queries = sql.split(/\[\[.*\]\]/)
-      sql_queries.each do |query| 
-        colored = query.split(/\s+/).map do |word|
-          word =~ /\A#{@sql}\z/ ? start_color(:green) + word.to_s + clear_color : word
-        end.join(' ')
-        sql.gsub!(query,colored)
-      end
+      #sql_queries = sql.split(/\[\[.*\]\]/)
+      #sql_queries.each do |query| 
+      #  colored = query.split(/\s+/).map do |word|
+      #    word =~ /\A#{@sql}\z/ ? Cyberengine.start_color(:green) + word.to_s + Cyberengine.clear_color : word
+      #  end.join(' ')
+      #  sql.gsub!(query,colored)
+      #end
   
       # Colorize model
-      model = start_color(:green) + model + clear_color if model
+      #model = Cyberengine.start_color(:green) + model + Cyberengine.clear_color if model
   
       # Return captures
       captures = Hash.new
@@ -124,7 +125,7 @@ module Cyberengine
       msg.gsub!(loadtime_regex,'') if loadtime
   
       # Colorize loadtime
-      loadtime = start_color(:yellow) + loadtime + clear_color if loadtime
+      # loadtime = Cyberengine.start_color(:yellow) + loadtime + Cyberengine.clear_color if loadtime
   
       # Return captures
       captures = Hash.new
@@ -133,24 +134,5 @@ module Cyberengine
       captures
     end
    
-    def clear_color 
-      # Return "clear color" code
-      "\e[0m"
-    end
-  
-  
-    def start_color(color)
-      # Format color to equal map
-      color.downcase! if color.is_a?(String)
-      color = color.to_sym unless color.is_a?(Symbol)
-     
-      # Color map 
-      color_to_integer_map = { black: 30, red: 31, green: 32, yellow: 33, blue: 34, magenta: 35, cyan: 36, white: 37 }
-      color = :white unless color_to_integer_map[color]
-   
-      # Return color
-      "\e[#{color_to_integer_map[color]}m"
-    end
-  
   end
 end

@@ -1,18 +1,19 @@
 namespace :cyberengine do
-  task :base => :environment do
+  task :whiteteam => :environment do
     # Whiteteam
     team = Team.create(color: 'White', name: 'Whiteteam', alias: 'Whiteteam' )
     member = Member.create(team_id: team.id, username: 'whiteteam', password: 'whiteteam', password_confirmation: 'whiteteam')
     puts "Created: #{team.alias} - Login: #{member.username}:#{member.password}"
 
+    # Default server
     server = Server.create(team_id: team.id, name: "Defaults")
 
     # DNS Forward
     service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Forward", version: 'ipv4', protocol: 'dns', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
 
-    # Echo Request
-    service = Service.create(team_id: team.id, server_id: server.id, name: "Echo Request", version: 'ipv4', protocol: 'icmp', enabled: false, available_points: 0)
+    # ICMP Ping
+    service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '\d+ bytes from')
 
@@ -79,11 +80,6 @@ namespace :cyberengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'echo "cyberengine check"')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^cyberengine check$')
-
-    # Redteam
-    team = Team.create(color: 'Red', name: 'Redteam', alias: 'Redteam' )
-    member = Member.create(team_id: team.id, username: 'redteam', password: 'redteam', password_confirmation: 'redteam')
-    puts "Created: #{team.alias} - Login: #{member.username}:#{member.password}"
   end
 
   def useragents

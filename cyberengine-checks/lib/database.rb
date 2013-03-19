@@ -18,14 +18,14 @@ module Cyberengine
     attr_accessor :connection
     def initialize(options = {})
       # Get database information
-      database = options[:database] || Cyberengine.root + '/database.yml' 
+      database = options[:database] || Cyberengine.database_file
       environments = YAML::load(File.open(database))
   
       # Setup logger
       ActiveRecord::Base.logger = options[:logger] if options[:logger]
   
       # Default to production then development
-      config = environments['production'] || environments['development']
+      config = environments['development'] || environments['production']
       @connection = ActiveRecord::Base.establish_connection(config)
     end
   end

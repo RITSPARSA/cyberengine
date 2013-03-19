@@ -1,0 +1,27 @@
+# PostgreSQL - 9.x
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: cyberengine_production
+  host: localhost
+  pool: 5
+  username: cyberengine
+  password: cyberengine
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: cyberengine_development
+  host: localhost
+  pool: 5
+  username: cyberengine
+  password: cyberengine
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: cyberengine_test
+  host: localhost
+  pool: 5
+  username: cyberengine
+  password: cyberengine

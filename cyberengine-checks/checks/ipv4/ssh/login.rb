@@ -1,35 +1,66 @@
 #!/usr/bin/env ruby
-require_relative '../../lib/cyberengine'
-check = Cyberengine.checkify(__FILE__,ARGV.dup)
-@cyberengine = Cyberengine::Checker.new(check)
-@cyberengine.signals # Trap TERM signal and exit
-@services = @cyberengine.services('POP3 Login','ipv4','pop3')
-@defaults = @cyberengine.defaults('POP3 Login','ipv4','pop3')
+require_relative '../../../lib/cyberengine'
+@check = Cyberengine.checkify(__FILE__,ARGV.dup)
+@cyberengine = Cyberengine::Checker.new(@check)
+@cyberengine.signals
+require 'net/ssh'
 
 
 def build_request(service,address)
-  # -s Silent or quiet mode. Dont show progress meter or error messages.  Makes Curl mute.
-  # -S When used with -s it makes curl show an error message if it fails.
-  # -4 Resolve names to IPv4 addresses only
-  # -v Verbose mode. '>' means sent data. '<' means received data. '*' means additional info provided by curl
-  request = 'curl -s -S -4 -v '
+  request = Hash.new
+  request[:address] = address
 
   # User
   user = service.users.random
   raise "Missing users" unless user
-  username = user.username.url_encode
-  password = user.password.url_encode
+  request[:username] = user.username
+  request[:password] = user.password
+
+  # Command
+  command = service.properties.random('command') || @cyberengine.defaults.properties.random('command')
+  raise("Missing command property") unless command
+  command.gsub!('$USER',request[:username])
+  request[:command] = command
 
   # Each line regex match
-  @each_line_regex = service.properties.answer('each-line-regex') || @defaults.properties.answer('each-line-regex')
-  @full_text_regex = service.properties.answer('full-text-regex') || @defaults.properties.answer('full-text-regex')
+  @each_line_regex = service.properties.answer('each-line-regex') || @cyberengine.defaults.properties.answer('each-line-regex')
+  @full_text_regex = service.properties.answer('full-text-regex') || @cyberengine.defaults.properties.answer('full-text-regex')
   raise "Missing answer property: each-line-regex or full-text-regex required" unless @each_line_regex || @full_text_regex
- 
-  # URL   
-  request << " pop3://#{username}:#{password}@#{address} "
 
-  # Return request single spaced and without leading/ending spaces
-  request.strip.squeeze(' ')
+  # Return request hash
+  request
+end
+
+
+def execute_request(request,service,defaults)
+  response = ''
+  command = request[:command]
+  username = request[:username]
+  password = request[:password]
+  address = request[:address]
+  timeout = service.properties.option('timeout') || defaults.properties.option('timeout')
+  raise("Missing timeout property") unless timeout
+  timeout = timeout.to_f
+  @cyberengine.logger.debug { "Timeout: #{timeout}" }
+  request.each do |key,value|
+    @cyberengine.logger.debug { "#{key.capitalize}: #{value}" }
+  end
+
+  begin
+    Timeout::timeout(timeout) do
+      Net::SSH.start(address, username, password: password) do |ssh|
+        ssh.exec!(command) do |channel, stream, data|
+          response << data
+        end
+      end
+    end
+  rescue Timeout::Error => exception
+    response << "Check exceeded #{timeout} second timeout"
+  rescue StandardError => exception
+    message = exception.message.empty? ? 'None' : exception.message
+    raise "SSH command exection exception - Type: #{exception.class} - Message: #{message} - Command: #{command}"
+  end
+  response ? response : "No Response"
 end
 
 
@@ -49,21 +80,21 @@ def parse_response(response)
   passed
 end
 
-
 # Loop until terminated (TERM Signal)
 until @cyberengine.stop
   begin
-    @services.each do |service|
+    @cyberengine.services.each do |service|
       service.properties.addresses.each do |address|
         # Mark start of check in log
         @cyberengine.logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
-
+    
         begin
           # Request command
-          request = build_request(service,address)
-
+          request = build_request(service,address) 
+    
           # Get request output
-          response = @cyberengine.shellcommand(request,service,@defaults)
+          response = execute_request(request,service,@cyberengine.defaults)
+          request = request.map { |key,value| "#{key.capitalize}: #{value}" }.join("\r\n")
 
           # Passed: true/false
           passed = parse_response(response)
@@ -93,4 +124,3 @@ until @cyberengine.stop
   end
 end
 @cyberengine.terminate
-

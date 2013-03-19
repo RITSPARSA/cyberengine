@@ -5,8 +5,8 @@
 /.bundle
 /db/*.sqlite3
 /log/*
-checks/logs/*
-checks/pids/*
+cyberengine-checks/logs
+cyberengine-checks/pids
 /tmp/*
 
 # Ignore other unneeded files.

@@ -5,38 +5,43 @@ module Cyberengine
     require 'timeout'
     require 'pty'
   
-    attr_reader :check, :name, :path, :delay, :test, :daemon, :logger, :connection, :whiteteam, :pid, :stop
+    attr_reader :id, :check, :name, :delay, :test, :daemon, :logger, :connection, :whiteteam, :pid, :stop
+    # Defaults: Cyberengine.checkify
     def initialize(check)
-      # {path: 'ipv4', name: 'example', daemon: false }
       @check = check
-      @name = Cyberengine.check_name(check)
-      @path = Cyberengine.check_path(check)
-      @delay = Cyberengine.check_delay(check) 
-      @test = Cyberengine.check_test(check)
-      @daemon = Cyberengine.check_daemon(check)
+      @id = Cyberengine.check_id(@check)
+      @name = Cyberengine.check_name(@check)
+      @delay = Cyberengine.check_delay(@check) 
+      @test = Cyberengine.check_test(@check)
+      @daemon = Cyberengine.check_daemon(@check)
 
       # Create pid/log paths
-      create_path(@check)
+      create_path(Cyberengine.check_log_dir(@check))
+      create_path(Cyberengine.check_pid_dir(@check))
   
       # Used for signals
       @stop = false
-      @delay = 5 if @delay <= 5
+
+      # Setup logging
+      @logging = Cyberengine::Logging.new(@check)
+      @logger = @logging.logger
   
       # Daemonize
       if @daemon
         pid = Cyberengine.daemonize(@check)
-        if pid
-          puts "Failed to start #{@path} #{@name} - check already running with pid: #{pid}"
-          puts "Stop in Cyberengine: cyberengine stop #{@path} #{@name}"
-          puts "Stop in bash: kill -s TERM #{pid}"
-          exit
+        unless pid.nil?
+          @check[:daemon] = false
+          @daemon = false
+          @logger.fatal { "Check #{@id} already running with pid: #{pid}" }
+          terminate
+        end
+        if @daemon
+          @logger.info { "Successfully daemonized" } 
+          @logging.daemonize
         end
       end
       @pid = Process.pid
 
-      # Setup logging
-      @logger = Cyberengine::Logging.new(@check).logger
-      @logger.info { "Successfully daemonized" } if @daemon
   
       # Database connection
       Cyberengine::Database.new(logger: @logger)
@@ -48,20 +53,17 @@ module Cyberengine
 
     # Delete pid file 
     def terminate
-      pid_file = Cyberengine.pid_file(@check)
+      pid_file = Cyberengine.check_pid_file(@check)
       File.delete(pid_file) if @daemon && File.exists?(pid_file)
       @logger.info { "Successfully terminated" } 
       @logger.close
+      exit
     end
 
     # Create pid/log paths 
-    def create_path(check)
-      pid_dir = Cyberengine.pid_dir(check)
-      log_dir = Cyberengine.log_dir(check)
-      FileUtils.mkdir_p(pid_dir) unless File.directory?(pid_dir)
-      FileUtils.mkdir_p(log_dir) unless File.directory?(log_dir)
-    end
+    def create_path(path) FileUtils.mkdir_p(path) unless File.directory?(path) end
 
+    # Trap TERM signal and exit
     def signals
       Signal.trap('TERM') do 
         @logger.info { "Received TERM Signal - Stopping after round" }
@@ -69,28 +71,14 @@ module Cyberengine
       end
     end
 
-    def defaults(name, version, protocol)
+    def defaults
+      name = Cyberengine.check_name(@check)
+      version = Cyberengine.check_version(@check)
+      protocol = Cyberengine.check_protocol(@check)
       Service.where('team_id = ? AND name = ? AND version = ? AND protocol = ? AND enabled = ?', @whiteteam.id, name, version, protocol, false).first
     end
   
-    def clear_color 
-      # Return "clear color" code
-      "\e[0m"
-    end
-  
-    def start_color(color)
-      # Format color to equal map
-      color.downcase! if color.is_a?(String)
-      color = color.to_sym unless color.is_a?(Symbol)
-     
-      # Color map 
-      color_to_integer_map = { black: 30, red: 31, green: 32, yellow: 33, blue: 34, magenta: 35, cyan: 36, white: 37 }
-      color = :white unless color_to_integer_map[color]
-   
-      # Return color
-      "\e[#{color_to_integer_map[color]}m"
-    end
-  
+    # Simple PTY module to help execute commands  
     module SafePty
       def self.spawn(command,&block)
         PTY.spawn(command) do |stdout, stdin, pid|
@@ -102,8 +90,9 @@ module Cyberengine
         return 1
       end
     end
-  
-    def shellcommand(command,service,defaults)
+ 
+    # Run command capturing all output within timeout or command completion 
+    def shellcommand(command,service)
       response = ''
  
       # Check timeout 
@@ -120,7 +109,7 @@ module Cyberengine
         Timeout::timeout(timeout) do
           SafePty.spawn("#{command} 2>&1") do |stdout, stdin, pid|
             @logger.debug { "PID: #{pid}" }
-            stdout.each_line { |line| response << line }
+            stdout.each_line { |line| response << line.strip.concat("\r\n") }
           end
         end
       rescue Timeout::Error => exception
@@ -132,33 +121,30 @@ module Cyberengine
   
       # Cant insert empty responses into database, so say "No Response"
       # Strip to remove double newlines (HTTP) and replace with one
-      response.empty? ? "No Response" : response.strip.concant("\r\n")
+      response.empty? ? "No Response" : response.strip.concat("\r\n")
     end
   
-    # Default exception logger    
+    # Default exception logger - log error and continue
     def exception_handler(service,exception)
       logs = Array.new
       logs << "Exception #{exception.class} raised during check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name}"
       logs << "Exception message: #{exception.message}"
       logs << "Exception backtrace: #{exception.backtrace}"
-      logs.each do |log|
-        @logger.error { log }
-      end
+      logs.each { |log| @logger.error { log } }
     end
   
-    # Fatal exception logger    
+    # Fatal exception logger - log and send terminate signal    
     def fatal_exception_handler(exception)
       logs = Array.new
       logs << "Daemon crashed due to #{exception.class}"
       logs << "Exception message: #{exception.message}"
       logs << "Exception backtrace: #{exception.backtrace}"
-      logs.each do |log|
-        @logger.fatal { log }
-      end
-      terminate
+      logs.each { |log| @logger.fatal { log } }
+      Process.kill("TERM", Process.pid)
     end
 
-    # Attempt to create check 
+    # Attempt to create check
+    # Destroy check if in testing mode
     def create_check(service,round,passed,request,response)
       check = Hash.new
       check[:team_id] = service.team_id
@@ -174,16 +160,14 @@ module Cyberengine
     end
  
      
-    def services(name, version, protocol)
-      # Get services
+    # Get services and return in array
+    def services
+      name = Cyberengine.check_name(@check)
+      version = Cyberengine.check_version(@check)
+      protocol = Cyberengine.check_protocol(@check)
       blueteams = Team.blueteams.map{|t| t.id }
       services = Service.where('team_id IN (?) AND name = ? AND version = ? AND protocol = ? AND enabled = ?', blueteams, name, version, protocol, true)
-  
-      # Convert from ActiveRecord::Relation to Array
-      services = services.map{|s| s }
-  
-      # Return services
-      services
+      services.map{|s| s }
     end
   end
 end

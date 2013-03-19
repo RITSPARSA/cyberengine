@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
-require_relative '../../lib/cyberengine'
-check = Cyberengine.checkify(__FILE__,ARGV.dup)
-@cyberengine = Cyberengine::Checker.new(check)
-@cyberengine.signals # Trap TERM signal and exit
-@services = @cyberengine.services('HTTP Content','ipv4','http')
-@defaults = @cyberengine.defaults('HTTP Content','ipv4','http')
+require_relative '../../../lib/cyberengine'
+@check = Cyberengine.checkify(__FILE__,ARGV.dup)
+@cyberengine = Cyberengine::Checker.new(@check)
+@cyberengine.signals
 
 
 def build_request(service,address)
@@ -17,17 +15,17 @@ def build_request(service,address)
   request = 'curl -s -S -4 -v -L '
 
   # Useragent
-  useragent = service.properties.random('useragent') || @defaults.properties.random('useragent')
+  useragent = service.properties.random('useragent') || @cyberengine.defaults.properties.random('useragent')
   useragent.gsub!("'",'') if useragent
   request << " -A '#{useragent}' " if useragent
 
   # URI
-  uri = service.properties.random('uri') || @defaults.properties.random('uri')
+  uri = service.properties.random('uri') || @cyberengine.defaults.properties.random('uri')
   raise("Missing uri property") unless uri
 
   # Each line regex match
-  @each_line_regex = service.properties.answer('each-line-regex') || @defaults.properties.answer('each-line-regex')
-  @full_text_regex = service.properties.answer('full-text-regex') || @defaults.properties.answer('full-text-regex')
+  @each_line_regex = service.properties.answer('each-line-regex') || @cyberengine.defaults.properties.answer('each-line-regex')
+  @full_text_regex = service.properties.answer('full-text-regex') || @cyberengine.defaults.properties.answer('full-text-regex')
   raise "Missing answer property: each-line-regex or full-text-regex required" unless @each_line_regex || @full_text_regex
  
   request << " http://#{address}#{uri} "
@@ -57,17 +55,17 @@ end
 # Loop until terminated (TERM Signal)
 until @cyberengine.stop
   begin
-    @services.each do |service|
+    @cyberengine.services.each do |service|
       service.properties.addresses.each do |address|
         # Mark start of check in log
         @cyberengine.logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
-
+    
         begin
           # Request command
-          request = build_request(service,address)
-
+          request = build_request(service,address) 
+    
           # Get request output
-          response = @cyberengine.shellcommand(request,service,@defaults)
+          response = @cyberengine.shellcommand(request,service)
 
           # Passed: true/false
           passed = parse_response(response)
@@ -97,4 +95,3 @@ until @cyberengine.stop
   end
 end
 @cyberengine.terminate
-

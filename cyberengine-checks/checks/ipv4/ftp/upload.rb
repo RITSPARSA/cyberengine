@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
-require_relative '../../lib/cyberengine'
-check = Cyberengine.checkify(__FILE__,ARGV.dup)
-@cyberengine = Cyberengine::Checker.new(check)
-@cyberengine.signals # Trap TERM signal and exit
-@services = @cyberengine.services('HTTPS Content','ipv4','https')
-@defaults = @cyberengine.defaults('HTTPS Content','ipv4','https')
+require_relative '../../../lib/cyberengine'
+@check = Cyberengine.checkify(__FILE__,ARGV.dup)
+@cyberengine = Cyberengine::Checker.new(@check)
+@cyberengine.signals
 
 
 def build_request(service,address)
@@ -12,27 +10,37 @@ def build_request(service,address)
   # -S When used with -s it makes curl show an error message if it fails.
   # -4 Resolve names to IPv4 addresses only
   # -v Verbose mode. '>' means sent data. '<' means received data. '*' means additional info provided by curl
-  # -L Follow 302 redirects
-  # -A Set request user-agent
-  # -k Ignore certificate errors
-  # --ssl-reqd Force SSL user
-  request = 'curl -s -S -4 -v -L -k --ssl-reqd '
+  # --ftp-pasv Force FTP passive mode (server opens high port for upload connection)
+  # --ftp-create-dirs Attempt creation of missing directories in upload (normally fails)
+  # -T Upload file or text from STDIN if '-' is used 
+  request = 'curl -s -S -4 -v --ftp-pasv --ftp-create-dirs '
 
-  # Useragent
-  useragent = service.properties.random('useragent') || @defaults.properties.random('useragent')
-  useragent.gsub!("'",'') if useragent
-  request << " -A '#{useragent}' " if useragent
+  # User
+  user = service.users.random
+  raise "Missing users" unless user
+  username = user.username.url_encode
+  password = user.password.url_encode
 
-  # URI
-  uri = service.properties.random('uri') || @defaults.properties.random('uri')
-  raise("Missing uri property") unless uri
+  # Default filename
+  filename = service.properties.random('filename') || @cyberengine.defaults.properties.random('filename')
+  raise("Missing filename property") unless filename
+  filename.gsub!('$USER',username)
+
+  # Timestamp filename
+  timestamped = service.properties.option('filename-timestamp') || @cyberengine.defaults.properties.random('filename-timestamp')
+  filename = filename.timestamped if timestamped != 'disabled'
 
   # Each line regex match
-  @each_line_regex = service.properties.answer('each-line-regex') || @defaults.properties.answer('each-line-regex')
-  @full_text_regex = service.properties.answer('full-text-regex') || @defaults.properties.answer('full-text-regex')
+  @each_line_regex = service.properties.answer('each-line-regex') || @cyberengine.defaults.properties.answer('each-line-regex')
+  @full_text_regex = service.properties.answer('full-text-regex') || @cyberengine.defaults.properties.answer('full-text-regex')
   raise "Missing answer property: each-line-regex or full-text-regex required" unless @each_line_regex || @full_text_regex
- 
-  request << " http://#{address}#{uri} "
+
+  # Upload gets text from STDIN
+  request.prepend("echo 'cyberengine check' | ")
+  request << ' -T - '
+
+  # URL   
+  request << " ftp://#{username}:#{password}@#{address}#{filename}"
 
   # Return request single spaced and without leading/ending spaces
   request.strip.squeeze(' ')
@@ -59,17 +67,17 @@ end
 # Loop until terminated (TERM Signal)
 until @cyberengine.stop
   begin
-    @services.each do |service|
+    @cyberengine.services.each do |service|
       service.properties.addresses.each do |address|
         # Mark start of check in log
         @cyberengine.logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
-
+    
         begin
           # Request command
-          request = build_request(service,address)
-
+          request = build_request(service,address) 
+    
           # Get request output
-          response = @cyberengine.shellcommand(request,service,@defaults)
+          response = @cyberengine.shellcommand(request,service)
 
           # Passed: true/false
           passed = parse_response(response)
@@ -99,4 +107,3 @@ until @cyberengine.stop
   end
 end
 @cyberengine.terminate
-

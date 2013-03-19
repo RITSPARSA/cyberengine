@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
-require_relative '../../lib/cyberengine'
-check = Cyberengine.checkify(__FILE__,ARGV.dup)
-@cyberengine = Cyberengine::Checker.new(check)
-@cyberengine.signals # Trap TERM signal and exit
-@services = @cyberengine.services('DNS Forward','ipv4','dns')
-@defaults = @cyberengine.defaults('DNS Forward','ipv4','dns')
+require_relative '../../../lib/cyberengine'
+@check = Cyberengine.checkify(__FILE__,ARGV.dup)
+@cyberengine = Cyberengine::Checker.new(@check)
+@cyberengine.signals
 
 
 # Build service check request
@@ -50,32 +48,32 @@ end
 # Loop until terminated (TERM Signal)
 until @cyberengine.stop
   begin
-    @services.each do |service|
+    @cyberengine.services.each do |service|
       service.properties.addresses.each do |address|
         # Mark start of check in log
         @cyberengine.logger.info { "Starting check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address}" }
-
+    
         begin
           # Request command
-          request = build_request(service,address)
-
+          request = build_request(service,address) 
+    
           # Get request output
-          response = @cyberengine.shellcommand(request,service,@defaults)
-
+          response = @cyberengine.shellcommand(request,service)
+    
           # Passed: true/false
-          passed = parse_response(response)
-
+          passed = parse_response(response) 
+    
           # Save check and get result
           round = service.checks.next_round
-          check = @cyberengine.create_check(service,round,passed,request,response)
-
+          check = @cyberengine.create_check(service,round,passed,request,response) 
+    
           # Check for errors in saving check 
           raise check.errors.full_messages.join(',') if check.errors.any?
-
+    
           # Mark end of check in log
           result = passed ? 'Passed' : 'Failed'
           @cyberengine.logger.info { "Finished check - Team: #{service.team.alias} - Server: #{service.server.name} - Service: #{service.name} - Address: #{address} - Result: #{result}" }
-
+    
         rescue StandardError => exception
           @cyberengine.exception_handler(service,exception)
         end
@@ -90,4 +88,3 @@ until @cyberengine.stop
   end
 end
 @cyberengine.terminate
-

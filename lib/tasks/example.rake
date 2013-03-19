@@ -15,7 +15,7 @@ namespace :cyberengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'google-public-dns-a.google.com', value: '8.8.8.8')
 
     # Echo Request
-    service = Service.create(team_id: team.id, server_id: server.id, name: "Echo Request", version: 'ipv4', protocol: 'icmp', enabled: true, available_points: 100)
+    service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
 
     # FTP Download
