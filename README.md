@@ -74,7 +74,6 @@ systemctl start postgresql.service
 su postgres
 psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
 exit
-
 ```
 
 5. Download cyberengine and install gems (libraries)
