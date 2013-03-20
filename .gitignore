@@ -10,6 +10,7 @@ cyberengine-checks/pids
 /tmp/*
 
 # Ignore other unneeded files.
+Gemfile.lock
 *.swp
 *~
 .project
