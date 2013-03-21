@@ -18,6 +18,11 @@ namespace :cyberengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
 
+    # IRC Channel Join
+    service = Service.create(team_id: team.id, server_id: server.id, name: "IRC Channel Join", version: 'ipv4', protocol: 'irc', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'domain', value: 'irc.freenode.org')
+    #user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+
     # FTP Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Download", version: 'ipv4', protocol: 'ftp', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')

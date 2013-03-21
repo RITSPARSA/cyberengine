@@ -12,9 +12,10 @@ namespace :cyberengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "IPV4 Mobility", version: 'ipv4', protocol: 'none', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'delay', value: '30')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'dad-test', value: 'reply from')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'netmask', value: '/24')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'interface', value: 'eth0')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'address-range', value: '192.168.122.1-5')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'route', value: '192.168.122.0/24')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'default-gateway', value: '192.168.122.1')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'address-range', value: '192.168.122.1-5/24')
 
     # DNS Domain Query
     service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Domain Query", version: 'ipv4', protocol: 'dns', enabled: false, available_points: 0)
@@ -24,6 +25,16 @@ namespace :cyberengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '\d+ bytes from')
+
+    # IRC Channel Join
+    service = Service.create(team_id: team.id, server_id: server.id, name: "IRC Channel Join", version: 'ipv4', protocol: 'irc', enabled: false, available_points: 0)
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'cyberengine', password: 'cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'port', value: '6667')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'authentication', value: 'disabled')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'channel', value: '#cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'JOIN')
+
 
     # FTP Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Download", version: 'ipv4', protocol: 'ftp', enabled: false, available_points: 0)
