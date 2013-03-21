@@ -25,6 +25,8 @@ class Property < ActiveRecord::Base
   def self.options(property) where('category = ? AND property = ?', 'option', property) end
   def self.answer(property) (where('category = ? AND property = ?', 'answer', property).first || Property.new).value end
   def self.answers(property) where('category = ? AND property = ?', 'answer', property) end
+  def self.temp(property) (where('category = ? AND property = ?', 'temp', property).first || Property.new).value end
+  def self.temps(property) where('category = ? AND property = ?', 'temp', property) end
   def self.visible; self.where('visible = ?',true) end
 
   def right_team?

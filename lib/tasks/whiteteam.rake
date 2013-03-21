@@ -8,6 +8,14 @@ namespace :cyberengine do
     # Default server
     server = Server.create(team_id: team.id, name: "Defaults")
 
+    # IPv4 Mobility
+    service = Service.create(team_id: team.id, server_id: server.id, name: "IPV4 Mobility", version: 'ipv4', protocol: 'none', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'delay', value: '30')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'dad-test', value: 'reply from')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'netmask', value: '/24')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'interface', value: 'eth0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'address-range', value: '192.168.122.1-5')
+
     # DNS Domain Query
     service = Service.create(team_id: team.id, server_id: server.id, name: "DNS Domain Query", version: 'ipv4', protocol: 'dns', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
@@ -25,6 +33,18 @@ namespace :cyberengine do
 
     # FTP Upload
     service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Upload", version: 'ipv4', protocol: 'ftp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
+
+    # FTPS Download
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Download", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
+
+    # FTPS Upload
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Upload", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
@@ -70,8 +90,18 @@ namespace :cyberengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
 
+    # POP3S Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "POP3S Login", version: 'ipv4', protocol: 'pop3s', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
+
     # SMTP Send Mail
     service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
+
+    # SMTPS Send Mail
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMTPS Send Mail", version: 'ipv4', protocol: 'smtps', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
 
