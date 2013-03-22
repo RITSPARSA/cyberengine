@@ -8,7 +8,7 @@
 cyberengine-checks/logs
 cyberengine-checks/pids
 /tmp/*
-
+/lib/tasks/*ists*
 # Ignore other unneeded files.
 Gemfile.lock
 *.swp
