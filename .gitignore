@@ -9,8 +9,9 @@ cyberengine-checks/logs
 cyberengine-checks/pids
 /tmp/*
 /lib/tasks/*ists*
+/quickstart.sh
 # Ignore other unneeded files.
-Gemfile.lock
+/Gemfile.lock
 *.swp
 *~
 .project

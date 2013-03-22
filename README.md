@@ -85,7 +85,6 @@ mkdir -p /var/rails
 cd /var/rails
 git clone -v https://github.com/griffithchaffee/cyberengine.git
 # If you dont do this you may get permission errors
-chown -R apache:apache cyberengine
 cd cyberengine
 # Do you wish to trust this .rvmrc file? (/root/cyberengine/.rvmrc)
 # y[es], n[o], v[iew], c[ancel]> yes
@@ -105,11 +104,27 @@ passenger-install-apache2-module
 # Generate httpd.conf file
 cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.orig
 rake cyberengine:apache > /etc/httpd/conf/httpd.conf
+# SUPER IMPORTANT - apache must own everything
+chown -R apache:apache /var/rails/cyberengine 
 # Start apache
 # Troubleshoot any errors with /var/log/messages and /var/rails/cyberengine/log/apache_error.log
 service httpd start
 ```
 
+7. Optional: Run in production mode. By default rails runs in development mode where logs are verbose, files not compressed, and nothing is cached. Production mode compiles all HTTP/JS/CSS files and compresses them for performance and caching is used. 300ms loadtimes become 30ms.
+```bash
+service httpd stop
+# Add production data
+RAILS_ENV=production rake cyberengine:setup
+# Change apache configuration to run in production mode (replaces RailsEnv option)
+RAILS_ENV=production rake cyberengine:apache > /etc/httpd/conf/httpd.conf
+# Compiles assets into public/assests 
+RAILS_ENV=production rake assets:precompile
+# SUPER IMPORTANT - apache must own everything. Compiled assets in public/assets are owned by root by default and will cause errors.
+chown -R apache:apache /var/rails/cyberengine 
+# Start apache back up in production
+service httpd start
+```
 
 ## Important files
 
