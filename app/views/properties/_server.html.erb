@@ -1,6 +1,7 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
+      <th>Service</th>
       <th>Category</th>
       <th>Property</th>
       <th>Value</th>
@@ -9,12 +10,13 @@
   <tbody>
     <% unless server.properties.exists? %>
       <tr>
-        <td colspan="3">No Properties</td>
+        <td colspan="4">No Properties</td>
       </tr>
     <% else %>
       <% server.properties.includes(:service).ordered.each do |property| %>
         <% next unless property.can_show?(current_member,@team.id) %>
         <tr>
+          <td><%= property.service.name %></td>
           <td><%= link_to property.category, team_server_service_property_path(@team,@server,property.service,property) %></td>
           <td><%= property.property %></td>
           <td><%= property.value %></td>

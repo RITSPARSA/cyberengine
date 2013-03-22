@@ -1,38 +1,36 @@
-<% unless (@member.nil? || @member.id.nil?) && (@team.nil? || @team.id.nil?) && (@server.nil? || @server.id.nil?) && (@service.nil? || @service.id.nil?) && (@check.nil? || @check.id.nil?) && (@user.nil? || @user.id.nil?) && (@property.nil? || @property.id.nil?) %>
-  <li class="nav-header">Path</li>
-  <% unless @member.nil? || @member.id.nil? %>
-    <li class='path'>
-      <%= link_to member_path(@member) do %><i class="icon-arrow-down"></i><span><%= @member.username %></span><% end %>
-    </li>
-  <% end %>
-  <% unless @team.nil? || @team.id.nil? %>
-    <li class='path'>
-      <%= link_to team_path(@team) do %><i class="icon-arrow-down"></i><span><%= @team.alias %></span><% end %>
-    </li>
-  <% end %>
-  <% unless @server.nil? || @server.id.nil? %>
-    <li class='path'>
-      <%= link_to team_server_path(@team,@server) do %><i class="icon-arrow-down"></i><span><%= @server.name %></span><% end %>
-    </li>
-  <% end %>
-  <% unless @service.nil? || @service.id.nil? %>
-    <li class='path'>
-      <%= link_to team_server_service_path(@team,@server,@service) do %><i class="icon-arrow-down"></i><span><%= @service.name %></span><% end %>
-    </li>
-  <% end %>
-  <% unless @check.nil? || @check.id.nil? %>
-    <li class='path'>
-      <%= link_to team_server_service_check_path(@team,@server,@service,@check) do %><i class="icon-arrow-down"></i><span><%= @check.round %></span><% end %>
-    </li>
-  <% end %>
-  <% unless @user.nil? || @user.id.nil? %>
-    <li class='path'>
-      <%= link_to team_server_service_user_path(@team,@server,@service,@user) do %><i class="icon-arrow-down"></i><span><%= @user.username %></span><% end %>
-    </li>
-  <% end %>
-  <% unless @property.nil? || @property.id.nil? %>
-    <li class='path'>
-      <%= link_to team_server_service_user_path(@team,@server,@service,@property) do %><i class="icon-arrow-down"></i><span><%= @property.category %></span><% end %>
-    </li>
-  <% end %>
+<li class="nav-header">Path</li>
+<% unless @member.nil? || @member.id.nil? %>
+  <li class='path'>
+    <%= link_to member_path(@member) do %><i class="icon-arrow-down"></i><span><%= @member.username %></span><% end %>
+  </li>
+<% end %>
+<% unless @team.nil? || @team.id.nil? %>
+  <li class='path'>
+    <%= link_to team_path(@team) do %><i class="icon-arrow-down"></i><span><%= @team.alias %></span><% end %>
+  </li>
+<% end %>
+<% unless @server.nil? || @server.id.nil? %>
+  <li class='path'>
+    <%= link_to team_server_path(@team,@server) do %><i class="icon-arrow-down"></i><span><%= @server.name %></span><% end %>
+  </li>
+<% end %>
+<% unless @service.nil? || @service.id.nil? %>
+  <li class='path'>
+    <%= link_to team_server_service_path(@team,@server,@service) do %><i class="icon-arrow-down"></i><span><%= @service.name %></span><% end %>
+  </li>
+<% end %>
+<% unless @check.nil? || @check.id.nil? %>
+  <li class='path'>
+    <%= link_to team_server_service_check_path(@team,@server,@service,@check) do %><i class="icon-arrow-down"></i><span><%= @check.round %></span><% end %>
+  </li>
+<% end %>
+<% unless @user.nil? || @user.id.nil? %>
+  <li class='path'>
+    <%= link_to team_server_service_user_path(@team,@server,@service,@user) do %><i class="icon-arrow-down"></i><span><%= @user.username %></span><% end %>
+  </li>
+<% end %>
+<% unless @property.nil? || @property.id.nil? %>
+  <li class='path'>
+    <%= link_to team_server_service_user_path(@team,@server,@service,@property) do %><i class="icon-arrow-down"></i><span><%= @property.category %></span><% end %>
+  </li>
 <% end %>

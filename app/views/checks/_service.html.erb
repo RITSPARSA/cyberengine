@@ -1,7 +1,9 @@
 <% latest_check = @service.checks.latest || Check.new %>
 <% checks = @service.checks.minimal.ordered unless latest_check.id.nil? %>
 <% if latest_check.id.nil? %>
-  <p>No checks</p>
+  <div class="page-header">
+    <h3>No Checks</h3>
+  </div>
 <% else %>
   <div class="page-header">
     <h3>Latest Check</h3>

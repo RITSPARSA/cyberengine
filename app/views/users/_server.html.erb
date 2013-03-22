@@ -1,6 +1,7 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
+      <th>Service</th>
       <th>Username</th>
       <th>Password</th>
     </tr>
@@ -8,12 +9,13 @@
   <tbody>
     <% unless server.users.exists? %>
       <tr>
-        <td colspan="2">No Users</td>
+        <td colspan="3">No Users</td>
       </tr>
     <% else %>
       <% server.users.includes(:service).ordered.each do |user| %>
         <% next unless user.can_show?(current_member,@team.id) %>
         <tr>
+          <td><%= user.service.name %></td>
           <td><%= link_to user.username, team_server_service_user_path(@team,server,user.service,user) %></td>
           <td><%= user.password %></td>
         </tr>

@@ -66,7 +66,8 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <% if content_for?(:resources) || content_for?(:pathing) || content_for?(:actions) %>
+      <% pathing = !((@member.nil? || @member.id.nil?) && (@team.nil? || @team.id.nil?) && (@server.nil? || @server.id.nil?) && (@service.nil? || @service.id.nil?) && (@check.nil? || @check.id.nil?) && (@user.nil? || @user.id.nil?) && (@property.nil? || @property.id.nil?)) %>
+        <% if content_for?(:actions) || pathing %>
           <div class="span2">
             <ul class="nav nav-tabs nav-stacked sidebar">
               <% if content_for? :actions %>
