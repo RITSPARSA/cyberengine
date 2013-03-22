@@ -11,7 +11,7 @@ namespace :cyberengine do
     ip_address = `ip addr show scope global | grep -m1 -oE "inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | cut -d' ' -f2`.strip
     passenger_mod = `find $GEM_HOME -name mod_passenger.so | grep -m1 --color=never "mod_passenger\.so"`.strip
     passenger_dir = passenger_mod.gsub('/ext/apache2/mod_passenger.so','')
-    ruby = `echo $MY_RUBY_HOME`.strip + '/bin/ruby'
+    ruby = passenger_mod.split('/')[1..-6].join('/').prepend('/').gsub('/gems/','/wrappers/') + '/ruby'
 
 httpd_conf = %Q[
 Listen 80
@@ -111,3 +111,4 @@ NameVirtualHost *:443
     puts httpd_conf
   end
 end
+

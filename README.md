@@ -57,6 +57,14 @@ rvm use 1.9.3 --default
 4. Setup database
 ```bash
 postgresql-setup initdb
+# Enable/start server
+systemctl enable postgresql.service
+systemctl start postgresql.service
+# Create cyberengine user/password (cyberengine:cyberengine) - change password in competition
+# If password changed, rails file config/database.yml will have to be updated
+su postgres
+psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
+exit
 # Listen on all interfaces
 echo "listen_addresses = '*'" >> /var/lib/pgsql/data/postgresql.conf 
 # Comment out all current lines in pg access file
@@ -66,14 +74,9 @@ echo 'local all all md5' >> /var/lib/pgsql/data/pg_hba.conf
 # Allow valid username/password combinations access via tcp/ip
 echo 'host all all  0.0.0.0/0 md5' >> /var/lib/pgsql/data/pg_hba.conf 
 echo 'host all all  ::/0 md5' >> /var/lib/pgsql/data/pg_hba.conf 
-# Enable/start server
-systemctl enable postgresql.service
-systemctl start postgresql.service
-# Create cyberengine user/password (cyberengine:cyberengine) - change password in competition
-# If password changed, rails file config/database.yml will have to be updated
-su postgres
-psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
-exit
+# Restart server for new permissions to take effect
+# cyberengine user is now super user for postgresql server
+systemctl restart postgresql.service
 ```
 
 5. Download cyberengine and install gems (libraries)
@@ -102,6 +105,9 @@ passenger-install-apache2-module
 # Generate httpd.conf file
 cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.orig
 rake cyberengine:apache > /etc/httpd/conf/httpd.conf
+# Start apache
+# Troubleshoot any errors with /var/log/messages and /var/rails/cyberengine/log/apache_error.log
+service httpd start
 ```
 
 
