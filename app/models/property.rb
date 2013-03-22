@@ -42,7 +42,7 @@ class Property < ActiveRecord::Base
   end
 
   # Standard permissions
-  def can_show?(member,team_id) member.whiteteam? || service.can_show?(member,team_id) && visible || member.team_id == team_id end
+  def can_show?(member,team_id) member.whiteteam? || member.can_overview_properties? || service.can_show?(member,team_id) && member.team_id == team_id end
   def self.can_show?(member,team_id) member.whiteteam? || member.team_id == team_id end
   def self.can_new?(member,team_id) member.whiteteam? end 
   def can_edit?(member,team_id) member.whiteteam? end

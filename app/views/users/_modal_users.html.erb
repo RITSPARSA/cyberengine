@@ -8,6 +8,7 @@
   </thead>
   <tbody>
     <% @users.includes(:service).ordered.each do |user| %>
+      <% next unless user.can_show?(current_member,@team.id) %>
       <tr>
         <td><%= user.service.name %></td>
         <td><%= user.username %></td>

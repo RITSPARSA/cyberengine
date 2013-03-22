@@ -12,6 +12,7 @@
       </tr>
     <% else %>
       <% service.users.ordered.each do |user| %>
+        <% next unless user.can_show?(current_member,@team.id) %>
         <tr>
           <td><%= link_to user.username, team_server_service_user_path(@team,@server,service,user) %></td>
           <td><%= user.password %></td>
