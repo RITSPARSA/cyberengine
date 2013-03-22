@@ -65,6 +65,9 @@ systemctl start postgresql.service
 su postgres
 psql -c "CREATE ROLE cyberengine PASSWORD 'cyberengine' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN"
 exit
+# Expected output:
+# could not change directory to "/root"
+# CREATE ROLE
 # Listen on all interfaces
 echo "listen_addresses = '*'" >> /var/lib/pgsql/data/postgresql.conf 
 # Comment out all current lines in pg access file
