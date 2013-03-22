@@ -63,7 +63,7 @@
         </td>
         <td>
           <% if Property.can_show?(current_member,team_id) || current_member.can_overview_users? %>
-            <% unless service.properties.visible.exists? %>
+            <% unless service.properties.exists? %>
               No Properties
             <% else %>
               <%= link_to "Properties", modal_team_server_service_properties_path(team,server,service), data: { toggle: "modal", target: "#propertiesModal" } %>

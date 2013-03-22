@@ -48,7 +48,7 @@
           <% end %>
         </td>
         <td>
-          <% unless server.properties.visible.exists? %>
+          <% unless server.properties.exists? %>
             No Properties
           <% else %>
             <%= link_to "Properties", modal_team_server_properties_path(team,server), data: { toggle: "modal", target: "#propertiesModal" } %>
