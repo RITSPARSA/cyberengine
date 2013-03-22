@@ -67,7 +67,6 @@ Cyberengine::Application.configure do
 
   # Custom
   config.assets.precompile += %w( scoreboard.js )
-  config.assets.compile = true
   config.log_level = :debug
   config.force_ssl = true
   config.assets.logger = false
