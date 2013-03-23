@@ -26,7 +26,9 @@ The rails frontend is a fully functional application that can authenticate membe
 1. Disable selinux
 ```bash
 # Disable selinux
+sed -i 's/^/#/g' /etc/selinux/config
 echo 'SELINUX=disabled' >> /etc/selinux/config
+echo 'SELINUXTYPE=targeted' >> /etc/selinux/config
 # Dont need iptables messing things up for now
 systemctl stop iptables.service
 systemctl disable iptables.service
@@ -36,7 +38,7 @@ reboot
 2. Install all required packages for: checks, rvm/ruby, database, and apache
 ```bash
 # Basic/Checks
-yum install -y bash tar git curl curl-devel vim
+yum install -y bash tar git curl curl-devel vim bind-utils iputils iproute
 # RVM/Ruby (copied from: rvm requirements) 
 yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
 # Database
