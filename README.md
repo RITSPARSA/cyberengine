@@ -157,4 +157,4 @@ service httpd start
 
 
 ## License
-Cyberengine is released under the {MIT License}[http://www.opensource.org/licenses/MIT].
+Cyberengine is released under the [MIT License](http://www.opensource.org/licenses/MIT)
