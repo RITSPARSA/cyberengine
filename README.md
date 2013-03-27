@@ -40,7 +40,7 @@ reboot
 # Basic/Checks
 yum install -y bash tar git curl curl-devel vim bind-utils iputils iproute
 # RVM/Ruby (copied from: rvm requirements) 
-yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
+yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel libxslt-devel libxml2-devel
 # Database
 yum install -y postgresql postgresql-devel postgresql-server
 # Apache
