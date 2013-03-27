@@ -104,7 +104,7 @@ class UsersController < ApplicationController
   def modal
     @action = :can_show?
     @users = @service ? @service.users : @server.users
-    current_member.can_overview_properties? || authorized?(@users)
+    current_member.can_overview_users? || authorized?(@users)
     @users.count == 0 ? render(partial: 'modal_empty') : render(partial: 'modal_users')
   end
 end
