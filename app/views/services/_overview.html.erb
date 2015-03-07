@@ -26,7 +26,7 @@
           <td><%= service.name %></td>
         <% end %>
         <% service.properties.ordered.each do |property| %>
-          <% next unless property.can_show?(current_member,team.id) and property.category == "address" %>
+          <% next unless property.category == "address" %>
           <td><%= property.value %></td>
         <% end %>
         <td><%= service.version %></td>
