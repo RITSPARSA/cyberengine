@@ -1,10 +1,16 @@
+require 'scoring_engine/exceptions'
+
 module ScoringEngine
 
   class CheckCollection
 
     attr_reader :checks_location, :available_checks
     def initialize(checks_location)
-      @checks_location = checks_location
+      unless File.directory?(checks_location)
+        raise Exceptions::BadCheckLocation.new("#{checks_location} is invalid")
+      else
+        @checks_location = checks_location
+      end
     end
 
 
