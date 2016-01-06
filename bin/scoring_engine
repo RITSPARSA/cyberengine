@@ -5,9 +5,5 @@ require 'scoring_engine'
 
 config = ScoringEngine::Config.new("#{File.dirname(__FILE__)}/../config.yaml")
 
-unless config["checks_location"]
-  raise ScoringEngine::Exceptions::ConfigValueNotFound.new("checks_location")
-end
-
 engine = ScoringEngine::Engine.new(config["checks_location"])
-engine.start("google.com")
+engine.start(["google.com","yahoo.com"])

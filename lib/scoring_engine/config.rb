@@ -1,5 +1,7 @@
 require 'yaml'
 
+require 'scoring_engine/exceptions'
+
 module ScoringEngine
 
   class Config
@@ -9,6 +11,9 @@ module ScoringEngine
     end
 
     def [](key)
+      unless @options.has_key?(key)
+        raise ScoringEngine::Exceptions::ConfigValueNotFound.new(key)
+      end
       @options[key]
     end
 
