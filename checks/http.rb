@@ -1,7 +1,7 @@
 require 'scoring_engine/check'
 
-require "net/http"
-require "uri"
+require 'net/http'
+require 'uri'
 
 module ScoringEngine
   module Checks
@@ -15,7 +15,7 @@ module ScoringEngine
         if response
           return Results::Success
         else
-          return Results::Failure, "Failed http"
+          return Results::Failure, 'Failed http'
         end
       end
 

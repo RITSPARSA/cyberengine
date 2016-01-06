@@ -16,7 +16,6 @@ module ScoringEngine
       @check_collection.available_checks.each do |check_class_name|
         name = check_class_name.clean_name
         target_ips.each do |target_ip|
-          Logger.info("Loading #{name} for #{target_ip}")
           check = check_class_name.new(target_ip)
           Logger.info("Running #{name} for #{target_ip}")
 
@@ -36,7 +35,6 @@ module ScoringEngine
           end
         end
       end
-
     end
 
   end
