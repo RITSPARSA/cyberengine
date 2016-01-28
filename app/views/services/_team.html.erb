@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Service</th>
+      <th>IP</th>
       <th>Version</th>
       <th>Protocol</th>
       <th>Status</th>
@@ -19,6 +20,10 @@
       <% label_text = latest_check.passed ? "Passing" : "Failing" %>
       <tr>
         <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
+        <% service.properties.ordered.each do |property| %>
+          <% next unless property.category == "address" %>
+          <td><%= property.value %></td>
+        <% end %>
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>
         <td>
