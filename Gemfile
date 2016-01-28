@@ -9,7 +9,7 @@ gem 'font-awesome-less'
 
 # gem 'pg'
 # gem 'sqlite3'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.0'
 
 # No asset group
 # https://github.com/seyhunak/twitter-bootstrap-rails/issues/338
