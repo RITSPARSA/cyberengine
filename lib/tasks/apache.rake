@@ -8,10 +8,10 @@ namespace :cyberengine do
     apache_document_dir = File.expand_path(__FILE__).split('/')[1..-5].join('/').prepend('/')
     apache_log_dir = cyberengine_dir + '/log'
 
-    ip_address = `ip addr show scope global | grep -m1 -oE "inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | cut -d' ' -f2`.strip
-    passenger_mod = `find $GEM_HOME -name mod_passenger.so | grep -m1 --color=never "mod_passenger\.so"`.strip
-    passenger_dir = passenger_mod.gsub('/ext/apache2/mod_passenger.so','')
-    ruby = passenger_mod.split('/')[1..-6].join('/').prepend('/').gsub('/gems/','/wrappers/') + '/ruby'
+    ip_address = "FILL_ME_IN"
+    passenger_mod = "FILL_ME_IN"
+    passenger_dir = "FILL_ME_IN"
+    ruby = "FILL_ME_IN"
 
 httpd_conf = %Q[
 Listen 80
@@ -20,25 +20,9 @@ Listen 443
 User apache
 Group apache
 
-# Configuration
-ServerRoot "/etc/httpd"
-DocumentRoot "#{apache_document_dir}"
-DirectoryIndex /welcome
-PidFile run/httpd.pid
-
 # Signature
 ServerTokens Prod
 ServerSignature off
-
-# Connections
-Timeout 15
-TraceEnable off
-TypesConfig /etc/mime.types
-DefaultType application/octet-stream
-AddDefaultCharset UTF-8
-
-# Processes
-MaxRequestsPerChild 1000
 
 # Logging
 logformat "%h -> %v %>s %u %m %U - %q" shortformat
@@ -73,11 +57,11 @@ ErrorDocument 503 "<h1>503 Service Unavailable</h1>"
 
 # Passenger Configuration
 LoadModule passenger_module #{passenger_mod}
-PassengerRoot #{passenger_dir}
-PassengerRuby #{ruby}
+<IfModule mod_passenger.c>
+  PassengerRoot #{passenger_dir}
+  PassengerDefaultRuby #{ruby}
+</IfModule>
 
-# HTTP
-NameVirtualHost *:80
 <VirtualHost *:80>
   RailsEnv #{environment}
 
@@ -88,11 +72,9 @@ NameVirtualHost *:80
   <Directory #{cyberengine_public_dir}>
      AllowOverride all
      Options -MultiViews
+     Require all granted
   </Directory>
 </VirtualHost>
-
-# HTTPS
-NameVirtualHost *:443
 <VirtualHost *:443>
   SSLEngine on
   RailsEnv #{environment}
@@ -104,6 +86,7 @@ NameVirtualHost *:443
   <Directory #{cyberengine_public_dir}>
      AllowOverride all
      Options -MultiViews
+     Require all granted
   </Directory>
 </VirtualHost>
 ]
