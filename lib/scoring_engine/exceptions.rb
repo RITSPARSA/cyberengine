@@ -13,8 +13,7 @@ module ScoringEngine
       end
     end
 
-    class BadCheckLocation < StandardError
-    end
+    class BadCheckLocation < StandardError;end
 
   end
 

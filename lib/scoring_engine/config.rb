@@ -16,11 +16,6 @@ module ScoringEngine
       end
       @options[key]
     end
-
-    def to_s
-      @options
-    end
-
   end
 
 end

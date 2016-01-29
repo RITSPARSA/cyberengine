@@ -1,4 +1,4 @@
-require 'scoring_engine/check'
+require 'scoring_engine'
 
 require 'net/http'
 require 'uri'
@@ -6,10 +6,12 @@ require 'uri'
 module ScoringEngine
   module Checks
 
-    class HTTPS < ScoringEngine::Checks::Check
+    class HTTPS < ScoringEngine::Checks::BaseCheck
+
+      FRIENDLY_NAME = "HTTPS Available"
 
       def run
-        uri = URI.parse("https://#{self.server_ip}/")
+        uri = URI.parse("https://google.com/")
 
         https = Net::HTTP.new(uri.host, uri.port)
         https.use_ssl = true
@@ -17,7 +19,7 @@ module ScoringEngine
         response = https.get("/")
 
         if response
-          return Results::Success
+          return Results::Success, uri
         else
           return Results::Failure, 'Failed HTTPS for unknown reason'
         end

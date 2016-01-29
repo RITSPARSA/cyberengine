@@ -1,10 +1,10 @@
 module ScoringEngine
   module Checks
-    class Check
-      attr_reader :service, :server_ip
+    class BaseCheck
+      attr_reader :service
 
-      def initialize(server_ip)
-        @server_ip = server_ip
+      def initialize(service)
+        @service = service
       end
 
 
