@@ -6,14 +6,9 @@ require 'scoring_engine'
 require 'ostruct'
 require 'optparse'
 
-default_config_file = "#{File.dirname(__FILE__)}/../config.yaml"
-
 options = OpenStruct.new
 opts = OptionParser.new()
-opts.banner = "Usage: #{$0} -c <Config File>"
-opts.on("-c CONFIG_FILE", String, "Config file (Default to #{default_config_file})") do |config_file|
-  options.config_file = config_file
-end
+opts.banner = "Usage: #{$0}"
 opts.on("-v", "Boolean to turn on verbosity") do
   options.verbosity = true
 end
@@ -26,13 +21,5 @@ opts.parse!
 ScoringEngine::Logger.level = Logger::INFO
 ScoringEngine::Logger.level = Logger::DEBUG if options.verbosity
 
-if options.config_file.nil?
-  config_file = default_config_file
-else
-  config_file = options.config_file
-end
-
-config = ScoringEngine::Config.new(config_file)
-
-engine = ScoringEngine::Engine.new(config["checks_location"])
+engine = ScoringEngine::Engine.new(ScoringEngine.checks_dir)
 engine.start(["google.com","yahoo.com"])
