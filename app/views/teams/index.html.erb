@@ -1,15 +1,17 @@
 <% if Team.can_new?(current_member) %>
   <% content_for :actions do %>
-    <li class="new"> 
+    <li class="new">
       <%= link_to new_team_path do %><i class="icon-plus-sign"></i><span>New Team</span><% end %>
     </li>
-  <% end %>  
-<% end %>  
+  <% end %>
+<% end %>
 
 
 <div class="page-header">
   <h3>Teams</h3>
 </div>
+
+
 
 <table class="table table-hover">
   <thead>
@@ -22,7 +24,7 @@
   <tbody>
     <% @teams.each do |team| %>
       <% next unless team.can_index?(current_member,team.id) %>
-      <% label = { red: 'important', blue: 'info', white:'inverse' } %>
+      <% label = { red: 'danger', blue: 'primary', white:'default' } %>
       <tr>
         <% if team.can_show?(current_member,team.id) %>
           <td><%= link_to team.alias, team_path(team) %></td>

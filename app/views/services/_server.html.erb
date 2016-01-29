@@ -15,7 +15,7 @@
       <% next unless service.can_show?(current_member,@team.id) %>
       <% server = service.server %>
       <% latest = service.checks.latest || Check.new %>
-      <% label_class = latest.passed ? "success" : "important" %>
+      <% label_class = latest.passed ? "success" : "danger" %>
       <% label_text = latest.passed ? "Passing" : "Failing" %>
       <tr>
         <td><%= link_to service.name, team_server_service_path(@team,server,service) %></td>

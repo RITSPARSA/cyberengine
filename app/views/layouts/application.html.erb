@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <% if content_for? :meta %> 
+    <% if content_for? :meta %>
       <%= yield :meta %>
     <% elsif params[:action] == "show" || params[:action] == "overview" %>
       <meta http-equiv="refresh" content="300" />
@@ -60,14 +60,16 @@
     <div class="container-fluid">
       <div class="row-fluid">
       <% pathing = !((@member.nil? || @member.id.nil?) && (@team.nil? || @team.id.nil?) && (@server.nil? || @server.id.nil?) && (@service.nil? || @service.id.nil?) && (@check.nil? || @check.id.nil?) && (@user.nil? || @user.id.nil?) && (@property.nil? || @property.id.nil?)) %>
-        <% if content_for?(:actions) || pathing %>
+        <% if pathing %>
+          <%= render partial: 'layouts/pathing' %>
+        <% end %>
+        <% if content_for?(:actions)%>
           <div class="span2">
             <ul class="nav nav-tabs nav-stacked sidebar">
               <% if content_for? :actions %>
                 <li class="nav-header">Actions</li>
                 <%= yield :actions %>
               <% end %>
-              <%= render partial: 'layouts/pathing' %>
             </ul>
           </div>
           <div class="span10 main">
