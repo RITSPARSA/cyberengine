@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'scoring_engine'
+
+require 'ostruct'
+require 'optparse'
+
+options = OpenStruct.new
+opts = OptionParser.new()
+opts.banner = "Usage: #{$0}"
+opts.on("-v", "Boolean to turn on verbosity") do
+  options.verbosity = true
+end
+opts.on_tail("-h", "--help", "Show this message") do
+  puts opts
+  exit
+end
+opts.parse!
+
+ScoringEngine::Logger.level = Logger::INFO
+ScoringEngine::Logger.level = Logger::DEBUG if options.verbosity
+
+engine = ScoringEngine::Engine.new(ScoringEngine.checks_dir)
+engine.start(["google.com","yahoo.com"])
