@@ -1,4 +1,4 @@
-<li class="nav-header">Path</li>
+<ul class="breadcrumb">
 <% unless @member.nil? || @member.id.nil? %>
   <li class='path'>
     <%= link_to member_path(@member) do %><i class="icon-arrow-down"></i><span><%= @member.username %></span><% end %>
@@ -34,3 +34,4 @@
     <%= link_to team_server_service_user_path(@team,@server,@service,@property) do %><i class="icon-arrow-down"></i><span><%= @property.category %></span><% end %>
   </li>
 <% end %>
+</ul>
