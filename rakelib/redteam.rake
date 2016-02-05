@@ -1,4 +1,4 @@
-namespace :cyberengine do
+namespace :scoringengine do
   task :redteam => :environment do
     team = Team.create(color: 'Red', name: 'Redteam', alias: 'Redteam' )
     member = Member.create(team_id: team.id, username: 'redteam', password: 'redteam', password_confirmation: 'redteam')

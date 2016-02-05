@@ -1,4 +1,4 @@
-namespace :cyberengine do
+namespace :scoringengine do
   task :example => :environment do
     # Example Blueteam
     team = Team.create(color: 'Blue', name: 'Example Blueteam', alias: 'Example Blueteam' ) #'
@@ -61,8 +61,8 @@ namespace :cyberengine do
     # SMTP Send Mail
     service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'from-domain', value: 'cyberengine.ists')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'rcpt-domain', value: 'cyberengine.ists')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'from-domain', value: 'engine.ists')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'rcpt-domain', value: 'engine.ists')
     user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
     # SSH Login

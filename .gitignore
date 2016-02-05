@@ -5,8 +5,8 @@
 /.bundle
 /db/*.sqlite3
 /log/*
-cyberengine-checks/logs
-cyberengine-checks/pids
+logs
+pids
 /tmp/*
 /lib/tasks/*ists*
 /quickstart.sh

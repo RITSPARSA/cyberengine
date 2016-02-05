@@ -6,7 +6,7 @@ require 'uri'
 module ScoringEngine
   module Checks
 
-    class HTTP < ScoringEngine::Checks::BaseCheck
+    class HTTP < ScoringEngine::Engine::BaseCheck
 
       FRIENDLY_NAME = "HTTP Available"
 
@@ -14,9 +14,9 @@ module ScoringEngine
         uri = URI.parse("http://google.com")
         response = Net::HTTP.get_response(uri)
         if response
-          return Results::Success, uri
+          return Success, uri
         else
-          return Results::Failure, 'Failed http'
+          return Failure, 'Failed http'
         end
       end
 
