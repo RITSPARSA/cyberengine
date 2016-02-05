@@ -1,4 +1,4 @@
-namespace :cyberengine do
+namespace :scoringengine do
   task :whiteteam => :environment do
     # Whiteteam
     team = Team.create(color: 'White', name: 'Whiteteam', alias: 'Whiteteam' )
@@ -28,36 +28,36 @@ namespace :cyberengine do
 
     # IRC Channel Join
     # service = Service.create(team_id: team.id, server_id: server.id, name: "IRC Channel Join", version: 'ipv4', protocol: 'irc', enabled: false, available_points: 0)
-    # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'cyberengine', password: 'cyberengine')
+    # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'engine', password: 'engine')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'port', value: '6667')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'authentication', value: 'disabled')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'channel', value: '#cyberengine')
+    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'channel', value: '#engine')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'JOIN')
 
 
     # FTP Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Download", version: 'ipv4', protocol: 'ftp', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # FTP Upload
     service = Service.create(team_id: team.id, server_id: server.id, name: "FTP Upload", version: 'ipv4', protocol: 'ftp', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # FTPS Download
     # service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Download", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 100)
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # # FTPS Upload
     # service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Upload", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 100)
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/cyberengine')
+    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # HTTP Available
@@ -119,8 +119,8 @@ namespace :cyberengine do
     # SSH Login
     service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'echo "cyberengine check"')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^cyberengine check$')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'echo "engine check"')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^engine check$')
   end
 
   def useragents

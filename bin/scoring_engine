@@ -2,6 +2,7 @@
 $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'scoring_engine'
+require 'scoring_engine/engine'
 
 require 'ostruct'
 require 'optparse'
@@ -21,5 +22,5 @@ opts.parse!
 ScoringEngine::Logger.level = Logger::INFO
 ScoringEngine::Logger.level = Logger::DEBUG if options.verbosity
 
-engine = ScoringEngine::Engine.new(ScoringEngine.checks_dir)
-engine.start(["google.com","yahoo.com"])
+machine = ScoringEngine::Engine::Machine.new(ScoringEngine.checks_dir)
+machine.start

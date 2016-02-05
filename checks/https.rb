@@ -6,7 +6,7 @@ require 'uri'
 module ScoringEngine
   module Checks
 
-    class HTTPS < ScoringEngine::Checks::BaseCheck
+    class HTTPS < ScoringEngine::Engine::BaseCheck
 
       FRIENDLY_NAME = "HTTPS Available"
 
@@ -19,9 +19,9 @@ module ScoringEngine
         response = https.get("/")
 
         if response
-          return Results::Success, uri
+          return Success, uri
         else
-          return Results::Failure, 'Failed HTTPS for unknown reason'
+          return Failure, 'Failed HTTPS for unknown reason'
         end
       end
 

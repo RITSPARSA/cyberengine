@@ -3,10 +3,10 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cyberengine_production
+  database: scoringengine_production
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
   host: localhost
   port: 3306
 
@@ -14,10 +14,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cyberengine_development
+  database: scoringengine_development
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
   host: localhost
   port: 3306
 
@@ -25,9 +25,9 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cyberengine_test
+  database: scoringengine_test
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
   host: localhost
   port: 3306

@@ -1,4 +1,4 @@
-namespace :cyberengine do
+namespace :scoringengine do
   task :reset => :environment do
     puts "Dropping database"
     Rake::Task["db:drop"].invoke

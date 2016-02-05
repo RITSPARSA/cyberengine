@@ -2,23 +2,23 @@
 production:
   adapter: postgresql
   encoding: unicode
-  database: cyberengine_production
+  database: scoringengine_production
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
 
 development:
   adapter: postgresql
   encoding: unicode
-  database: cyberengine_development
+  database: scoringengine_development
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: cyberengine_test
+  database: scoringengine_test
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine

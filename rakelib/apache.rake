@@ -1,12 +1,12 @@
-namespace :cyberengine do
+namespace :scoringengine do
   task :apache => :environment do
 
     environment = Rails.env
-    cyberengine_dir = File.expand_path(__FILE__).split('/')[1..-4].join('/').prepend('/')
-    cyberengine_public_dir = cyberengine_dir + '/public'
-    cyberengine_ssl_certificate = cyberengine_dir + '/config/ssl_certificate.pem'
+    engine_dir = File.expand_path(__FILE__).split('/')[1..-4].join('/').prepend('/')
+    engine_public_dir = engine_dir + '/public'
+    engine_ssl_certificate = engine_dir + '/config/ssl_certificate.pem'
     apache_document_dir = File.expand_path(__FILE__).split('/')[1..-5].join('/').prepend('/')
-    apache_log_dir = cyberengine_dir + '/log'
+    apache_log_dir = engine_dir + '/log'
 
     ip_address = "FILL_ME_IN"
     passenger_mod = "FILL_ME_IN"
@@ -45,8 +45,8 @@ LoadModule status_module modules/mod_status.so
 
 # SSL
 LoadModule ssl_module modules/mod_ssl.so
-SSLCertificateFile #{cyberengine_ssl_certificate}
-SSLCertificateKeyFile #{cyberengine_ssl_certificate}
+SSLCertificateFile #{engine_ssl_certificate}
+SSLCertificateKeyFile #{engine_ssl_certificate}
 
 # Errors - normally handled by rails app
 ErrorDocument 400 "<h1>400 Bad Request</h1>"
@@ -68,8 +68,8 @@ LoadModule passenger_module #{passenger_mod}
   ServerName #{ip_address}
   ServerAlias #{ip_address}
 
-  DocumentRoot #{cyberengine_public_dir}
-  <Directory #{cyberengine_public_dir}>
+  DocumentRoot #{engine_public_dir}
+  <Directory #{engine_public_dir}>
      AllowOverride all
      Options -MultiViews
      Require all granted
@@ -82,8 +82,8 @@ LoadModule passenger_module #{passenger_mod}
   ServerName #{ip_address}
   ServerAlias https://#{ip_address}
 
-  DocumentRoot #{cyberengine_public_dir}
-  <Directory #{cyberengine_public_dir}>
+  DocumentRoot #{engine_public_dir}
+  <Directory #{engine_public_dir}>
      AllowOverride all
      Options -MultiViews
      Require all granted

@@ -1,5 +1,8 @@
+include ScoringEngine::Engine::Results
+
 module ScoringEngine
-  module Checks
+  module Engine
+
     class BaseCheck
       attr_reader :service
 

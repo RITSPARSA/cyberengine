@@ -1,11 +1,11 @@
-namespace :cyberengine do
+namespace :scoringengine do
   task :setup => :environment do
-    Rake::Task["cyberengine:reset"].invoke
+    Rake::Task["scoringengine:reset"].invoke
     puts ""
-    Rake::Task["cyberengine:whiteteam"].invoke
+    Rake::Task["scoringengine:whiteteam"].invoke
     puts ""
-    Rake::Task["cyberengine:redteam"].invoke
+    Rake::Task["scoringengine:redteam"].invoke
     puts ""
-    Rake::Task["cyberengine:example"].invoke
+    Rake::Task["scoringengine:example"].invoke
   end
 end
