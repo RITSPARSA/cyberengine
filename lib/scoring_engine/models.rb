@@ -1,0 +1,8 @@
+require_relative "../../app/models/ability"
+require_relative "../../app/models/check"
+require_relative "../../app/models/member"
+require_relative "../../app/models/property"
+require_relative "../../app/models/server"
+require_relative "../../app/models/service"
+require_relative "../../app/models/team"
+require_relative "../../app/models/user"
