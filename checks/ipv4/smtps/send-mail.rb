@@ -3,7 +3,7 @@ require 'scoring_engine'
 module ScoringEngine
   module Checks
 
-    class SMTPSendMail < ScoringEngine::Engine::BaseCheck
+    class SMTPSSendMail < ScoringEngine::Engine::BaseCheck
 
       FRIENDLY_NAME = "SMTP Send Mail"
       PROTOCOL = "smtp"

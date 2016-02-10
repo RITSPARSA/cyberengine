@@ -7,5 +7,7 @@ namespace :scoringengine do
     Rake::Task["scoringengine:redteam"].invoke
     puts ""
     Rake::Task["scoringengine:example"].invoke
+    puts ""
+    Rake::Task["scoringengine:verify_checks"].invoke
   end
 end
