@@ -33,6 +33,7 @@ class Property < ActiveRecord::Base
     team = Team.find_by_id(team_id)
     server = Server.find_by_id(server_id)
     service = Service.find_by_id(service_id)
+
     unless team && server && service && team.id == server.team_id && team.id == service.team_id && team.id == team_id
       errors.add_to_base("Server, Service, and Property must belong to same Team")
     end

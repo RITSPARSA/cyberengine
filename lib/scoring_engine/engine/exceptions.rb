@@ -5,6 +5,8 @@ module ScoringEngine
 
       class BadCheckLocation < StandardError;end
 
+      class MultipleIPProperties < StandardError;end
+
     end
   end
 
