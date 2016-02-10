@@ -23,4 +23,16 @@ ScoringEngine::Logger.level = Logger::INFO
 ScoringEngine::Logger.level = Logger::DEBUG if options.verbosity
 
 machine = ScoringEngine::Engine::Machine.new(ScoringEngine.checks_dir)
-machine.start
+
+options_hash = {
+  "list" => lambda{machine.log_check_status},
+  "run" => lambda{machine.start},
+}
+
+unless opts.default_argv.empty?
+  command = opts.default_argv.first
+  options_hash[command].call
+else
+  ScoringEngine::Logger.error("No command passed. Possible options are #{options_hash.keys}")
+  exit 1
+end
