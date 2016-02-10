@@ -38,7 +38,7 @@
   <div class="control-group">
     <%= f.label :available_points, class: 'control-label' %>
     <div class="controls">
-      <%= f.number_field :available_points, min: 0, step: 10, value: 250 %>
+      <%= f.number_field :available_points, min: 0, step: 10, value: @service.available_points %>
     </div>
   </div>
 
