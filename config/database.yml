@@ -1,27 +1,33 @@
-# PostgreSQL - 9.x
+# MySQL - 5.x
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: cyberengine_production
-  host: localhost
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: scoringengine_production
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
+  host: localhost
+  port: 3306
 
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: cyberengine_development
-  host: localhost
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: scoringengine_development
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
+  host: localhost
+  port: 3306
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: cyberengine_test
-  host: localhost
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: scoringengine_test
   pool: 5
-  username: cyberengine
-  password: cyberengine
+  username: scoringengine
+  password: scoringengine
+  host: localhost
+  port: 3306

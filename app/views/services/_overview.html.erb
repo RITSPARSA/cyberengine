@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Service</th>
+      <th>IP</th>
       <th>Version</th>
       <th>Protocol</th>
       <th>Status</th>
@@ -16,13 +17,17 @@
       <% next unless service.can_overview?(current_member,team.id) %>
       <% server = service.server %>
       <% latest_check = service.checks.latest || Check.new %>
-      <% label_class = latest_check.passed ? "success" : "important" %>
+      <% label_class = latest_check.passed ? "success" : "danger" %>
       <% label_text = latest_check.passed ? "Passing" : "Failing" %>
       <tr>
         <% if service.can_show?(current_member,service.team_id) %>
           <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
         <% else %>
           <td><%= service.name %></td>
+        <% end %>
+        <% service.properties.ordered.each do |property| %>
+          <% next unless property.category == "address" %>
+          <td><%= property.value %></td>
         <% end %>
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>

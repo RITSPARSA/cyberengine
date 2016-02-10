@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 3.0'
 gem 'therubyracer'
-gem 'bcrypt-ruby'  #, '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'passenger'
 gem 'jquery-rails'
-gem 'passenger'
+gem 'font-awesome-less'
 
-gem 'pg'
+# gem 'pg'
 # gem 'sqlite3'
-# gem 'mysql2' 
+gem 'mysql2', '~> 0.3.0'
 
 # No asset group
 # https://github.com/seyhunak/twitter-bootstrap-rails/issues/338
@@ -20,3 +20,6 @@ gem 'uglifier'     #, '>= 1.0.3'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'highcharts-rails'
+
+# Scoring Checks
+gem 'net-ping'
