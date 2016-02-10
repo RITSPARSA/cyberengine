@@ -3,6 +3,7 @@ require 'active_record'
 require_relative 'models'
 
 require_relative 'engine/machine'
+require_relative 'engine/exceptions'
 
 module ScoringEngine
   module Engine

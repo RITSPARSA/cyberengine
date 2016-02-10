@@ -16,7 +16,7 @@ module ScoringEngine
 
         @available_checks = []
 
-        Dir.glob("#{self.checks_location}/*.rb").each do |check_file|
+        Dir.glob("#{self.checks_location}/**/*.rb").each do |check_file|
           ScoringEngine::Logger.debug("Requiring #{check_file}")
           require_relative check_file
         end

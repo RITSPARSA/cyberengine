@@ -40,20 +40,21 @@ module ScoringEngine
             Logger.info("Running #{check.class.clean_name} on #{service.team.name}: #{service.server.name}")
 
             begin
-              result,reason = check.run
+              cmd_str = check.command_str
+              result,result_info = check.run
             rescue Exception => e
               result = Failure
-              reason = e.message
+              result_info = e.message
             end
 
             if result == Success
-              reason = "Check success for no reason?...Investigate!" if reason.nil?
+              cmd_str,result_info = "Check success but with no cmd_str/result_info?...Investigate!" if cmd_str.nil? or result_info.nil?
               Logger.debug("Finished Successfully: #{check.class.clean_name} for #{service.team.name}: #{service.server.name}")
-              submitted_check = ScoringEngine::Engine.create_check(service, round, true, "Abc", reason)
+              submitted_check = ScoringEngine::Engine.create_check(service, round, true, cmd_str, result_info)
             elsif result == Failure
-              reason = "Check failed for no reason?...Investigate!" if reason.nil?
-              Logger.debug("Finished Unsuccessfully: #{check.class.clean_name} for #{service.team.name}: #{service.server.name}...#{reason}")
-              submitted_check = ScoringEngine::Engine.create_check(service, round, false, "Abc", reason)
+              cmd_str,result_info = "Check failed but with no cmd_str/result_info?...Investigate!" if cmd_str.nil? or result_info.nil?
+              Logger.debug("Finished Unsuccessfully: #{check.class.clean_name} for #{service.team.name}: #{service.server.name}")
+              submitted_check = ScoringEngine::Engine.create_check(service, round, false, cmd_str, result_info)
             end
 
             if submitted_check.id.nil?
@@ -61,8 +62,9 @@ module ScoringEngine
             end
           end
 
-          Logger.debug("Sleeping for 5 seconds inbetween rounds")
-          sleep 5
+          sleep_timer = Random.rand(5...30)
+          Logger.info("Sleeping for #{sleep_timer} seconds inbetween rounds")
+          sleep sleep_timer
         end
       end
 
