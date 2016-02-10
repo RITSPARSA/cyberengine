@@ -5,8 +5,8 @@ module ScoringEngine
 
     class SMTPSSendMail < ScoringEngine::Engine::BaseCheck
 
-      FRIENDLY_NAME = "SMTP Send Mail"
-      PROTOCOL = "smtp"
+      FRIENDLY_NAME = "SMTPS Send Mail"
+      PROTOCOL = "smtps"
       VERSION = "ipv4"
 
       def command_str

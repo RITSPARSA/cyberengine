@@ -41,10 +41,11 @@ module ScoringEngine
       def get_preferred_match_regex
         regex = defaults.properties.answer('each-line-regex')
         regex = service.properties.answer('each-line-regex') unless service.properties.answer('each-line-regex').empty?
-        if regex.nil?
-          regex = defaults.properties.answer('full-line-regex')
-          regex = service.properties.answer('full-line-regex') unless service.properties.answer('full-line-regex').empty?
+        if regex.empty?
+          regex = defaults.properties.answer('full-text-regex')
+          regex = service.properties.answer('full-text-regex') unless service.properties.answer('full-text-regex').empty?
         end
+
         raise "Missing answer property: each-line-regex or full-text-regex required" unless regex
 
         return regex

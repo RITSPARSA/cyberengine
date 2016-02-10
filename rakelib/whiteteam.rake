@@ -88,11 +88,11 @@ namespace :scoringengine do
 
     # SMTP Send Mail
     service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: false, available_points: 0)
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '< 250 2.0.0 Ok')
 
     # SMTPS Send Mail
     # service = Service.create(team_id: team.id, server_id: server.id, name: "SMTPS Send Mail", version: 'ipv4', protocol: 'smtps', enabled: false, available_points: 0)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: 'data not shown\]\s*< 250')
+    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: '< 250 2.0.0 Ok)
 
     # SSH Login
     service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: false, available_points: 0)
