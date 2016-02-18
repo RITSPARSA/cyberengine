@@ -22,12 +22,24 @@ opts.parse!
 ScoringEngine::Logger.level = Logger::INFO
 ScoringEngine::Logger.level = Logger::DEBUG if options.verbosity
 
-machine = ScoringEngine::Engine::Machine.new(ScoringEngine.checks_dir)
+@machine = ScoringEngine::Engine::Machine.new(ScoringEngine.checks_dir)
 
 options_hash = {
-  "list" => lambda{machine.log_check_status},
-  "run" => lambda{machine.start},
+  "list" => lambda{@machine.log_check_status},
+  "run" => lambda{@machine.start},
+  "test" => lambda{@machine.start(true)},
 }
+
+Signal.trap("TRAP") do
+  raise ScoringEngine::Engine::Exceptions::TerminateEngine
+end
+
+Signal.trap("INT") do
+  Thread.new do
+    ScoringEngine::Logger.info("Ctr-c received...triggering last round. (Round #{@machine.round})")
+    @machine.last_round
+  end
+end
 
 unless opts.default_argv.empty?
   command = opts.default_argv.first

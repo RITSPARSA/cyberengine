@@ -7,6 +7,8 @@ module ScoringEngine
 
       class MultipleIPProperties < StandardError;end
 
+      class TerminateEngine < StandardError;end
+
     end
   end
 
