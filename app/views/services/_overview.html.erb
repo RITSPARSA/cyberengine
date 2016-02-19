@@ -32,7 +32,11 @@
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>
         <td>
-          <% if latest_check.id.nil? %>
+          <% if service.disabled? %>
+            <% label_class = "invert" %>
+            <% label_text = "Disabled" %>
+            <span class="label label-<%= label_class %>"><%= label_text %></span>
+          <% elsif latest_check.id.nil? %>
             <span class="label label-info">No Checks</span>
           <% else %>
             <% if Check.can_show?(current_member,team_id) %>

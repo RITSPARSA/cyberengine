@@ -10,6 +10,7 @@ class StaticController < ApplicationController
     Team.blueteams.includes([services_for_scoring: :checks_for_scoring]).each do |team|
       @scoreboard[team.id] = {checks: 0, passed: 0, percent: 0.0, points: 0, available: 0, alias: team.alias, team: team, services: Hash.new}
       team.services_for_scoring.each do |service|
+        next if service.disabled?
         @scoreboard[team.id][:services][service.id] = {checks: 0, passed: 0, percent: 0.0, points: 0, available: service.available_points, name: service.name, protocol: service.protocol, version: service.version, service: service}
         service.checks_for_scoring.each do |check|
           @scoreboard[team.id][:checks] += 1
