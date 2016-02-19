@@ -6,7 +6,7 @@
     </tr>
     <tr>
       <td>Status:</td>
-      <% label_class = @check.passed ? "success" : "danger" %>
+      <% label_class = @check.passed ? "success" : "important" %>
       <% label_text = @check.passed ? "Passed" : "Failed" %>
       <td><span class="label label-<%= label_class %>"><%= label_text %></span></td>
     </tr>

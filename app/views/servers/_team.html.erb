@@ -26,7 +26,7 @@
             <% server.services.each do |service| %>
               <% next unless service.can_show?(current_member,@team.id) %>
               <% latest_check = service.checks.latest || Check.new %>
-              <% label_class = latest_check.passed ? "success" : "danger" %>
+              <% label_class = latest_check.passed ? "success" : "important" %>
               <% label_text = latest_check.passed ? "Passing" : "Failing" %>
               <% if latest_check.id.nil? %>
                 <span class="label label-info">No Checks</span>
