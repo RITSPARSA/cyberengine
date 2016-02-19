@@ -19,6 +19,7 @@ module ScoringEngine
         cmd << "&& mount -t nfs #{ip}:#{share} $tmpdir "
         cmd << "&& cp $tmpdir/#{filename} $tmpfile "
         cmd << "&& umount $tmpdir "
+        cmd << "&& echo OK || echo NOK"
 
         return cmd
       end
