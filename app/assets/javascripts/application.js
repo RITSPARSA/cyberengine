@@ -17,3 +17,14 @@
 $('body').on('hidden', '.modal', function () {
   $(this).removeData('modal');
 });
+
+
+$(document).ready(function() {
+ // hides the div as soon as the DOM is ready
+  $('div.show_password').hide();
+});
+
+function toggle_fields(link) {
+    $(link).toggle();
+    $(link).prev().toggle();
+}

@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Password</th>
+      <th>Password <%= link_to_function "(Hide/Unhide)", "toggle_fields('div.show_password')" %></th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +15,7 @@
         <% next unless user.can_show?(current_member,@team.id) %>
         <tr>
           <td><%= link_to user.username, team_server_service_user_path(@team,@server,service,user) %></td>
-          <td><%= user.password %></td>
+          <td><div class="show_password"><%= user.password %></div></td>
         </tr>
       <% end %>
     <% end %>
