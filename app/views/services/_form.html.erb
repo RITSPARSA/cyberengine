@@ -43,16 +43,10 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :team_id, class: 'control-label' %>
-    <div class="controls">
-      <%= select(:service, :team_id, [[@team.alias, @team.id]] ) %>
-    </div>
-  </div>
-
-  <div class="control-group">
     <%= f.label :server_id, class: 'control-label' %>
     <div class="controls">
-      <%= select(:service, :server_id, [[@server.name, @server.id]]) %>
+      <% servers = @service.server.team.servers %>
+      <%= select(:service, :server_id, servers.map{ |server| [server.name, server.id]}) %>
     </div>
   </div>
 
