@@ -26,7 +26,7 @@
       </li>
     <% end %>
     <% if User.can_edit?(current_member,@team.id) %>
-      <li class="csv"> 
+      <li class="csv">
         <%= link_to csv_team_server_service_users_path(@team,@server,@service) do %><i class="icon-plus-sign"></i><span>CSV Users Update</span><% end %>
       </li>
     <% end %>
