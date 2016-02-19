@@ -23,19 +23,16 @@ class StaticController < ApplicationController
     @scoreboard.each do |team_id,team|
       team[:percent] = team[:checks] == 0 ? 0 : (team[:passed].to_f/team[:checks].to_f)
       team[:available] = team[:services].map{|i,s| s[:available] }.sum.to_i
+      team[:points] = (team[:available]*team[:percent]).to_i
       team[:percent] = (team[:percent]*100).round(1)
-
-      total_points = 0
+      @bargraph << { y: team[:points], color: @colors[team_id % @colors.size] }
+      @teams << team[:alias]
       team[:services].each do |service_id,service|
         service[:percent] = service[:checks] == 0 ? 0 : (service[:passed].to_f/service[:checks].to_f)
         service[:available] = service[:available].to_i
         service[:points] = (service[:available]*service[:percent]).to_i
-        total_points += service[:points]
         service[:percent] = (service[:percent]*100).round(1)
       end
-      team[:points] = total_points
-      @bargraph << { y: team[:points], color: @colors[team_id % @colors.size] }
-      @teams << team[:alias]
     end
     #FF1493 MediumViolet
     #F08080 LightCoral

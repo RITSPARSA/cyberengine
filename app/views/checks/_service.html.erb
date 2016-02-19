@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <td>Status:</td>
-        <% label_class = latest_check.passed ? "success" : "danger" %>
+        <% label_class = latest_check.passed ? "success" : "important" %>
         <% label_text = latest_check.passed ? "Passed" : "Failed" %>
         <td><span class="label label-<%= label_class %>"><%= label_text %></span></td>
       </tr>
@@ -50,7 +50,7 @@
     </thead>
     <tbody>
       <% checks.ordered.each do |check| %>
-        <% label_class = check.passed ? "success" : "danger" %>
+        <% label_class = check.passed ? "success" : "important" %>
         <% label_text = check.passed ? "Passed" : "Failed" %>
         <tr>
           <td><%= link_to check.round, team_server_service_check_path(@team,@server,@service,check) %></td>
