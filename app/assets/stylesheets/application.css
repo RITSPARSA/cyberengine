@@ -57,24 +57,24 @@ table table.inner-table tr > td { padding-bottom: 0px; }
 h2 { margin: 20px 0px 10px 0px; }
 h3 { margin: 10px 0px 5px 0px; }
 .horizontal_text_area {
-  height: 200px; 
+  height: 200px;
   width: 500px;
 }
 
 div .table-dl-horizontal td:nth-of-type(1) {
-  text-align:right; 
-  padding-right:25px; 
+  text-align:right;
+  padding-right:25px;
   vertical-align:top;
   font-weight: bold;
 }
 .output { white-space: pre-wrap; }
 div .table-dl-horizontal td:nth-of-type(2) { white-space: pre-wrap; }
 
-.form-horizontal .control-group-long .control-label { 
-width: 200px; 
+.form-horizontal .control-group-long .control-label {
+width: 200px;
 }
-.form-horizontal .control-group-long .controls { 
-margin-left: 220px; 
+.form-horizontal .control-group-long .controls {
+margin-left: 220px;
 }
 
 .navbar-inner {
@@ -91,8 +91,8 @@ margin-left: 220px;
 .sidebar [class^="icon-"] { line-height: 20px; }
 .sidebar [class*=" icon-"] { line-height: 20px; }
 .sidebar li.active a,
-.sidebar li.active a:hover { 
-  background-color: #0088cc; 
+.sidebar li.active a:hover {
+  background-color: #0088cc;
   color: #ffffff;
   cursor: auto;
 }
@@ -113,10 +113,10 @@ margin-left: 220px;
 */
 
 .main > div.page-header:first-child { margin-top: 0px; }
-.main > div.page-header > h3 { 
-  margin: 0px; 
-  line-height:25px; 
-  text-transform:capitalize; 
+.main > div.page-header > h3 {
+  margin: 0px;
+  line-height:25px;
+  text-transform:capitalize;
 }
 
 .page-header {
@@ -128,4 +128,8 @@ form input[type="submit"].invisible-submit {
   width: 0px;
   height: 0px;
   border: 0px;
+}
+
+.actions-bar {
+  margin-left: 0px;
 }

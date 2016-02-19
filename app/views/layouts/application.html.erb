@@ -71,13 +71,15 @@
           <%= render partial: 'layouts/pathing' %>
         <% end %>
         <% if content_for?(:actions)%>
-          <div class="span2">
-            <ul class="nav nav-tabs nav-stacked sidebar">
-              <% if content_for? :actions %>
-                <li class="nav-header">Actions</li>
-                <%= yield :actions %>
-              <% end %>
-            </ul>
+          <div class="actions-bar">
+            <div class="span2 actions_bar">
+              <ul class="nav nav-tabs nav-stacked sidebar">
+                <% if content_for? :actions %>
+                  <li class="nav-header">Actions</li>
+                  <%= yield :actions %>
+                <% end %>
+              </ul>
+            </div>
           </div>
           <div class="span10 main">
             <%= bootstrap_flash %>
