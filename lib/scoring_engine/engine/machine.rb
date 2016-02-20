@@ -86,7 +86,7 @@ module ScoringEngine
             Logger.info("Starting new round: #{@round}")
             mid_round(true)
             services = Service.where("enabled = ?", true)
-            services.each do |service|
+            services.shuffle.each do |service|
 
               service_checks = @check_collection.available_checks.select{|check| check::FRIENDLY_NAME == service.name}
               if service_checks.empty?
