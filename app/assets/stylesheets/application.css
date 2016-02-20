@@ -24,14 +24,17 @@
 }
 
 #propertiesModal {
+  top: 25%;
   width: 800px;
   margin: 0px 0px 0px -400px;
 }
 #checksModal {
+  top: 25%;
   width: 1000px;
   margin: 0px 0px 0px -500px;
 }
 #usersModal {
+  top: 25%;
   width: 600px;
   margin: 0px 0px 0px -300px;
 }
