@@ -173,12 +173,14 @@ module ScoringEngine
                     Logger.info("Finished Unsuccessfully: #{check_obj.service.name} for #{check_obj.service.team.name}: #{check_obj.service.server.name}")
                   end
 
-                  submitted_check = ScoringEngine::Engine.create_check(check_obj.service, @round, result == Success, finished_check["options"]["cmd"], output)
-                  if submitted_check.nil? or submitted_check.id.nil?
-                    Logger.fatal("Cannot save check for (#{check_obj.service.name}) for #{check_obj.service.team.name}: #{check_obj.service.server.name}")
-                  end
+                  unless testing?
+                    submitted_check = ScoringEngine::Engine.create_check(check_obj.service, @round, result == Success, finished_check["options"]["cmd"], output)
+                    if submitted_check.nil? or submitted_check.id.nil?
+                      Logger.fatal("Cannot save check for (#{check_obj.service.name}) for #{check_obj.service.team.name}: #{check_obj.service.server.name}")
+                    end
 
-                  saved_checks << finished_check["uuid"]
+                    saved_checks << finished_check["uuid"]
+                  end
                 end
               end
 
