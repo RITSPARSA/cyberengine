@@ -20,7 +20,10 @@ module ScoringEngine
         begin
           Timeout::timeout(Machine::CHECK_MAX_TIMEOUT) do
             ::PTY.spawn(cmd_str) do |irb_out, irb_in, pid|
-              output = irb_out.readlines.join("")
+              begin
+                output = irb_out.readlines.join("")
+              rescue Errno::EIO
+              end
             end
           end
         rescue Timeout::Error
