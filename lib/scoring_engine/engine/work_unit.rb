@@ -1,6 +1,7 @@
 require 'resque/plugins/status'
-require 'pty'
+
 require 'timeout'
+require 'open3'
 
 module ScoringEngine
   module Engine
@@ -19,10 +20,13 @@ module ScoringEngine
         output = ""
         begin
           Timeout::timeout(Machine::CHECK_MAX_TIMEOUT) do
-            ::PTY.spawn(cmd_str) do |irb_out, irb_in, pid|
-              begin
-                output = irb_out.readlines.join("")
-              rescue Errno::EIO
+            ::Open3.popen3(cmd_str) do |stdin, stdout, stderr, wait_thr|
+              while line = stdout.gets
+                output << line
+              end
+
+              while line = stderr.gets
+                output << line
               end
             end
           end
