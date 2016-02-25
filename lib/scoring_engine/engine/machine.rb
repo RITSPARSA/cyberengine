@@ -10,7 +10,10 @@ module ScoringEngine
 
     class Machine
 
-      CHECK_MAX_TIMEOUT = 20
+      CHECK_MAX_TIMEOUT = 30
+
+      MIN_ROUND_BREAK = 20
+      MAX_ROUND_BREAK = 60
 
       attr_reader :round
 
@@ -107,14 +110,15 @@ module ScoringEngine
 
         begin
           while !last_round? do
+            start_time = Time.now
             @round += 1
 
             Logger.info("Starting new round: #{@round}")
             mid_round(true)
-            services = Service.where("enabled = ?", true).order('name').order('id')
+            services = Service.where("enabled = ?", true)
 
             check_ids = {}
-            services.each do |service|
+            services.shuffle.each do |service|
               service_checks = @check_collection.available_checks.select{|check| check::FRIENDLY_NAME == service.name}
               if service_checks.empty?
                 Logger.error("Not running #{service.name}...check not found")
@@ -148,23 +152,6 @@ module ScoringEngine
               check_objs = {}
               check_ids.each {|id,check| check_objs[check] = Resque::Plugins::Status::Hash.get(id)}
 
-              num_completed = check_objs.select{|check, thread_check| thread_check["status"] == "completed"}.length
-              num_running = check_objs.select{|check, thread_check| thread_check["status"] == "working"}.length
-              num_waiting = check_objs.select{|check, thread_check| thread_check["status"] == "queued"}.length
-              num_failed = check_objs.select{|check, thread_check| thread_check["status"] == "failed"}.length
-              num_killed = check_objs.select{|check, thread_check| thread_check["status"] == "killed"}.length
-              num_saved = saved_checks.length
-
-              puts "Waiting for round of checks to be completed..."
-              puts "\tCompleted: #{num_completed}"
-              puts "\tRunning: #{num_running}"
-              puts "\tWaiting: #{num_waiting}"
-              puts "\tFailed: #{num_failed}"
-              puts "\tSaved: #{num_saved}"
-              puts "\tKilled: #{num_killed}"
-              puts "\tTotal: #{check_objs.length}"
-              puts ""
-
               finished_checks(check_objs).each do |check_obj, finished_check|
                 unless saved_checks.include?(finished_check["uuid"])
                   output = finished_check["output"]
@@ -191,15 +178,37 @@ module ScoringEngine
                 end
               end
 
-              sleep 1
+              num_completed = check_objs.select{|check, thread_check| thread_check["status"] == "completed"}.length
+              num_running = check_objs.select{|check, thread_check| thread_check["status"] == "working"}.length
+              num_waiting = check_objs.select{|check, thread_check| thread_check["status"] == "queued"}.length
+              num_failed = check_objs.select{|check, thread_check| thread_check["status"] == "failed"}.length
+              num_killed = check_objs.select{|check, thread_check| thread_check["status"] == "killed"}.length
+              num_saved = saved_checks.length
+
+              Logger.info("Waiting for round ##{@round} to be completed...")
+              Logger.info("\tRunning: #{num_running}")
+              Logger.info("\tWaiting: #{num_waiting}")
+              Logger.info("\tFailed: #{num_failed}")
+              Logger.info("\tKilled: #{num_killed}")
+              Logger.info("\tSaved: #{num_saved}")
+              Logger.info("\tCompleted: #{num_completed}")
+              Logger.info("\tTotal: #{check_objs.length}")
+
+              sleep 2
               break unless checks_running?(check_objs)
             end
 
             mid_round(false)
             Logger.info("Finished running checks for round #{@round}")
 
+            end_time = Time.now
+            round_time = end_time - start_time
+            pretty_round_time = Time.at(round_time).utc.strftime("%Hh:%Mm:%Ss")
+
+            Logger.info("Round #{@round} took #{pretty_round_time} seconds")
+
             unless last_round?
-              sleep_timer = Random.rand(5...30)
+              sleep_timer = Random.rand(MIN_ROUND_BREAK...MAX_ROUND_BREAK)
               Logger.info("Sleeping for #{sleep_timer} seconds inbetween rounds")
               sleep sleep_timer
             end

@@ -51,6 +51,8 @@
                   <li class="divider-vertical"></li>
                 <% end %>
                 <% if current_member.whiteteam? %>
+                  <li><%= link_to 'Redis', redis_path %></li>
+                  <li class="divider-vertical"></li>
                   <li><%= link_to 'Members', members_path %></li>
                   <li class="divider-vertical"></li>
                 <% end %>

@@ -12,6 +12,8 @@ module ScoringEngine
       def perform
         cmd_str = options['cmd']
         round = options['round']
+
+        sleep 0.2
         puts "Running #{cmd_str} for round #{round}"
 
         output = ""
@@ -25,7 +27,6 @@ module ScoringEngine
           puts "Timeout reached at #{Machine::CHECK_MAX_TIMEOUT}"
           kill!
         end
-
         completed('output' => output)
       end
     end

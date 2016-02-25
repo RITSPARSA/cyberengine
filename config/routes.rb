@@ -43,5 +43,5 @@ Cyberengine::Application.routes.draw do
   match 'session' => "sessions#destroy", via: :delete, as: 'session'
 
   # Redis Server
-  mount Resque::Server.new, at: "/resque"
+  mount Resque::Server.new, at: "/redis", as: "redis"
 end
