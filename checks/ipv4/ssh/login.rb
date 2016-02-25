@@ -18,7 +18,7 @@ module ScoringEngine
         command = get_random_property("command")
         raise "Missing command" unless command
 
-        cmd = "expect -c 'spawn ssh #{username}@#{ip} #{command}; expect \"assword\"; send \"#{password}\r\"; interact'"
+        cmd = "expect -c 'spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no #{username}@#{ip} #{command}; expect \"assword\"; send \"#{password}\r\"; interact'"
 
         return cmd
       end
