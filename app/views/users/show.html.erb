@@ -40,7 +40,7 @@
       <td><%= @user.username %></td>
     </tr>
     <tr>
-      <td><%= link_to_function "(Hide/Unhide)", "toggle_fields('div.show_password')" %> Password:</td>
+      <td><%= link_to_function "(Toggle)", "toggle_fields('div.show_password')" %> Password:</td>
       <td><div class="show_password"><%= @user.password %></div></td>
     </tr>
   </table>

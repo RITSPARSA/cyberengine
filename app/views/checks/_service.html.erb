@@ -26,12 +26,12 @@
         <td><%= latest_check.created_at %></td>
       </tr>
       <tr>
-        <td>Request:</td>
-        <td><%= latest_check.request %></td>
+        <td><%= link_to_function "(Toggle)", "toggle_fields('div.show_request')" %> Request:</td>
+        <td><div class="show_request" style="display:none;"><%= latest_check.request %></div></td>
       </tr>
       <tr>
-        <td>Response:</td>
-        <td><%= latest_check.response %></td>
+        <td><%= link_to_function "(Toggle)", "toggle_fields('div.show_response')" %> Response:</td>
+        <td><div class="show_response" style="display:none;"><%= latest_check.response %></div></td>
       </tr>
     </table>
   </div>
