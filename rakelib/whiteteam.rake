@@ -103,6 +103,11 @@ namespace :scoringengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "MySQL Login", version: 'ipv4', protocol: 'mysql', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'show tables')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'Tables_in_')
+
+    # SMB Download
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMB Download", version: 'ipv4', protocol: 'smb', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/Shared/file.txt')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'Connection #\d to host')
   end
 
   def useragents
