@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Cyberengine::Application.routes.draw do
   root to: 'static#welcome'
   get 'welcome', as: 'welcome', controller: :static
@@ -9,7 +11,7 @@ Cyberengine::Application.routes.draw do
     resources :servers do
       resources :services do
         # Service modals
-        resources :checks do 
+        resources :checks do
           get 'modal', on: :member
           get 'modal', on: :collection
         end
@@ -23,7 +25,7 @@ Cyberengine::Application.routes.draw do
         end
       end
       # Server modals
-      resources :checks do 
+      resources :checks do
         get 'modal', on: :collection
       end
       resources :users do
@@ -39,4 +41,7 @@ Cyberengine::Application.routes.draw do
   resources :members
   resources :sessions, only: [:new, :create]
   match 'session' => "sessions#destroy", via: :delete, as: 'session'
+
+  # Redis Server
+  mount Resque::Server.new, at: "/resque"
 end

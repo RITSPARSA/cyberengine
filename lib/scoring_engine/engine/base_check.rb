@@ -1,6 +1,6 @@
-include ScoringEngine::Engine::Results
+require_relative 'exceptions'
 
-require 'pty'
+include ScoringEngine::Engine::Results
 
 module ScoringEngine
   module Engine
@@ -10,14 +10,6 @@ module ScoringEngine
 
       def initialize(service)
         @service = service
-      end
-
-      def execute_command(command_str)
-        output = ""
-        PTY.spawn(command_str) do |irb_out, irb_in, pid|
-          output = irb_out.readlines.join("")
-        end
-        return output
       end
 
       def get_random_property(key)
@@ -33,7 +25,7 @@ module ScoringEngine
       def ip
         ip_addresses = service.properties.addresses
         if ip_addresses.length > 1 or ip_addresses.length < 1
-          raise MultipleIPProperties, ip_addresses
+          raise Exceptions::MultipleIPProperties, ip_addresses
         end
         return ip_addresses.first
       end
@@ -53,18 +45,10 @@ module ScoringEngine
 
       def match?(output)
         if output.match(get_preferred_match_regex)
-          return Success, @response
+          return Success
         else
-          return Failure, @response
+          return Failure
         end
-      end
-
-      def run
-        @request = command_str.strip.squeeze(' ')
-
-        @response = execute_command(@request)
-
-        return match?(@response)
       end
 
       def self.clean_name

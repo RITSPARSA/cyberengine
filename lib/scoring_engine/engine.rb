@@ -1,9 +1,11 @@
 require 'active_record'
+require 'resque'
 
 require_relative 'models'
 
 require_relative 'engine/machine'
 require_relative 'engine/exceptions'
+require_relative 'engine/work_unit'
 
 module ScoringEngine
   module Engine

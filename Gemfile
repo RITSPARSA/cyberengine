@@ -7,6 +7,10 @@ gem 'passenger'
 gem 'jquery-rails'
 gem 'font-awesome-less'
 
+# Redis server
+gem "resque"
+gem "resque-status"
+
 # gem 'pg'
 # gem 'sqlite3'
 gem 'mysql2', '~> 0.3.0'
@@ -20,6 +24,3 @@ gem 'uglifier'     #, '>= 1.0.3'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'highcharts-rails'
-
-# Scoring Checks
-gem 'net-ping'

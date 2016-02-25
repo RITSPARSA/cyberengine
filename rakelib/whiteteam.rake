@@ -98,6 +98,11 @@ namespace :scoringengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'echo "engine check"')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^engine check')
+
+    # MySQL Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "MySQL Login", version: 'ipv4', protocol: 'mysql', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'show tables')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'Tables_in_')
   end
 
   def useragents
