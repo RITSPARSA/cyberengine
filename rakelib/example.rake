@@ -85,13 +85,21 @@ namespace :scoringengine do
     # NFS Available
     service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Available", version: 'ipv4', protocol: 'nfs', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+
     # NFS Content
     service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Content", version: 'ipv4', protocol: 'nfs', enabled: false, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+
     # NFS Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Download", version: 'ipv4', protocol: 'nfs', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'share', value: '/var/opt')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'filename', value: 'testfile.txt')
+
+    # SMB Download
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMB Download", version: 'ipv4', protocol: 'smb', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+
   end
 end
