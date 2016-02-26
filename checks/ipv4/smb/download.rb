@@ -34,7 +34,11 @@ module ScoringEngine
         raise("Missing filename property") unless filename
         filename.gsub!('$USER',username)
 
-        cmd << "\"#{username}:#{password}\" smb://#{ip}#{filename}"
+        # Domain
+        domain = get_random_property('domain')
+        raise("Missing domain property") unless domain
+
+        cmd << " \"#{domain}\\#{username}:#{password}\" smb://#{ip}#{filename}"
 
         return cmd
       end
