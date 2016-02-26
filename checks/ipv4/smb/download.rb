@@ -38,7 +38,7 @@ module ScoringEngine
         domain = get_random_property('domain')
         raise("Missing domain property") unless domain
 
-        cmd << " \"#{domain}\\#{username}:#{password}\" smb://#{ip}#{filename}"
+        cmd << " #{domain}\\#{username}:#{password} smb://#{ip}#{filename}"
 
         return cmd
       end
