@@ -4,6 +4,7 @@ Cyberengine::Application.routes.draw do
   root to: 'static#welcome'
   get 'welcome', as: 'welcome', controller: :static
   get 'scoreboard', as: 'scoreboard', controller: :static
+  get 'redis', as: 'redis', controller: :redis
 
   # Teams, Servers, Services
   resources :teams do
@@ -42,6 +43,6 @@ Cyberengine::Application.routes.draw do
   resources :sessions, only: [:new, :create]
   match 'session' => "sessions#destroy", via: :delete, as: 'session'
 
-  # Redis Server
-  mount Resque::Server.new, at: "/redis", as: "redis"
+  # Resque Server
+  mount Resque::Server.new, at: "/resque", as: "resque"
 end
