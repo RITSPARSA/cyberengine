@@ -1,7 +1,7 @@
 require 'resque/plugins/status'
 
 require 'timeout'
-require 'open3'
+require "open4"
 
 module ScoringEngine
   module Engine
@@ -18,9 +18,11 @@ module ScoringEngine
         puts "Running #{cmd_str} for round #{round}"
 
         output = ""
+        pid = nil
         begin
           Timeout::timeout(Machine::CHECK_MAX_TIMEOUT) do
-            ::Open3.popen3(cmd_str) do |stdin, stdout, stderr, wait_thr|
+            status = Open4.popen4(cmd_str) do |in_pid, stdin, stdout, stderr|
+              pid = in_pid
               while line = stdout.gets
                 output << line
               end
@@ -32,6 +34,7 @@ module ScoringEngine
           end
         rescue Timeout::Error
           puts "Timeout reached at #{Machine::CHECK_MAX_TIMEOUT}"
+          Process.kill('TERM', pid)
           kill!
         end
         completed('output' => output)

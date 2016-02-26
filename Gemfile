@@ -24,3 +24,5 @@ gem 'uglifier'     #, '>= 1.0.3'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'highcharts-rails'
+
+gem 'open4'
