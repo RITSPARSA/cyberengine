@@ -1,5 +1,5 @@
 module Cyberengine
-  # Title/Brand 
+  # Title/Brand
   def self.title; 'ISTS' end
   def self.brand; 'ISTS' end
 
@@ -14,7 +14,7 @@ end
 
 module Blueteam
   # Allow username changes
-  def self.can_update_usernames; false end 
+  def self.can_update_usernames; true end
 
   # Allow blueteams to view
   def self.can_show_all_blueteam_users; false end

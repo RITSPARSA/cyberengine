@@ -21,6 +21,10 @@ class Service < ActiveRecord::Base
   validates :server, presence: { message: "must exist" }
   validate :right_team?
 
+  def disabled?
+    enabled == false
+  end
+
   def self.ordered; order('version ASC, protocol ASC, name DESC') end
 
   def right_team?
@@ -36,7 +40,7 @@ class Service < ActiveRecord::Base
 
   # Standard permissions
   def can_show?(member,team_id) member.whiteteam? || enabled && member.team_id == team_id end
-  def self.can_new?(member,team_id) member.whiteteam? end 
+  def self.can_new?(member,team_id) member.whiteteam? end
   def can_edit?(member,team_id) member.whiteteam? end
   def can_create?(member,team_id) member.whiteteam? end
   def can_update?(member,team_id) member.whiteteam? end
