@@ -32,6 +32,7 @@ module ScoringEngine
               end
             end
           end
+        rescue Errno::EIO
         rescue Timeout::Error
           puts "Timeout reached at #{Machine::CHECK_MAX_TIMEOUT}"
           Process.kill('TERM', pid)
