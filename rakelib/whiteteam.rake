@@ -17,7 +17,7 @@ namespace :scoringengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '\d+ bytes from')
 
-    # IRC Channel Join
+    # # IRC Channel Join
     # service = Service.create(team_id: team.id, server_id: server.id, name: "IRC Channel Join", version: 'ipv4', protocol: 'irc', enabled: false, available_points: 0)
     # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'engine', password: 'engine')
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'timeout', value: '30.0')
@@ -37,14 +37,14 @@ namespace :scoringengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # FTPS Download
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Download", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 100)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Download", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # FTPS Upload
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Upload", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 100)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Upload", version: 'ipv4', protocol: 'ftps', enabled: false, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/engine')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^< 226')
 
     # HTTP Available
     service = Service.create(team_id: team.id, server_id: server.id, name: "HTTP Available", version: 'ipv4', protocol: 'http', enabled: false, available_points: 0)
@@ -83,16 +83,16 @@ namespace :scoringengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
 
     # POP3S Login
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "POP3S Login", version: 'ipv4', protocol: 'pop3s', enabled: false, available_points: 100)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
+    service = Service.create(team_id: team.id, server_id: server.id, name: "POP3S Login", version: 'ipv4', protocol: 'pop3s', enabled: false, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '^> LIST')
 
     # SMTP Send Mail
     service = Service.create(team_id: team.id, server_id: server.id, name: "SMTP Send Mail", version: 'ipv4', protocol: 'smtp', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: '< 250 2.0.0 Ok')
 
     # SMTPS Send Mail
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "SMTPS Send Mail", version: 'ipv4', protocol: 'smtps', enabled: false, available_points: 0)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: '< 250 2.0.0 Ok)
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMTPS Send Mail", version: 'ipv4', protocol: 'smtps', enabled: false, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'full-text-regex', value: '< 250 2.0.0 Ok')
 
     # SSH Login
     service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: false, available_points: 0)
@@ -104,9 +104,20 @@ namespace :scoringengine do
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'show tables')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'Tables_in_')
 
+    # NFS Available
+    service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Available", version: 'ipv4', protocol: 'nfs', enabled: false, available_points: 0)
+
+    # NFS Content
+    service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Content", version: 'ipv4', protocol: 'nfs', enabled: false, available_points: 0)
+
+    # NFS Download
+    service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Download", version: 'ipv4', protocol: 'nfs', enabled: true, available_points: 0)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'share', value: '/var/opt')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'filename', value: 'testfile.txt')
+
     # SMB Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "SMB Download", version: 'ipv4', protocol: 'smb', enabled: false, available_points: 0)
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/Shared/file.txt')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'filename', value: '/share/file.txt')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'Connection #\d to host')
   end
 
