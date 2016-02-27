@@ -17,7 +17,7 @@ namespace :scoringengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "ICMP Ping", version: 'ipv4', protocol: 'icmp', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
 
-    # IRC Channel Join
+    # # IRC Channel Join
     # service = Service.create(team_id: team.id, server_id: server.id, name: "IRC Channel Join", version: 'ipv4', protocol: 'irc', enabled: true, available_points: 100)
     # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'domain', value: 'irc.freenode.org')
     # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
@@ -33,14 +33,14 @@ namespace :scoringengine do
     user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
     # FTPS Download
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Download", version: 'ipv4', protocol: 'ftps', enabled: true, available_points: 100)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
-    # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Download", version: 'ipv4', protocol: 'ftps', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
     # FTPS Upload
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Upload", version: 'ipv4', protocol: 'ftps', enabled: true, available_points: 100)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
-    # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+    service = Service.create(team_id: team.id, server_id: server.id, name: "FTPS Upload", version: 'ipv4', protocol: 'ftps', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
     # HTTP Available
     service = Service.create(team_id: team.id, server_id: server.id, name: "HTTP Available", version: 'ipv4', protocol: 'http', enabled: true, available_points: 100)
@@ -71,14 +71,19 @@ namespace :scoringengine do
     user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
     # SMTPS Send Mail
-    # service = Service.create(team_id: team.id, server_id: server.id, name: "SMTPS Send Mail", version: 'ipv4', protocol: 'smtps', enabled: true, available_points: 100)
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'from-domain', value: 'engine.ists')
-    # property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'rcpt-domain', value: 'engine.ists')
-    # user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+    service = Service.create(team_id: team.id, server_id: server.id, name: "SMTPS Send Mail", version: 'ipv4', protocol: 'smtps', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'from-domain', value: 'engine.ists')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'rcpt-domain', value: 'engine.ists')
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
     # SSH Login
     service = Service.create(team_id: team.id, server_id: server.id, name: "SSH Login", version: 'ipv4', protocol: 'ssh', enabled: true, available_points: 100)
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
+
+    # MySQL Login
+    service = Service.create(team_id: team.id, server_id: server.id, name: "MySQL Login", version: 'ipv4', protocol: 'mysql', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
     user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
 
@@ -93,13 +98,11 @@ namespace :scoringengine do
     # NFS Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Download", version: 'ipv4', protocol: 'nfs', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'share', value: '/var/opt')
-    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'filename', value: 'testfile.txt')
 
     # SMB Download
     service = Service.create(team_id: team.id, server_id: server.id, name: "SMB Download", version: 'ipv4', protocol: 'smb', enabled: true, available_points: 100)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'address', property: 'ip', value: '127.0.0.1')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'domain', value: 'WORKGROUP')
     user = User.create(team_id: team.id, server_id: server.id, service_id: service.id, username: 'test', password: 'test')
-
   end
 end
