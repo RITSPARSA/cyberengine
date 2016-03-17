@@ -10,6 +10,7 @@ class StaticController < ApplicationController
     Team.blueteams.includes([services_for_scoring: :checks_for_scoring]).each do |team|
       @scoreboard[team.id] = {checks: 0, passed: 0, percent: 0.0, points: 0, available: 0, alias: team.alias, team: team, services: Hash.new}
       team.services_for_scoring.each do |service|
+        next if service.disabled?
         @scoreboard[team.id][:services][service.id] = {checks: 0, passed: 0, percent: 0.0, points: 0, available: service.available_points, name: service.name, protocol: service.protocol, version: service.version, service: service}
         service.checks_for_scoring.each do |check|
           @scoreboard[team.id][:checks] += 1
@@ -23,16 +24,19 @@ class StaticController < ApplicationController
     @scoreboard.each do |team_id,team|
       team[:percent] = team[:checks] == 0 ? 0 : (team[:passed].to_f/team[:checks].to_f)
       team[:available] = team[:services].map{|i,s| s[:available] }.sum.to_i
-      team[:points] = (team[:available]*team[:percent]).to_i
       team[:percent] = (team[:percent]*100).round(1)
-      @bargraph << { y: team[:points], color: @colors[team_id % @colors.size] }
-      @teams << team[:alias]
+
+      total_points = 0
       team[:services].each do |service_id,service|
         service[:percent] = service[:checks] == 0 ? 0 : (service[:passed].to_f/service[:checks].to_f)
         service[:available] = service[:available].to_i
         service[:points] = (service[:available]*service[:percent]).to_i
+        total_points += service[:points]
         service[:percent] = (service[:percent]*100).round(1)
       end
+      team[:points] = total_points
+      @bargraph << { y: team[:points], color: @colors[team_id % @colors.size] }
+      @teams << team[:alias]
     end
     #FF1493 MediumViolet
     #F08080 LightCoral

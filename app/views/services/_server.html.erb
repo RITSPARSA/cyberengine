@@ -22,7 +22,11 @@
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>
         <td>
-          <% if latest.id.nil? %>
+          <% if service.disabled? %>
+            <% label_class = "invert" %>
+            <% label_text = "Disabled" %>
+            <span class="label label-<%= label_class %>"><%= label_text %></span>
+          <% elsif latest.id.nil? %>
             <span class="label label-info">No Checks</span>
           <% else %>
             <%= link_to modal_team_server_service_check_path(@team,server,service,latest), data: { toggle: "modal", target: "#checksModal" } do %>

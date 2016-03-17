@@ -28,7 +28,11 @@
               <% latest_check = service.checks.latest || Check.new %>
               <% label_class = latest_check.passed ? "success" : "important" %>
               <% label_text = latest_check.passed ? "Passing" : "Failing" %>
-              <% if latest_check.id.nil? %>
+              <% if service.disabled? %>
+                <% label_class = "invert" %>
+                <% label_text = "Disabled" %>
+                <span class="label label-<%= label_class %>"><%= label_text %></span>
+              <% elsif latest_check.id.nil? %>
                 <span class="label label-info">No Checks</span>
               <% else %>
                 <%= link_to modal_team_server_service_check_path(team,server,service,latest_check), data: { toggle: "modal", target: "#checksModal" } do %>

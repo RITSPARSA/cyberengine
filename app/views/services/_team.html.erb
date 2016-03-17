@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Service</th>
+      <th>IP</th>
       <th>Version</th>
       <th>Protocol</th>
       <th>Status</th>
@@ -19,10 +20,18 @@
       <% label_text = latest_check.passed ? "Passing" : "Failing" %>
       <tr>
         <td><%= link_to service.name, team_server_service_path(team,server,service) %></td>
+        <% service.properties.ordered.each do |property| %>
+          <% next unless property.category == "address" %>
+          <td><%= property.value %></td>
+        <% end %>
         <td><%= service.version %></td>
         <td><%= service.protocol %></td>
         <td>
-          <% if latest_check.id.nil? %>
+          <% if service.disabled? %>
+            <% label_class = "invert" %>
+            <% label_text = "Disabled" %>
+            <span class="label label-<%= label_class %>"><%= label_text %></span>
+          <% elsif latest_check.id.nil? %>
             <span class="label label-info">No Checks</span>
           <% else %>
             <%= link_to modal_team_server_service_check_path(team,server,service,latest_check), data: { toggle: "modal", target: "#checksModal" } do %>

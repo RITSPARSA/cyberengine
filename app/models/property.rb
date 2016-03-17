@@ -33,6 +33,7 @@ class Property < ActiveRecord::Base
     team = Team.find_by_id(team_id)
     server = Server.find_by_id(server_id)
     service = Service.find_by_id(service_id)
+
     unless team && server && service && team.id == server.team_id && team.id == service.team_id && team.id == team_id
       errors.add_to_base("Server, Service, and Property must belong to same Team")
     end
@@ -41,10 +42,17 @@ class Property < ActiveRecord::Base
     end
   end
 
+  def can_show?(member,team_id)
+    member.whiteteam? ||
+    member.can_overview_properties? ||
+    service.can_show?(member,team_id) &&
+    member.team_id == team_id &&
+    (member.whiteteam? or self.visible)
+  end
+
   # Standard permissions
-  def can_show?(member,team_id) member.whiteteam? || member.can_overview_properties? || service.can_show?(member,team_id) && member.team_id == team_id end
   def self.can_show?(member,team_id) member.whiteteam? || member.team_id == team_id end
-  def self.can_new?(member,team_id) member.whiteteam? end 
+  def self.can_new?(member,team_id) member.whiteteam? end
   def can_edit?(member,team_id) member.whiteteam? end
   def can_create?(member,team_id) member.whiteteam? end
   def can_update?(member,team_id) member.whiteteam? end
