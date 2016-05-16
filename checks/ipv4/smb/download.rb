@@ -21,8 +21,8 @@ module ScoringEngine
         # User
         user = service.users.sample
         raise "Missing users" unless user
-        username = user.username.shellwords
-        password = user.password.shellwords
+        username = user.username.shellescape
+        password = user.password.shellescape
 
         # Default filename
         filename = get_random_property('filename')
