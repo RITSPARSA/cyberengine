@@ -102,6 +102,7 @@ namespace :scoringengine do
     # MySQL Login
     service = Service.create(team_id: team.id, server_id: server.id, name: "MySQL Login", version: 'ipv4', protocol: 'mysql', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'command', value: 'show tables')
+    property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'random', property: 'database', value: 'testdb')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'answer', property: 'each-line-regex', value: 'Tables_in_')
 
     # NFS Available
@@ -111,7 +112,7 @@ namespace :scoringengine do
     service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Content", version: 'ipv4', protocol: 'nfs', enabled: false, available_points: 0)
 
     # NFS Download
-    service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Download", version: 'ipv4', protocol: 'nfs', enabled: true, available_points: 0)
+    service = Service.create(team_id: team.id, server_id: server.id, name: "NFS Download", version: 'ipv4', protocol: 'nfs', enabled: false, available_points: 0)
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'share', value: '/var/opt')
     property = Property.create(team_id: team.id, server_id: server.id, service_id: service.id, visible: true, category: 'option', property: 'filename', value: 'testfile.txt')
 
