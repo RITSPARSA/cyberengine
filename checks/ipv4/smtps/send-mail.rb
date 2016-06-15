@@ -1,4 +1,5 @@
 require 'scoring_engine'
+require 'shellwords'
 
 module ScoringEngine
   module Checks
@@ -23,15 +24,15 @@ module ScoringEngine
         from_user = service.users.sample unless from_user
 
         raise "Missing users" unless from_user
-        from_username = from_user.username
-        from_password = from_user.password
+        from_username = from_user.username.shellescape
+        from_password = from_user.password.shellescape
 
         # From Domain
         from_domain = service.properties.option('from-domain')
         raise("Missing from-domain property") unless from_domain
 
         # Add From Email
-        cmd << " --mail-from '#{from_username}'@'#{from_domain}' "
+        cmd << " --mail-from #{from_username}@'#{from_domain}' "
 
         # Rcpt User
         rcpt_user = get_random_property('rcpt-user')

@@ -1,4 +1,5 @@
 require 'scoring_engine'
+require 'shellwords'
 
 module ScoringEngine
   module Checks
@@ -15,8 +16,8 @@ module ScoringEngine
         # User
         user = service.users.sample
         raise "Missing users" unless user
-        username = user.username
-        password = user.password
+        username = user.username.shellescape
+        password = user.password.shellescape
 
         # Default filename
         filename = get_random_property('filename')
